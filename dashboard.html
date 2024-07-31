@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Join CMS</title>
+    <link rel="stylesheet" href="./styles/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="logo.png" alt="Join Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html"><span class="icon">🏠</span> Summary</a></li>
+                    <li><a href="add-task.html"><span class="icon">➕</span> Add Task</a></li>
+                    <li><a href="kanban.html"><span class="icon">📋</span> Board</a></li>
+                    <li><a href="contacts.html"><span class="icon">👥</span> Contacts</a></li>
+                </ul>
+            </nav>
+            <div class="footer">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="legal-notice.html">Legal notice</a>
+            </div>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div class="page-title">Dashboard</div>
+                <div class="user-info">
+                    <img src="user-avatar.png" alt="User Avatar">
+                    <span>SM</span>
+                </div>
+            </header>
+            <section class="welcome-message">
+                <h2>Good Morning, [Benutzername]</h2>
+            </section>
+            <section class="stats">
+                <div class="stat-item to-do">
+                    <h3>Tasks To Do</h3>
+                    <p>5</p>
+                </div>
+                <div class="stat-item in-progress">
+                    <h3>Tasks In Progress</h3>
+                    <p>3</p>
+                </div>
+                <div class="stat-item awaiting-feedback">
+                    <h3>Tasks Awaiting Feedback</h3>
+                    <p>2</p>
+                </div>
+                <div class="stat-item done">
+                    <h3>Tasks Done</h3>
+                    <p>8</p>
+                </div>
+                <div class="stat-item next-deadline">
+                    <h3>Next Deadline</h3>
+                    <p>Task XYZ - Due in 2 days</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="./js/dashboard.js"></script>
+</body>
+</html>
