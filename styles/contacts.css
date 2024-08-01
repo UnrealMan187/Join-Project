@@ -107,7 +107,7 @@ body {
   border-radius: 10px;
   border: 1px 0px 0px 0px;
   opacity: 0px;
-
+  cursor: pointer;
   background-color: #2a3647;
 }
 .add-button-text {
