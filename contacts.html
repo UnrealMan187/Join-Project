@@ -1,99 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts - Join CMS</title>
     <link rel="stylesheet" href="./styles/contacts.css">
+    <link rel="stylesheet" href="sidebar-header.css">
+
 </head>
+
 <body>
-    <div class="contacts-container">
-        <aside class="sidebar">
-            <div class="logo">
-                <img src="logo.png" alt="Join Logo">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="dashboard.html"><span class="icon">🏠</span> Summary</a></li>
-                    <li><a href="add-task.html"><span class="icon">➕</span> Add Task</a></li>
-                    <li><a href="kanban.html"><span class="icon">📋</span> Board</a></li>
-                    <li><a href="contacts.html"><span class="icon">👥</span> Contacts</a></li>
-                </ul>
-            </nav>
-            <div class="footer">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="legal-notice.html">Legal notice</a>
-            </div>
-        </aside>
-      
-            
-            <div class="contacts-main-container">
-            <div class="add-contact-container">
-                <button class="add-contact">
-                    <p class="add-button-text">Add new contact</p>
-                    <img class="person-add-png" src="./design/personAdd.png" alt="">
-                </button>
-            </div>
-            <section class="contact-list">
 
-                <div class="contacts-first-letter-container"><span class="contacts-first-letter">A</span></div>
-                <div class="border-container"> <div class="border"></div></div>
-                <div class="contact">
-                    <div>
-                        <h3>Anton Mayer</h3>
-                        <p>anton@gmail.com</p>
-                    </div>
+    <!-- Header und Sidebar-->
+    <header>
+        <h1>Kanban Project Management Tool</h1>
+        <div class="header-icons">
+            <img src="img/contacts/help.png" alt="icon help" width="32px" height="32px">
+            <img src="img/contacts/icon_user.png" alt="icon user" width="56px" height="56px">
+        </div>
+    </header>
+
+    <aside class="sidebar">
+        <div class="logo-sidebar">
+            <img class="logo-join-white" src="img/contacts/logo_join_white.png" alt="logo">
+        </div>
+        <nav class="menu-sidebar">
+            <ul class="container-nav-links">
+                <div class="nav-links">
+                    <img class="nav-icons" src="img/contacts/icon_summary.png" alt="icon summary">
+                    <li><a href="kanban.html">Summary</a></li>
                 </div>
-
-                <div class="contacts-first-letter-container"><span class="contacts-first-letter">B</span></div>
-                <div class="border-container"> <div class="border"></div></div>
-                <div class="contact">
-                    <div>
-                        <h3>Anja Schulz</h3>
-                        <p>schulz@hotmail.com</p>
-                    </div>
+                <div class="nav-links">
+                    <img class="nav-icons" src="img/contacts/icon_addtask.png" alt="icon add task">
+                    <li><a href="dashboard.html">Add Task</a></li>
                 </div>
-
-                <div class="contacts-first-letter-container"><span class="contacts-first-letter">C</span></div>
-                <div class="border-container"> <div class="border"></div></div>
-                <div class="contact">
-                    <div>
-                        <h3>Benedikt Ziegler</h3>
-                        <p>benedikt@gmail.com</p>
-                    </div>
+                <div class="nav-links">
+                    <img class="nav-icons" src="img/contacts/icon_board.png" alt="icon board">
+                    <li><a href="kanban.html">Board</a></li>
                 </div>
-
-                <div class="contacts-first-letter-container"><span class="contacts-first-letter">D</span></div>
-                <div class="border-container"> <div class="border"></div></div>
-                <div class="contact">
-                    <div>
-                        <h3>David Eisenberg</h3>
-                        <p>davideberg@gmail.com</p>
-                    </div>
+                <div class="nav-links">
+                    <img class="nav-icons" src="img/contacts/icon_contacts.png" alt="contacts">
+                    <li><a href="contacts.html">Contacts</a></li>
                 </div>
-
-                <div class="contacts-first-letter-container"><span class="contacts-first-letter">E</span></div>
-                <div class="border-container"> <div class="border"></div></div>
-                <div class="contact">
-                    <div>
-                        <h3>Eva Fischer</h3>
-                        <p>eva@gmail.com</p>
-                    </div>
+            </ul>
+        </nav>
+        <nav>
+            <ul>
+                <div class="nav-links-footer">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Legal notice</a></li>
                 </div>
+            </ul>
+        </nav>
+    </aside>
 
-                <div class="contacts-first-letter-container"><span class="contacts-first-letter">F</span></div>
-                <div class="border-container"> <div class="border"></div></div>
-                <div class="contact">
-                    <div>
-                        <h3>Emmanuel Mauer</h3>
-                        <p>emmanuel@gmail.com</p>
-                    </div>
+    <div class="contacts-main-container">
+        <div class="add-contact-container">
+            <button class="add-contact">
+                <p class="add-button-text">Add new contact</p>
+                <img class="person-add-png" src="./design/personAdd.png" alt="">
+            </button>
+        </div>
+        <section class="contact-list">
+
+            <div class="contacts-first-letter-container"><span class="contacts-first-letter">A</span></div>
+            <div class="border-container"> <div class="border"></div></div>
+            <div class="contact">
+                <div>
+                    <h3>Anton Mayer</h3>
+                    <p>anton@gmail.com</p>
                 </div>
             </div>
-                <!-- Weitere Kontakte können hier hinzugefügt werden -->
-            </section>
-       
-    </div>
-    <script src="scripts.js"></script>
+
+            <div class="contacts-first-letter-container"><span class="contacts-first-letter">B</span></div>
+            <div class="border-container"> <div class="border"></div></div>
+            <div class="contact">
+                <div>
+                    <h3>Anja Schulz</h3>
+                    <p>schulz@hotmail.com</p>
+                </div>
+            </div>
+
+            <div class="contacts-first-letter-container"><span class="contacts-first-letter">C</span></div>
+            <div class="border-container"> <div class="border"></div></div>
+            <div class="contact">
+                <div>
+                    <h3>Benedikt Ziegler</h3>
+                    <p>benedikt@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="contacts-first-letter-container"><span class="contacts-first-letter">D</span></div>
+            <div class="border-container"> <div class="border"></div></div>
+            <div class="contact">
+                <div>
+                    <h3>David Eisenberg</h3>
+                    <p>davideberg@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="contacts-first-letter-container"><span class="contacts-first-letter">E</span></div>
+            <div class="border-container"> <div class="border"></div></div>
+            <div class="contact">
+                <div>
+                    <h3>Eva Fischer</h3>
+                    <p>eva@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="contacts-first-letter-container"><span class="contacts-first-letter">F</span></div>
+            <div class="border-container"> <div class="border"></div></div>
+            <div class="contact">
+                <div>
+                    <h3>Emmanuel Mauer</h3>
+                    <p>emmanuel@gmail.com</p>
+                </div>
+            </div>
+        </div>
+            <!-- Weitere Kontakte können hier hinzugefügt werden -->
+        </section>
+   
+</div>
+<script src="scripts.js"></script>
 </body>
 </html>

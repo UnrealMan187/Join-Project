@@ -6,7 +6,7 @@ body {
 }
 
 /* Container für das Kanban-Board */
-.kanban-container {
+.board-container {
     display: flex;
     min-height: 100vh;
 }
