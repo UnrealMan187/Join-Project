@@ -2,133 +2,126 @@
 
 /* Grundlegende Stileinstellungen */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
 }
-.contacts-main-container
-{
-    position: fixed;
-    width: 456px;
-    height: 928px;
-    top: 96px;
-    left: 232px;
-    gap: 0px;
-    opacity: 0px;
-    background-color: #FFFFFF;
-    box-shadow: 6px 0px 6px 0px lightgray;
-    overflow-y: scroll;
-    overflow-x: hidden;
+.contacts-main-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  width: 456px;
+  height: 928px;
+  top: 96px;
+  left: 232px;
+  background-color: #ffffff;
+  box-shadow: 6px 0px 6px 0px lightgray;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-.contacts-first-letter-container
-{
-    display: flex;
-    align-items: center;
-    width: 352px;
-    height: 58px;
-    padding-left: 36px;
-    gap: 8px;
+.contacts-first-letter-container {
+  display: flex;
+  align-items: center;
+  width: 352px;
+  height: 58px;
+  padding-left: 36px;
+  gap: 8px;
 }
-.contacts-first-letter
-{
-    width: 14px;
-    height: 24px;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 24px;
-    text-align: left;
+.contacts-first-letter {
+  width: 14px;
+  height: 24px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
 }
 .contact-list {
-  
-    Width: 456px;
-    Top: 96px;
-    Left: 232px;
-    width: 400px;
-    left: 28px;
-    padding: 32px 24px 32px 24px;
-    gap: 0px;
-    opacity: 0px;    
+  width: 400px;
+  height: 1188px;
+  padding: 0px 24px;
+  gap: 0px;
+  opacity: 0px;
 }
-.border-container
-{
-    width: Fill 352px;
-    height: 16px;
-    padding: 8px, 0px, 8px, 0px;
-    gap: 10px;
+.border-container {
+  width: Fill 352px;
+  height: 16px;
+  padding: 8px, 0px, 8px, 0px;
+  gap: 10px;
 }
-.border
-{
-    width: 352px;
-    border: 1px solid #D1D1D1;
+.border {
+  width: 352px;
+  border: 1px solid #d1d1d1;
 }
 
 .contact {
- 
 }
 
 .contact h3 {
-    margin: 0;
-    font-size: 16px;
+  margin: 0;
+  font-size: 16px;
 }
 
 .contact p {
-    margin: 0;
-    font-size: 14px;
+  margin: 0;
+  font-size: 14px;
 }
 
 .contact .actions {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .contact .actions button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin-left: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 .contact .actions button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 /* Button zum Hinzufügen neuer Kontakte */
-.add-contact-container
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 22.5px;
+.add-contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 456px;
+  height: 101px;
+  padding: 22.5px 52px 22.5px 52px;
+  gap: 10px;
+  opacity: 0px;
 }
 .add-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 352px;
+  height: 56px;
+  border-radius: 10px;
+  border: 1px 0px 0px 0px;
+  opacity: 0px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 352px;
-    height: 56px;
-    border-radius: 10px;
-    background-color: #2A3647;
+  background-color: #2a3647;
 }
-.add-button-text
-{
-    font-family: Inter;
-    font-size: 21px;
-    font-weight: 700;
-    text-align: left;
-    color: #FFFFFF;
+.add-button-text {
+  font-family: Inter;
+  font-size: 21px;
+  font-weight: 700;
+  text-align: left;
+  color: #ffffff;
 }
-.person-add-png
-{
-    height: 32px;
-    width: 32px;
-    margin-left: 20px;   
+.person-add-png {
+  height: 32px;
+  width: 32px;
+  margin-left: 20px;
 }
 .add-contact:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
-
