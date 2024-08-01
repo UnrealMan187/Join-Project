@@ -9,7 +9,7 @@ body {
 }
 
 /* Container für das Dashboard */
-.dashboard-container {
+.summary-container {
     display: flex;
     min-height: 100vh;
 }

@@ -41,15 +41,17 @@ body {
 }
 
 .sidebar nav ul li a {
-    color: #fff;
-    text-decoration: none;
+    transition: 125ms;
     display: flex;
-    align-items: center;
-    transition: color 0.3s;
+    gap: 6px;
+    padding: 8px 53px;
+    color: rgba(205, 205, 205, 1);
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .sidebar nav ul li a:hover {
-    color: #3498db;
+    
 }
 
 .sidebar nav ul li a .icon {
@@ -138,10 +140,11 @@ body {
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: rgba(42, 54, 71, 1);
     color: #fff;
     text-align: center;
     border-radius: 5px;
+    border: none;
     text-decoration: none;
     transition: background-color 0.3s;
     cursor: pointer;
@@ -149,5 +152,5 @@ body {
 }
 
 .add-contact:hover {
-    background-color: #0056b3;
+    background-color: #29ABE2;
 }
