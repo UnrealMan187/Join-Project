@@ -18,6 +18,8 @@ body {
     opacity: 0px;
     background-color: #FFFFFF;
     box-shadow: 6px 0px 6px 0px lightgray;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .contacts-first-letter-container
 {
