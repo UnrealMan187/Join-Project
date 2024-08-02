@@ -88,22 +88,66 @@
 
     <!-- CONTACTS -->
     <div class="contacts-main-container">
-        <div class="add-contact-container">
-            <button onclick="addNewUser()" class="add-contact">
-                <p class="add-button-text">Add new contact</p>
-                <img class="person-add-png" src="./design/personAdd.png" alt="">
-            </button>
-        </div>
-
+        
         <section class="contact-list">
+            <div class="add-contact-container">
+                <button onclick="addNewUser()" class="add-contact">
+                    <p class="add-button-text">Add new contact</p>
+                    <img class="person-add-png" src="./design/personAdd.png" alt="">
+                </button>
+            </div>
             <div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter"></span></div>
             <div class="border-container"> <div class="border"></div></div>
             <div class="contact">
-                <div id="contactName"></div>
-                <div id="contactEmail"></div>
+                <div id="contactName">Anton Mayer</div>
+                <div id="contactEmail">anton@gmx.com</div>
             </div>
-    </div>
+            <div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter"></span></div>
+            <div class="border-container"> <div class="border"></div></div>
+            <div class="contact">
+                <div id="contactName">Anja Schulz</div>
+                <div id="contactEmail">anja@gmx.com</div>
+            </div>
         </section>
+
+        <section class="display-contact-header">
+            <h1 class="h1Contacts">Contacts</h1>
+            <div class="border-vertical"></div>
+            <span class="span-txt">Better with a team</span>        
+        </section>
+
+        <section class="display-contact">
+            <div class="contact-name-main-container">
+                <div class="ellipse-container">
+                    <img class="ellipse" src="./img/ellipse_orange.png">
+                </div>
+                <div class="contact-name-container">
+                <div class="contact-name">Anton Mayer
+                    <div class="edit-delete-container">
+                        <div class="edit"><img class="edit-icon" src="./img/edit.png" alt="edit.png">Edit</div>
+                        <div class="delete"><img class="delete-icon" src="./img/delete.png" alt="delete.png">Delete</div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="contact-information-container">
+                <span class="contact-information-txt">Contact Information</span>
+            </div>
+            <div class="email-and-phone-container">
+                    <div class="email-container">
+                        <span class="email-headtxt">Email</span>
+                        <span class="email">anton@gmx.de</span>
+                    </div>
+
+                    <div class="phone-container">
+                        <span class="phone-headtxt">Phone</span>
+                        <span class="phone">0151551515151</span>
+                    </div>
+            </div>
+        </section>
+    </div>
+    
+        
    
 <script src="scripts.js"></script>
 </body>
