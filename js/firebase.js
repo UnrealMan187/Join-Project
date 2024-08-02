@@ -19,6 +19,7 @@ async function loadUsers(path = '/users') {
     }
 }
 
+
 async function addUser() {
     let nameValue = document.getElementById('name').value;
     let phoneValue = document.getElementById('phone').value;
@@ -31,6 +32,7 @@ async function addUser() {
     await loadUsers('/users');
 }
 
+
 async function postData(path = '', data = {}) {
     await fetch(FIREBASE_URL + path + '.json', {
         method: 'POST',
@@ -42,20 +44,22 @@ async function postData(path = '', data = {}) {
 }
 
 // id = path in firebase
-// async function deleteUser(id) {
-//     await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
-//         method: "DELETE"
-//     })
 
-// }
+async function deleteUser(id) {
+    await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
+        method: "DELETE"
+    })
 
-// async function editUser(id, data = {}) {
-//     await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
-//         method: "PUT",
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(data)
-//     })
+}
 
-// }
+
+async function editUser(id, data = {}) {
+    await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+
+}
