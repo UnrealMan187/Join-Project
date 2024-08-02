@@ -125,3 +125,14 @@ body {
 .add-contact:hover {
   background-color: #0056b3;
 }
+
+/* show Contact */
+
+.showContactMainContainer {
+display: flex;
+justify-content: center;
+}
+.h1Contacts {
+  width: 274px;
+  height: 73px;
+}
