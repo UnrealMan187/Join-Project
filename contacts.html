@@ -88,25 +88,35 @@
 
     <!-- CONTACTS -->
     <div class="contacts-main-container">
-        
+        <div class="add-contact-container">
+            <button onclick="addNewUser()" class="add-contact">
+                <p class="add-button-text">Add new contact</p>
+                <img class="person-add-png" src="./design/personAdd.png" alt="">
+            </button>
+        </div>
         <section class="contact-list">
-            <div class="add-contact-container">
-                <button onclick="addNewUser()" class="add-contact">
-                    <p class="add-button-text">Add new contact</p>
-                    <img class="person-add-png" src="./design/personAdd.png" alt="">
-                </button>
-            </div>
-            <div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter"></span></div>
+            <div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter">A</span></div>
             <div class="border-container"> <div class="border"></div></div>
-            <div class="contact">
-                <div id="contactName">Anton Mayer</div>
-                <div id="contactEmail">anton@gmx.com</div>
+            <div class="contact-container">
+                <div class="contact-list-ellipse">
+                    <img class="ellipse-list" src="./img/ellipse_orange.png">
+                </div>
+                <div class="contact">
+                    <div class="contact-list-name" id="contactName">Anton Mayer</div>
+                    <div class="contact-list-email" id="contactEmail">anton@gmx.com</div>
+                </div>
             </div>
-            <div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter"></span></div>
+
+            <div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter">A</span></div>
             <div class="border-container"> <div class="border"></div></div>
-            <div class="contact">
-                <div id="contactName">Anja Schulz</div>
-                <div id="contactEmail">anja@gmx.com</div>
+            <div class="contact-container">
+                <div class="contact-list-ellipse">
+                    <img class="ellipse-list" src="./img/ellipse_orange.png">
+                </div>
+                <div class="contact">
+                    <div class="contact-list-name" id="contactName">Anja Schulz</div>
+                    <div class="contact-list-email" id="contactEmail">anja@gmx.com</div>
+                </div>
             </div>
         </section>
 
