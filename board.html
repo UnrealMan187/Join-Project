@@ -3,36 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kanban Board - Join CMS</title>
+    <title>Board</title>
     <link rel="stylesheet" href="./styles/board.css">
+    <link rel="stylesheet" href="./styles/sidebarHeader.css">
+
 </head>
 <body>
-    <div class="board-container">
-        <aside class="sidebar">
-            <div class="logo">
-                <img src="logo.png" alt="Join Logo">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="dashboard.html"><span class="icon">🏠</span> Summary</a></li>
-                    <li><a href="add-task.html"><span class="icon">➕</span> Add Task</a></li>
-                    <li><a href="board.html"><span class="icon">📋</span> Board</a></li>
-                    <li><a href="contacts.html"><span class="icon">👥</span> Contacts</a></li>
-                </ul>
-            </nav>
-            <div class="footer">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="legal-notice.html">Legal notice</a>
-            </div>
-        </aside>
-        <main class="main-content">
-            <header class="header">
-                <div class="page-title">Board</div>
-                <div class="user-info">
-                    <img src="user-avatar.png" alt="User Avatar">
-                    <span>SM</span>
+    <!-- Header und Sidebar-->
+    <header class="desktop-header">
+        <h1>Kanban Project Management Tool</h1>
+        <div class="header-icons">
+            <img src="img/contacts/help.png" alt="icon help" width="32px" height="32px">
+            <img src="img/contacts/icon_user.png" alt="icon user" width="56px" height="56px">
+        </div>
+    
+    </header>
+
+    <aside class="sidebar desktop-sidebar">
+        <div class="logo-sidebar">
+            <a href="summary.html"><img class="logo-join-white" src="img/contacts/logo_join_white.png" alt="logo"></a>
+        </div>
+        <nav class="menu-sidebar">
+            <ul class="container-nav-links">
+                <div class="nav-links">
+                    <img class="nav-icons" src="img/contacts/summary_icon.svg" alt="icon summary">
+                    <li><a href="summary.html">Summary</a></li>
                 </div>
-            </header>
+                <div class="nav-links">
+                    <img class="nav-icons" src="img/contacts/addTask_icon.svg" alt="icon add task">
+                    <li><a href="task.html">Add Task</a></li>
+                </div>
+                <div class="nav-links">
+                    <img class="nav-icons" src="img/contacts/board_icon.svg" alt="icon board">
+                    <li><a href="board.html">Board</a></li>
+                </div>
+                <div class="nav-links">
+                    <img class="nav-icons" src="img/contacts/contacts_icon.svg" alt="contacts">
+                    <li><a href="contacts.html">Contacts</a></li>
+                </div>
+            </ul>
+        </nav>
+        <nav>
+            <ul>
+                <div class="nav-links-footer">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Legal notice</a></li>
+                </div>
+            </ul>
+        </nav>
+    </aside>
+
+    <!--Mobile Header-->
+    <header class="mobile-header">
+        <a href="summary.html"><img class="logo-join-mobile" src="img/contacts/logo_blue_mobile.png" alt="logo"></a>
+        <img src="img/contacts/icon_user.png" alt="icon user" width="56px" height="56px">
+    </header>
+
+    <!--Mobile Navbar-->
+    <nav class="mobile-nav">
+        <ul class="container-nav-links">
+            <div class="nav-links">
+                <img class="nav-icons" src="img/contacts/summary_icon.svg" alt="icon summary">
+                <li><a href="summary.html">Summary</a></li>
+            </div>
+            <div class="nav-links">
+                <img class="nav-icons" src="img/contacts/addTask_icon.svg" alt="icon add task">
+                <li><a href="task.html">Add Task</a></li>
+            </div>
+            <div class="nav-links">
+                <img class="nav-icons" src="img/contacts/board_icon.svg" alt="icon board">
+                <li><a href="board.html">Board</a></li>
+            </div>
+            <div class="nav-links">
+                <img class="nav-icons" src="img/contacts/contacts_icon.svg" alt="contacts">
+                <li><a href="contacts.html">Contacts</a></li>
+            </div>
+        </ul>
+    </nav>
+
+    <!-- End of Header und Sidebar-->
+    <div class="board-container">
+    
+        <main class="main-content">
+            
             <div class="search-add">
                 <input type="text" placeholder="Find Task">
                 <button>Add task +</button>
