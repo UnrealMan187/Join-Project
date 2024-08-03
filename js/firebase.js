@@ -24,7 +24,7 @@ async function addUser() {
   let nameValue = document.getElementById("name").value;
   let phoneValue = document.getElementById("phone").value;
   let emailValue = document.getElementById("email").value;
-  let newUser = { id: users.length; name: nameValue, email: emailValue, phone: phoneValue };
+  let newUser = { id: users.length, name: nameValue, email: emailValue, phone: phoneValue };
   document.getElementById("name").value = "";
   document.getElementById("phone").value = "";
   document.getElementById("email").value = "";
