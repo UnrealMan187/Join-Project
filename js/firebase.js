@@ -62,13 +62,13 @@ async function editUser(id, data = {}) {
 
 // We use the email to identify an User because there may be 2 Users with the same Name but not same email.
 function getUserId(email) {
-  if (users.length > 0) {
-    for (let i = 0; i < users.length; i++) {
-      if (users[i].email == email) {
-        return i;
+    if (users.length > 0) {
+      for (let i = 0; i < users.length; i++) {
+        if (users[i].email == email) {
+          return i;
+        }
       }
+    } else {
+      return -1; // Default Value -1 means User not found
     }
-  } else {
-    return -1; // Default Value -1 means User not found
-  }
 }
