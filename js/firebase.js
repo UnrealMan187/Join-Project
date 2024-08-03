@@ -24,7 +24,7 @@ async function addUser() {
   let nameValue = document.getElementById("name").value;
   let phoneValue = document.getElementById("phone").value;
   let emailValue = document.getElementById("email").value;
-  let newUser = { name: nameValue, email: emailValue, phone: phoneValue };
+  let newUser = { id: users.length; name: nameValue, email: emailValue, phone: phoneValue };
   document.getElementById("name").value = "";
   document.getElementById("phone").value = "";
   document.getElementById("email").value = "";
@@ -65,7 +65,7 @@ function getUserId(email) {
     if (users.length > 0) {
       for (let i = 0; i < users.length; i++) {
         if (users[i].email == email) {
-          return i;
+          return users[i].id;
         }
       }
     } else {
