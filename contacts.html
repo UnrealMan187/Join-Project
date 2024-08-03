@@ -7,10 +7,11 @@
     <title>Contacts</title>
     <link rel="stylesheet" href="./styles/contacts.css">
     <link rel="stylesheet" href="./styles/sidebarHeader.css">
+    <script src="./js/firebase.js"></script>
 
 </head>
 
-<body>
+<body onload="renderContacts()">
 
     <!-- Header and Sidebar-->
     <header class="desktop-header">
@@ -58,7 +59,7 @@
 
     <!--Mobile Header-->
     <header class="mobile-header">
-        <a href="summary.html"><img class="logo-join-mobile" src="img/contacts/logo_blue_mobile.png" alt="logo"></a>
+        <a href="summary.html"><img class="logo-join-mobile" src="" alt="logo"></a>
         <img src="img/contacts/icon_user.png" alt="icon user" width="56px" height="56px">
     </header>
 
@@ -159,6 +160,5 @@
     
         
    
-<script src="scripts.js"></script>
 </body>
 </html>
