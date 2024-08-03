@@ -65,7 +65,7 @@ function getUserId(email) {
     if (users.length > 0) {
       for (let i = 0; i < users.length; i++) {
         if (users[i].email == email) {
-          return users[i].id;
+          return i;
         }
       }
     } else {
