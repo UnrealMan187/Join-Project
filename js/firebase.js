@@ -67,7 +67,7 @@ async function loadUsers(path = "/users") {
     if (users.length > 0) {
       for (let i = 0; i < users.length; i++) {
         if (users[i].email == email) {
-          return i;
+          return users[i].id;
         }
       }
     } else {
