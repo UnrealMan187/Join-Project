@@ -98,4 +98,6 @@ function renderContacts() {
             </div>
             `;
   }
+
+  document.getElementById("contact-list").innerHTML = html;
 }
