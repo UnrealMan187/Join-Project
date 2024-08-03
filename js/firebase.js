@@ -75,3 +75,27 @@ async function loadUsers(path = "/users") {
     }
   }
 }
+
+function renderContacts() {
+  let html = "";
+  let firstLetter = "0";
+
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].name[0].toUpperCase != firstLetter) {
+      html += `<div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter">${users[i].name[0].toUpperCase()}</span></div>
+              <div class="border-container"> <div class="border"></div></div>`;
+
+      firstLetter = users[i].name[0].toUpperCase();
+    }
+    html += `<div class="contact-container">
+            <div class="contact-list-ellipse">
+               <img class="ellipse-list" src="./img/ellipse_orange.png">
+            </div>
+            <div class="contact">
+                <div class="contact-list-name" id="contactName">users[i].name</div>
+                <div class="contact-list-email" id="contactEmail">users[i].email</div>
+            </div>
+            </div>
+            `;
+  }
+}
