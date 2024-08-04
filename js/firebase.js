@@ -76,6 +76,7 @@ async function loadUsers(path = "/users") {
   }
 }
 
+// renders via templates the Contacts into the contact-list incl. the sorter-div/seperator
 async function renderContacts() {
   let html = "";
   let firstLetter = "0";
@@ -103,4 +104,11 @@ async function renderContacts() {
   }
 
   document.getElementById("contact-list").innerHTML = html;
+}
+
+
+function getUserInitials(username) {
+  let result = username.split(" ").map(wort => wort[0].toUpperCase()); // filters the first Letter (to upper case) from every word(name)
+  result = result[0] + result[result.length - 1]; // gets first Letter from first Name and first Letter from last Name
+  return result;
 }
