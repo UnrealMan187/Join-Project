@@ -118,3 +118,8 @@ function loadUserInformation(id) {
   document.getElementById("contact-email").innerHTML = users[id].email;
   document.getElementById("contact-phone").innerHTML = users[id].phone;
 }
+
+async function initContacts() {
+  await renderContacts();
+  loadUserInformation(0);
+}
