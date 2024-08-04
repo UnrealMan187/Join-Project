@@ -6,7 +6,7 @@
   flex-direction: column;
   position: fixed;
   width: 456px;
-  height: 928px;
+  height: calc(100vh - 97px);
   top: 96px;
   left: 232px;
   background-color: #ffffff;
@@ -303,4 +303,23 @@
   line-height: 19.2px;
   text-align: left;
   color: #007cee;
+}
+
+@media (max-width: 1024px) {
+  .contacts-main-container{
+    left: 0px;
+    height: calc(100vh - 192px);
+  }
+}
+@media (max-width: 768px) {
+  .contacts-main-container {
+      top: 80px;
+      width: 100%;
+      height: calc(100vh - 160px);
+  }
+}
+@media (max-width: 424px) {
+  .contacts-main-container {
+      padding: 24px 0px 0px 24px;
+  }
 }
