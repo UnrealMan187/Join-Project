@@ -1,6 +1,7 @@
 const FIREBASE_URL =
   "https://join-4d42f-default-rtdb.europe-west1.firebasedatabase.app/";
 let users = [];
+let currentUser = -1;
 
 async function loadUsers(path = "/users") {
   let userResponse = await fetch(FIREBASE_URL + path + ".json");
@@ -117,9 +118,12 @@ function loadUserInformation(id) {
   document.getElementById("contact-name").innerHTML = users[id].name;
   document.getElementById("contact-email").innerHTML = users[id].email;
   document.getElementById("contact-phone").innerHTML = users[id].phone;
+  currentUser = id;
 }
 
 async function initContacts() {
   await renderContacts();
-  loadUserInformation(0);
+  if(users.length > 0) {
+    loadUserInformation(0);
+  }
 }
