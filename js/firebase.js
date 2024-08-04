@@ -91,7 +91,7 @@ async function renderContacts() {
       firstLetter = users[i].name[0].toUpperCase();
     }
 
-    html += `<div class="contact-container">
+    html += `<div class="contact-container" onclick="loadUserInformation(${i})">
             <div class="contact-list-ellipse">
                <img class="ellipse-list" src="./img/ellipse_orange.png">
             </div>
@@ -104,8 +104,6 @@ async function renderContacts() {
   }
 
   document.getElementById("contact-list").innerHTML = html;
-
-  loadUserInformation(2);
 }
 
 
