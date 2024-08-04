@@ -104,6 +104,8 @@ async function renderContacts() {
   }
 
   document.getElementById("contact-list").innerHTML = html;
+
+  loadUserInformation(2);
 }
 
 
@@ -111,4 +113,10 @@ function getUserInitials(username) {
   let result = username.split(" ").map(wort => wort[0].toUpperCase()); // filters the first Letter (to upper case) from every word(name)
   result = result[0] + result[result.length - 1]; // gets first Letter from first Name and first Letter from last Name
   return result;
+}
+
+function loadUserInformation(id) {
+  document.getElementById("contact-name").innerHTML = users[id].name;
+  document.getElementById("contact-email").innerHTML = users[id].email;
+  document.getElementById("contact-phone").innerHTML = users[id].phone;
 }
