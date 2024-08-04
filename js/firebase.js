@@ -125,5 +125,6 @@ async function initContacts() {
   await renderContacts();
   if(users.length > 0) {
     loadUserInformation(0);
+    currentUser = 0;
   }
 }
