@@ -64,6 +64,10 @@ async function loadUsers(path = "/users") {
   }
 
   async function editUser(id, data = {}) {
+    data.name = document.getElementById("name").value;
+    data.email = document.getElementById("email").value;
+    data.phone = document.getElementById("phone").value;
+
     await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
       method: "PUT",
       headers: {
@@ -71,6 +75,9 @@ async function loadUsers(path = "/users") {
       },
       body: JSON.stringify(data),
     });
+
+    renderContacts();
+    closePopup();
   }
 
   // We use the email to identify an User because there may be 2 Users with the same Name but not same email.
