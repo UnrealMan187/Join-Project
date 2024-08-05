@@ -61,6 +61,7 @@ header {
     left: 0;
     padding-top: 4rem; /* Adjust if needed to avoid overlapping header */
     z-index: 2;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links{
@@ -72,7 +73,10 @@ header {
 
 .nav-links:hover{
     background-color: #091A31;
-    color: white;
+}
+
+svg:hover path{
+    fill: white;
 }
 li{
     font-size: 1rem;
@@ -94,12 +98,14 @@ li{
 }
 
 .container-nav-links{
-    display: flex;
-    flex-direction: column;
-    height: 229px;
     width: 232px;
     gap: 1rem;
 }
+
+.container-nav-links a:hover{
+    color: white;
+}
+
 
 .nav-links-footer{
     display: flex;
@@ -227,8 +233,7 @@ a{
     .nav-links:hover{
         background-color: #091931;
         color: white;
-
-        width: 80px;
+        width: 20%;
         height: 76px;
         border-radius: 10px;
         cursor: pointer;
