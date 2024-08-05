@@ -36,6 +36,7 @@
   padding: 0px 24px;
   gap: 0px;
   opacity: 0px;
+  
 }
 .contact-list-name {
   font-size: 20px;
@@ -50,6 +51,8 @@
   gap: 0px;
   border: 2px 0px 0px 0px;
   opacity: 0px;
+  background-color: #FF7A00;
+  border-radius: 100%;
 }
 .contact-list-email {
   font-size: 16px;
@@ -180,6 +183,8 @@
   opacity: 0px;
 }
 .ellipse {
+  background-color: #FF7A00;
+  border-radius: 100%;
   width: 100px;
   height: 100px;
 }

@@ -95,7 +95,7 @@ async function renderContacts() {
 
     html += `<div class="contact-container" onclick="loadUserInformation(${i})">
             <div class="contact-list-ellipse">
-               <img class="ellipse-list" src="./img/ellipse_orange.png">
+               <div class="ellipse-list"></div>
             </div>
             <div class="contact">
                 <div class="contact-list-name" id="contactName">${users[i].name}</div>
