@@ -92,7 +92,7 @@ body {
 .popUpContent {
     position: relative;
     width: 750px;
-    height: 590px;
+    /* height: 590px; */
     border-radius: 0px 30px 30px 0px;
     background-color: white;
 }
@@ -311,3 +311,4 @@ button {
     text-decoration: none;
     cursor: pointer;
 }
+

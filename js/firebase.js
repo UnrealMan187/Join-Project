@@ -35,7 +35,6 @@ async function loadUsers(path = "/users") {
     document.getElementById("email").value = "";
     await postData("/users", newUser);
     await renderContacts();
-    alert("User added!");
   }
 
   async function postData(path = "", data = {}) {

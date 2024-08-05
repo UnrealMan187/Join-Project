@@ -53,3 +53,8 @@ function closePopup() {
 }
 
 
+async function addUserButton() {
+    await addUser();
+    closePopup();
+}
+
