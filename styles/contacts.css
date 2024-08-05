@@ -53,6 +53,11 @@
   opacity: 0px;
   background-color: #FF7A00;
   border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+  color: white;
 }
 .contact-list-email {
   font-size: 16px;
@@ -187,6 +192,12 @@
   border-radius: 100%;
   width: 100px;
   height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 47px;
+  font-weight: 300;
 }
 .contact-name-main-container {
   display: flex;

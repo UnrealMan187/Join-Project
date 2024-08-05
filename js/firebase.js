@@ -122,7 +122,11 @@ async function renderContacts() {
  */
 function getUserInitials(username) {
   let result = username.split(" ").map(wort => wort[0].toUpperCase());
-  result = result[0] + result[result.length - 1];
+  if(username.split(" ").length > 1) {
+    result = result[0] + result[result.length - 1];
+  } else {
+    result = result[0];
+  }
   return result;
 }
 
@@ -130,6 +134,7 @@ function loadUserInformation(id) {
   document.getElementById("contact-name").innerHTML = users[id].name;
   document.getElementById("contact-email").innerHTML = users[id].email;
   document.getElementById("contact-phone").innerHTML = users[id].phone;
+  document.getElementById("ellipse").innerHTML = getUserInitials(users[id].name);
   currentUser = id;
 }
 
