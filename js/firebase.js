@@ -103,7 +103,7 @@ async function renderContacts() {
 
     html += `<div class="contact-container" onclick="loadUserInformation(${i})">
             <div class="contact-list-ellipse">
-               <div class="ellipse-list"></div>
+               <div class="ellipse-list">${getUserInitials(users[i].name)}</div>
             </div>
             <div class="contact">
                 <div class="contact-list-name" id="contactName">${users[i].name}</div>
