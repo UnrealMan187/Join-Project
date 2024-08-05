@@ -22,6 +22,7 @@ async function loadUsers(path = "/users") {
     });
     console.log(users);
   }
+}
 
   async function addUser() {
     let nameValue = document.getElementById("name").value;
@@ -33,6 +34,7 @@ async function loadUsers(path = "/users") {
     document.getElementById("email").value = "";
     await postData("/users", newUser);
     await loadUsers("/users");
+    alert("User added!");
   }
 
   async function postData(path = "", data = {}) {
@@ -75,7 +77,6 @@ async function loadUsers(path = "/users") {
       return -1; // Default Value -1 means User not found
     }
   }
-}
 
 // renders via templates the Contacts into the contact-list incl. the sorter-div/seperator
 async function renderContacts() {
