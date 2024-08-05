@@ -167,7 +167,7 @@
                             <div class="edit" onclick="editUserPopup()">
                                 <img class="edit-icon" src="./img/edit.png" alt="edit.png" />Edit
                             </div>
-                            <div class="delete">
+                            <div onclick="deleteUser(getUserId(users[currentUser].email))" class="delete">
                                 <img class="delete-icon" src="./img/delete.png" alt="delete.png" />Delete
                             </div>
                         </div>

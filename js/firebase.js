@@ -4,6 +4,7 @@ let users = [];
 let currentUser = -1;
 
 async function loadUsers(path = "/users") {
+  users = [];
   let userResponse = await fetch(FIREBASE_URL + path + ".json");
   let responseToJson = await userResponse.json();
   console.log(responseToJson);
@@ -33,7 +34,7 @@ async function loadUsers(path = "/users") {
     document.getElementById("phone").value = "";
     document.getElementById("email").value = "";
     await postData("/users", newUser);
-    await loadUsers("/users");
+    await renderContacts();
     alert("User added!");
   }
 
@@ -53,6 +54,14 @@ async function loadUsers(path = "/users") {
     await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
       method: "DELETE",
     });
+    alert("User deleted!");
+    await renderContacts();
+    if(currentUser > 0) {
+      currentUser--;
+      loadUserInformation(currentUser);
+    } else {
+      loadUserInformation(0);
+    }
   }
 
   async function editUser(id, data = {}) {
@@ -83,7 +92,7 @@ async function renderContacts() {
   let html = "";
   let firstLetter = "0";
 
-  await loadUsers();
+  await loadUsers("/users");
 
   for (let i = 0; i < users.length; i++) {
     if (users[i].name[0].toUpperCase() != firstLetter.toUpperCase()) {
