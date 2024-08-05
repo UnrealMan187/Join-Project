@@ -432,8 +432,8 @@
   }
 }
 
-@media (max-width: 850px) {
-  /*.contacts-main-container {
+/*@media (max-width: 850px) {
+  .contacts-main-container {
     width: 300px;
   }
   .add-contact-container {
