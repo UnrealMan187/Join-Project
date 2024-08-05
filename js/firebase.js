@@ -108,10 +108,13 @@ async function renderContacts() {
   document.getElementById("contact-list").innerHTML = html;
 }
 
-
+/**
+ * filters the first Letter (to upper case) from every word(name)
+ * gets first Letter from first Name and first Letter from last Name
+ */
 function getUserInitials(username) {
-  let result = username.split(" ").map(wort => wort[0].toUpperCase()); // filters the first Letter (to upper case) from every word(name)
-  result = result[0] + result[result.length - 1]; // gets first Letter from first Name and first Letter from last Name
+  let result = username.split(" ").map(wort => wort[0].toUpperCase());
+  result = result[0] + result[result.length - 1];
   return result;
 }
 
