@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Contact</title>
     <link rel="stylesheet" href="./styles/editContacts.css">
 </head>
 <body>
@@ -19,14 +19,14 @@
                 </div>
             </div>
             <div class="popUpContent">
-                <div onclick="" class="closePopUp addContactContainerCenter">
+                <div onclick="closePopup()" class="closePopUp addContactContainerCenter">
                     <img src="./img/close.svg" alt="">
                 </div>
                 <div class="popUpImg contactImg addContactContainerCenter">
                     <img src="./img/person_big.svg" alt="">
                 </div>
                 <div class="form">
-                    <form id="" onsubmit="">
+                    <form id="" onsubmit="handleEditUserFormSubmit(); return false;">
                         <div class="input">
                             <input id="name" class="inputInput" type="text" placeholder="Name" required>
                             <div class="iconContainer">
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="input">
-                            <input id="email" class="inputInput" type="email" placeholder="Email" required oninput="">
+                            <input id="email" class="inputInput" type="email" placeholder="Email" required>
                             <div class="iconContainer">
                                 <img src="./img/mail.svg" alt="Mail Icon">
                             </div>
