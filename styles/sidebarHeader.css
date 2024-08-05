@@ -197,7 +197,6 @@ a{
 
     .mobile-nav{
         display: flex;
-        align-items: center;
         position:fixed;
         height: 96px;
         bottom: 0;
@@ -223,7 +222,8 @@ a{
         flex-direction: column;
         justify-content: center;
         gap: 0.5em;
-        margin-bottom: 0;
+        padding: 0;
+        text-wrap: nowrap;
     }
 
     .mobile-nav li{
