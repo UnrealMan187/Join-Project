@@ -430,9 +430,10 @@ button {
     }
 
     .popUpBanner {
-        width: 320px;
-        height: 380px;
+        width: 500px;
+        height: 352px;
         margin-top: -250px;
+        border-radius: 0;
     }
 
     .popUpContent {
