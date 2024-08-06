@@ -439,7 +439,21 @@ button {
         width: 420px;
     }
 
-    img {
+    .popUpBannerContent h1 {
+        font-size: 48px;
+    }
+
+    .popUpBannerContent p {
+        font-size: 24px;
+        font-weight: 300;
+    }
+
+    .addContactJoinLogo{
         display: none;
+    }
+
+    .contactImg {
+        margin-right: -420px;
+        margin-top: -260px;
     }
 }
