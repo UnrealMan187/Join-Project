@@ -53,7 +53,6 @@ async function loadUsers(path = "/users") {
     await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
       method: "DELETE",
     });
-    alert("User deleted!");
     await renderContacts();
     if(currentUser > 0) {
       currentUser--;

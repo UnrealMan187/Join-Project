@@ -14,7 +14,7 @@
             <div class="popUpBanner">
                 <div class="popUpBannerContent">
                     <div>
-                        <img src="./img/join_popup.svg" alt="">
+                        <img class="addContactJoinLogo" src="./img/join_popup.svg" alt="">
                         <h1>Add contact</h1>
                         <p>Tasks are better with a team!</p>
                         <span class="popUpBannerContent span"></span>
@@ -29,40 +29,45 @@
                     <img src="./img/person_big.svg" alt="">
                 </div>
                 <div class="form">
-                    <form id="" onsubmit="">
+                    <form id="" onsubmit="addUser(); closePopup();return false;" >
                         <div class="input">
-                            <input id="name" class="inputInput "type="text" placeholder="Name" required>
+                            <input id="name" class="inputInput "type="text" placeholder="Name" required >
                             <div class="iconContainer">
                                 <img src="./img/person.svg" alt="Name Icon">
                             </div>
                         </div>
                         <div class="input">
-                            <input id="email" class="inputInput "type="email" placeholder="Email" required oninput="">
+                            <input id="email" class="inputInput "type="email" placeholder="Email" required >
                             <div class="iconContainer">
                                 <img src="./img/mail.svg" alt="Mail Icon">
                             </div>
                         </div>
                         <div class="input">
-                            <input id="phone" class="inputInput "type="number" pattern="^[0-9-+\s()]{6,16}" placeholder="Phone" required>
+                            <input id="phone" class="inputInput "type="number" pattern="^[0-9-+\s()]{6,16}" placeholder="Phone" required >
                             <div class="iconContainer">
                                 <img src="./img/call.svg" alt="Phone Icon">
                             </div>
                         </div>
+                        <div class="popUpButton">
+                            <button onclick="closePopup()" id="" class="cancelButton">
+                                <p>Cancel</p>
+                                <div>
+                                    <img src="./img/icon_cancel.svg" alt="">
+                                </div>
+                            </button>
+                        <button class="createContactButton">
+                            <p>Create contact</p>
+                            <div>
+                                <img src="./img/check.svg" alt="">
+                            </div>
+                        </button>
+                        
+                    </div>
                     </form>
                 </div>
-                <div class="popUpButton">
-                    <button onclick="closePopup()" id="" class="cancelButton">
-                        <p>Cancel</p>
-                        <div>
-                            <img src="./img/icon_cancel.svg" alt="">
-                        </div>
-                    </button>
-                    <button onclick="addUserButton()" id="" class="createContactButton">
-                        <p>Create contact</p>
-                        <div>
-                            <img src="./img/check.svg" alt="">
-                        </div>
-                    </button>
+                
+                   
+                    
                 </div>
 </body>
 </html>
