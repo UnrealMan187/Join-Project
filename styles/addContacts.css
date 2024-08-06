@@ -114,9 +114,11 @@ body {
     position: absolute;
     display: flex;
     width: 370px;
-    gap: 24px;
-    top: 400px;
-    right: 110px;
+    /* gap: 24px; */
+    /* top: 400px; */
+    /* right: 110px; */
+    margin-top: -150px;
+    margin-right: -50px;
 }
 
 
@@ -265,6 +267,8 @@ button {
     color: white;
     background-color: #2A3647;
     font-size: 21px; 
+    /* margin-left: 180px; */
+    /* margin-top: -135px; */
 }
 
 
