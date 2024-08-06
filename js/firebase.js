@@ -146,15 +146,29 @@ function loadUserInformation(id) {
 
 function hideContactsListInResponsiveMode()
 {
-  document.getElementById('contact-list').classList.add('d-none');
-  document.getElementById('add-contact-containerID').style.display = 'none';
-  showContactsInDetailInResponsiveMode()
+  if (window.innerWidth <= 768) {
+    document.getElementById('contact-list').classList.add('d-none');
+    document.getElementById('add-contact-containerID').style.display = 'none';
+    document.getElementById('back-arrow-on-responsiveID').classList.remove('d-none');
+    showContactsInDetailInResponsiveMode()
+  }
 }
 
 function showContactsInDetailInResponsiveMode()
 {
   document.getElementById('display-contact-headerID').style.display = 'flex';
   document.getElementById('display-contactID').style.display = 'flex';
+}
+
+function showContactListAgainInResponsiveMode()
+{
+  if (window.innerWidth <= 768) {
+  document.getElementById('display-contact-headerID').style.display = 'none';
+  document.getElementById('display-contactID').style.display = 'none';
+  document.getElementById('contact-list').classList.remove('d-none');
+  document.getElementById('add-contact-containerID').style.display = 'flex';
+  document.getElementById('back-arrow-on-responsiveID').classList.add('d-none');
+  }
 }
 
 async function initContacts() {

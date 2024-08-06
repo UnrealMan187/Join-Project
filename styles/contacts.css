@@ -86,6 +86,10 @@
   gap: 35px;
   border-radius: 10px 0px 0px 0px;
 }
+.contact-container:hover
+{
+  background-color: #F5F5F5;
+}
 .contact {
   width: 140px;
   height: 48px;
@@ -318,6 +322,19 @@
   line-height: 19.2px;
   text-align: left;
   color: #007cee;
+}
+.back-arrow-on-responsive {
+  position: absolute;
+  padding: 4px 4px 0px 4px;
+  border-radius: 100px;
+  top: 20px;
+  left: 80px;
+}
+
+.back-arrow-on-responsive:hover {
+  background-color: #0C2E621F;
+  cursor: pointer;
+
 }
 
 @media (max-width: 1315px) {
@@ -615,6 +632,9 @@
   .display-contact {
     left: 40px;
   }
+  .back-arrow-on-responsive {
+    left: 40px;
+  }
 }
 
 @media (max-width: 482px) {
@@ -644,6 +664,9 @@
   }
   .span-txt {
     height: 80px;
+  }
+  .back-arrow-on-responsive {
+    left: 20px;
   }
 }
 
