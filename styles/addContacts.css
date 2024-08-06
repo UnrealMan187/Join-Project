@@ -114,11 +114,9 @@ body {
     position: absolute;
     display: flex;
     width: 370px;
-    /* gap: 24px; */
-    /* top: 400px; */
-    /* right: 110px; */
-    margin-top: -150px;
-    margin-right: -50px;
+    margin-top: 70%;
+    gap: 20px;
+    margin-left: 1%;
 }
 
 
@@ -318,7 +316,7 @@ button {
     cursor: pointer;
 }
 
-@media (max-width: 1315px) {
+@media (max-width: 1250px) {
     .popUpBanner {
         width: 520px;
     }
@@ -331,6 +329,21 @@ button {
         margin-right: -64px;
         min-width: 90px;
         height: 90px;
+    }
+
+    .popUpButton {
+        gap: 20px;
+        margin-top: -35%;
+    }
+    
+    .createContactButton {
+        margin-top: 120%;
+        height: fit-content;
+        margin-block-start: auto;
+    }
+    
+    .cancelButton {
+        margin-top: 120%;
     }
 }   
 
@@ -364,9 +377,11 @@ button {
     .popUpButton {
         position: absolute;
         display: flex;
-        gap: 24px;
+        gap: 16px;
         top: 400px;
         right: -10px;
+        margin-top: -140%;
+        margin-right: -5%;
     }
 
     .form form {
@@ -413,20 +428,8 @@ button {
         flex-direction: column;
     }
 
-    .popUpOpen {
-     
-    }
-
     .cancelButton {
         display: none;
-    }
-
-    .addContactContainer {
-        
-    }
-
-    .addContactContainerCenter {
-       
     }
 
     .popUpBanner {
@@ -456,5 +459,74 @@ button {
     .contactImg {
         margin-right: -420px;
         margin-top: -260px;
+    }
+
+    .popUpBanner {
+        margin-top: 10px;
+        height: 250px;
+        width: 100%;
+        border-radius: 30px 30px 0px 0px;
+    }
+    
+    .popUpContent {
+        height: 500px;
+        margin-bottom: 120px;
+        border-radius: 0px 0px 30px 30px;
+    }
+    
+    .contactImg {
+        margin-right: -89%;
+        margin-top: -260px;
+    }
+    
+    .closePopUp {
+        margin-top: -65%;
+        background-color: white;
+    }
+    
+    .createContactButton {
+        margin-left: 12%;
+        width: 50%;
+    }
+
+    .popUpButton {
+        margin-top: -30%;
+        margin-right: -11%;
+    }
+}
+
+
+@media (max-width: 420px) {
+    /* .popUpBanner {
+        width: 80%;
+        margin-left: 20px;
+        
+    }
+
+    .popUpContent {
+        width: 80%;
+        margin-left: 20px;
+    } */
+
+    .popUpContainer {
+        max-width: 100%;
+    }
+
+    .popUpContent {
+        width: 100%;
+    }
+
+    .form form {
+        width: 60%;
+        margin-left: 43%;
+    }
+
+    .inputInput {
+        width: 210px;
+    }
+
+    .createContactButton {
+        width: 45%;
+        text-wrap: nowrap;
     }
 }
