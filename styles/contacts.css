@@ -380,35 +380,6 @@
     text-wrap: nowrap;
   }
 }
-<<<<<<< HEAD
-
-@media (max-width: 1081px) {
-  .sidebar {
-    display: none !important;
-  }
-  .contacts-main-container {
-    left: 0px;
-  }
-  .display-contact-header {
-    top: 200px;
-    width: 600px;
-    left: 430px;
-  }
-  .span-txt {
-    width: 235px;
-    height: 32px;
-    font-size: 27px;
-  }
-  .display-contact {
-    top: 305px;
-    left: 430px;
-  }
-  .contact-name {
-    text-wrap: nowrap;
-  }
-}
-=======
->>>>>>> 3165784a159602c7c7ff4d0f86314de80fe160bc
 
 @media (max-width: 1024px) {
   .contacts-main-container {
@@ -440,91 +411,6 @@
   }
   .span-txt {
     height: 60px;
-<<<<<<< HEAD
-  }
-}
-
-@media (max-width: 925px) {
-  .display-contact-header {
-    width: 460px;
-  }
-}
-
-@media (max-width: 892px) {
-  .display-contact-header {
-    width: 450px;
-  }
-  .span-txt {
-    height: 95px;
-  }
-  .contact-name {
-    text-wrap: wrap;
-  }
-}
-
-@media (max-width: 850px) {
-  .contacts-main-container {
-    width: 300px;
-  }
-  .add-contact-container {
-    width: 300px;
-    height: 98px;
-    display: flex;
-    justify-content: center;
-    padding-right: 0px;
-    padding-left: 0px;
-  }
-  .add-contact {
-    width: 280px;
-    height: 56px;
-  }
-  .contacts-first-letter-container {
-    width: 300px;
-    height: 58px;
-    padding-left: 60px;
-  }
-  .contact-container {
-    width: 300px;
-    height: 78px;
-    padding-left: 45px;
-    gap: 35px;
-    border-radius: 10px 0px 0px 0px;
-  }
-  .border-container {
-    width: 300px;
-    padding-left: 40px;
-    padding-right: 20px;
-  }
-  .border {
-    width: 260px;
-    border: 1px solid #d1d1d1;
-  }
-  .display-contact-header {
-    top: 180px;
-    left: 350px;
-  }
-  .display-contact {
-    top: 285px;
-    left: 350px;
-  }
-  .display-contact-header
-  {
-    width: 460px;
-  }
-  .span-txt
-  {
-    height: 60px;
-  }
-}
-@media (max-width: 768px) {
-  .contacts-main-container {
-    top: 80px;
-    width: 100%;
-    height: calc(100vh - 160px);
-  }
-}
-
-=======
   }
 }
 
@@ -607,7 +493,6 @@
   }
 }
 
->>>>>>> 3165784a159602c7c7ff4d0f86314de80fe160bc
 @media (max-width: 424px) {
   .contacts-main-container {
     padding: 24px 0px 0px 24px;

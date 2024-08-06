@@ -60,7 +60,6 @@ header {
     top: 0;
     left: 0;
     padding-top: 4rem; /* Adjust if needed to avoid overlapping header */
-    z-index: 2;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -173,7 +172,7 @@ a{
     position: absolute;
     padding: 4px 4px 0px 4px;
     border-radius: 100px;
-    top: 224px;
+    top: 150px;
     right: 30px;
 }
 
@@ -197,7 +196,7 @@ a{
 
     .mobile-header{
         display: flex;
-        padding: 1em;
+        padding: 3em;
     }
 
     .mobile-nav{
@@ -228,6 +227,7 @@ a{
         justify-content: center;
         gap: 0.5em;
         padding: 0;
+        width: 20%;
         text-wrap: nowrap;
     }
 
@@ -238,8 +238,6 @@ a{
     .nav-links:hover{
         background-color: #091931;
         color: white;
-        width: 20%;
-        height: 76px;
         border-radius: 10px;
         cursor: pointer;
     }
@@ -248,7 +246,8 @@ a{
         color: white;
     }
 
-    .nav-icons:hover svg{
-        fill:red;
-        }
+    .text-content{
+        padding: 3em;
+        margin-left: 0;
+    }
 }
