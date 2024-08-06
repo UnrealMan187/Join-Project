@@ -108,7 +108,7 @@ async function renderContacts() {
       firstLetter = users[i].name[0].toUpperCase();
     }
 
-    html += `<div class="contact-container" onclick="loadUserInformation(${i})">
+    html += `<div class="contact-container" onclick="loadUserInformation(${i}); hideContactsListInResponsiveMode()">
             <div class="contact-list-ellipse">
                <div class="ellipse-list">${getUserInitials(users[i].name)}</div>
             </div>
@@ -143,6 +143,19 @@ function loadUserInformation(id) {
   document.getElementById("contact-phone").innerHTML = users[id].phone;
   document.getElementById("ellipse").innerHTML = getUserInitials(users[id].name);
   currentUser = id;
+}
+
+function hideContactsListInResponsiveMode()
+{
+  document.getElementById('contact-list').classList.add('d-none');
+  document.getElementById('add-contact-containerID').style.display = 'none';
+  showContactsInDetailInResponsiveMode()
+}
+
+function showContactsInDetailInResponsiveMode()
+{
+  document.getElementById('display-contact-headerID').style.display = 'flex';
+  document.getElementById('display-contactID').style.display = 'flex';
 }
 
 async function initContacts() {
