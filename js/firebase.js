@@ -64,6 +64,10 @@ async function loadUsers(path = "/users") {
   }
 
   async function editUser(id, data = {}) {
+    data.name = document.getElementById("name").value;
+    data.email = document.getElementById("email").value;
+    data.phone = document.getElementById("phone").value;
+
     await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
       method: "PUT",
       headers: {
@@ -71,6 +75,9 @@ async function loadUsers(path = "/users") {
       },
       body: JSON.stringify(data),
     });
+
+    renderContacts();
+    closePopup();
   }
 
   // We use the email to identify an User because there may be 2 Users with the same Name but not same email.
@@ -103,7 +110,7 @@ async function renderContacts() {
 
     html += `<div class="contact-container" onclick="loadUserInformation(${i})">
             <div class="contact-list-ellipse">
-               <div class="ellipse-list"></div>
+               <div class="ellipse-list">${getUserInitials(users[i].name)}</div>
             </div>
             <div class="contact">
                 <div class="contact-list-name" id="contactName">${users[i].name}</div>
@@ -122,7 +129,11 @@ async function renderContacts() {
  */
 function getUserInitials(username) {
   let result = username.split(" ").map(wort => wort[0].toUpperCase());
-  result = result[0] + result[result.length - 1];
+  if(username.split(" ").length > 1) {
+    result = result[0] + result[result.length - 1];
+  } else {
+    result = result[0];
+  }
   return result;
 }
 
@@ -130,6 +141,7 @@ function loadUserInformation(id) {
   document.getElementById("contact-name").innerHTML = users[id].name;
   document.getElementById("contact-email").innerHTML = users[id].email;
   document.getElementById("contact-phone").innerHTML = users[id].phone;
+  document.getElementById("ellipse").innerHTML = getUserInitials(users[id].name);
   currentUser = id;
 }
 

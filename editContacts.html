@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Contact</title>
     <link rel="stylesheet" href="./styles/editContacts.css">
+    <script src="./js/firebase.js"></script>
+    <script src="./js/contacts.js"></script>
 </head>
 <body>
     <div id="" class="addContactContainer addContactContainerCenter">
@@ -54,13 +56,12 @@
                             <img src="./img/icon_cancel.svg" alt="">
                         </div>
                     </button>
-                    <button onclick="editUser()" id="" class="createContactButton">
+                    <button onclick="editUser(users[currentUser].id, users[currentUser])" id="" class="createContactButton">
                         <p>Save</p>
                         <div>
                             <img src="./img/check.svg" alt="">
                         </div>
                     </button>
                 </div>
-                <script src="./js/firebase.js"></script>
 </body>
 </html>
