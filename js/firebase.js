@@ -54,12 +54,7 @@ async function loadUsers(path = "/users") {
       method: "DELETE",
     });
     await renderContacts();
-    if(currentUser > 0) {
-      currentUser--;
-      loadUserInformation(currentUser);
-    } else {
-      loadUserInformation(0);
-    }
+    loadUserInformation(-1);
   }
 
   async function editUser(id, data = {}) {
@@ -107,7 +102,7 @@ async function renderContacts() {
       firstLetter = users[i].name[0].toUpperCase();
     }
 
-    html += `<div class="contact-container" onclick="loadUserInformation(${i}); hideContactsListInResponsiveMode()">
+    html += `<div class="contact-container" onclick="loadUserInformation(${i})">
             <div class="contact-list-ellipse">
                <div class="ellipse-list">${getUserInitials(users[i].name)}</div>
             </div>
@@ -137,44 +132,14 @@ function getUserInitials(username) {
 }
 
 function loadUserInformation(id) {
-  document.getElementById("contact-name").innerHTML = users[id].name;
-  document.getElementById("contact-email").innerHTML = users[id].email;
-  document.getElementById("contact-phone").innerHTML = users[id].phone;
-  document.getElementById("ellipse").innerHTML = getUserInitials(users[id].name);
+  document.getElementById("contact-name").innerHTML = id == -1 ? "" : users[id].name;
+  document.getElementById("contact-email").innerHTML = id == -1 ? "" : users[id].email;
+  document.getElementById("contact-phone").innerHTML = id == -1 ? "" : users[id].phone;
+  document.getElementById("ellipse").innerHTML = id == -1 ? "" : getUserInitials(users[id].name);
   currentUser = id;
-}
-
-function hideContactsListInResponsiveMode()
-{
-  if (window.innerWidth <= 768) {
-    document.getElementById('contact-list').classList.add('d-none');
-    document.getElementById('add-contact-containerID').style.display = 'none';
-    document.getElementById('back-arrow-on-responsiveID').classList.remove('d-none');
-    showContactsInDetailInResponsiveMode()
-  }
-}
-
-function showContactsInDetailInResponsiveMode()
-{
-  document.getElementById('display-contact-headerID').style.display = 'flex';
-  document.getElementById('display-contactID').style.display = 'flex';
-}
-
-function showContactListAgainInResponsiveMode()
-{
-  if (window.innerWidth <= 768) {
-  document.getElementById('display-contact-headerID').style.display = 'none';
-  document.getElementById('display-contactID').style.display = 'none';
-  document.getElementById('contact-list').classList.remove('d-none');
-  document.getElementById('add-contact-containerID').style.display = 'flex';
-  document.getElementById('back-arrow-on-responsiveID').classList.add('d-none');
-  }
 }
 
 async function initContacts() {
   await renderContacts();
-  if(users.length > 0) {
-    loadUserInformation(0);
-    currentUser = 0;
-  }
+  loadUserInformation(-1);
 }
