@@ -70,6 +70,7 @@ async function loadUsers(path = "/users") {
       body: JSON.stringify(data),
     });
 
+    loadUserInformation(currentUser);
     renderContacts();
     closePopup();
   }
