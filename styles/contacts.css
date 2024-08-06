@@ -317,6 +317,9 @@
   text-align: left;
   color: #007cee;
 }
+.d-none {
+  display: none;
+}
 
 @media (max-width: 1315px) {
   .display-contact-header {
