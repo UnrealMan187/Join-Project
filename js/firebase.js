@@ -96,6 +96,7 @@ async function loadUsers(path = "/users") {
 async function renderContacts() {
   let html = "";
   let firstLetter = "0";
+  let j = 1;
 
   await loadUsers("/users");
 
@@ -109,7 +110,7 @@ async function renderContacts() {
 
     html += `<div class="contact-container" onclick="loadUserInformation(${i}); hideContactsListInResponsiveMode()">
             <div class="contact-list-ellipse">
-               <div class="ellipse-list">${getUserInitials(users[i].name)}</div>
+               <div class="ellipse-list initialsColor${j}">${getUserInitials(users[i].name)}</div>
             </div>
             <div class="contact">
                 <div class="contact-list-name" id="contactName">${users[i].name}</div>
@@ -117,7 +118,11 @@ async function renderContacts() {
             </div>
             </div>
             `;
+
+    j++;
+    if(j > 15) { j = 1; }
   }
+  
 
   document.getElementById("contact-list").innerHTML = html;
 }

@@ -110,7 +110,7 @@
   width: 352px;
   height: 56px;
   border-radius: 10px;
-  border: 1px 0px 0px 0px;
+  border: none;
   opacity: 0px;
   cursor: pointer;
   background-color: #2a3647;
@@ -127,7 +127,8 @@
   margin-left: 20px;
 }
 .add-contact:hover {
-  background-color: #0056b3;
+  background-color: rgba(43, 169, 227, 1);
+  border: none;
 }
 /* display-contact-header */
 .display-contact-header {
@@ -333,6 +334,67 @@
   cursor: pointer;
 
 }
+
+.initialsColor1 {
+  background-color: #FF0000; /* Rot */
+}
+
+.initialsColor2 {
+  background-color: #00FF00; /* Grün */
+}
+
+.initialsColor3 {
+  background-color: #0000FF; /* Blau */
+}
+
+.initialsColor4 {
+  background-color: #FFFF00; /* Gelb */
+}
+
+.initialsColor5 {
+  background-color: #00FFFF; /* Cyan */
+}
+
+.initialsColor6 {
+  background-color: #FF00FF; /* Magenta */
+}
+
+.initialsColor7 {
+  background-color: #FFA500; /* Orange */
+}
+
+.initialsColor8 {
+  background-color: #800080; /* Lila */
+}
+
+.initialsColor9 {
+  background-color: #FFC0CB; /* Pink */
+}
+
+.initialsColor10 {
+  background-color: #A52A2A; /* Braun */
+}
+
+.initialsColor11 {
+  background-color: #ADD8E6; /* Hellblau */
+}
+
+.initialsColor12 {
+  background-color: #006400; /* Dunkelgrün */
+}
+
+.initialsColor13 {
+  background-color: #FFD700; /* Gold */
+}
+
+.initialsColor14 {
+  background-color: #C0C0C0; /* Silber */
+}
+
+.initialsColor15 {
+  background-color: #000000; /* Schwarz */
+}
+
 
 @media (max-width: 1315px) {
   .display-contact-header {

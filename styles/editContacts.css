@@ -515,8 +515,18 @@ button {
         max-width: 100%;
     }
 
+    .closePopUp {
+        margin-top: -75%;
+        background-color: white;
+    }
+
     .popUpContent {
         width: 100%;
+    }
+
+    .contactImg {
+        margin-right: -109%;
+        margin-top: -260px;
     }
 
     .form form {
@@ -531,5 +541,24 @@ button {
     .createContactButton {
         width: 45%;
         text-wrap: nowrap;
+    }
+}
+
+
+@media (max-width: 375px) {
+    .closePopUp {
+        margin-top: -75%;
+        background-color: white;
+    }
+
+    .contactImg {
+        margin-right: -109%;
+        margin-top: -260px;
+    }
+
+    .createContactButton {
+        width: 35%;
+        /* text-wrap: nowrap; */
+        margin-left: 34%;
     }
 }
