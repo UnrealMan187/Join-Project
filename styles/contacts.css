@@ -1,6 +1,6 @@
 /* styles.css */
 .d-none {
-  display: none;
+  display: none !important;
 }
 .contacts-main-container {
   display: flex;
@@ -157,6 +157,7 @@
   opacity: 0px;
   border: 2px solid #29abe2;
 }
+
 .span-txt {
   width: 235px;
   height: 32px;
@@ -165,6 +166,17 @@
   text-align: left;
   color: #2a3647;
 }
+
+
+@keyframes slideIn {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
 .display-contact {
   display: flex;
   flex-direction: column;
@@ -175,7 +187,9 @@
   top: 311px;
   left: 750px;
   gap: 21px;
+  animation: slideIn 1s forwards;
 }
+
 .ellipse-container {
   display: flex;
   align-items: center;
@@ -186,6 +200,7 @@
   border: 3px 0px 0px 0px;
   opacity: 0px;
 }
+
 .ellipse {
   background-color: #ff7a00;
   border-radius: 100%;
@@ -198,6 +213,7 @@
   font-size: 47px;
   font-weight: 300;
 }
+
 .contact-name-main-container {
   display: flex;
   align-items: center;
@@ -334,35 +350,35 @@
 }
 
 .initialsColor1 {
-  background-color: #FF0000; /* Rot */
+  background-color: #f58b8b; /* Rot */
 }
 
 .initialsColor2 {
-  background-color: #00FF00; /* Grün */
+  background-color: #90f190; /* Grün */
 }
 
 .initialsColor3 {
-  background-color: #0000FF; /* Blau */
+  background-color: #7272f5; /* Blau */
 }
 
 .initialsColor4 {
-  background-color: #FFFF00; /* Gelb */
+  background-color: #dfdf7d; /* Gelb */
 }
 
 .initialsColor5 {
-  background-color: #00FFFF; /* Cyan */
+  background-color: #98eeee; /* Cyan */
 }
 
 .initialsColor6 {
-  background-color: #FF00FF; /* Magenta */
+  background-color: #ff9cff; /* Magenta */
 }
 
 .initialsColor7 {
-  background-color: #FFA500; /* Orange */
+  background-color: #ecc06e; /* Orange */
 }
 
 .initialsColor8 {
-  background-color: #800080; /* Lila */
+  background-color: #f18cf1; /* Lila */
 }
 
 .initialsColor9 {
@@ -370,19 +386,19 @@
 }
 
 .initialsColor10 {
-  background-color: #A52A2A; /* Braun */
+  background-color: #8d3939; /* Braun */
 }
 
 .initialsColor11 {
-  background-color: #ADD8E6; /* Hellblau */
+  background-color: #b7d6e0; /* Hellblau */
 }
 
 .initialsColor12 {
-  background-color: #006400; /* Dunkelgrün */
+  background-color: #699669; /* Dunkelgrün */
 }
 
 .initialsColor13 {
-  background-color: #FFD700; /* Gold */
+  background-color: #c0ab36; /* Gold */
 }
 
 .initialsColor14 {
