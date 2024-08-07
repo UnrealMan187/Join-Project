@@ -194,6 +194,7 @@ body {
 
 input {
     border: none;
+    z-index: 2;
 }
 
 
@@ -394,11 +395,16 @@ button {
     .closePopUp {
         margin-right: -30px;
         margin-top: -30px;
+        z-index: 1;
     }
 
     .contactImg {
         margin-right: -165px;
         margin-top: -160px;
+    }
+
+    .input {
+        z-index: 2;
     }
 }
 
