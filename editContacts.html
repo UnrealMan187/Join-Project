@@ -28,7 +28,7 @@
                     <img src="./img/person_big.svg" alt="">
                 </div>
                 <div class="form">
-                    <form id="" onsubmit="handleEditUserFormSubmit(); return false;">
+                    <form id="" onsubmit="editUser(users[currentUser].id, users[currentUser]); return false;">
                         <div class="input">
                             <input id="name" class="inputInput" type="text" placeholder="Name" required>
                             <div class="iconContainer">
@@ -47,21 +47,20 @@
                                 <img src="./img/call.svg" alt="Phone Icon">
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="popUpButton">
-                    <button onclick="deleteUser()" id="" class="cancelButton">
-                        <p>Delete</p>
-                        <div>
-                            <img src="./img/icon_cancel.svg" alt="">
-                        </div>
-                    </button>
-                    <button onclick="editUser(users[currentUser].id, users[currentUser])" id="" class="createContactButton">
-                        <p>Save</p>
-                        <div>
-                            <img src="./img/check.svg" alt="">
-                        </div>
-                    </button>
-                </div>
+                        <div class="popUpButton">
+                        <button class="createContactButton">
+                            <p>Save</p>
+                            <div>
+                                <img src="./img/check.svg" alt="">
+                            </div>
+                        </button>
+                        <button onclick="deleteUser()" id="" class="cancelButton">
+                            <p>Delete</p>
+                            <div>
+                                <img src="./img/icon_cancel.svg" alt="">
+                            </div>
+                        </button>
+                    </div>
+                    </form>            
 </body>
 </html>
