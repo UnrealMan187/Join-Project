@@ -1,6 +1,6 @@
 /* styles.css */
 .d-none {
-  display: none;
+  display: none !important;
 }
 .contacts-main-container {
   display: flex;
