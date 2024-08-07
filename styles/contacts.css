@@ -44,7 +44,6 @@
   font-weight: 400;
   line-height: 24px;
   text-align: left;
-  border: 2px solid #ffffff;
 }
 .ellipse-list {
   width: 42px;
@@ -332,7 +331,6 @@
 .back-arrow-on-responsive:hover {
   background-color: #0C2E621F;
   cursor: pointer;
-
 }
 
 .initialsColor1 {

@@ -104,7 +104,7 @@ async function renderContacts() {
       firstLetter = users[i].name[0].toUpperCase();
     }
 
-    html += `<div class="contact-container" onclick="loadUserInformation(${i}); hideContactsListInResponsiveMode()">
+    html += `<div id="contact-containerID" class="contact-container" onclick="loadUserInformation(${i}); hideContactsListInResponsiveMode()">
             <div class="contact-list-ellipse">
                <div class="ellipse-list initialsColor${j}">${getUserInitials(users[i].name)}</div>
             </div>
@@ -175,6 +175,11 @@ function showContactListAgainInResponsiveMode()
   document.getElementById('add-contact-containerID').style.display = 'flex';
   document.getElementById('back-arrow-on-responsiveID').classList.add('d-none');
   }
+}
+
+function changeBgOnSelectedUser(id)
+{
+  document.getElementById('contact-containerID').classList.add('selected-user-color');
 }
 
 async function initContacts() {
