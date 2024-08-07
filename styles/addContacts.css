@@ -109,18 +109,16 @@ body {
     cursor: pointer;
 }
 
-
 .popUpButton {
     position: absolute;
     display: flex;
     width: 370px;
-    /* gap: 24px; */
-    /* top: 400px; */
-    /* right: 110px; */
+    gap: 24px;
+    top: 450px;
+    right: 100px;
     margin-top: -150px;
     margin-right: -50px;
 }
-
 
 .addContactContainerCenter {
     display: flex;
@@ -331,6 +329,14 @@ button {
         margin-right: -64px;
         min-width: 90px;
         height: 90px;
+    }
+
+    .popUpButton {
+        position: absolute;
+        display: flex;
+        gap: 24px;
+        top: 450px;
+        right: 100px;
     }
 }   
 

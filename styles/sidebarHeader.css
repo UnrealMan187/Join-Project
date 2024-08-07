@@ -60,7 +60,6 @@ header {
     top: 0;
     left: 0;
     padding-top: 4rem; /* Adjust if needed to avoid overlapping header */
-    z-index: 2;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
