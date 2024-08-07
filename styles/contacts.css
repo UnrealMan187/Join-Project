@@ -105,7 +105,7 @@
   width: 352px;
   height: 56px;
   border-radius: 10px;
-  border: 1px 0px 0px 0px;
+  border: none;
   opacity: 0px;
   cursor: pointer;
   background-color: #2a3647;
@@ -122,7 +122,8 @@
   margin-left: 20px;
 }
 .add-contact:hover {
-  background-color: #0056b3;
+  background-color: rgba(43, 169, 227, 1);
+  border: none;
 }
 /* display-contact-header */
 
