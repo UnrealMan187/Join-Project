@@ -116,9 +116,9 @@ async function renderContacts() {
             `;
 
     j++;
+    if(j > 15) { j = 1; }
   }
-
-  if(j > 15) { j = 1; }
+  
 
   document.getElementById("contact-list").innerHTML = html;
 }
