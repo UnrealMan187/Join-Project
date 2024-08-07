@@ -54,12 +54,7 @@ async function loadUsers(path = "/users") {
       method: "DELETE",
     });
     await renderContacts();
-    if(currentUser > 0) {
-      currentUser--;
-      loadUserInformation(currentUser);
-    } else {
-      loadUserInformation(0);
-    }
+    loadUserInformation(-1);
   }
 
   async function editUser(id, data = {}) {
@@ -76,6 +71,7 @@ async function loadUsers(path = "/users") {
     });
 
     renderContacts();
+    loadUserInformation(currentUser);
     closePopup();
   }
 
@@ -142,10 +138,10 @@ function getUserInitials(username) {
 }
 
 function loadUserInformation(id) {
-  document.getElementById("contact-name").innerHTML = users[id].name;
-  document.getElementById("contact-email").innerHTML = users[id].email;
-  document.getElementById("contact-phone").innerHTML = users[id].phone;
-  document.getElementById("ellipse").innerHTML = getUserInitials(users[id].name);
+  document.getElementById("contact-name").innerHTML = id == -1 ? "" : users[id].name;
+  document.getElementById("contact-email").innerHTML = id == -1 ? "" : users[id].email;
+  document.getElementById("contact-phone").innerHTML = id == -1 ? "" : users[id].phone;
+  document.getElementById("ellipse").innerHTML = id == -1 ? "" : getUserInitials(users[id].name);
   currentUser = id;
 }
 
@@ -178,10 +174,7 @@ function showContactListAgainInResponsiveMode()
 
 async function initContacts() {
   await renderContacts();
-  if(users.length > 0) {
-    loadUserInformation(0);
-    currentUser = 0;
-  }
+  loadUserInformation(-1);
 }
 
 
