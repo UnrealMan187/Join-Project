@@ -143,9 +143,9 @@ function loadUserInformation(id) {
   document.getElementById("contact-phone").innerHTML = id == -1 ? "" : users[id].phone;
   document.getElementById("ellipse").innerHTML = id == -1 ? "" : getUserInitials(users[id].name);
   if(id == -1) {
-    document.getElementById("display-contact").classList.add("d-none");
+    document.getElementById("display-contactID").classList.add("d-none");
   } else {
-    document.getElementById("display-contact").classList.remove("d-none");
+    document.getElementById("display-contactID").classList.remove("d-none");
   }
   currentUser = id;
 }
