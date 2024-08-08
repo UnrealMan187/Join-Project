@@ -1,118 +1,151 @@
-// kanban.js
-
-document.addEventListener("DOMContentLoaded", function() {
-    initializeDragAndDrop();
-    addTaskEventListeners();
-});
+/*Begin Drag & Drop*/
 
 /**
- * Initialisiert die Drag-and-Drop-Funktionalität für die Aufgaben.
+ * Initiates the dragging operation for a task card.
+ * @param {number} id - The ID of the task card being dragged.
  */
-function initializeDragAndDrop() {
-    const tasks = document.querySelectorAll(".task");
-    const columns = document.querySelectorAll(".column");
+function startDragging(id) {
+    draggedItemId = id;
+    const card = document.getElementById(`taskCard${id}`);
+    card.classList.add('dragging');
+    highlightDropZones();
+}
 
-    tasks.forEach(task => {
-        task.addEventListener("dragstart", dragStart);
-        task.addEventListener("dragend", dragEnd);
-    });
+/**
+ * Allows dropping elements into the specified drop target.
+ * @param {Event} ev - The drag event.
+ */
+function allowDrop(ev) {
+    ev.preventDefault();
+}
 
-    columns.forEach(column => {
-        column.addEventListener("dragover", dragOver);
-        column.addEventListener("drop", drop);
+/**
+ * Handles the dropping of a task into a specified status.
+ * @param {string} status - The status where the task is dropped.
+ */
+async function drop(status) {
+    const taskIndex = tasks.findIndex(task => task.id === draggedItemId);
+    if (taskIndex !== -1) {
+        tasks[taskIndex].status = status;
+        removeHighlight();
+        renderCards();
+    }
+    await putDataEdit(`/tasks`, tasks)
+}
+
+/**
+ * Highlights the drop zones where a task can be dropped.
+ */
+function highlightDropZones() {
+    const containers = document.querySelectorAll('.cardContainer');
+    containers.forEach(container => {
+        if (container.id !== `cardContainer${tasks.find(task => task.id === draggedItemId).status}`) {
+            container.classList.add('highlightDragArea');
+        }
     });
 }
 
 /**
- * Funktion, die beim Start des Dragging ausgeführt wird.
- * @param {Event} e - Das Drag-Event.
+ * Removes the highlight from all drop zones.
  */
-function dragStart(e) {
-    e.dataTransfer.setData("text/plain", e.target.id);
+function removeHighlight() {
+    const card = document.getElementById(`taskCard${draggedItemId}`);
+    if (card) {
+        card.classList.remove('dragging');
+    }
+    const containers = document.querySelectorAll('.cardContainer');
+    containers.forEach(container => {
+        container.classList.remove('highlightDragArea');
+    });
+}
+
+/**
+ * Event listener for the drag end event
+ */
+document.addEventListener('dragend', function (event) {
+    const card = document.getElementById(`taskCard${draggedItemId}`);
+    if (card) {
+        card.classList.remove('dragging');
+    }
+    removeHighlight();
+});
+
+/*End Drag & Drop*/
+
+
+/**
+ * Toggles the visibility of a dropdown content by adding or removing the 'showDropdown' class.
+ * */
+function toggleDropdown(dropdownId) {
+    const dropdownContent = document.getElementById(dropdownId);
+    dropdownContent.classList.toggle('showDropdown');
+    if (dropdownContent.classList.contains('showDropdown')) {
+        closeDropdownOnOutsideClick(dropdownContent);
+    }
+}
+
+/**
+ * Closes the dropdown when clicking outside of it.
+ *
+ * Adds an event listener to the document to close the dropdown if a click occurs outside
+ * its boundaries. The listener is added with a slight delay to avoid immediate closure.
+ * */
+function closeDropdownOnOutsideClick(dropdownContent) {
+    function outsideClickListener(event) {
+        if (!dropdownContent.contains(event.target)) {
+            dropdownContent.classList.remove('showDropdown');
+            document.removeEventListener('click', outsideClickListener);
+        }
+    }
     setTimeout(() => {
-        e.target.classList.add("hidden");
+        document.addEventListener('click', outsideClickListener);
     }, 0);
 }
 
 /**
- * Funktion, die beim Ende des Dragging ausgeführt wird.
- * @param {Event} e - Das Drag-Event.
+ * Generates HTML markup for rendering a task card.
+ *
+ * Constructs HTML markup representing a task card based on the provided task object.
+ * Includes category label, dropdown menu for task actions, task title, description,
+ * progress bar, assigned badges, priority indicator, and other dynamic elements.
+ *
+ * @param {object} task - The task object containing details to render in the card.
+ * @returns {string} HTML markup representing the task card.
  */
-function dragEnd(e) {
-    e.target.classList.remove("hidden");
-}
+function renderCardHtml(task) {
+    const color = (task.category === 'User Story') ? 'Blue' : 'Green';
+    const assignedToArray = Array.isArray(task.assignedTo) ? task.assignedTo : [];
+    const dropdownOptions = renderDropdownOptions(task.id, task.status);
+    const badgesHtml = renderBadges(assignedToArray);
+    const progressHtml = renderProgress(task);
 
-/**
- * Funktion, die beim Überziehen einer Spalte ausgeführt wird.
- * @param {Event} e - Das Drag-Event.
- */
-function dragOver(e) {
-    e.preventDefault();
-}
-
-/**
- * Funktion, die beim Loslassen einer Aufgabe in einer Spalte ausgeführt wird.
- * @param {Event} e - Das Drop-Event.
- */
-function drop(e) {
-    e.preventDefault();
-    const id = e.dataTransfer.getData("text");
-    const task = document.getElementById(id);
-    const column = e.target.closest(".column");
-    column.appendChild(task);
-    updateTaskStatus(task, column);
-}
-
-/**
- * Aktualisiert den Status einer Aufgabe basierend auf der Spalte, in der sie abgelegt wurde.
- * @param {HTMLElement} task - Die Aufgabe, deren Status aktualisiert werden soll.
- * @param {HTMLElement} column - Die Spalte, in der die Aufgabe abgelegt wurde.
- */
-function updateTaskStatus(task, column) {
-    const status = column.querySelector("h2").textContent;
-    task.dataset.status = status;
-}
-
-/**
- * Fügt Event-Listener für das Hinzufügen neuer Aufgaben hinzu.
- */
-function addTaskEventListeners() {
-    const addTaskButtons = document.querySelectorAll(".add-task");
-
-    addTaskButtons.forEach(button => {
-        button.addEventListener("click", function() {
-            const taskTitle = prompt("Enter task title:");
-            if (taskTitle) {
-                createTask(taskTitle, button.parentElement);
-            }
-        });
-    });
-}
-
-/**
- * Erstellt eine neue Aufgabe und fügt sie der angegebenen Spalte hinzu.
- * @param {string} title - Der Titel der neuen Aufgabe.
- * @param {HTMLElement} column - Die Spalte, der die neue Aufgabe hinzugefügt werden soll.
- */
-function createTask(title, column) {
-    const task = document.createElement("div");
-    task.className = "task";
-    task.id = `task-${Date.now()}`;
-    task.draggable = true;
-    task.innerHTML = `
-        <div class="task-header">
-            <span class="task-type">New Task</span>
-        </div>
-        <h3>${title}</h3>
-        <div class="task-footer">
-            <div class="progress">
-                <div class="progress-bar" style="width: 0;"></div>
+    return `
+    <div draggable="true" ondragstart="startDragging(${task.id})" id="taskCard${task.id}" class="taskCard">
+        <div class="taskCardTop">
+            <label class="category${color}">${task.category}</label>
+            <div class="dropdown">
+                <button onclick="toggleDropdown('dropdown-content-${task.id}')" class="dropdown-btn">
+                    <div class="dropdownBtnContainer"><img src="assets/img/icons/contacts_sub_menu.svg" alt="Dropdown Arrow"></div>
+                </button>
+                <div id="dropdown-content-${task.id}" class="dropdown-content">
+                    ${dropdownOptions}
+                </div>
             </div>
-            <div class="assignees"></div>
         </div>
-    `;
-    column.appendChild(task);
-
-    task.addEventListener("dragstart", dragStart);
-    task.addEventListener("dragend", dragEnd);
+        <div class="cardBody" onclick="openDialog(); renderCardBig(${task.id})">
+            <p class="titleCard">${task.title}</p>
+            <p class="descriptionCard">${task.description}</p>
+            <div>
+                ${progressHtml}
+                <div class="footerCard boardFlex">
+                    <div class="profileBadges">
+                        ${badgesHtml}
+                    </div>
+                    <div class="prioImg">
+                        <img src="assets/img/icons/${task.priority}.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`;
 }
