@@ -430,6 +430,7 @@ textarea:focus {
 
 .required {
     color: #ffb218;
+    font-size: 8px;
 }
 
 .btn-clear, .btn-create {
