@@ -187,10 +187,10 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #6519c7;
+    border: 2px solid #ffffff;
+    background-color: #7124d6;
     color: #ffffff;
     border-radius: 50%;
-    border: 2px solid #ffffff;
     width: 42px;
     height: 42px;
     font-size: 12px;
@@ -767,4 +767,10 @@ label {
 .subtask-list-item .delete-subtask-btn:hover,
 .subtask-list-item .confirm-subtask-edit-btn:hover {
     background-color: #dfdede;
+}
+
+
+
+.checkboxInput {
+    
 }

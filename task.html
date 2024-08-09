@@ -6,7 +6,7 @@
     <title>Add Task</title>
   </head>
   <link rel="stylesheet" href="./styles/addTask.css">
-  <link rel="stylesheet" href="./styles/addTask2.css">
+  <!-- <link rel="stylesheet" href="./styles/addTask2.css"> -->
   <link rel="stylesheet" href="./styles/sidebarHeader.css">
   <body onload="">
     <!-- Header und Sidebar-->
@@ -123,7 +123,7 @@
                       placeholder="Select contacts to assign"
                     />
                     <span class="down-arrow">
-                      <img
+                      <img onclick="toggleDropDownMenu()"
                         src="./img/arrow_drop_downaa.svg"
                         alt=""
                       />
@@ -175,7 +175,7 @@
                       >Select task category</span
                     >
                     <span class="down-arrow">
-                      <img
+                      <img onclick="toggleDropDownMenu()"
                         src="./img/arrow_drop_downaa.svg"
                         alt=""
                       />
@@ -198,21 +198,6 @@
                 </div>
               </div>
               <form>
-
-                
-                <label for="fruits">Choose a fruit:</label>
-                <input list="fruit-options" id="fruits" name="fruits" placeholder="Select a fruit">
-                <datalist id="fruit-options">
-                    <option value="Apple">
-                    <option value="Banana">
-                    <option value="Cherry">
-                    <option value="Date">
-                    <option value="Grapes">
-                    <option value="Orange">
-                </datalist>
-            </form>
-
-
               <div class="inputGroup">
                 <label for="subtasks">Subtasks</label>
                 <div class="input-container-subtask">
@@ -280,5 +265,41 @@
     <div class="warning-landscape" id="landscapeWarning">
       Bitte drehen Sie Ihr Gerät in den Hochformatmodus.
     </div>
+
+
+
+
+    <ul>Gesamte Liste für die Namen.
+      <li>Liste für Profilbild, Name und Checkbox
+        <div>Div für Profilbild und Name
+          <div>Profilbild/ Initialien werden hier rein gerendert</div>
+            <span>Hier kommt der Name rein!</span>
+          </div>
+          <input type="checkbox" name="" id="">
+          <!-- <img class="checkbox" src="" alt="Checkbox"> -->
+        </li>
+        <li>
+          <div>
+            <div></div>
+          </div>
+        </li>
+        <li>Liste für Profilbild, Name und Checkbox
+          <div>Div für Profilbild und Name
+            <div>Profilbild</div>
+              <span>Hier kommt der Name rein!</span>
+            </div>
+            <img class="checkbox" src="" alt="Checkbox">
+          </li>
+          <li>
+            <div>
+              <div></div>
+            </div>
+          </li>
+
+
+    </ul>
+
 </body>
 </html>
+
+
