@@ -70,7 +70,7 @@ async function loadUsers(path = "/users") {
       body: JSON.stringify(data),
     });
 
-    renderContacts();
+    await renderContacts();
     loadUserInformation(currentUser);
     closePopup();
   }
@@ -106,7 +106,7 @@ async function renderContacts() {
 
     html += `<div id="contact-containerID" class="contact-container" onclick="loadUserInformation(${i}); hideContactsListInResponsiveMode()">
             <div class="contact-list-ellipse">
-               <div class="ellipse-list initialsColor${j}">${getUserInitials(users[i].name)}</div>
+               <div id="userColor${i}" class="ellipse-list initialsColor${j}">${getUserInitials(users[i].name)}</div>
             </div>
             <div class="contact">
                 <div class="contact-list-name" id="contactName">${users[i].name}</div>
@@ -137,15 +137,20 @@ function getUserInitials(username) {
   return result;
 }
 
-function loadUserInformation(id) {
+async function loadUserInformation(id) {
   document.getElementById("contact-name").innerHTML = id == -1 ? "" : users[id].name;
   document.getElementById("contact-email").innerHTML = id == -1 ? "" : users[id].email;
   document.getElementById("contact-phone").innerHTML = id == -1 ? "" : users[id].phone;
-  document.getElementById("ellipse").innerHTML = id == -1 ? "" : getUserInitials(users[id].name);
+  document.getElementById("ellipse").innerHTML = id == -1 ? "" : getUserInitials(users[id].name);  
+  
   if(id == -1) {
     document.getElementById("display-contactID").classList.add("d-none");
   } else {
     document.getElementById("display-contactID").classList.remove("d-none");
+
+    let userEllipseColor = document.getElementById(`userColor${id}`).className.split(" ")[1];
+
+    document.getElementById("ellipse").className = `ellipse initialsColor${id+1}`;
   }
   currentUser = id;
 }
@@ -186,6 +191,3 @@ async function initContacts() {
   await renderContacts();
   loadUserInformation(-1);
 }
-
-
-
