@@ -150,7 +150,7 @@ async function loadUserInformation(id) {
 
     let userEllipseColor = document.getElementById(`userColor${id}`).className.split(" ")[1];
 
-    document.getElementById("ellipse").className = `ellipse initialsColor${id+1}`;
+    document.getElementById("ellipse").className = `ellipse ${userEllipseColor}`;
   }
   currentUser = id;
 }
