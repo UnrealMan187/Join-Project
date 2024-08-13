@@ -240,7 +240,8 @@
           </div>
     </section>
 
-    <section class="popupOnTaskSelection">
+<!-- POP UP -->
+    <section onclick="closeDialog()" id="popupOnTaskSelectionID" class="popupOnTaskSelection">
 
       <div class="popupOnTaskSelectionMainContainer">
         <div class="popupKategorieOnTopMainContainer">
@@ -249,7 +250,7 @@
           </div>
           
           <div class="closePopupMainContainer">
-              <img src="./img/close.svg" alt="">
+              <img onclick="closeDialog()" id="closePopupID" src="./img/close.svg" alt="">
           </div>
         </div>
           <h1 class="popupHeader">TASK Recommender</h1>

@@ -25,3 +25,12 @@ dropZones.forEach(dropZone => {
         dropZone.prepend(draggedElement);
     });
 });
+
+function openDialog()
+{
+    document.getElementById('popupOnTaskSelectionID').style.visibility = "visible";
+}
+function closeDialog()
+{
+    document.getElementById('popupOnTaskSelectionID').style.visibility = "hidden";
+}
