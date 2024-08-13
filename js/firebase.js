@@ -104,13 +104,15 @@ async function renderContacts() {
       firstLetter = users[i].name[0].toUpperCase();
     }
 
-    html += `<div id="contact-containerID" class="contact-container" onclick="loadUserInformation(${i}); hideContactsListInResponsiveMode()">
+    html += `<div id="user-container${i}">
+            <div id="contact-containerID" class="contact-container" onclick="loadUserInformation(${i}); hideContactsListInResponsiveMode()">
             <div class="contact-list-ellipse">
                <div id="userColor${i}" class="ellipse-list initialsColor${j}">${getUserInitials(users[i].name)}</div>
             </div>
             <div class="contact">
                 <div class="contact-list-name" id="contactName">${users[i].name}</div>
                 <div class="contact-list-email" id="contactEmail">${users[i].email}</div>
+            </div>
             </div>
             </div>
             `;
@@ -151,6 +153,8 @@ async function loadUserInformation(id) {
     let userEllipseColor = document.getElementById(`userColor${id}`).className.split(" ")[1];
 
     document.getElementById("ellipse").className = `ellipse ${userEllipseColor}`;
+
+    highlightUser(id);
   }
   currentUser = id;
 }
@@ -190,4 +194,11 @@ function changeBgOnSelectedUser(id)
 async function initContacts() {
   await renderContacts();
   loadUserInformation(-1);
+}
+
+function highlightUser(userIndex) {
+  for(let i = 0; i < users.length; i++) {
+    document.getElementById(`user-container${i}`).classList.remove("highlightUser");
+  }
+  document.getElementById(`user-container${userIndex}`).classList.add("highlightUser");
 }
