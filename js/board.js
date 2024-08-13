@@ -45,3 +45,20 @@ function popupValueImplementFromTask()
     let valueFromdescription = document.getElementById('popupSpanID');
     valueFromdescription.innerHTML = descriptionCard;
 }
+
+function clickOnUrgent()
+{
+    console.log("funzt");
+    
+    document.getElementById('urgent').style.backgroundColor = "red";
+}
+
+function clickOnMedium()
+{
+    document.getElementById('medium')
+}
+
+function clickOnLow()
+{
+    document.getElementById('low')
+}
