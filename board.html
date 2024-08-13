@@ -182,9 +182,9 @@
                   </div>
                 </div>
               </div>
-              <div class="cardBody" onclick="openDialog(); renderCardBig()">
-                <p class="titleCard">HTML Base Template Creation</p>
-                <p class="descriptionCard">Create reusable HTML base templates</p>
+              <div class="cardBody" onclick="openDialog(); popupValueImplementFromTask()">
+                <p id="titelCardID" class="titleCard">HTML Base Template Creation</p>
+                <p id="descriptionCardID" class="descriptionCard">Create reusable HTML base templates</p>
                 <div>
                   <div class="footerCard">
                     <div class="profileBadges">
@@ -253,8 +253,8 @@
               <img onclick="closeDialog()" id="closePopupID" src="./img/close.svg" alt="">
           </div>
         </div>
-          <h1 class="popupHeader">TASK Recommender</h1>
-          <span class="popupSpan">Build start page with recipe recommendation</span>
+          <h1 id="popupHeaderID" class="popupHeader"></h1>
+          <span id="popupSpanID" class="popupSpan"></span>
           <div class="popupDateMainContainer">
             <p class="popupDateTxt">Due date:</p>
             <p class="popUpDate">10/05/2023</p>

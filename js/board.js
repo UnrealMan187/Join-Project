@@ -34,3 +34,14 @@ function closeDialog()
 {
     document.getElementById('popupOnTaskSelectionID').style.visibility = "hidden";
 }
+
+function popupValueImplementFromTask()
+{   let titelCardInput = document.getElementById('titelCardID').innerHTML;
+    let descriptionCard = document.getElementById('descriptionCardID').innerHTML;
+    console.log(descriptionCard);
+    
+    let valueFromTask = document.getElementById('popupHeaderID');
+    valueFromTask.innerHTML = titelCardInput;
+    let valueFromdescription = document.getElementById('popupSpanID');
+    valueFromdescription.innerHTML = descriptionCard;
+}
