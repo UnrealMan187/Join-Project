@@ -136,9 +136,9 @@
                     <li class="list-item assigned-to ">
                       <div class="list-item-name">
                           <div class="circle" style="background-color: #C9E7E4">AS</div>
-                          <span>Anja Schulz</span>
+                          <label for="AssignedContact">Anja Schulz</label>
                       </div>
-                      <img class="checkbox " src="img/checkbox_button.svg" alt="">
+                      <input type="checkbox" onclick="toggleBackground(this)" id="AssignedContact" name="AssignedContact">
                     </li>
                     <li class="list-item assigned-to ">
                       <div class="list-item-name">
@@ -185,15 +185,12 @@
                   >Category<span class="required">*</span></label
                 >
                 <div class="dropdown">
-                  <div id="category-container" class="select category">
+                  <div id="category-container" class="select category" onclick="toggleDropdownCategory()">
                     <span id="category-displayed" class="btn-text"
                       >Select task category</span
                     >
-                    <span class="down-arrow">
-                      <img onclick="toggleDropDownMenu()"
-                        src="./img/arrow_drop_downaa.svg"
-                        alt=""
-                      />
+                    <span class="down-arrow" >
+                      <img src="img/arrow_drop_downaa.svg" alt="">
                     </span>
                   </div>
                   <div
@@ -202,7 +199,7 @@
                   >
                     <!-- This field is required -->
                   </div>
-                  <ul class="items category scroll-disabled">
+                  <ul class="category scroll-disabled dropdown-content" id="myDropdownCategory">
                     <li data-value="Technical stack" class="item category">
                       <span>Technical stack</span>
                     </li>
@@ -280,39 +277,6 @@
     <div class="warning-landscape" id="landscapeWarning">
       Bitte drehen Sie Ihr Gerät in den Hochformatmodus.
     </div>
-
-
-
-
-    <ul>Gesamte Liste für die Namen.
-      <li>Liste für Profilbild, Name und Checkbox
-        <div>Div für Profilbild und Name
-          <div>Profilbild/ Initialien werden hier rein gerendert</div>
-            <span>Hier kommt der Name rein!</span>
-          </div>
-          <input type="checkbox" name="" id="">
-          <!-- <img class="checkbox" src="" alt="Checkbox"> -->
-        </li>
-        <li>
-          <div>
-            <div></div>
-          </div>
-        </li>
-        <li>Liste für Profilbild, Name und Checkbox
-          <div>Div für Profilbild und Name
-            <div>Profilbild</div>
-              <span>Hier kommt der Name rein!</span>
-            </div>
-            <img class="checkbox" src="" alt="Checkbox">
-          </li>
-          <li>
-            <div>
-              <div></div>
-            </div>
-          </li>
-
-
-    </ul>
 
 </body>
 </html>

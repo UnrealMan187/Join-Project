@@ -47,22 +47,31 @@ function clickOnLow() {
   document.getElementById("urgent").style.boxShadow =
     "box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);";
 }
-/*Begin dropdown assigned to*/
+/*Begin dropdown assigned to and dropdown category*/
 function toggleDropdown() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
+function toggleDropdownCategory() {
+  document.getElementById("myDropdownCategory").classList.toggle("show");
+}
+
 window.onclick = function (event) {
   if (!event.target.closest(".select.assigned-to")) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    for (var i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains("show")) {
-        openDropdown.classList.remove("show");
-      }
-    }
+    closeDropdown("myDropdown");
+  }
+  if (!event.target.closest(".select.category")) {
+    closeDropdown("myDropdownCategory");
   }
 };
+
+function closeDropdown(dropdownId) {
+  var dropdown = document.getElementById(dropdownId);
+  if (dropdown.classList.contains("show")) {
+    dropdown.classList.remove("show");
+  }
+}
+
 
 async function renderAssignedTo() {
   let assignedMenu = document.getElementById("myDropdown");
@@ -77,14 +86,25 @@ async function renderAssignedTo() {
                       <li class="list-item assigned-to ">
                         <div class="list-item-name">
                             <div class="circle initialsColor${j}">${getUserInitials(users[i].name)}</div>
-                            <span>${users[i].name}</span>
+                            <label for="AssignedContact">${users[i].name}</label>
                         </div>
-                        <img class="checkbox " src="img/checkbox_button.svg" alt="">
+                        <input type="checkbox" onclick="toggleBackground(this)" id="AssignedContact" name="AssignedContact">
                       </li>
     `;
 
     j++;
     if(j > 15) { j = 1; }
+  }
+}
+
+/*Toggle bg-color when checkbox is checked*/
+function toggleBackground(checkbox) {
+  const listItem = checkbox.closest('.list-item');
+
+  if (checkbox.checked) {
+    listItem.style.backgroundColor = "#2a3647";
+  } else {
+    listItem.style.backgroundColor = "";  // Setzt die Hintergrundfarbe zurück
   }
 }
 /*End dropdown assigned to*/
