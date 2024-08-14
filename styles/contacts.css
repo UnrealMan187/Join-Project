@@ -78,16 +78,15 @@
 }
 .contact-container {
   display: flex;
-  cursor: pointer;
   width: 352px;
   height: 78px;
   padding: 15px 24px 15px 24px;
   gap: 35px;
   border-radius: 10px 0px 0px 0px;
 }
-.contact-container:hover
-{
+.contact-container:hover {
   background-color: #F5F5F5;
+  cursor: pointer;
   border-radius: 16px;
 }
 .contact {
@@ -352,6 +351,7 @@
 
 .highlightUser {
   background-color: #2a3647;
+  color: white;
   border-radius: 16px;
 }
 
@@ -550,6 +550,17 @@
     padding-left: 45px;
     gap: 35px;
     border-radius: 10px 0px 0px 0px;
+  }
+  .contact-containerHighlight {
+    width: 300px;
+    height: 78px;
+    padding-left: 45px;
+    gap: 35px;
+    border-radius: 10px 0px 0px 0px;
+  }
+  .contact-containerHighlight:hover {
+    background-color: red;
+    cursor: default;
   }
   .border-container {
     width: 300px;
