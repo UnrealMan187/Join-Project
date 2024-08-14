@@ -45,3 +45,21 @@ function popupValueImplementFromTask()
     let valueFromdescription = document.getElementById('popupSpanID');
     valueFromdescription.innerHTML = descriptionCard;
 }
+
+async function renderBadges() {
+    await loadUsers("/users");
+
+    let myBadges = document.getElementById("profileBadges");
+    let j = 1;
+
+    myBadges.innerHTML = "";
+
+    for(let i = 0; i < users.length; i++) {
+        myBadges.innerHTML += `
+            <div class="badgeImg initialsColor${j}">${getUserInitials(users[i].name)}</div>
+            `;
+
+            j++;
+            if(j > 15) { j = 1; }
+    }
+}

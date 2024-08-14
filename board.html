@@ -6,10 +6,12 @@
     <title>Board</title>
     <link rel="stylesheet" href="./styles/board.css">
     <link rel="stylesheet" href="./styles/sidebarHeader.css">
+    <link rel="stylesheet" href="./styles/contacts.css">
     <link rel="stylesheet" href="./styles/bordDialogs.css">
+    <script src="./js/firebase.js"></script>
 
 </head>
-<body>
+<body onload="renderBadges()">
     <!-- Header and Sidebar-->
     <header class="desktop-header">
         <h1>Kanban Project Management Tool</h1>
@@ -187,7 +189,7 @@
                 <p id="descriptionCardID" class="descriptionCard">Create reusable HTML base templates</p>
                 <div>
                   <div class="footerCard">
-                    <div class="profileBadges">
+                    <div id="profileBadges" class="profileBadges">
                       <div class="badgeImg" style="background-color: #F8C4E4">BZ</div>
                       <div class="badgeImg" style="background-color: #47FDC3">SM</div>
                       <div class="badgeImg" style="background-color: #1213AA">MB</div>
