@@ -7,7 +7,6 @@ async function loadUsers(path = "/users") {
   users = [];
   let userResponse = await fetch(FIREBASE_URL + path + ".json");
   let responseToJson = await userResponse.json();
-  console.log(responseToJson);
 
   if (responseToJson) {
     Object.keys(responseToJson).forEach((key) => {
@@ -21,7 +20,6 @@ async function loadUsers(path = "/users") {
     users.sort((a, b) => {
       return a.name.localeCompare(b.name); // sortiere users nach dem Wert "name"
     });
-    console.log(users);
   }
 }
 
