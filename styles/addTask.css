@@ -292,11 +292,6 @@ h1 {
     border-right: 1px solid #dfdede;
 }
 
-
-
-
-
-
 .list-subtask-item.subtask-list-item-edit {
     padding: 0;
 }
@@ -414,6 +409,22 @@ textarea:focus {
     background-color: #5db31b;
 }
 
+.btn-bg-change-urgent-onclick
+{
+    background-color: red;
+}
+.btn-bg-change-medium-onclick
+{
+    background-color: #ffb218;
+}
+.btn-bg-change-low-onclick
+{
+    background-color: green;
+}
+.btn-bg-change-back-onclick
+{
+    background-color: white;
+}
 .bottom-form {
     margin: 0 0 128px 96px;
     display: flex;
