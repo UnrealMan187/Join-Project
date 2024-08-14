@@ -8,7 +8,12 @@
   <link rel="stylesheet" href="./styles/addTask.css">
   <!-- <link rel="stylesheet" href="./styles/addTask2.css"> -->
   <link rel="stylesheet" href="./styles/sidebarHeader.css">
+<<<<<<< HEAD
   <script src="./js/task.js"></script>
+=======
+  <script src="js/task.js"></script>
+  
+>>>>>>> 885e74524dfa080bc2549d5ff77e4a98012dd665
   <body onload="">
     <!-- Header und Sidebar-->
     <header class="desktop-header">
@@ -117,20 +122,35 @@
                   >Assigned to</label
                 >
                 <div class="dropdown">
-                  <div id="contacts-list" class="select assigned-to">
+                  <div id="contacts-list" class="select assigned-to" onclick="toggleDropdown()">
                     <input
                       class="select-input placeholder"
                       type="text"
                       placeholder="Select contacts to assign"
+                      readonly
                     />
-                    <span class="down-arrow">
-                      <img onclick="toggleDropDownMenu()"
-                        src="./img/arrow_drop_downaa.svg"
-                        alt=""
-                      />
+                    <span class="down-arrow" >
+                      <img src="img/arrow_drop_downaa.svg" alt="">
                     </span>
                   </div>
-                  <ul class="items"></ul>
+                  <!-- Begin Contacts Assigned to-->
+                  <ul id="myDropdown" class="dropdown-content">
+                    <li class="list-item assigned-to ">
+                      <div class="list-item-name">
+                          <div class="circle" style="background-color: #C9E7E4">AS</div>
+                          <span>Anja Schulz</span>
+                      </div>
+                      <img class="checkbox " src="img/checkbox_button.svg" alt="">
+                    </li>
+                    <li class="list-item assigned-to ">
+                      <div class="list-item-name">
+                       <div class="circle" style="background-color: #F8C4E4">BZ</div>
+                       <span>Benedikt Ziegler</span>
+                      </div>
+                      <img class="checkbox " src="img/checkbox_button.svg" alt="">
+                    </li>
+                  </ul>
+                  <!-- End Contacts Assigned to-->
                   <div class="selected-contacts"></div>
                 </div>
               </div>

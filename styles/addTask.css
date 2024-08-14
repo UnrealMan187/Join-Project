@@ -12,6 +12,44 @@ h1 {
     font-size: 61px;
     font-weight: 700;
 }
+/*Begin Assigned to dropdown*/
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 48px;
+    width: 100%;
+    max-height: 250px;
+    overflow-y: scroll;
+    padding-top: 8px;
+    background-color: #fff;
+    border-radius: 0 0 10px 10px;
+    border: 1px solid #D1D1D1;
+    border-top: none;
+    display: none;
+    z-index: 2;
+    font-size: 20px;
+}
+
+.dropdown-content li {
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dropdown-content li:hover {
+    background-color: #ddd;
+}
+
+.dropdown-content .list-item-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+  
+.show {display: block;}
+/*End Assigned to dropdown*/
 
 .header {
     background-color: #F6F7F8;
