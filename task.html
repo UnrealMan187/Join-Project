@@ -209,38 +209,29 @@
                   </ul>
                 </div>
               </div>
-              <form>
-              <div class="inputGroup">
-                <label for="subtasks">Subtasks</label>
-                <div class="input-container-subtask">
-                  <input
-                    class="input subtask"
-                    type="text"
-                    placeholder="Add new subtask"
-                  />
-                  <div class="btn-subtask add">
-                    <img src="./assets/img/icons_add_task/add.svg" alt="" />
+              <!--Begin subtask-->
+                <div class="inputGroup">
+                  <label for="subtasks">Subtasks</label>
+                  <div class="input-container-subtask">
+                      <input class="input subtask" type="text" placeholder="Add new subtask" />
+                      <div class="btn-subtask add">
+                          <img src="./img/add.png" alt="Add" />
+                      </div>
+                      <div class="btn-subtask check-cancel">
+                          <div class="cancel-subtask">
+                              <img src="./img/close.png" alt="Cancel" />
+                          </div>
+                          <div class="divider-subtask"></div>
+                          <div class="check-subtask">
+                              <img src="./img/check.png" alt="Check" />
+                          </div>
+                      </div>
                   </div>
-                  <div class="btn-subtask check-cancel">
-                    <div class="cancel-subtask">
-                      <img
-                        src="./assets/img/icons_add_task/subtask-close.svg"
-                        alt=""
-                      />
-                    </div>
-                    <div class="divider-subtask"></div>
-                    <div class="check-subtask">
-                      <img
-                        src="./assets/img/icons_add_task/subtask-check.svg"
-                        alt=""
-                      />
-                    </div>
+                  <div class="container-subtasks-display">
+                      <ul class="list-subtasks"></ul>
                   </div>
-                </div>
-                <div class="container-subtasks-display">
-                  <ul class="list-subtasks"></ul>
-                </div>
               </div>
+              <!--End subtask-->  
             </div>
           </div>
           <div class="bottom-form">
