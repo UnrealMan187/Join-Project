@@ -263,8 +263,9 @@ h1 {
   background-color: #d3d1d1;
   border-radius: 10px;
 }
-
+/*Begin Subtask*/
 .input-container-subtask {
+<<<<<<< HEAD
   display: flex;
   width: min(440px, 100%);
   cursor: pointer;
@@ -295,9 +296,35 @@ h1 {
 .btn-subtask img {
   width: 14px;
   height: 14px;
+=======
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+.input.subtask {
+    width: 100%;
+    padding-right: 60px; /* Platz für die Buttons rechts im Input-Feld */
+    box-sizing: border-box;
+}
+  
+.btn-subtask {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
 }
 
+.btn-subtask.add {
+    display: flex;
+>>>>>>> ca9dd9593fd7007b1594553fb31f4a7279a2911d
+}
+  
 .check-cancel {
+<<<<<<< HEAD
   display: none;
   justify-content: flex-end;
   align-items: center;
@@ -407,7 +434,67 @@ textarea {
 textarea:focus {
   outline: none;
   border-color: rgba(43, 169, 227, 1);
+=======
+    display: none;
+    gap: 10px; /* Abstand zwischen X- und ✓-Symbol */
 }
+.check-cancel img {
+    cursor: pointer;
+}
+
+.divider-subtask {
+    width: 1px;
+    height: 20px;
+    background-color: #ccc;
+    margin: 0 5px;
+}
+
+.container-subtasks-display ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.subtask-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.subtask-edit-icon-div {
+    display: none;
+    align-items: center;
+}
+
+.subtask-list-item:hover .subtask-edit-icon-div {
+    display: flex;
+}
+
+.subtask-edit-icon-div img {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.edit-subtask-input {
+    flex-grow: 1;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.edit-subtask-button-div {
+    display: flex;
+    align-items: center;
+}
+
+.subtask-divider {
+    width: 1px;
+    height: 20px;
+    background-color: #ccc;
+    margin: 0 5px;
+>>>>>>> ca9dd9593fd7007b1594553fb31f4a7279a2911d
+}
+/*End Subtask*/
 
 .buttons-prio {
   display: flex;
@@ -638,7 +725,7 @@ label {
     font-size: 16px;
   }
 }
-
+/*
 .msg-task-added {
   display: none;
   justify-content: center;
