@@ -265,7 +265,6 @@ h1 {
 }
 /*Begin Subtask*/
 .input-container-subtask {
-<<<<<<< HEAD
   display: flex;
   width: min(440px, 100%);
   cursor: pointer;
@@ -296,7 +295,6 @@ h1 {
 .btn-subtask img {
   width: 14px;
   height: 14px;
-=======
     position: relative;
     width: 100%;
     display: flex;
@@ -320,11 +318,9 @@ h1 {
 
 .btn-subtask.add {
     display: flex;
->>>>>>> ca9dd9593fd7007b1594553fb31f4a7279a2911d
 }
   
 .check-cancel {
-<<<<<<< HEAD
   display: none;
   justify-content: flex-end;
   align-items: center;
@@ -434,7 +430,6 @@ textarea {
 textarea:focus {
   outline: none;
   border-color: rgba(43, 169, 227, 1);
-=======
     display: none;
     gap: 10px; /* Abstand zwischen X- und ✓-Symbol */
 }
@@ -492,7 +487,6 @@ textarea:focus {
     height: 20px;
     background-color: #ccc;
     margin: 0 5px;
->>>>>>> ca9dd9593fd7007b1594553fb31f4a7279a2911d
 }
 /*End Subtask*/
 
@@ -725,7 +719,7 @@ label {
     font-size: 16px;
   }
 }
-/*
+
 .msg-task-added {
   display: none;
   justify-content: center;
