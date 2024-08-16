@@ -1,5 +1,4 @@
-let categoryMenuOpened = 0;
-let assignedToMenuOpened = 0;
+
 
 function clickOnUrgent() {
   document.getElementById("urgent").classList.remove("btn-bg-change-back-onclick");
@@ -49,29 +48,13 @@ function toggleDropdownCategory() {
 
 window.onclick = function (event) {
   if (!event.target.closest(".select.assigned-to")) {
-   //closeDropdown("myDropdown");
+   closeDropdown("myDropdown");
   }
   if (!event.target.closest(".select.category")) {
-   //closeDropdown("myDropdownCategory");
+   closeDropdown("myDropdownCategory");
   }
 };
 
-
-
-/*
-function closeDropdownMenus(){
-  if (assignedToMenuOpened==1){
-  closeDropdown("myDropdown");
-  assignedToMenuOpened=0;
-
-}
-  if (assignedToMenuOpened==1){
-  closeDropdown("myDropdownCategory");
-   categoryMenuOpened=0;
-
-  }
-}
-*/
 
 function closeDropdown(dropdownId) {
   let dropdown = document.getElementById(dropdownId);

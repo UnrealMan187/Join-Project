@@ -265,38 +265,6 @@ h1 {
 }
 /*Begin Subtask*/
 .input-container-subtask {
-<<<<<<< HEAD
-  display: flex;
-  width: min(440px, 100%);
-  cursor: pointer;
-}
-
-.input.subtask {
-  border-radius: 10px 0 0 10px;
-  border-right: 0;
-  width: calc(100% - 48px);
-}
-
-.subtask:focus ~ .btn-subtask {
-  outline: none;
-  border-color: rgba(43, 169, 227, 1);
-}
-
-.btn-subtask {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 16px;
-  background-color: white;
-  border: 1px solid #dfdede;
-  border-left: 0;
-  border-radius: 0 10px 10px 0;
-}
-
-.btn-subtask img {
-  width: 14px;
-  height: 14px;
-=======
     position: relative;
     width: 100%;
     display: flex;
@@ -320,121 +288,9 @@ h1 {
 
 .btn-subtask.add {
     display: flex;
->>>>>>> ca9dd9593fd7007b1594553fb31f4a7279a2911d
 }
   
 .check-cancel {
-<<<<<<< HEAD
-  display: none;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 8px;
-}
-
-.cancel-subtask {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  height: 32px;
-  width: 32px;
-}
-
-.divider-subtask {
-  width: 1px;
-  height: 67%;
-  margin: 0 4px;
-  border-right: 1px solid #dfdede;
-}
-
-.divider-subtask-2 {
-  width: 1px;
-  height: 24px;
-  margin: 0 8px;
-  border-right: 1px solid #091931;
-}
-
-.divider-subtask-2.divider-subtask-3 {
-  border-right: 1px solid #dfdede;
-}
-
-.list-subtask-item.subtask-list-item-edit {
-  padding: 0;
-}
-
-.list-subtask-item.subtask-list-item-edit:hover {
-  background-color: #f6f7f8;
-}
-
-.li-text::before {
-  content: "•";
-  margin-right: 8px;
-}
-
-.edit-icon-subtask {
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
-.list-subtask-item:hover .edit-icon-subtask {
-  display: flex;
-}
-
-.input-edit-subtask {
-  width: 100%;
-  height: 32px;
-  border: none;
-  border-bottom: 1px solid rgba(43, 169, 227, 1);
-  padding: 4px 16px;
-}
-
-.input-edit-subtask:focus {
-  outline: none;
-}
-
-.div-edit-subtask-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 32px;
-  gap: 4px;
-  padding: 0 16px;
-  background-color: #ffffff;
-  border-bottom: 1px solid rgba(43, 169, 227, 1);
-}
-
-.btn-delete-subtask.edit,
-.btn-confirm-subtask-edit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-}
-
-.btn-delete-subtask:hover,
-.btn-confirm-subtask-edit:hover {
-  background-color: #dfdede;
-}
-
-textarea {
-  padding: 16px;
-  height: 120px;
-  border-radius: 10px;
-  border: 1px solid #dfdede;
-  font-family: inherit;
-  font-size: 20px;
-  cursor: auto;
-  width: min(440px, 100%);
-  resize: none;
-}
-
-textarea:focus {
-  outline: none;
-  border-color: rgba(43, 169, 227, 1);
-=======
     display: none;
     gap: 10px; /* Abstand zwischen X- und ✓-Symbol */
 }
@@ -492,7 +348,6 @@ textarea:focus {
     height: 20px;
     background-color: #ccc;
     margin: 0 5px;
->>>>>>> ca9dd9593fd7007b1594553fb31f4a7279a2911d
 }
 /*End Subtask*/
 
