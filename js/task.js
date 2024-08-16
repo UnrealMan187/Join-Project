@@ -1,3 +1,6 @@
+let categoryMenuOpened = 0;
+let assignedToMenuOpened = 0;
+
 function clickOnUrgent() {
   document
     .getElementById("urgent")
@@ -58,15 +61,32 @@ function toggleDropdownCategory() {
 
 window.onclick = function (event) {
   if (!event.target.closest(".select.assigned-to")) {
-    closeDropdown("myDropdown");
+   //closeDropdown("myDropdown");
   }
   if (!event.target.closest(".select.category")) {
-    closeDropdown("myDropdownCategory");
+   //closeDropdown("myDropdownCategory");
   }
 };
 
+
+
+/*
+function closeDropdownMenus(){
+  if (assignedToMenuOpened==1){
+  closeDropdown("myDropdown");
+  assignedToMenuOpened=0;
+
+}
+  if (assignedToMenuOpened==1){
+  closeDropdown("myDropdownCategory");
+   categoryMenuOpened=0;
+
+  }
+}
+*/
+
 function closeDropdown(dropdownId) {
-  var dropdown = document.getElementById(dropdownId);
+  let dropdown = document.getElementById(dropdownId);
   if (dropdown.classList.contains("show")) {
     dropdown.classList.remove("show");
   }
