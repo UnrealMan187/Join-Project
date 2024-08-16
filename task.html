@@ -229,7 +229,7 @@
                       </div>
                   </div>
                   <div class="container-subtasks-display">
-                      <ul class="list-subtasks"></ul>
+                      <ul id="subtaskList" class="list-subtasks"></ul>
                   </div>
               </div>
               <!--End subtask-->  
@@ -241,7 +241,7 @@
             </p>
             <div class="actions-form">
               <button
-                onclick=""
+                onclick="createTask()"
                 type="button"
                 class="btn-clear"
                 id="clear-btn"

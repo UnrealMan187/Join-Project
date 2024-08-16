@@ -11,8 +11,30 @@ function createTask() {
 
   let taskPrio = getTaskPrio();
 
-  let subtasks = [];
-  let assignedTo = [];
+  let taskSubtasks = "";
+  let assignedTo = "";
+
+  let subtaskItems = document.getElementById("subtaskList").children;
+
+  if (subtaskItems.length > 0) {
+    for (let i = 0; i < subtaskItems.length; i++) {
+      taskSubtasks += subtaskItems[i].textContent.trim() + ",";
+    }
+    taskSubtask = taskSubtasks.slice(0, -1);
+  }
+
+  if (users.length > 0) {
+    for (let i = 0; i < users.length; i++) {
+      let checkbox = document.getElementById(`AssignedContact${i}`);
+
+      if (checkbox.checked == true) {
+        assignedTo += users[i].name + ",";
+      }
+    }
+    assignedTo = assignedTo.slice(0, -1);
+  }
+
+  alert(taskPrio);
 
   tasks.push({
     title: taskTitle,
@@ -20,20 +42,19 @@ function createTask() {
     date: taskDate,
     category: taskCategory,
     priority: taskPrio,
-    subtasks: subtasks,
+    subtasks: taskSubtasks,
     assigned: assignedTo,
   });
-
 }
 
 function getTaskPrio() {
-  if(document.getElementById("urgent").style.backgroundColor != rgb(255, 255, 255)) {
+  if (document.getElementById("urgent").className.includes("btn-bg-change-urgent-onclick")) {
     return "Urgent";
   }
-  if(document.getElementById("medium").style.backgroundColor != rgb(255, 255, 255)) {
+  if (document.getElementById("medium").className.includes("btn-bg-change-medium-onclick")) {
     return "Medium";
   }
-  if(document.getElementById("low").style.backgroundColor != rgb(255, 255, 255)) {
+  if (document.getElementById("low").className.includes("btn-bg-change-low-onclick")) {
     return "Low";
   }
 }
@@ -133,14 +154,10 @@ async function renderAssignedTo() {
     assignedMenu.innerHTML += `
                       <li class="list-item assigned-to ">
                         <div class="list-item-name">
-                            <div class="circle initialsColor${j}">${getUserInitials(
-      users[i].name
-    )}</div>
-                            <label for="AssignedContact">${
-                              users[i].name
-                            }</label>
+                            <div class="circle initialsColor${j}">${getUserInitials(users[i].name)}</div>
+                            <label for="AssignedContact">${users[i].name}</label>
                         </div>
-                        <input type="checkbox" onclick="toggleBackground(this)" id="AssignedContact" name="AssignedContact">
+                        <input type="checkbox" onclick="toggleBackground(this)" id="AssignedContact${i}" name="AssignedContact">
                       </li>
     `;
 
