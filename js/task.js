@@ -1,5 +1,4 @@
-let categoryMenuOpened = 0;
-let assignedToMenuOpened = 0;
+
 
 let tasks = [];
 
@@ -117,6 +116,7 @@ function toggleDropdownCategory() {
 
 window.onclick = function (event) {
   if (!event.target.closest(".select.assigned-to")) {
+<<<<<<< HEAD
     //closeDropdown("myDropdown");
   }
   if (!event.target.closest(".select.category")) {
@@ -134,6 +134,15 @@ function closeDropdownMenus() {
     categoryMenuOpened = 0;
   }
 }
+=======
+   closeDropdown("myDropdown");
+  }
+  if (!event.target.closest(".select.category")) {
+   closeDropdown("myDropdownCategory");
+  }
+};
+
+>>>>>>> cd52debfe244a3b56046743ed9971f2d8eae41bd
 
 function closeDropdown(dropdownId) {
   let dropdown = document.getElementById(dropdownId);
