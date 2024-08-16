@@ -56,6 +56,7 @@ function getTaskPrio() {
   if (document.getElementById("low").className.includes("btn-bg-change-low-onclick")) {
     return "Low";
   }
+  return "None";
 }
 
 function clickOnUrgent() {
