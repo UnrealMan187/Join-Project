@@ -330,3 +330,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /*End Subtask input*/
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const dateInput = document.getElementById('due-date-input');
+  
+  // Hole das heutige Datum im Format YYYY-MM-DD
+  const today = new Date().toISOString().split('T')[0];
+  
+  // Setze das min-Attribut auf das heutige Datum
+  dateInput.setAttribute('min', today);
+});
