@@ -35,7 +35,7 @@ function closeDialog()
     document.getElementById('popupOnTaskSelectionID').style.visibility = "hidden";
 }
 
-async function popupValueImplementFromTask()
+function popupValueImplementFromTask()
 {   
     let titelCardInput = document.getElementById('titelCardID').innerHTML;
     let descriptionCard = document.getElementById('descriptionCardID').innerHTML;

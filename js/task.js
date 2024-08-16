@@ -1,37 +1,28 @@
 function clickOnUrgent() {
-  document
-    .getElementById("urgent")
-    .classList.remove("btn-bg-change-back-onclick");
-  document
-    .getElementById("urgent")
-    .classList.add("btn-bg-change-urgent-onclick");
+  document.getElementById("urgent").classList.remove("btn-bg-change-back-onclick");
+  document.getElementById("urgent").classList.toggle("btn-bg-change-urgent-onclick");
   document.getElementById("urgent").style.boxShadow = "none";
+  document.getElementById('urgentID').classList.toggle('d-none');
+  document.getElementById('urgent').classList.toggle('prio-txt-color-set-white');
+  document.getElementById('urgent-whiteID').classList.toggle('d-none');
 
   document.getElementById("low").classList.add("btn-bg-change-back-onclick");
-  document.getElementById("low").style.boxShadow =
-    "box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);";
+  document.getElementById("low").className = "boxShadow";
 
   document.getElementById("medium").classList.add("btn-bg-change-back-onclick");
-  document.getElementById("medium").style.boxShadow =
-    "box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);";
 }
 
 function clickOnMedium() {
-  document
-    .getElementById("medium")
-    .classList.remove("btn-bg-change-back-onclick");
-  document
-    .getElementById("medium")
-    .classList.add("btn-bg-change-medium-onclick");
+  document.getElementById("medium").classList.remove("btn-bg-change-back-onclick");
+  document.getElementById("medium").classList.toggle("btn-bg-change-medium-onclick");
   document.getElementById("medium").style.boxShadow = "none";
-
-  document.getElementById("urgent").classList.add("btn-bg-change-back-onclick");
-  document.getElementById("urgent").style.boxShadow =
-    "box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);";
+  document.getElementById('medium').classList.toggle('prio-txt-color-set-white');
 
   document.getElementById("low").classList.add("btn-bg-change-back-onclick");
-  document.getElementById("low").style.boxShadow =
-    "box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);";
+  document.getElementById("low").classList.add("box-shadow:hover");
+
+  document.getElementById("urgent").classList.add("btn-bg-change-back-onclick");
+ 
 }
 
 function clickOnLow() {
@@ -40,12 +31,9 @@ function clickOnLow() {
   document.getElementById("low").style.boxShadow = "none";
 
   document.getElementById("medium").classList.add("btn-bg-change-back-onclick");
-  document.getElementById("medium").style.boxShadow =
-    "box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);";
 
   document.getElementById("urgent").classList.add("btn-bg-change-back-onclick");
-  document.getElementById("urgent").style.boxShadow =
-    "box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.30);";
+
 }
 /*Begin dropdown assigned to and dropdown category*/
 function toggleDropdown() {

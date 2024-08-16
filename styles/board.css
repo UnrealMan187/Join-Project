@@ -7,6 +7,10 @@ button {
   padding: 0;
   box-sizing: border-box;
 }
+.d-none
+{
+  display: none;
+}
 
 html {
   font-family: "Roboto", sans-serif;
@@ -705,6 +709,10 @@ h2 {
   gap: 4px;
   opacity: 0px;
   margin-bottom: 24px;
+}
+.urgentBtnOnAddTask
+{
+  height: 500px;
 }
 .popupCheckboxContainer {
   display: flex;
