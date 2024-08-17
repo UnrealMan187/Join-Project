@@ -64,7 +64,6 @@ h1 {
 }
 
 .taskContainer {
-  margin-top: 96px;
   display: flex;
   flex-direction: column;
   margin-left: 232px;
@@ -227,7 +226,6 @@ h1 {
   align-items: center;
   justify-content: center;
   border: 2px solid #ffffff;
-  background-color: #7124d6;
   color: #ffffff;
   border-radius: 50%;
   width: 42px;

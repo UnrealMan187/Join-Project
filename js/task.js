@@ -147,7 +147,7 @@ async function renderAssignedTo() {
                       <li class="list-item assigned-to ">
                         <div class="list-item-name">
                             <div class="circle initialsColor${j}">${getUserInitials(users[i].name)}</div>
-                            <label for="AssignedContact">${users[i].name}</label>
+                            <label>${users[i].name}</label>
                         </div>
                         <input type="checkbox" onclick="toggleBackground(this)" id="AssignedContact${i}" name="AssignedContact">
                       </li>

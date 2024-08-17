@@ -1,5 +1,8 @@
 const taskCard = document.getElementById('taskCard');
 const dropZones = document.querySelectorAll('#cardContainertoDo, #cardContainerinProgress, #cardContainerawaitingFeedback, #cardContainerdone');
+/*const openButton = document.querySelector("data-open-modal")
+const closeButton = document.querySelector("data-close-modal")
+const modal = document.querySelector("data-modal")*/
 
 // Event listener für den Start des Drag-Vorgangs
 taskCard.addEventListener('dragstart', function(event) {
@@ -77,3 +80,52 @@ async function renderBadges() {
             if(j > 15) { j = 1; }
     }
 }
+
+/*AddTask Pop up*/
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.querySelector('dialog[data-modal]');
+    const openModalButton = document.getElementById('openModal');
+    const closeModalButton = document.getElementById('closeModal');
+    const alsoOpenButtons = document.querySelectorAll('.alsoOpenModal'); // Alle Elemente mit der Klasse "alsobtn"
+
+
+    if (modal && openModalButton && closeModalButton) {
+        // Modal öffnen
+        openModalButton.addEventListener('click', () => {
+            modal.showModal();
+        });
+
+        alsoOpenButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                modal.showModal();
+            });
+        });
+
+
+        // Modal schließen
+        closeModalButton.addEventListener('click', () => {
+            modal.close();
+        });
+
+        // Optional: Modal schließen, wenn man außerhalb des Modals klickt
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.close();
+            }
+        });
+    } else {
+        console.error('Modal, Open Button, or Close Button not found in the DOM.');
+    }
+});
+
+
+
+/*openButton.addEventListener("click", () => {
+    modal.showModal()
+})
+
+closeButton.addEventListener("click", () => {
+    modal.close()
+})
+*/
