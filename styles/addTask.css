@@ -375,6 +375,8 @@ h1 {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.3);
 }
 
+
+
 .btn-prio.active {
   background-color: #ffb218;
   color: white;
@@ -410,7 +412,7 @@ h1 {
 .prio-txt-color-set-white {
   color: white;
 }
-.box-shadow:hover {
+.box-shadow::before {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.3);
 }
 .bottom-form {

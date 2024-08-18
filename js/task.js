@@ -1,5 +1,3 @@
-
-
 let tasks = [];
 
 function createTask() {
@@ -58,52 +56,48 @@ function getTaskPrio() {
   }
 }
 
+function clearPrioButtons()
+{
+  document.getElementById('urgent').className = "btn-prio btn-prio:hover";
+  document.getElementById('urgent-whiteID').className ="d-none";
+  document.getElementById('urgentID').className ="";
+  document.getElementById('urgent').style.boxShadow.toggle;
+
+  document.getElementById('medium').className = "btn-prio";
+  document.getElementById('medium-whiteID').className ="d-none";
+  document.getElementById('mediumID').className ="";
+  
+  document.getElementById('low').className = "btn-prio";
+  document.getElementById('low-whiteID').className ="d-none";
+  document.getElementById('lowID').className ="";
+}
+
 function clickOnUrgent() {
-  document
-    .getElementById("urgent")
-    .classList.remove("btn-bg-change-back-onclick");
-  document
-    .getElementById("urgent")
-    .classList.toggle("btn-bg-change-urgent-onclick");
-  document.getElementById("urgent").style.boxShadow = "none";
+  clearPrioButtons();
+  document.getElementById("urgent").className = "btn-prio btn-bg-change-urgent-onclick prio-txt-color-set-white";
+  document.getElementById("urgent").style.boxShadow.toggle;
   document.getElementById("urgentID").classList.toggle("d-none");
-  document
-    .getElementById("urgent")
-    .classList.toggle("prio-txt-color-set-white");
   document.getElementById("urgent-whiteID").classList.toggle("d-none");
-
-  document.getElementById("low").classList.add("btn-bg-change-back-onclick");
-  document.getElementById("low").className = "boxShadow";
-
-  document.getElementById("medium").classList.add("btn-bg-change-back-onclick");
 }
 
 function clickOnMedium() {
-  document
-    .getElementById("medium")
-    .classList.remove("btn-bg-change-back-onclick");
-  document
-    .getElementById("medium")
-    .classList.toggle("btn-bg-change-medium-onclick");
+  clearPrioButtons();
+  document.getElementById("medium").classList.remove("btn-bg-change-back-onclick");
+  document.getElementById("medium").classList.toggle("btn-bg-change-medium-onclick");
   document.getElementById("medium").style.boxShadow = "none";
-  document
-    .getElementById("medium")
-    .classList.toggle("prio-txt-color-set-white");
-
-  document.getElementById("low").classList.add("btn-bg-change-back-onclick");
-  document.getElementById("low").classList.add("box-shadow:hover");
-
-  document.getElementById("urgent").classList.add("btn-bg-change-back-onclick");
+  document.getElementById("mediumID").classList.toggle("d-none");
+  document.getElementById("medium").classList.toggle("prio-txt-color-set-white");
+  document.getElementById("medium-whiteID").classList.toggle("d-none");
 }
 
 function clickOnLow() {
+  clearPrioButtons();
   document.getElementById("low").classList.remove("btn-bg-change-back-onclick");
-  document.getElementById("low").classList.add("btn-bg-change-low-onclick");
+  document.getElementById("low").classList.toggle("btn-bg-change-low-onclick");
   document.getElementById("low").style.boxShadow = "none";
-
-  document.getElementById("medium").classList.add("btn-bg-change-back-onclick");
-
-  document.getElementById("urgent").classList.add("btn-bg-change-back-onclick");
+  document.getElementById("lowID").classList.toggle("d-none");
+  document.getElementById("low").classList.toggle("prio-txt-color-set-white");
+  document.getElementById("low-whiteID").classList.toggle("d-none");
 }
 /*Begin dropdown assigned to and dropdown category*/
 function toggleDropdown() {

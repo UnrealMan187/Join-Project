@@ -47,9 +47,11 @@ function popupValueImplementFromTask()
     valueFromdescription.innerHTML = descriptionCard;
     
     let valueFromEllipse = document.getElementById('popupContactEllipseID');
-        valueFromEllipse.innerHTML += contactEllipse;
+    valueFromEllipse.innerHTML = '';     
+    valueFromEllipse.innerHTML += contactEllipse;
 
     let valueFromName = document.getElementById('popupContactNameID');
+    valueFromName.innerHTML = '';   
     for(let i = 0; i < users.length; i++) {
         valueFromName.innerHTML += `
             <div>${users[i].name}</div>
