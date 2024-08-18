@@ -57,30 +57,35 @@ function getTaskPrio() {
   return "None";
 }
 
+//reset all Class from Prio Buttons
 function clearPrioButtons()
 {
   document.getElementById('urgent').className = "btn-prio btn-prio:hover";
   document.getElementById('urgent-whiteID').className ="d-none";
   document.getElementById('urgentID').className ="";
-  document.getElementById('urgent').style.boxShadow.toggle;
+  document.getElementById('urgent').style.boxShadow = "";
 
   document.getElementById('medium').className = "btn-prio";
   document.getElementById('medium-whiteID').className ="d-none";
   document.getElementById('mediumID').className ="";
-  
+  document.getElementById('medium').style.boxShadow = "";
+
   document.getElementById('low').className = "btn-prio";
   document.getElementById('low-whiteID').className ="d-none";
   document.getElementById('lowID').className ="";
+  document.getElementById('low').style.boxShadow = "";
 }
-
+//click on Urgent Prio Button
 function clickOnUrgent() {
   clearPrioButtons();
-  document.getElementById("urgent").className = "btn-prio btn-bg-change-urgent-onclick prio-txt-color-set-white";
-  document.getElementById("urgent").style.boxShadow.toggle;
+  document.getElementById("urgent").classList.remove("btn-bg-change-back-onclick");
+  document.getElementById("urgent").classList.toggle("btn-bg-change-urgent-onclick");
+  document.getElementById("urgent").style.boxShadow = "none";
   document.getElementById("urgentID").classList.toggle("d-none");
+  document.getElementById("urgent").classList.toggle("prio-txt-color-set-white");
   document.getElementById("urgent-whiteID").classList.toggle("d-none");
 }
-
+//click on Medium Prio Button
 function clickOnMedium() {
   clearPrioButtons();
   document.getElementById("medium").classList.remove("btn-bg-change-back-onclick");
@@ -90,7 +95,7 @@ function clickOnMedium() {
   document.getElementById("medium").classList.toggle("prio-txt-color-set-white");
   document.getElementById("medium-whiteID").classList.toggle("d-none");
 }
-
+//click on Low Prio Button
 function clickOnLow() {
   clearPrioButtons();
   document.getElementById("low").classList.remove("btn-bg-change-back-onclick");
