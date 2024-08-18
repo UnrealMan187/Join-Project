@@ -19,8 +19,7 @@ h1 {
 /*Begin Assigned to dropdown*/
 .dropdown-content {
   display: none;
-  position: absolute;
-  top: 48px;
+  position: unset;
   width: 100%;
   max-height: 250px;
   overflow-y: scroll;
@@ -215,10 +214,7 @@ h1 {
 }
 
 .selected-contacts {
-  padding: 18px 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
+  display: flex;  
 }
 
 .circle {
