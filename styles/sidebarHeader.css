@@ -197,6 +197,7 @@ a{
     .mobile-header{
         display: flex;
         padding: 1em;
+        z-index: 100;
     }
 
     .mobile-nav{
@@ -206,6 +207,7 @@ a{
         bottom: 0;
         background-color: #2a3647;
         width: 100%;
+        z-index: 100;
     }
 
     .logo-join-mobile{
