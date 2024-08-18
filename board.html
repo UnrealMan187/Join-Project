@@ -338,7 +338,7 @@
               <div class="inputGroup">
                 <label>Description</label>
                 <textarea
-                  id="description"
+                  class="descriptionPopup" id="description"
                   placeholder="Enter a description"
                 ></textarea>
               </div>
@@ -385,9 +385,11 @@
             <div class="col-middle"></div>
             <div class="col-right gap">
               <div class="inputGroup">
-                <label"
+                <div>
+                 <label"
                   >Due date<span class="required">*</span></label
-                >
+                 >
+                </div>
                 <input class="input" type="date" id="due-date-input" />
                 <div id="date-required" class="required-msg">
                   <!-- This field is required -->
@@ -438,23 +440,24 @@
                 </div>
               </div>
               <!--Begin subtask-->
-                <div class="inputGroup">
-                  <label>Subtasks</label>
-                  <div class="input-container-subtask">
-                      <input class="input subtask" type="text" placeholder="Add new subtask" />
-                      <div class="btn-subtask add">
-                          <img src="./img/add.png" alt="Add" />
-                      </div>
-                      <div class="btn-subtask check-cancel">
-                          <div class="cancel-subtask">
-                              <img src="./img/close.png" alt="Cancel" />
-                          </div>
-                          <div class="divider-subtask"></div>
-                          <div class="check-subtask">
-                              <img src="./img/check.png" alt="Check" />
-                          </div>
-                      </div>
+              <div class="inputGroup">
+                <label>Subtasks</label>
+                <div class="input-container-subtask">
+                  <input class="input subtask" type="text" placeholder="Add new subtask" />
+                  <div class="btn-subtask add">
+                    <img src="./img/add.png" alt="Add" />
                   </div>
+                  <div class="btn-subtask check-cancel">
+                    <div class="cancel-subtask">
+                      <img src="./img/close.png" alt="Cancel" />
+                    </div>
+                    <div class="divider-subtask"></div>
+                    <div class="check-subtask">
+                      <img src="./img/check.png" alt="Check" />
+                    </div>
+                    </div>
+                </div>
+
                   <div class="container-subtasks-display">
                       <ul id="subtaskList" class="list-subtasks"></ul>
                   </div>

@@ -833,6 +833,9 @@ dialog{
   align-items: center;
   justify-content: center;
 }
+.descriptionPopup{
+width: min(440px, 100%);
+}
 
 @media screen and (max-width: 1440px) {
   .statuses {
