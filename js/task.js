@@ -54,6 +54,7 @@ function getTaskPrio() {
   if (document.getElementById("low").className.includes("btn-bg-change-low-onclick")) {
     return "Low";
   }
+  return "None";
 }
 
 function clearPrioButtons()
@@ -108,15 +109,17 @@ function toggleDropdownCategory() {
   document.getElementById("myDropdownCategory").classList.toggle("show");
 }
 
+
 window.onclick = function (event) {
+  // Überprüfen, ob außerhalb des Dropdowns "myDropdown" geklickt wurde
   if (!event.target.closest(".select.assigned-to")) {
-   closeDropdown("myDropdown");
+    //closeDropdown("myDropdown");
   }
+  // Überprüfen, ob außerhalb des Dropdowns "myDropdownCategory" geklickt wurde
   if (!event.target.closest(".select.category")) {
-   closeDropdown("myDropdownCategory");
+    closeDropdown("myDropdownCategory");
   }
 };
-
 
 function closeDropdown(dropdownId) {
   let dropdown = document.getElementById(dropdownId);
@@ -138,7 +141,7 @@ async function renderAssignedTo() {
                       <li class="list-item assigned-to ">
                         <div class="list-item-name">
                             <div class="circle initialsColor${j}">${getUserInitials(users[i].name)}</div>
-                            <label for="AssignedContact">${users[i].name}</label>
+                            <label>${users[i].name}</label>
                         </div>
                         <input type="checkbox" onclick="toggleBackground(this)" id="AssignedContact${i}" name="AssignedContact">
                       </li>
@@ -151,14 +154,38 @@ async function renderAssignedTo() {
   }
 }
 
-/*Toggle bg-color when checkbox is checked*/
 function toggleBackground(checkbox) {
-  const listItem = checkbox.closest(".list-item");
+  const listItem = checkbox.closest('.list-item');
 
   if (checkbox.checked) {
     listItem.style.backgroundColor = "#2a3647";
   } else {
-    listItem.style.backgroundColor = ""; // Setzt die Hintergrundfarbe zurück
+    listItem.style.backgroundColor = "";  // Setzt die Hintergrundfarbe zurück
+  }
+}
+
+function toggleBackground(checkbox) {
+  const listItem = checkbox.closest('.list-item');
+  const contactName = listItem.querySelector('.list-item-name label').textContent.trim();
+  const contactCircle = listItem.querySelector('.circle').cloneNode(true); // Kopiere das Kreis-Element
+
+  const selectedContactsContainer = document.getElementById('selected-contacts-container');
+  
+  if (checkbox.checked) {
+      listItem.style.backgroundColor = "#2a3647";
+
+      // Füge das Kreis-Element zum ausgewählten Kontaktcontainer hinzu
+      selectedContactsContainer.appendChild(contactCircle);
+  } else {
+      listItem.style.backgroundColor = "";  // Setzt die Hintergrundfarbe zurück
+
+      // Entferne das Kreis-Element aus dem ausgewählten Kontaktcontainer
+      const circles = selectedContactsContainer.querySelectorAll('.circle');
+      circles.forEach(circle => {
+          if (circle.textContent.trim() === contactCircle.textContent.trim()) {
+              selectedContactsContainer.removeChild(circle);
+          }
+      });
   }
 }
 /*End dropdown assigned to*/
@@ -298,3 +325,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /*End Subtask input*/
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const dateInput = document.getElementById('due-date-input');
+  
+  // Hole das heutige Datum im Format YYYY-MM-DD
+  const today = new Date().toISOString().split('T')[0];
+  
+  // Setze das min-Attribut auf das heutige Datum
+  dateInput.setAttribute('min', today);
+});

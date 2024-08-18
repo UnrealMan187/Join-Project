@@ -356,9 +356,10 @@
     display: block !important;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
+.dropdownCard {
+    display: none;
+    /*position: relative;
+    display: inline-block;*/
 }
 
 .dropdown-btn {

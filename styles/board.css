@@ -1,5 +1,7 @@
 button {
   cursor: pointer;
+  border: 0;
+  background-color: #F6F7F8;
 }
 
 * {
@@ -372,9 +374,9 @@ body {
   display: none !important;
 }
 
-.show {
+/*.show {
   display: flex !important;
-}
+}*/
 
 .cardContainer.highlightDragArea {
   outline-color: #ababab;
@@ -397,12 +399,6 @@ body {
   margin-top: 8px;
   margin-bottom: 32px;
   padding: 0 10px;
-}
-
-.imgInput {
-  background: url("../assets/img/icons/plusInput.svg") no-repeat;
-  background-size: 20px 20px;
-  background-position: right;
 }
 
 .headerTitle {
@@ -429,10 +425,6 @@ input[type="search"]::-webkit-search-cancel-button {
   cursor: pointer;
 }
 
-.statusHeader img:hover {
-  cursor: pointer;
-  content: url("../assets/img/icons/plusBtnblue.png");
-}
 
 .addBtn:hover {
   transition: 225ms;
@@ -710,10 +702,6 @@ h2 {
   opacity: 0px;
   margin-bottom: 24px;
 }
-.urgentBtnOnAddTask
-{
-  height: 500px;
-}
 .popupCheckboxContainer {
   display: flex;
   align-items: center;
@@ -805,6 +793,45 @@ h2 {
   gap: 0px;
   opacity: 0px;
   border: 1px solid #d1d1d1;
+}
+
+/*Pop up Addtask*/
+dialog{
+    width: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    border: 0;
+    border-radius: 15px;
+  }
+  .taskContainerPopup{
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f7f8;
+  }
+  .addTaskPopupClose {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 64px;
+    right: 40px;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 0;
+}
+
+.addTaskPopupClose img {
+    margin-top: 3px;
+}
+
+.addTaskPopupClose:hover {
+    background-color: rgba(238, 238, 238, 1);
+}
+.d-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media screen and (max-width: 1440px) {
