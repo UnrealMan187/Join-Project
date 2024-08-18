@@ -270,9 +270,9 @@ h1 {
   }
 
 .input.subtask {
-    width: 100%;
-    padding-right: 60px; /* Platz für die Buttons rechts im Input-Feld */
-    box-sizing: border-box;
+  width: min(440px, 100%);
+  padding-right: 60px; /* Platz für die Buttons rechts im Input-Feld */
+  box-sizing: border-box;
 }
   
 .btn-subtask {
@@ -427,7 +427,7 @@ h1 {
 
 .required {
   color: #ffb218;
-  font-size: 8px;
+  font-size: 16px;
 }
 
 .btn-clear,
@@ -516,6 +516,13 @@ label {
     flex-wrap: wrap;
     gap: 16px;
   }
+
+  .btn-subtask{
+    position: unset;
+    margin-left: -35px;
+    transform: unset;
+    
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -570,12 +577,12 @@ label {
     flex-direction: column;
   }
 
-  .btn-clear {
-    display: none;
-  }
-
   .item {
     font-size: 16px;
+  }
+
+  .actions-form{
+    flex-direction: column;
   }
 }
 
@@ -653,118 +660,3 @@ label {
   height: auto;
 }
 
-.subtask-input-container .input-container-subtask {
-  border-radius: 10px 0 0 10px;
-  border-right: 0;
-}
-
-.subtask-input:focus ~ .subtask-btn.add {
-  outline: none;
-  border-color: rgba(43, 169, 227, 1);
-}
-
-.subtask-input-container .subtask-btn.add img {
-  width: 14px;
-  height: 14px;
-}
-
-.subtask-input-container .check-cancel-div {
-  display: none;
-}
-
-.subtask-input-container .check-cancel-div .subtask-cancel {
-  border-radius: 50%;
-  height: 32px;
-  width: 32px;
-}
-
-.subtask-input-container .check-cancel-div .subtask-divider {
-  width: 1px;
-  height: 67%;
-  border-right: 1px solid #dfdede;
-  margin: 0 4px;
-}
-
-.subtask-input-container .check-cancel-div .subtask-check {
-  border-radius: 50%;
-  height: 32px;
-  width: 32px;
-  transition: 125ms;
-}
-
-.subtask-input-container .check-cancel-div .subtask-cancel:hover,
-.subtask-input-container .check-cancel-div .subtask-check:hover {
-  background-color: #dfdede;
-}
-
-.display-subtasks-container {
-  max-width: 440px;
-  overflow-y: auto;
-  height: 100px;
-}
-
-.subtasks-list .subtask-list-item {
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 10px;
-  padding: 4px 16px;
-  height: 32px;
-  cursor: pointer;
-}
-
-.subtasks-list .subtask-list-item:hover {
-  background-color: #dfdede;
-}
-
-.subtask-list-item.subtask-list-item-edit {
-  padding: 0;
-}
-
-.subtask-list-item.subtask-list-item-edit:hover {
-  background-color: #f6f7f8;
-}
-
-.subtask-list-item .li-text::before {
-  content: "•";
-  margin-right: 8px;
-}
-
-.subtask-list-item .edit-subtask-input {
-  width: 100%;
-  height: 32px;
-  border: none;
-  border-bottom: 1px solid rgba(43, 169, 227, 1);
-  padding: 4px 16px;
-}
-
-.subtask-list-item .edit-subtask-input:focus {
-  outline: none;
-}
-
-.subtask-list-item .edit-subtask-button-div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 32px;
-  gap: 4px;
-  padding: 0 16px;
-  background-color: #ffffff;
-  border-bottom: 1px solid rgba(43, 169, 227, 1);
-}
-
-.subtask-list-item .delete-subtask-btn.edit,
-.subtask-list-item .confirm-subtask-edit-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-}
-
-.subtask-list-item .delete-subtask-btn:hover,
-.subtask-list-item .confirm-subtask-edit-btn:hover {
-  background-color: #dfdede;
-}
