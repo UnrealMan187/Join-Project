@@ -193,9 +193,7 @@
                 >
                 <div class="dropdown">
                   <div id="category-container" class="select category" onclick="toggleDropdownCategory()">
-                    <span id="category-displayed" class="btn-text"
-                      >Select task category</span
-                    >
+                    <span id="category-displayed" class="btn-text">Select task category</span>
                     <span class="down-arrow" >
                       <img src="img/arrow_drop_downaa.svg" alt="">
                     </span>
@@ -208,10 +206,10 @@
                   </div>
                   <ul class="category scroll-disabled dropdown-content" id="myDropdownCategory">
                     <li data-value="Technical stack" class="item category">
-                      <span>Technical stack</span>
+                      <span onclick="selectTechnicalStack()" id="categoryTechnicalStack">Technical stack</span>
                     </li>
                     <li data-value="User-story" class="item category">
-                      <span>User Story</span>
+                      <span onclick="selectUserStory()" id="categoryUserStory">User Story</span>
                     </li>
                   </ul>
                 </div>

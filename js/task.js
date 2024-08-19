@@ -333,3 +333,21 @@ document.addEventListener("DOMContentLoaded", function () {
   // Setze das min-Attribut auf das heutige Datum
   dateInput.setAttribute("min", today);
 });
+
+function selectTechnicalStack()
+{
+  let categoryTechnicalStack = document.getElementById('categoryTechnicalStack').innerHTML;
+
+  let selectCategory = document.getElementById('category-displayed');
+  selectCategory.innerHTML = '';
+  selectCategory.innerHTML = categoryTechnicalStack;
+} 
+
+function selectUserStory()
+{
+  let categoryselectUserStory = document.getElementById('categoryUserStory').innerHTML;
+
+  let selectCategory = document.getElementById('category-displayed');
+  selectCategory.innerHTML = '';
+  selectCategory.innerHTML = categoryselectUserStory;
+} 
