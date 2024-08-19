@@ -77,10 +77,7 @@ function clearPrioButtons()
 }
 //click on Urgent Prio Button
 function clickOnUrgent() {
-<<<<<<< HEAD
-=======
   clearPrioButtons();
->>>>>>> 3e79edccc707e31ab806693b38a442a2f45b5310
   document.getElementById("urgent").classList.remove("btn-bg-change-back-onclick");
   document.getElementById("urgent").classList.toggle("btn-bg-change-urgent-onclick");
   document.getElementById("urgent").style.boxShadow = "none";
@@ -90,17 +87,6 @@ function clickOnUrgent() {
 }
 //click on Medium Prio Button
 function clickOnMedium() {
-<<<<<<< HEAD
-  document.getElementById("medium").classList.remove("btn-bg-change-back-onclick");
-  document.getElementById("medium").classList.toggle("btn-bg-change-medium-onclick");
-  document.getElementById("medium").style.boxShadow = "none";
-  document.getElementById("medium").classList.toggle("prio-txt-color-set-white");
-
-  document.getElementById("low").classList.add("btn-bg-change-back-onclick");
-  document.getElementById("low").classList.add("box-shadow:hover");
-
-  document.getElementById("urgent").classList.add("btn-bg-change-back-onclick");
-=======
   clearPrioButtons();
   document.getElementById("medium").classList.remove("btn-bg-change-back-onclick");
   document.getElementById("medium").classList.toggle("btn-bg-change-medium-onclick");
@@ -108,7 +94,6 @@ function clickOnMedium() {
   document.getElementById("mediumID").classList.toggle("d-none");
   document.getElementById("medium").classList.toggle("prio-txt-color-set-white");
   document.getElementById("medium-whiteID").classList.toggle("d-none");
->>>>>>> 3e79edccc707e31ab806693b38a442a2f45b5310
 }
 //click on Low Prio Button
 function clickOnLow() {
