@@ -1,5 +1,4 @@
-const FIREBASE_URL =
-  "https://join-4d42f-default-rtdb.europe-west1.firebasedatabase.app/";
+const FIREBASE_URL = "https://join-4d42f-default-rtdb.europe-west1.firebasedatabase.app/";
 let users = [];
 let currentUser = -1;
 
@@ -23,68 +22,68 @@ async function loadUsers(path = "/users") {
   }
 }
 
-  async function addUser() {
-    let nameValue = document.getElementById("name").value;
-    let phoneValue = document.getElementById("phone").value;
-    let emailValue = document.getElementById("email").value;
-    let newUser = { name: nameValue, email: emailValue, phone: phoneValue };
-    document.getElementById("name").value = "";
-    document.getElementById("phone").value = "";
-    document.getElementById("email").value = "";
-    await postData("/users", newUser);
-    await renderContacts();
-  }
+async function addUser() {
+  let nameValue = document.getElementById("name").value;
+  let phoneValue = document.getElementById("phone").value;
+  let emailValue = document.getElementById("email").value;
+  let newUser = { name: nameValue, email: emailValue, phone: phoneValue };
+  document.getElementById("name").value = "";
+  document.getElementById("phone").value = "";
+  document.getElementById("email").value = "";
+  await postData("/users", newUser);
+  await renderContacts();
+}
 
-  async function postData(path = "", data = {}) {
-    await fetch(FIREBASE_URL + path + ".json", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-  }
+async function postData(path = "", data = {}) {
+  await fetch(FIREBASE_URL + path + ".json", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
 
-  // id = path in firebase
+// id = path in firebase
 
-  async function deleteUser(id) {
-    await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
-      method: "DELETE",
-    });
-    await renderContacts();
-    loadUserInformation(-1);
-  }
+async function deleteUser(id) {
+  await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
+    method: "DELETE",
+  });
+  await renderContacts();
+  loadUserInformation(-1);
+}
 
-  async function editUser(id, data = {}) {
-    data.name = document.getElementById("name").value;
-    data.email = document.getElementById("email").value;
-    data.phone = document.getElementById("phone").value;
+async function editUser(id, data = {}) {
+  data.name = document.getElementById("name").value;
+  data.email = document.getElementById("email").value;
+  data.phone = document.getElementById("phone").value;
 
-    await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+  await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 
-    await renderContacts();
-    loadUserInformation(currentUser);
-    closePopup();
-  }
+  await renderContacts();
+  loadUserInformation(currentUser);
+  closePopup();
+}
 
-  // We use the email to identify an User because there may be 2 Users with the same Name but not same email.
-  function getUserId(email) {
-    if (users.length > 0) {
-      for (let i = 0; i < users.length; i++) {
-        if (users[i].email == email) {
-          return users[i].id;
-        }
+// We use the email to identify an User because there may be 2 Users with the same Name but not same email.
+function getUserId(email) {
+  if (users.length > 0) {
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].email == email) {
+        return users[i].id;
       }
-    } else {
-      return -1; // Default Value -1 means User not found
     }
+  } else {
+    return -1; // Default Value -1 means User not found
   }
+}
 
 // renders via templates the Contacts into the contact-list incl. the sorter-div/seperator
 async function renderContacts() {
@@ -96,7 +95,9 @@ async function renderContacts() {
 
   for (let i = 0; i < users.length; i++) {
     if (users[i].name[0].toUpperCase() != firstLetter.toUpperCase()) {
-      html += `<div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter">${users[i].name[0].toUpperCase()}</span></div>
+      html += `<div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter">${users[
+        i
+      ].name[0].toUpperCase()}</span></div>
               <div class="border-container"> <div class="border"></div></div>`;
 
       firstLetter = users[i].name[0].toUpperCase();
@@ -116,9 +117,10 @@ async function renderContacts() {
             `;
 
     j++;
-    if(j > 15) { j = 1; }
+    if (j > 15) {
+      j = 1;
+    }
   }
-  
 
   document.getElementById("contact-list").innerHTML = html;
 }
@@ -128,8 +130,8 @@ async function renderContacts() {
  * gets first Letter from first Name and first Letter from last Name
  */
 function getUserInitials(username) {
-  let result = username.split(" ").map(wort => wort[0].toUpperCase());
-  if(username.split(" ").length > 1) {
+  let result = username.split(" ").map((wort) => wort[0].toUpperCase());
+  if (username.split(" ").length > 1) {
     result = result[0] + result[result.length - 1];
   } else {
     result = result[0];
@@ -141,9 +143,9 @@ async function loadUserInformation(id) {
   document.getElementById("contact-name").innerHTML = id == -1 ? "" : users[id].name;
   document.getElementById("contact-email").innerHTML = id == -1 ? "" : users[id].email;
   document.getElementById("contact-phone").innerHTML = id == -1 ? "" : users[id].phone;
-  document.getElementById("ellipse").innerHTML = id == -1 ? "" : getUserInitials(users[id].name);  
-  
-  if(id == -1) {
+  document.getElementById("ellipse").innerHTML = id == -1 ? "" : getUserInitials(users[id].name);
+
+  if (id == -1) {
     document.getElementById("display-contactID").classList.add("d-none");
   } else {
     document.getElementById("display-contactID").classList.remove("d-none");
@@ -157,36 +159,32 @@ async function loadUserInformation(id) {
   currentUser = id;
 }
 
-function hideContactsListInResponsiveMode()
-{
+function hideContactsListInResponsiveMode() {
   if (window.innerWidth <= 768) {
-    document.getElementById('contact-list').classList.add('d-none');
-    document.getElementById('add-contact-containerID').style.display = 'none';
-    document.getElementById('back-arrow-on-responsiveID').classList.remove('d-none');
-    showContactsInDetailInResponsiveMode()
+    document.getElementById("contact-list").classList.add("d-none");
+    document.getElementById("add-contact-containerID").style.display = "none";
+    document.getElementById("back-arrow-on-responsiveID").classList.remove("d-none");
+    showContactsInDetailInResponsiveMode();
   }
 }
 
-function showContactsInDetailInResponsiveMode()
-{
-  document.getElementById('display-contact-headerID').style.display = 'flex';
-  document.getElementById('display-contactID').style.display = 'flex';
+function showContactsInDetailInResponsiveMode() {
+  document.getElementById("display-contact-headerID").style.display = "flex";
+  document.getElementById("display-contactID").style.display = "flex";
 }
 
-function showContactListAgainInResponsiveMode()
-{
+function showContactListAgainInResponsiveMode() {
   if (window.innerWidth <= 768) {
-  document.getElementById('display-contact-headerID').style.display = 'none';
-  document.getElementById('display-contactID').style.display = 'none';
-  document.getElementById('contact-list').classList.remove('d-none');
-  document.getElementById('add-contact-containerID').style.display = 'flex';
-  document.getElementById('back-arrow-on-responsiveID').classList.add('d-none');
+    document.getElementById("display-contact-headerID").style.display = "none";
+    document.getElementById("display-contactID").style.display = "none";
+    document.getElementById("contact-list").classList.remove("d-none");
+    document.getElementById("add-contact-containerID").style.display = "flex";
+    document.getElementById("back-arrow-on-responsiveID").classList.add("d-none");
   }
 }
 
-function changeBgOnSelectedUser(id)
-{
-  document.getElementById('contact-containerID').classList.add('selected-user-color');
+function changeBgOnSelectedUser(id) {
+  document.getElementById("contact-containerID").classList.add("selected-user-color");
 }
 
 async function initContacts() {
@@ -195,7 +193,7 @@ async function initContacts() {
 }
 
 function highlightUser(userIndex) {
-  for(let i = 0; i < users.length; i++) {
+  for (let i = 0; i < users.length; i++) {
     document.getElementById(`user-container${i}`).classList.remove("highlightUser");
   }
   document.getElementById(`user-container${userIndex}`).classList.add("highlightUser");

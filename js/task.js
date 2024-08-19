@@ -1,5 +1,3 @@
-
-
 let tasks = [];
 
 function createTask() {
@@ -60,17 +58,11 @@ function getTaskPrio() {
 }
 
 function clickOnUrgent() {
-  document
-    .getElementById("urgent")
-    .classList.remove("btn-bg-change-back-onclick");
-  document
-    .getElementById("urgent")
-    .classList.toggle("btn-bg-change-urgent-onclick");
+  document.getElementById("urgent").classList.remove("btn-bg-change-back-onclick");
+  document.getElementById("urgent").classList.toggle("btn-bg-change-urgent-onclick");
   document.getElementById("urgent").style.boxShadow = "none";
   document.getElementById("urgentID").classList.toggle("d-none");
-  document
-    .getElementById("urgent")
-    .classList.toggle("prio-txt-color-set-white");
+  document.getElementById("urgent").classList.toggle("prio-txt-color-set-white");
   document.getElementById("urgent-whiteID").classList.toggle("d-none");
 
   document.getElementById("low").classList.add("btn-bg-change-back-onclick");
@@ -80,16 +72,10 @@ function clickOnUrgent() {
 }
 
 function clickOnMedium() {
-  document
-    .getElementById("medium")
-    .classList.remove("btn-bg-change-back-onclick");
-  document
-    .getElementById("medium")
-    .classList.toggle("btn-bg-change-medium-onclick");
+  document.getElementById("medium").classList.remove("btn-bg-change-back-onclick");
+  document.getElementById("medium").classList.toggle("btn-bg-change-medium-onclick");
   document.getElementById("medium").style.boxShadow = "none";
-  document
-    .getElementById("medium")
-    .classList.toggle("prio-txt-color-set-white");
+  document.getElementById("medium").classList.toggle("prio-txt-color-set-white");
 
   document.getElementById("low").classList.add("btn-bg-change-back-onclick");
   document.getElementById("low").classList.add("box-shadow:hover");
@@ -114,7 +100,6 @@ function toggleDropdown() {
 function toggleDropdownCategory() {
   document.getElementById("myDropdownCategory").classList.toggle("show");
 }
-
 
 window.onclick = function (event) {
   // Überprüfen, ob außerhalb des Dropdowns "myDropdown" geklickt wurde
@@ -161,37 +146,37 @@ async function renderAssignedTo() {
 }
 
 function toggleBackground(checkbox) {
-  const listItem = checkbox.closest('.list-item');
+  const listItem = checkbox.closest(".list-item");
 
   if (checkbox.checked) {
     listItem.style.backgroundColor = "#2a3647";
   } else {
-    listItem.style.backgroundColor = "";  // Setzt die Hintergrundfarbe zurück
+    listItem.style.backgroundColor = ""; // Setzt die Hintergrundfarbe zurück
   }
 }
 
 function toggleBackground(checkbox) {
-  const listItem = checkbox.closest('.list-item');
-  const contactName = listItem.querySelector('.list-item-name label').textContent.trim();
-  const contactCircle = listItem.querySelector('.circle').cloneNode(true); // Kopiere das Kreis-Element
+  const listItem = checkbox.closest(".list-item");
+  const contactName = listItem.querySelector(".list-item-name label").textContent.trim();
+  const contactCircle = listItem.querySelector(".circle").cloneNode(true); // Kopiere das Kreis-Element
 
-  const selectedContactsContainer = document.getElementById('selected-contacts-container');
-  
+  const selectedContactsContainer = document.getElementById("selected-contacts-container");
+
   if (checkbox.checked) {
-      listItem.style.backgroundColor = "#2a3647";
+    listItem.style.backgroundColor = "#2a3647";
 
-      // Füge das Kreis-Element zum ausgewählten Kontaktcontainer hinzu
-      selectedContactsContainer.appendChild(contactCircle);
+    // Füge das Kreis-Element zum ausgewählten Kontaktcontainer hinzu
+    selectedContactsContainer.appendChild(contactCircle);
   } else {
-      listItem.style.backgroundColor = "";  // Setzt die Hintergrundfarbe zurück
+    listItem.style.backgroundColor = ""; // Setzt die Hintergrundfarbe zurück
 
-      // Entferne das Kreis-Element aus dem ausgewählten Kontaktcontainer
-      const circles = selectedContactsContainer.querySelectorAll('.circle');
-      circles.forEach(circle => {
-          if (circle.textContent.trim() === contactCircle.textContent.trim()) {
-              selectedContactsContainer.removeChild(circle);
-          }
-      });
+    // Entferne das Kreis-Element aus dem ausgewählten Kontaktcontainer
+    const circles = selectedContactsContainer.querySelectorAll(".circle");
+    circles.forEach((circle) => {
+      if (circle.textContent.trim() === contactCircle.textContent.trim()) {
+        selectedContactsContainer.removeChild(circle);
+      }
+    });
   }
 }
 /*End dropdown assigned to*/
@@ -200,9 +185,7 @@ function toggleBackground(checkbox) {
 document.addEventListener("DOMContentLoaded", () => {
   const subtaskInput = document.querySelector(".input.subtask");
   const subtaskBtnAdd = document.querySelector(".btn-subtask.add");
-  const subtaskBtnCheckCancel = document.querySelector(
-    ".btn-subtask.check-cancel"
-  );
+  const subtaskBtnCheckCancel = document.querySelector(".btn-subtask.check-cancel");
   const subtaskCancelBtn = document.querySelector(".cancel-subtask");
   const subtaskCheckBtn = document.querySelector(".check-subtask");
 
@@ -308,14 +291,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function confirmSubtaskEdit() {
-    const subtaskListItemsEdit = document.querySelectorAll(
-      ".subtask-list-item-edit"
-    );
+    const subtaskListItemsEdit = document.querySelectorAll(".subtask-list-item-edit");
 
     subtaskListItemsEdit.forEach((item) => {
-      const confirmSubtaskEditBtn = item.querySelector(
-        ".confirm-subtask-edit-btn"
-      );
+      const confirmSubtaskEditBtn = item.querySelector(".confirm-subtask-edit-btn");
       confirmSubtaskEditBtn.addEventListener("click", () => {
         const index = item.getAttribute("data-index");
         const input = item.querySelector(".edit-subtask-input");
@@ -332,13 +311,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /*End Subtask input*/
 
+document.addEventListener("DOMContentLoaded", function () {
+  const dateInput = document.getElementById("due-date-input");
 
-document.addEventListener("DOMContentLoaded", function() {
-  const dateInput = document.getElementById('due-date-input');
-  
   // Hole das heutige Datum im Format YYYY-MM-DD
-  const today = new Date().toISOString().split('T')[0];
-  
+  const today = new Date().toISOString().split("T")[0];
+
   // Setze das min-Attribut auf das heutige Datum
-  dateInput.setAttribute('min', today);
+  dateInput.setAttribute("min", today);
 });

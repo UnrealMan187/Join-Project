@@ -3,11 +3,11 @@
 /**
  * Funktion, die beim Laden des Logos eine Animation ausführt.
  */
-document.addEventListener("DOMContentLoaded", function() {
-    const logo = document.getElementById("logo");
-    logo.style.transition = "transform 1s, opacity 1s";
-    logo.style.transform = "translateY(0)";
-    logo.style.opacity = "1";
+document.addEventListener("DOMContentLoaded", function () {
+  const logo = document.getElementById("logo");
+  logo.style.transition = "transform 1s, opacity 1s";
+  logo.style.transform = "translateY(0)";
+  logo.style.opacity = "1";
 });
 
 /**
@@ -15,15 +15,15 @@ document.addEventListener("DOMContentLoaded", function() {
  * Diese Funktion setzt vordefinierte Demo-Anmeldeinformationen und leitet den Benutzer weiter zum Dashboard.
  */
 function demoLogin() {
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
-    
-    // Setzt Demo-Anmeldeinformationen
-    emailInput.value = "demo@example.com";
-    passwordInput.value = "demopassword";
-    
-    // Weiterleitung zur Dashboard-Seite
-    window.location.href = "dashboard.html";
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+
+  // Setzt Demo-Anmeldeinformationen
+  emailInput.value = "demo@example.com";
+  passwordInput.value = "demopassword";
+
+  // Weiterleitung zur Dashboard-Seite
+  window.location.href = "dashboard.html";
 }
 
 /**
@@ -31,21 +31,21 @@ function demoLogin() {
  * @param {Event} event - Das Ereignis, das ausgelöst wird, wenn das Formular abgeschickt wird.
  */
 function handleSubmit(event) {
-    event.preventDefault(); // Verhindert das Standard-Formularabsendeverhalten
-    
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    
-    if (validateEmail(email) && validatePassword(password)) {
-        // Fiktive Authentifizierung - hier würde normalerweise eine API-Anfrage gesendet
-        if (email === "user@example.com" && password === "password") {
-            window.location.href = "dashboard.html"; // Weiterleitung nach erfolgreicher Anmeldung
-        } else {
-            alert("Falsche Anmeldeinformationen");
-        }
+  event.preventDefault(); // Verhindert das Standard-Formularabsendeverhalten
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (validateEmail(email) && validatePassword(password)) {
+    // Fiktive Authentifizierung - hier würde normalerweise eine API-Anfrage gesendet
+    if (email === "user@example.com" && password === "password") {
+      window.location.href = "dashboard.html"; // Weiterleitung nach erfolgreicher Anmeldung
     } else {
-        alert("Bitte geben Sie eine gültige E-Mail-Adresse und ein Passwort ein");
+      alert("Falsche Anmeldeinformationen");
     }
+  } else {
+    alert("Bitte geben Sie eine gültige E-Mail-Adresse und ein Passwort ein");
+  }
 }
 
 /**
@@ -54,8 +54,8 @@ function handleSubmit(event) {
  * @returns {boolean} - True, wenn die E-Mail-Adresse gültig ist, andernfalls false.
  */
 function validateEmail(email) {
-    const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return re.test(String(email).toLowerCase());
+  const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  return re.test(String(email).toLowerCase());
 }
 
 /**
@@ -64,8 +64,8 @@ function validateEmail(email) {
  * @returns {boolean} - True, wenn das Passwort gültig ist, andernfalls false.
  */
 function validatePassword(password) {
-    // Beispielhafte Passwortvalidierung: mindestens 6 Zeichen
-    return password.length >= 6;
+  // Beispielhafte Passwortvalidierung: mindestens 6 Zeichen
+  return password.length >= 6;
 }
 
 // Event-Listener für das Absenden des Formulars
