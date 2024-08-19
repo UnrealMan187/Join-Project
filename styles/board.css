@@ -1,5 +1,7 @@
 button {
   cursor: pointer;
+  border: 0;
+  background-color: #F6F7F8;
 }
 
 * {
@@ -372,9 +374,9 @@ body {
   display: none !important;
 }
 
-.show {
+/*.show {
   display: flex !important;
-}
+}*/
 
 .cardContainer.highlightDragArea {
   outline-color: #ababab;
@@ -397,12 +399,6 @@ body {
   margin-top: 8px;
   margin-bottom: 32px;
   padding: 0 10px;
-}
-
-.imgInput {
-  background: url("../assets/img/icons/plusInput.svg") no-repeat;
-  background-size: 20px 20px;
-  background-position: right;
 }
 
 .headerTitle {
@@ -429,10 +425,6 @@ input[type="search"]::-webkit-search-cancel-button {
   cursor: pointer;
 }
 
-.statusHeader img:hover {
-  cursor: pointer;
-  content: url("../assets/img/icons/plusBtnblue.png");
-}
 
 .addBtn:hover {
   transition: 225ms;
@@ -710,10 +702,6 @@ h2 {
   opacity: 0px;
   margin-bottom: 24px;
 }
-.urgentBtnOnAddTask
-{
-  height: 500px;
-}
 .popupCheckboxContainer {
   display: flex;
   align-items: center;
@@ -807,6 +795,88 @@ h2 {
   border: 1px solid #d1d1d1;
 }
 
+/*Pop up Addtask*/
+dialog{
+    width: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    border: 0;
+    border-radius: 15px;
+  }
+  .taskContainerPopup{
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f7f8;
+  }
+  .addTaskPopupClose {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 64px;
+    right: 40px;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 0;
+}
+
+.addTaskPopupClose img {
+    margin-top: 3px;
+}
+
+.addTaskPopupClose:hover {
+    background-color: rgba(238, 238, 238, 1);
+}
+.d-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.descriptionPopup{
+width: min(440px, 100%);
+}
+
+@media(max-height: 824px)
+{
+  .popupOnTaskSelectionMainContainer
+  {
+    height: 90%;
+    padding-top: 30px;
+  }
+  .popupKategorieOnTopMainContainer,.popupDateMainContainer,.popupSpan,.popupPrioMainContainer
+  {
+    margin-bottom: 24px;
+  }
+ .popupHeader
+ {
+    font-size: 40px;
+ }
+ .deleteAndEditMainContainer
+ {
+  margin-top: 20px;
+ }
+}
+
+@media(max-width: 1690px)
+{
+  .popupOnTaskSelectionMainContainer
+  {
+    width: 38%;
+  }
+  .popupKategorieOnTopMainContainer,.popupHeader,.popupSpan,.popupDateMainContainer,.popupPrioMainContainer,.popupAssignedToMainContainer,.subtasksMainContainer
+  {
+    width: 85%;
+  }
+  .popupHeader
+  {
+    line-height: 50px;
+    height: 100px;
+    margin-bottom: 24px;
+  }
+  
+}
+
 @media screen and (max-width: 1440px) {
   .statuses {
     padding-left: 60px;
@@ -829,6 +899,17 @@ h2 {
   }
 }
 
+@media(max-width: 1237px)
+{
+  .popupOnTaskSelectionMainContainer
+  {
+    position: fixed;
+    left: -100px;
+    width: 520px;
+  }
+ 
+}
+
 @media (max-width: 1100px) {
   .addBtnText {
     display: none;
@@ -843,6 +924,31 @@ h2 {
   .boardSection {
     padding-left: 0;
   }
+
+  .popupOnTaskSelectionMainContainer
+  {
+    position: fixed;
+    left: -240px;
+    width: 500px;
+  }
+}
+
+@media (max-width: 941px) {
+  .popupOnTaskSelectionMainContainer
+  {
+    position: fixed;
+    left: -300px;
+    width: 500px;
+  }
+}
+
+@media (max-width: 830px) {
+  .popupOnTaskSelectionMainContainer
+  {
+    position: fixed;
+    left: -350px;
+    width: 500px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -856,6 +962,33 @@ h2 {
     gap: 20px;
     margin-bottom: 35px;
     height: unset;
+  }
+}
+
+@media (max-width: 725px) {
+  .popupOnTaskSelectionMainContainer
+  {
+    position: fixed;
+    left: -400px;
+    width: 500px;
+  }
+}
+
+@media (max-width: 650px) {
+  .popupOnTaskSelectionMainContainer
+  {
+    position: fixed;
+    left: -440px;
+    width: 500px;
+  }
+}
+
+@media (max-width: 595px) {
+  .popupOnTaskSelectionMainContainer
+  {
+    position: fixed;
+    left: -470px;
+    width: 500px;
   }
 }
 
@@ -937,6 +1070,41 @@ h2 {
   .taskCardBig {
     margin-left: 24px;
   }
+
+  .popupOnTaskSelectionMainContainer
+  {
+    position: fixed;
+    left: -250px;
+    width: 350px;
+    height: 80%;
+  }
+  .popupHeader
+  {
+    height: 190px;
+    font-size: 28px;
+    text-wrap: wrap;
+    line-height: 35px;
+    margin-bottom: 14px;
+  }
+  .popupSpan,.popupDateMainContainer,.popupDateTxt,.popUpDate,.popupPrioMainContainer,.popupPrioTxt,.popupPrio,.assignedToTxt,.subtasksTxt,.checkboxTxt
+  {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .deleteAndEditMainContainer
+  {
+    width: 200px;
+  }
+}
+
+@media (max-width: 500px) {
+  .popupOnTaskSelectionMainContainer
+  {
+    position: fixed;
+    left: -300px;
+    width: 350px;
+    height: 80%;
+  }
 }
 
 .titleCard {
@@ -979,5 +1147,69 @@ h2 {
 
   .prioBtnText {
     font-size: 12px !important;
+  }
+}
+
+@media (max-width: 426px) {
+  .popupOnTaskSelectionMainContainer
+  {
+    position: fixed;
+    left: -320px;
+    width: 350px;
+    height: 80%;
+  }
+}
+
+@media (max-width: 410px) {
+  .popupOnTaskSelectionMainContainer
+  {
+    position: fixed;
+    left: -250px;
+    width: 300px;
+    height: 80%;
+  }
+  .popupSpan
+  {
+    height: 50px;
+  }
+  .checkboxTxt
+  {
+    width: 200px;
+    text-wrap: wrap;
+    margin: 0;
+  }
+  .subtasks,.popupCheckboxContainer
+  {
+    margin-bottom: 14px;
+    height: 40px;
+  }
+  .subtasksTxt
+  {
+    margin-bottom: 0;
+  }
+  .deleteAndEditMainContainer
+  {
+    width: 150px;
+  }
+ 
+}
+
+@media (max-width: 384px) {
+  .popupOnTaskSelectionMainContainer
+  {
+    position: fixed;
+    left: -280px;
+    width: 300px;
+    height: 80%;
+  }
+}
+
+@media (max-width: 336px) {
+  .popupOnTaskSelectionMainContainer
+  {
+    position: fixed;
+    left: -290px;
+    width: 300px;
+    height: 80%;
   }
 }

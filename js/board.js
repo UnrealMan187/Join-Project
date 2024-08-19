@@ -1,7 +1,8 @@
-const taskCard = document.getElementById("taskCard");
-const dropZones = document.querySelectorAll(
-  "#cardContainertoDo, #cardContainerinProgress, #cardContainerawaitingFeedback, #cardContainerdone"
-);
+const taskCard = document.getElementById('taskCard');
+const dropZones = document.querySelectorAll('#cardContainertoDo, #cardContainerinProgress, #cardContainerawaitingFeedback, #cardContainerdone');
+/*const openButton = document.querySelector("data-open-modal")
+const closeButton = document.querySelector("data-close-modal")
+const modal = document.querySelector("data-modal")*/
 
 // Event listener für den Start des Drag-Vorgangs
 taskCard.addEventListener("dragstart", function (event) {
@@ -35,25 +36,30 @@ function closeDialog() {
   document.getElementById("popupOnTaskSelectionID").style.visibility = "hidden";
 }
 
-function popupValueImplementFromTask() {
-  let titelCardInput = document.getElementById("titelCardID").innerHTML;
-  let descriptionCard = document.getElementById("descriptionCardID").innerHTML;
-  let contactEllipse = document.getElementById("profileBadges").innerHTML;
+function popupValueImplementFromTask()
+{   
+    let titelCardInput = document.getElementById('titelCardID').innerHTML;
+    let descriptionCard = document.getElementById('descriptionCardID').innerHTML;
+    let contactEllipse = document.getElementById('profileBadges').innerHTML;
+    
+    let valueFromTask = document.getElementById('popupHeaderID');
+    valueFromTask.innerHTML = titelCardInput;
+    let valueFromdescription = document.getElementById('popupSpanID');
+    valueFromdescription.innerHTML = descriptionCard;
+    
+    let valueFromEllipse = document.getElementById('popupContactEllipseID');
+    valueFromEllipse.innerHTML = '';     
+    valueFromEllipse.innerHTML += contactEllipse;
 
-  let valueFromTask = document.getElementById("popupHeaderID");
-  valueFromTask.innerHTML = titelCardInput;
-  let valueFromdescription = document.getElementById("popupSpanID");
-  valueFromdescription.innerHTML = descriptionCard;
+    let valueFromName = document.getElementById('popupContactNameID');
+    valueFromName.innerHTML = '';   
 
-  let valueFromEllipse = document.getElementById("popupContactEllipseID");
-  valueFromEllipse.innerHTML += contactEllipse;
+    // for(let i = 0; i < users.length; i++) {
+    //     valueFromName.innerHTML += `
+    //         <div>${users[i].name}</div>
+    //         `;
+    // }
 
-  let valueFromName = document.getElementById("popupContactNameID");
-  for (let i = 0; i < users.length; i++) {
-    valueFromName.innerHTML += `
-            <div>${users[i].name}</div>
-            `;
-  }
 }
 
 async function renderBadges() {
@@ -98,3 +104,53 @@ function renderTaskCards() {
                 `;
   }
 }
+
+
+/*AddTask Pop up*/
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.querySelector('dialog[data-modal]');
+    const openModalButton = document.getElementById('openModal');
+    const closeModalButton = document.getElementById('closeModal');
+    const alsoOpenButtons = document.querySelectorAll('.alsoOpenModal'); // Alle Elemente mit der Klasse "alsobtn"
+
+
+    if (modal && openModalButton && closeModalButton) {
+        // Modal öffnen
+        openModalButton.addEventListener('click', () => {
+            modal.showModal();
+        });
+
+        alsoOpenButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                modal.showModal();
+            });
+        });
+
+
+        // Modal schließen
+        closeModalButton.addEventListener('click', () => {
+            modal.close();
+        });
+
+        // Optional: Modal schließen, wenn man außerhalb des Modals klickt
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.close();
+            }
+        });
+    } else {
+        console.error('Modal, Open Button, or Close Button not found in the DOM.');
+    }
+});
+
+
+
+/*openButton.addEventListener("click", () => {
+    modal.showModal()
+})
+
+closeButton.addEventListener("click", () => {
+    modal.close()
+})
+*/

@@ -57,21 +57,40 @@ function getTaskPrio() {
   return "None";
 }
 
+//reset all Class from Prio Buttons
+function clearPrioButtons()
+{
+  document.getElementById('urgent').className = "btn-prio btn-prio:hover";
+  document.getElementById('urgent-whiteID').className ="d-none";
+  document.getElementById('urgentID').className ="";
+  document.getElementById('urgent').style.boxShadow = "";
+
+  document.getElementById('medium').className = "btn-prio";
+  document.getElementById('medium-whiteID').className ="d-none";
+  document.getElementById('mediumID').className ="";
+  document.getElementById('medium').style.boxShadow = "";
+
+  document.getElementById('low').className = "btn-prio";
+  document.getElementById('low-whiteID').className ="d-none";
+  document.getElementById('lowID').className ="";
+  document.getElementById('low').style.boxShadow = "";
+}
+//click on Urgent Prio Button
 function clickOnUrgent() {
+<<<<<<< HEAD
+=======
+  clearPrioButtons();
+>>>>>>> 3e79edccc707e31ab806693b38a442a2f45b5310
   document.getElementById("urgent").classList.remove("btn-bg-change-back-onclick");
   document.getElementById("urgent").classList.toggle("btn-bg-change-urgent-onclick");
   document.getElementById("urgent").style.boxShadow = "none";
   document.getElementById("urgentID").classList.toggle("d-none");
   document.getElementById("urgent").classList.toggle("prio-txt-color-set-white");
   document.getElementById("urgent-whiteID").classList.toggle("d-none");
-
-  document.getElementById("low").classList.add("btn-bg-change-back-onclick");
-  document.getElementById("low").className = "boxShadow";
-
-  document.getElementById("medium").classList.add("btn-bg-change-back-onclick");
 }
-
+//click on Medium Prio Button
 function clickOnMedium() {
+<<<<<<< HEAD
   document.getElementById("medium").classList.remove("btn-bg-change-back-onclick");
   document.getElementById("medium").classList.toggle("btn-bg-change-medium-onclick");
   document.getElementById("medium").style.boxShadow = "none";
@@ -81,16 +100,25 @@ function clickOnMedium() {
   document.getElementById("low").classList.add("box-shadow:hover");
 
   document.getElementById("urgent").classList.add("btn-bg-change-back-onclick");
+=======
+  clearPrioButtons();
+  document.getElementById("medium").classList.remove("btn-bg-change-back-onclick");
+  document.getElementById("medium").classList.toggle("btn-bg-change-medium-onclick");
+  document.getElementById("medium").style.boxShadow = "none";
+  document.getElementById("mediumID").classList.toggle("d-none");
+  document.getElementById("medium").classList.toggle("prio-txt-color-set-white");
+  document.getElementById("medium-whiteID").classList.toggle("d-none");
+>>>>>>> 3e79edccc707e31ab806693b38a442a2f45b5310
 }
-
+//click on Low Prio Button
 function clickOnLow() {
+  clearPrioButtons();
   document.getElementById("low").classList.remove("btn-bg-change-back-onclick");
-  document.getElementById("low").classList.add("btn-bg-change-low-onclick");
+  document.getElementById("low").classList.toggle("btn-bg-change-low-onclick");
   document.getElementById("low").style.boxShadow = "none";
-
-  document.getElementById("medium").classList.add("btn-bg-change-back-onclick");
-
-  document.getElementById("urgent").classList.add("btn-bg-change-back-onclick");
+  document.getElementById("lowID").classList.toggle("d-none");
+  document.getElementById("low").classList.toggle("prio-txt-color-set-white");
+  document.getElementById("low-whiteID").classList.toggle("d-none");
 }
 /*Begin dropdown assigned to and dropdown category*/
 function toggleDropdown() {
@@ -132,7 +160,7 @@ async function renderAssignedTo() {
                       <li class="list-item assigned-to ">
                         <div class="list-item-name">
                             <div class="circle initialsColor${j}">${getUserInitials(users[i].name)}</div>
-                            <label for="AssignedContact">${users[i].name}</label>
+                            <label>${users[i].name}</label>
                         </div>
                         <input type="checkbox" onclick="toggleBackground(this)" id="AssignedContact${i}" name="AssignedContact">
                       </li>
