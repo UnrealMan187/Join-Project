@@ -136,27 +136,56 @@ async function renderAssignedTo() {
   let assignedMenu = document.getElementById("myDropdown");
   let j = 1;
 
-  await loadUsers("/users");
-
+  // Setze die Liste zurück, bevor neue Einträge hinzugefügt werden
   assignedMenu.innerHTML = "";
 
-  for (let i = 0; i < users.length; i++) {
-    assignedMenu.innerHTML += `
-                      <li class="list-item assigned-to ">
-                        <div class="list-item-name">
-                            <div class="circle initialsColor${j}">${getUserInitials(users[i].name)}</div>
-                            <label>${users[i].name}</label>
-                        </div>
-                        <input type="checkbox" onclick="toggleBackground(this)" id="AssignedContact${i}" name="AssignedContact">
-                      </li>
-    `;
+  // Stelle sicher, dass die Benutzerliste nur einmal geladen wird
+  if (!window.users) {
+    await loadUsers("/users");
+  }
 
-    j++;
-    if (j > 15) {
-      j = 1;
+  // Verwende eine Set-Struktur, um doppelte Benutzer zu vermeiden
+  const seenUsers = new Set();
+
+  for (let i = 0; i < users.length; i++) {
+    if (!seenUsers.has(users[i].name)) {
+      seenUsers.add(users[i].name);
+
+      let li = document.createElement("li");
+      li.className = "list-item assigned-to";
+      
+      let divName = document.createElement("div");
+      divName.className = "list-item-name";
+      
+      let circle = document.createElement("div");
+      circle.className = "circle initialsColor" + j;
+      circle.textContent = getUserInitials(users[i].name);
+
+      let label = document.createElement("label");
+      label.textContent = users[i].name;
+
+      divName.appendChild(circle);
+      divName.appendChild(label);
+      li.appendChild(divName);
+      
+      let checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.onclick = function() { toggleBackground(this); };
+      checkbox.id = "AssignedContact" + i;
+      checkbox.name = "AssignedContact";
+
+      li.appendChild(checkbox);
+      
+      assignedMenu.appendChild(li);
+
+      j++;
+      if (j > 15) {
+        j = 1;
+      }
     }
   }
 }
+
 
 function toggleBackground(checkbox) {
   const listItem = checkbox.closest(".list-item");
