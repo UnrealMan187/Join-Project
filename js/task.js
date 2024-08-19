@@ -105,6 +105,7 @@ function clickOnLow() {
   document.getElementById("low").classList.toggle("prio-txt-color-set-white");
   document.getElementById("low-whiteID").classList.toggle("d-none");
 }
+
 /*Begin dropdown assigned to and dropdown category*/
 function toggleDropdown() {
   document.getElementById("myDropdown").classList.toggle("show");
@@ -136,54 +137,42 @@ async function renderAssignedTo() {
   let assignedMenu = document.getElementById("myDropdown");
   let j = 1;
 
-  // Setze die Liste zurück, bevor neue Einträge hinzugefügt werden
+  // Setze den Inhalt von assignedMenu zurück
   assignedMenu.innerHTML = "";
 
-  // Stelle sicher, dass die Benutzerliste nur einmal geladen wird
-  if (!window.users) {
-    await loadUsers("/users");
-  }
+  // Benutzer laden
+  await loadUsers("/users");
 
-  // Verwende eine Set-Struktur, um doppelte Benutzer zu vermeiden
-  const seenUsers = new Set();
+  // Duplikate entfernen
+  let uniqueUsers = [];
+  users.forEach(user => {
+      if (!uniqueUsers.some(uniqueUser => uniqueUser.email === user.email)) {
+          uniqueUsers.push(user);
+      }
+  });
 
-  for (let i = 0; i < users.length; i++) {
-    if (!seenUsers.has(users[i].name)) {
-      seenUsers.add(users[i].name);
+  // Nutze eine temporäre Variable, um den gesamten HTML-Inhalt zu erstellen
+  let htmlContent = "";
 
-      let li = document.createElement("li");
-      li.className = "list-item assigned-to";
-      
-      let divName = document.createElement("div");
-      divName.className = "list-item-name";
-      
-      let circle = document.createElement("div");
-      circle.className = "circle initialsColor" + j;
-      circle.textContent = getUserInitials(users[i].name);
-
-      let label = document.createElement("label");
-      label.textContent = users[i].name;
-
-      divName.appendChild(circle);
-      divName.appendChild(label);
-      li.appendChild(divName);
-      
-      let checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.onclick = function() { toggleBackground(this); };
-      checkbox.id = "AssignedContact" + i;
-      checkbox.name = "AssignedContact";
-
-      li.appendChild(checkbox);
-      
-      assignedMenu.appendChild(li);
+  for (let i = 0; i < uniqueUsers.length; i++) {
+      htmlContent += `
+          <li class="list-item assigned-to">
+              <div class="list-item-name">
+                  <div class="circle initialsColor${j}">${getUserInitials(uniqueUsers[i].name)}</div>
+                  <label>${uniqueUsers[i].name}</label>
+              </div>
+              <input type="checkbox" onclick="toggleBackground(this)" id="AssignedContact${i}" name="AssignedContact">
+          </li>
+      `;
 
       j++;
       if (j > 15) {
-        j = 1;
+          j = 1;
       }
-    }
   }
+
+  // Weisen Sie den gesamten generierten HTML-Inhalt einmal zu
+  assignedMenu.innerHTML = htmlContent;
 }
 
 
