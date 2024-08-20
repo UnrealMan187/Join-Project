@@ -1,6 +1,6 @@
 let tasks = [];
 
-function createTask() {
+async function createTask() {
   let taskTitle = document.getElementById("title").value;
   let taskDescription = document.getElementById("description").value;
   let taskDate = document.getElementById("due-date-input").value;
@@ -22,7 +22,7 @@ function createTask() {
 
   if (users.length > 0) {
     for (let i = 0; i < users.length; i++) {
-      let checkbox = document.getElementById(`AssignedContact${i}`);
+      let checkbox = document.getElementById('AssignedContact${i}');
 
       if (checkbox.checked == true) {
         assignedTo += users[i].name + ",";
@@ -31,7 +31,11 @@ function createTask() {
     assignedTo = assignedTo.slice(0, -1);
   }
 
-  alert(taskPrio);
+
+
+  // alert(taskPrio);
+
+
 
   tasks.push({
     title: taskTitle,
@@ -42,6 +46,9 @@ function createTask() {
     subtasks: taskSubtasks,
     assigned: assignedTo,
   });
+
+  await saveTasks("/tasks", tasks[0]);
+
 }
 
 function getTaskPrio() {
