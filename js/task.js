@@ -22,7 +22,7 @@ async function createTask() {
 
   if (users.length > 0) {
     for (let i = 0; i < users.length; i++) {
-      let checkbox = document.getElementById('AssignedContact${i}');
+      let checkbox = document.getElementById(`AssignedContact${i}`);
 
       if (checkbox.checked == true) {
         assignedTo += users[i].name + ",";
