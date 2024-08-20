@@ -157,7 +157,7 @@
           <div class="border-vertical"></div>
           <span class="span-txt">Better with a team</span>
       </section>
-      <section id="display-contactID" class="display-contact">
+      <section id="display-contactID" class="d-none display-contact">
           <div class="contact-name-main-container">
               <div class="ellipse-container">
                   <div id="ellipse" class="ellipse"></div>

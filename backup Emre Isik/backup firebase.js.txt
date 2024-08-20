@@ -7,7 +7,6 @@ async function loadUsers(path = "/users") {
   users = [];
   let userResponse = await fetch(FIREBASE_URL + path + ".json");
   let responseToJson = await userResponse.json();
-  console.log(responseToJson);
 
   if (responseToJson) {
     Object.keys(responseToJson).forEach((key) => {
@@ -21,7 +20,6 @@ async function loadUsers(path = "/users") {
     users.sort((a, b) => {
       return a.name.localeCompare(b.name); // sortiere users nach dem Wert "name"
     });
-    console.log(users);
   }
 }
 
@@ -54,12 +52,7 @@ async function loadUsers(path = "/users") {
       method: "DELETE",
     });
     await renderContacts();
-    if(currentUser > 0) {
-      currentUser--;
-      loadUserInformation(currentUser);
-    } else {
-      loadUserInformation(0);
-    }
+    loadUserInformation(-1);
   }
 
   async function editUser(id, data = {}) {
@@ -75,7 +68,8 @@ async function loadUsers(path = "/users") {
       body: JSON.stringify(data),
     });
 
-    renderContacts();
+    await renderContacts();
+    loadUserInformation(currentUser);
     closePopup();
   }
 
@@ -96,6 +90,7 @@ async function loadUsers(path = "/users") {
 async function renderContacts() {
   let html = "";
   let firstLetter = "0";
+  let j = 1;
 
   await loadUsers("/users");
 
@@ -107,17 +102,23 @@ async function renderContacts() {
       firstLetter = users[i].name[0].toUpperCase();
     }
 
-    html += `<div class="contact-container" onclick="loadUserInformation(${i}); hideContactsListInResponsiveMode()">
+    html += `<div id="user-container${i}">
+            <div id="contact-containerID" class="contact-container" onclick="loadUserInformation(${i}); hideContactsListInResponsiveMode()">
             <div class="contact-list-ellipse">
-               <div class="ellipse-list">${getUserInitials(users[i].name)}</div>
+               <div id="userColor${i}" class="ellipse-list initialsColor${j}">${getUserInitials(users[i].name)}</div>
             </div>
             <div class="contact">
                 <div class="contact-list-name" id="contactName">${users[i].name}</div>
                 <div class="contact-list-email" id="contactEmail">${users[i].email}</div>
             </div>
             </div>
+            </div>
             `;
+
+    j++;
+    if(j > 15) { j = 1; }
   }
+  
 
   document.getElementById("contact-list").innerHTML = html;
 }
@@ -136,11 +137,23 @@ function getUserInitials(username) {
   return result;
 }
 
-function loadUserInformation(id) {
-  document.getElementById("contact-name").innerHTML = users[id].name;
-  document.getElementById("contact-email").innerHTML = users[id].email;
-  document.getElementById("contact-phone").innerHTML = users[id].phone;
-  document.getElementById("ellipse").innerHTML = getUserInitials(users[id].name);
+async function loadUserInformation(id) {
+  document.getElementById("contact-name").innerHTML = id == -1 ? "" : users[id].name;
+  document.getElementById("contact-email").innerHTML = id == -1 ? "" : users[id].email;
+  document.getElementById("contact-phone").innerHTML = id == -1 ? "" : users[id].phone;
+  document.getElementById("ellipse").innerHTML = id == -1 ? "" : getUserInitials(users[id].name);  
+  
+  if(id == -1) {
+    document.getElementById("display-contactID").classList.add("d-none");
+  } else {
+    document.getElementById("display-contactID").classList.remove("d-none");
+
+    let userEllipseColor = document.getElementById(`userColor${id}`).className.split(" ")[1];
+
+    document.getElementById("ellipse").className = `ellipse ${userEllipseColor}`;
+
+    highlightUser(id);
+  }
   currentUser = id;
 }
 
@@ -171,13 +184,19 @@ function showContactListAgainInResponsiveMode()
   }
 }
 
-async function initContacts() {
-  await renderContacts();
-  if(users.length > 0) {
-    loadUserInformation(0);
-    currentUser = 0;
-  }
+function changeBgOnSelectedUser(id)
+{
+  document.getElementById('contact-containerID').classList.add('selected-user-color');
 }
 
+async function initContacts() {
+  await renderContacts();
+  loadUserInformation(-1);
+}
 
-
+function highlightUser(userIndex) {
+  for(let i = 0; i < users.length; i++) {
+    document.getElementById(`user-container${i}`).classList.remove("highlightUser");
+  }
+  document.getElementById(`user-container${userIndex}`).classList.add("highlightUser");
+}

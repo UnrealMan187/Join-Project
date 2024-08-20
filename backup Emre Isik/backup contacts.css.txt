@@ -1,6 +1,6 @@
 /* styles.css */
 .d-none {
-  display: none;
+  display: none !important;
 }
 .contacts-main-container {
   display: flex;
@@ -44,7 +44,6 @@
   font-weight: 400;
   line-height: 24px;
   text-align: left;
-  border: 2px solid #ffffff;
 }
 .ellipse-list {
   width: 42px;
@@ -79,16 +78,16 @@
 }
 .contact-container {
   display: flex;
-  cursor: pointer;
   width: 352px;
   height: 78px;
   padding: 15px 24px 15px 24px;
   gap: 35px;
   border-radius: 10px 0px 0px 0px;
 }
-.contact-container:hover
-{
+.contact-container:hover {
   background-color: #F5F5F5;
+  cursor: pointer;
+  border-radius: 16px;
 }
 .contact {
   width: 140px;
@@ -110,7 +109,7 @@
   width: 352px;
   height: 56px;
   border-radius: 10px;
-  border: 1px 0px 0px 0px;
+  border: none;
   opacity: 0px;
   cursor: pointer;
   background-color: #2a3647;
@@ -127,7 +126,8 @@
   margin-left: 20px;
 }
 .add-contact:hover {
-  background-color: #0056b3;
+  background-color: rgba(43, 169, 227, 1);
+  border: none;
 }
 /* display-contact-header */
 .display-contact-header {
@@ -157,6 +157,7 @@
   opacity: 0px;
   border: 2px solid #29abe2;
 }
+
 .span-txt {
   width: 235px;
   height: 32px;
@@ -165,6 +166,17 @@
   text-align: left;
   color: #2a3647;
 }
+
+
+@keyframes slideIn {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
 .display-contact {
   display: flex;
   flex-direction: column;
@@ -175,7 +187,9 @@
   top: 311px;
   left: 750px;
   gap: 21px;
+  animation: slideIn 1s forwards;
 }
+
 .ellipse-container {
   display: flex;
   align-items: center;
@@ -186,6 +200,7 @@
   border: 3px 0px 0px 0px;
   opacity: 0px;
 }
+
 .ellipse {
   background-color: #ff7a00;
   border-radius: 100%;
@@ -198,6 +213,7 @@
   font-size: 47px;
   font-weight: 300;
 }
+
 .contact-name-main-container {
   display: flex;
   align-items: center;
@@ -331,8 +347,74 @@
 .back-arrow-on-responsive:hover {
   background-color: #0C2E621F;
   cursor: pointer;
-
 }
+
+.highlightUser {
+  background-color: #2a3647;
+  color: white;
+  border-radius: 16px;
+}
+
+.initialsColor1 {
+  background-color: #f58b8b; /* Rot */
+}
+
+.initialsColor2 {
+  background-color: #90f190; /* Grün */
+}
+
+.initialsColor3 {
+  background-color: #7272f5; /* Blau */
+}
+
+.initialsColor4 {
+  background-color: #dfdf7d; /* Gelb */
+}
+
+.initialsColor5 {
+  background-color: #98eeee; /* Cyan */
+}
+
+.initialsColor6 {
+  background-color: #ff9cff; /* Magenta */
+}
+
+.initialsColor7 {
+  background-color: #ecc06e; /* Orange */
+}
+
+.initialsColor8 {
+  background-color: #f18cf1; /* Lila */
+}
+
+.initialsColor9 {
+  background-color: #FFC0CB; /* Pink */
+}
+
+.initialsColor10 {
+  background-color: #8d3939; /* Braun */
+}
+
+.initialsColor11 {
+  background-color: #b7d6e0; /* Hellblau */
+}
+
+.initialsColor12 {
+  background-color: #699669; /* Dunkelgrün */
+}
+
+.initialsColor13 {
+  background-color: #c0ab36; /* Gold */
+}
+
+.initialsColor14 {
+  background-color: #C0C0C0; /* Silber */
+}
+
+.initialsColor15 {
+  background-color: #000000; /* Schwarz */
+}
+
 
 @media (max-width: 1315px) {
   .display-contact-header {
@@ -468,6 +550,17 @@
     padding-left: 45px;
     gap: 35px;
     border-radius: 10px 0px 0px 0px;
+  }
+  .contact-containerHighlight {
+    width: 300px;
+    height: 78px;
+    padding-left: 45px;
+    gap: 35px;
+    border-radius: 10px 0px 0px 0px;
+  }
+  .contact-containerHighlight:hover {
+    background-color: red;
+    cursor: default;
   }
   .border-container {
     width: 300px;

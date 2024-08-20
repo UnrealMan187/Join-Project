@@ -797,7 +797,7 @@ h2 {
 
 /*Pop up Addtask*/
 dialog{
-    width: 100%;
+    width: 70%;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -1191,7 +1191,6 @@ width: min(440px, 100%);
   {
     width: 150px;
   }
- 
 }
 
 @media (max-width: 384px) {
