@@ -22,6 +22,36 @@ async function loadUsers(path = "/users") {
   }
 }
 
+async function loadTasks(path = "/tasks") {
+  tasks = [];
+  let userResponse = await fetch(FIREBASE_URL + path + ".json");
+  let responseToJson = await userResponse.json();
+
+  if (responseToJson) {
+    Object.keys(responseToJson).forEach((key) => {
+      tasks.push({
+        title: responseToJson[key]["title"],
+        description: responseToJson[key]["description"],
+        date: responseToJson[key]["date"],
+        category: responseToJson[key]["category"],
+        priority: responseToJson[key]["priority"],
+        subtasks: responseToJson[key]["subtasks"],
+        assigned: responseToJson[key]["assigned"],
+      });
+    });
+  }
+}
+
+async function saveTasks(path = "", data = {}) {
+  await fetch(FIREBASE_URL + path + ".json", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
+
 async function addUser() {
   let nameValue = document.getElementById("name").value;
   let phoneValue = document.getElementById("phone").value;

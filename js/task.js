@@ -1,6 +1,6 @@
 let tasks = [];
 
-function createTask() {
+async function createTask() {
   let taskTitle = document.getElementById("title").value;
   let taskDescription = document.getElementById("description").value;
   let taskDate = document.getElementById("due-date-input").value;
@@ -31,8 +31,6 @@ function createTask() {
     assignedTo = assignedTo.slice(0, -1);
   }
 
-  alert(taskPrio);
-
   tasks.push({
     title: taskTitle,
     description: taskDescription,
@@ -42,6 +40,9 @@ function createTask() {
     subtasks: taskSubtasks,
     assigned: assignedTo,
   });
+
+  await saveTasks("/tasks", tasks[0]);
+
 }
 
 function getTaskPrio() {
@@ -142,7 +143,7 @@ async function renderAssignedTo() {
 
   for (let i = 0; i < users.length; i++) {
     assignedMenu.innerHTML += `
-                      <li class="list-item assigned-to ">
+                      <li class="list-item assigned-to">
                         <div class="list-item-name">
                             <div class="circle initialsColor${j}">${getUserInitials(users[i].name)}</div>
                             <label>${users[i].name}</label>
