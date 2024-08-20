@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="./styles/addTask.css">
     
 
-    <script src="./js/firebase.js"></script>
-    <script src="./js/task.js"></script>
 </head>
 <body onload="renderBadges(); renderAssignedTo();">
     <!-- Header and Sidebar-->
@@ -364,6 +362,20 @@
 
                   <!-- Begin Contacts Assigned to-->
                   <ul id="myDropdown" class="dropdown-content ">
+                    <li class="list-item assigned-to ">
+                      <div class="list-item-name">
+                          <div class="circle" style="background-color: #C9E7E4">AS</div>
+                          <label>Anja Schulz</label>
+                      </div>
+                      <input type="checkbox" onclick="toggleBackground(this)" id="AssignedContact" name="AssignedContact">
+                    </li>
+                    <li class="list-item assigned-to ">
+                      <div class="list-item-name">
+                       <div class="circle" style="background-color: #F8C4E4">BZ</div>
+                       <span>Benedikt Ziegler</span>
+                      </div>
+                      <img class="checkbox " src="img/checkbox_button.svg" alt="">
+                    </li>
                   </ul>
                   <!-- End Contacts Assigned to-->
                   <div class="selected-contacts"></div>
@@ -492,5 +504,7 @@
   </section>
 
   <script src="./js/board.js"></script>
+  <script src="./js/firebase.js"></script>
+  <script src="./js/task.js"></script>
 </body>
 </html>

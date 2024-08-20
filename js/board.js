@@ -84,18 +84,16 @@ async function renderBadges() {
   renderTaskCards();
 }
 
-async function renderTaskCards() {
-  await loadTasks("/tasks");
-
+function renderTaskCards() {
   document.getElementById("taskCard").innerHTML = "";
 
   for (let i = 0; i < tasks.length; i++) {
     document.getElementById("taskCard").innerHTML += `
-              <div class="taskCardTop">
-                  <label class="categoryGreen">TECHNICAL STACK</label>
-                <div class="dropdownCard">
+                  <div class="taskCardTop">
+                  <label class="categoryGreen">CATEGORY</label>
+                <div class="dropdown">
                   <button onclick="toggleDropdown('dropdown-content')" class="dropdown-btn">
-                    <div class="dropdownBtnContainer"><img src="" alt="Dropdown Arrow"></div>
+                    <div class="dropdownBtnContainer"><img src="img/board/three dots.png" alt="Dropdown Arrow"></div>
                     </button>
                  <div id="dropdown-content" class="dropdown-content">
                     <p onclick="">In Progress</p>
@@ -103,32 +101,6 @@ async function renderTaskCards() {
                     <p onclick="">Awaiting Feedback</p>
                   </div>
                 </div>
-              </div>
-              <div class="cardBody" onclick="openDialog(); popupValueImplementFromTask()">
-                <p id="titelCardID" class="titleCard">HTML Base Template Creation</p>
-                <p id="descriptionCardID" class="descriptionCard">Create reusable HTML base templates</p>
-                <div>
-                  <div class="progress">
-                    <div class="progressBarContainer">
-                      <div id="" class="progressBar" style="width: 50%;"></div>
-                    </div>
-                    <p class="amountSubtasks">1/2</p>
-                  </div>
-                  <div class="footerCard ">
-                    <div id="profileBadges" class="profileBadges">
-                      <div class="badgeImg" style="background-color: #F8C4E4">BZ</div>
-                      <div class="badgeImg" style="background-color: #47FDC3">SM</div>
-                      <div class="badgeImg" style="background-color: #1213AA">MB</div>
-                      <div class="badgeImg" style="background-color: #144C6B">TW</div>
-                    </div>
-                    <div class="prioImg">
-                      <img src="./img/medium.svg" alt="">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> 
-          </div>   
                 `;
   }
 }
