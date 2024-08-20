@@ -1,38 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Join CMS</title>
+    <title>Login - Platform</title>
     <link rel="stylesheet" href="./styles/login.css">
 </head>
 <body>
-    <div class="login-container">
-        <div class="logo">
-            <img src="logo.png" alt="Join Logo" id="logo">
-        </div>
-        <div class="login-form">
-            <h2>Login</h2>
-            <form action="dashboard.html" method="post">
-                <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+    <div class="main_wrapper">
+        <header class="top_bar">
+            <div class="brand_area">
+                <img id="brand_logo-desktop" class="brand_logo-desktop" src="./img/login/logo_desktop.svg" alt="Logo" />
+                <img id="brand_logo-mobile" class="brand_logo-mobile hidden" src="./img/login/logo_mobile.svg" alt="Logo" />
+            </div>
+
+            <nav class="auth_options">
+                <p>Not a Join User?</p>
+                <a href="#">
+                    <div class="auth_signUp" onclick="">Sign Up</div>
+                </a>
+            </nav>
+        </header>
+
+        <div class="login_section">
+            <h1>Log in</h1>
+            <img class="login_divider" src="./img/login/seperator.svg" alt="separator" />
+
+            <form id="authForm" class="login_form" onsubmit="" onkeyup="">
+
+                <div class="error_email_wrapper">
+                    <div class="error_email_message" id="error_email_message"></div>
                 </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+
+                <div id="email_wrapper" class="field_group field_group-margin32">
+                    <input id="userEmail" type="email" placeholder="Email" autocomplete="email" required onkeypress=""/>
+                    <img class="field_icon-email" src="./img/login/mail.svg" alt="mail" />
                 </div>
-                <div class="input-group">
-                    <input type="checkbox" id="remember-me" name="remember-me">
-                    <label for="remember-me">Remember Me</label>
+
+                <div id="password_wrapper" class="field_group">
+                    <input id="userPassword" type="password" placeholder="Password" autocomplete="current-password" required onkeyup="" onkeypress="" />
+                    <img id="password_toggle" class="field_icon-password noPointer" src="./img/login/lock.svg" alt="lock" onclick="" />
                 </div>
-                <div class="input-group">
-                    <button type="submit">Login</button>
+
+                <div class="error_password_wrapper">
+                    <div class="error_password_message" id="error_password_message"></div>
+                </div>
+
+                <div class="checkbox_area">
+                    <img id="rememberCheckbox" onclick="" data-checked="false" class="" src="./img/login/Check button.svg" />
+                    <p>Remember me</p>
+                </div>
+
+                <div class="auth_buttons">
+                    <button type="submit" id="loginButton" class="btn_login" onclick="">Log in</button>
+                    <button id="guestButton" class="btn_guest" onclick="">Guest Log in</button>
                 </div>
             </form>
-            <div class="demo-login">
-                <button>Demo Login</button>
+        </div>
+
+        <footer class="site_footer">
+            <nav class="auth_options-mobile">
+                <p>New here?</p>
+                <a href="#">
+                    <div class="auth_signUp-mobile" onclick="">Sign Up</div>
+                </a>
+            </nav>
+
+            <div class="legal_links">
+                <a href="./privacyPolicy.html">Privacy policy</a>
+                <a href="./legalNotice.html">Legal notice</a>
             </div>
+        </footer>
+
+        <div id="popupOverlay" class="overlay_background">
+            <div class="overlay_logo"></div>
         </div>
     </div>
     <script src="./js/login.js"></script>
