@@ -184,6 +184,7 @@ async function renderAssignedTo() {
 
   // Weisen Sie den gesamten generierten HTML-Inhalt einmal zu
   assignedMenu.innerHTML = htmlContent;
+  }
 }
 
 
