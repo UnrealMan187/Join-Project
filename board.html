@@ -161,91 +161,235 @@
         </div>
 
         <div class="statuses">
+          <!-- To Do Status -->
           <div class="statusItem">
             <div class="statusHeader">
-              <p>To do</p><button class="alsoOpenModal"><img src="img/board/plus button.png" alt=""></button>
+              <p>To do</p>
+              <button class="alsoOpenModal">
+                <img src="img/board/plus button.png" alt="">
+              </button>
             </div>
             <div class="taskBoard">
               <div id="emptyTaskTodo" class="emptyTask">No tasks To do</div>
             </div>
-            <div id="cardContainertoDo" class="cardContainer ">
-            <!--Card Layout Start-->
-            <div draggable="true" id="taskCard" class="taskCard">
-              <div class="taskCardTop">
+            <div id="cardContainertoDo" class="cardContainer">
+              <!-- Card Layout Start -->
+              <div draggable="true" id="taskCard" class="taskCard">
+                <div class="taskCardTop">
                   <label class="categoryGreen">Technical stack</label>
-                <div class="dropdownCard">
-                  <button onclick="toggleDropdown('dropdown-content')" class="dropdown-btn">
-                    <div class="dropdownBtnContainer"><img src="" alt="Dropdown Arrow"></div>
+                  <div class="dropdownCard">
+                    <button onclick="toggleDropdown('dropdown-content')" class="dropdown-btn">
+                      <div class="dropdownBtnContainer">
+                        <img src="" alt="Dropdown Arrow">
+                      </div>
                     </button>
-                 <div id="dropdown-content" class="dropdown-content">
-                    <p onclick="">In Progress</p>
-                    <p onclick="">Done</p>
-                    <p onclick="">Awaiting Feedback</p>
-                  </div>
-                </div>
-              </div>
-              <div class="cardBody" onclick="openDialog(); popupValueImplementFromTask()">
-                <p id="titelCardID" class="titleCard">HTML Base Template Creation</p>
-                <p id="descriptionCardID" class="descriptionCard">Create reusable HTML base templates</p>
-                <div>
-                  <div class="progress">
-                    <div class="progressBarContainer">
-                      <div id="" class="progressBar" style="width: 50%;"></div>
-                    </div>
-                    <p class="amountSubtasks">1/2</p>
-                  </div>
-                  <div class="footerCard ">
-                    <div id="profileBadges" class="profileBadges">
-                      <div class="badgeImg" style="background-color: #F8C4E4">BZ</div>
-                      <div class="badgeImg" style="background-color: #47FDC3">SM</div>
-                      <div class="badgeImg" style="background-color: #1213AA">MB</div>
-                      <div class="badgeImg" style="background-color: #144C6B">TW</div>
-                    </div>
-                    <div class="prioImg">
-                      <img src="./img/medium.svg" alt="">
+                    <div id="dropdown-content" class="dropdown-content">
+                      <p onclick="">In Progress</p>
+                      <p onclick="">Done</p>
+                      <p onclick="">Awaiting Feedback</p>
                     </div>
                   </div>
                 </div>
+                <div class="cardBody" onclick="openDialog(); popupValueImplementFromTask()">
+                  <p id="titelCardID" class="titleCard">HTML Base Template Creation</p>
+                  <p id="descriptionCardID" class="descriptionCard">Create reusable HTML base templates</p>
+                  <div>
+                    <div class="progress">
+                      <div class="progressBarContainer">
+                        <div id="" class="progressBar" style="width: 50%;"></div>
+                      </div>
+                      <p class="amountSubtasks">1/2</p>
+                    </div>
+                    <div class="footerCard">
+                      <div id="profileBadges" class="profileBadges">
+                        <div class="badgeImg" style="background-color: #F8C4E4">BZ</div>
+                        <div class="badgeImg" style="background-color: #47FDC3">SM</div>
+                        <div class="badgeImg" style="background-color: #1213AA">MB</div>
+                        <div class="badgeImg" style="background-color: #144C6B">TW</div>
+                      </div>
+                      <div class="prioImg">
+                        <img src="./img/medium.svg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div> 
-          </div>   
+              <!-- Card Layout End -->
+            </div>
           </div>
-            
-            <!--Card Layout End-->
-
+        
+          <!-- In Progress Status -->
           <div class="statusItem">
             <div class="statusHeader">
-              <p>In progress</p><button class="alsoOpenModal"><img src="img/board/plus button.png" alt=""></button>
+              <p>In progress</p>
+              <button class="alsoOpenModal">
+                <img src="img/board/plus button.png" alt="">
+              </button>
             </div>
             <div class="taskBoard">
               <div id="emptyTaskInProgress" class="emptyTask">No tasks in Progress</div>
             </div>
             <div id="cardContainerinProgress" class="cardContainer">
+              <!-- Card Layout Start -->
+              <div draggable="true" id="taskCard" class="taskCard">
+                <div class="taskCardTop">
+                  <label class="categoryGreen">Technical stack</label>
+                  <div class="dropdownCard">
+                    <button onclick="toggleDropdown('dropdown-content')" class="dropdown-btn">
+                      <div class="dropdownBtnContainer">
+                        <img src="" alt="Dropdown Arrow">
+                      </div>
+                    </button>
+                    <div id="dropdown-content" class="dropdown-content">
+                      <p onclick="">In Progress</p>
+                      <p onclick="">Done</p>
+                      <p onclick="">Awaiting Feedback</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cardBody" onclick="openDialog(); popupValueImplementFromTask()">
+                  <p id="titelCardID" class="titleCard">HTML Base Template Creation</p>
+                  <p id="descriptionCardID" class="descriptionCard">Create reusable HTML base templates</p>
+                  <div>
+                    <div class="progress">
+                      <div class="progressBarContainer">
+                        <div id="" class="progressBar" style="width: 50%;"></div>
+                      </div>
+                      <p class="amountSubtasks">1/2</p>
+                    </div>
+                    <div class="footerCard">
+                      <div id="profileBadges" class="profileBadges">
+                        <div class="badgeImg" style="background-color: #F8C4E4">BZ</div>
+                        <div class="badgeImg" style="background-color: #47FDC3">SM</div>
+                        <div class="badgeImg" style="background-color: #1213AA">MB</div>
+                        <div class="badgeImg" style="background-color: #144C6B">TW</div>
+                      </div>
+                      <div class="prioImg">
+                        <img src="./img/medium.svg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>              
+              <!-- Card Layout End -->
             </div>
           </div>
-
+        
+          <!-- Await Feedback Status -->
           <div class="statusItem">
             <div class="statusHeader">
-              <p>Await feedback</p><button class="alsoOpenModal"><img src="img/board/plus button.png" alt=""></button>
+              <p>Await feedback</p>
+              <button class="alsoOpenModal">
+                <img src="img/board/plus button.png" alt="">
+              </button>
             </div>
             <div class="taskBoard">
               <div id="emptyTaskAwait" class="emptyTask">No tasks await feedback</div>
             </div>
-            <div id="cardContainerawaitingFeedback" class="cardContainer" >
+            <div id="cardContainerawaitingFeedback" class="cardContainer">
+              <!-- Card Layout Start -->
+              <div draggable="true" id="taskCard" class="taskCard">
+                <div class="taskCardTop">
+                  <label class="categoryGreen">Technical stack</label>
+                  <div class="dropdownCard">
+                    <button onclick="toggleDropdown('dropdown-content')" class="dropdown-btn">
+                      <div class="dropdownBtnContainer">
+                        <img src="" alt="Dropdown Arrow">
+                      </div>
+                    </button>
+                    <div id="dropdown-content" class="dropdown-content">
+                      <p onclick="">In Progress</p>
+                      <p onclick="">Done</p>
+                      <p onclick="">Awaiting Feedback</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cardBody" onclick="openDialog(); popupValueImplementFromTask()">
+                  <p id="titelCardID" class="titleCard">HTML Base Template Creation</p>
+                  <p id="descriptionCardID" class="descriptionCard">Create reusable HTML base templates</p>
+                  <div>
+                    <div class="progress">
+                      <div class="progressBarContainer">
+                        <div id="" class="progressBar" style="width: 50%;"></div>
+                      </div>
+                      <p class="amountSubtasks">1/2</p>
+                    </div>
+                    <div class="footerCard">
+                      <div id="profileBadges" class="profileBadges">
+                        <div class="badgeImg" style="background-color: #F8C4E4">BZ</div>
+                        <div class="badgeImg" style="background-color: #47FDC3">SM</div>
+                        <div class="badgeImg" style="background-color: #1213AA">MB</div>
+                        <div class="badgeImg" style="background-color: #144C6B">TW</div>
+                      </div>
+                      <div class="prioImg">
+                        <img src="./img/medium.svg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>              
+              <!-- Card Layout End -->
             </div>
           </div>
-
-
+        
+          <!-- Done Status -->
           <div class="statusItem">
             <div class="statusHeader">
-              <p>Done</p><button class="alsoOpenModal"><img src="img/board/plus button.png" alt=""></button>
+              <p>Done</p>
+              <button class="alsoOpenModal">
+                <img src="img/board/plus button.png" alt="">
+              </button>
             </div>
             <div class="taskBoard">
               <div id="emptyTaskDone" class="emptyTask">No tasks done</div>
             </div>
-            <div id="cardContainerdone" class="cardContainer" >
+            <div id="cardContainerdone" class="cardContainer">
+              <!-- Card Layout Start -->
+              <div draggable="true" id="taskCard" class="taskCard">
+                <div class="taskCardTop">
+                  <label class="categoryGreen">Technical stack</label>
+                  <div class="dropdownCard">
+                    <button onclick="toggleDropdown('dropdown-content')" class="dropdown-btn">
+                      <div class="dropdownBtnContainer">
+                        <img src="" alt="Dropdown Arrow">
+                      </div>
+                    </button>
+                    <div id="dropdown-content" class="dropdown-content">
+                      <p onclick="">In Progress</p>
+                      <p onclick="">Done</p>
+                      <p onclick="">Awaiting Feedback</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cardBody" onclick="openDialog(); popupValueImplementFromTask()">
+                  <p id="titelCardID" class="titleCard">HTML Base Template Creation</p>
+                  <p id="descriptionCardID" class="descriptionCard">Create reusable HTML base templates</p>
+                  <div>
+                    <div class="progress">
+                      <div class="progressBarContainer">
+                        <div id="" class="progressBar" style="width: 50%;"></div>
+                      </div>
+                      <p class="amountSubtasks">1/2</p>
+                    </div>
+                    <div class="footerCard">
+                      <div id="profileBadges" class="profileBadges">
+                        <div class="badgeImg" style="background-color: #F8C4E4">BZ</div>
+                        <div class="badgeImg" style="background-color: #47FDC3">SM</div>
+                        <div class="badgeImg" style="background-color: #1213AA">MB</div>
+                        <div class="badgeImg" style="background-color: #144C6B">TW</div>
+                      </div>
+                      <div class="prioImg">
+                        <img src="./img/medium.svg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>              
+              <!-- Card Layout End -->
             </div>
           </div>
+        </div>
+        
       </section>
 
 <!-- POP UP -->
