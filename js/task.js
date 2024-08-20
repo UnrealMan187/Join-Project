@@ -140,16 +140,6 @@ async function renderAssignedTo() {
   // Setze den Inhalt von assignedMenu zurück
   assignedMenu.innerHTML = "";
 
-  for (let i = 0; i < users.length; i++) {
-    assignedMenu.innerHTML += `
-                      <li class="list-item assigned-to ">
-                        <div class="list-item-name">
-                            <div class="circle initialsColor${j}">${getUserInitials(users[i].name)}</div>
-                            <label>${users[i].name}</label>
-                        </div>
-                        <input type="checkbox" onclick="toggleBackground(this)" id="AssignedContact${i}" name="AssignedContact">
-                      </li>
-    `;
   // Benutzer laden
   await loadUsers("/users");
 
@@ -183,7 +173,6 @@ async function renderAssignedTo() {
 
   // Weisen Sie den gesamten generierten HTML-Inhalt einmal zu
   assignedMenu.innerHTML = htmlContent;
-  }
 }
 
 
