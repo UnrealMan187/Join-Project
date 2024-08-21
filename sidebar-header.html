@@ -17,11 +17,28 @@
         <h1>Kanban Project Management Tool</h1>
         <div class="header-icons">
             <img src="img/contacts/help.png" alt="icon help" width="32px" height="32px">
-            <img src="img/contacts/icon_user.png" alt="icon user" width="56px" height="56px">
+            <button class="profile-icon openModalHeader">
+                <div id="header-profile-icon" class="profile-name guest-font-size">G</div>
+            </button>
         </div>
-    
     </header>
-
+    <dialog id="sub-menu-modal-desktop" class="sub-menu-bg">
+        <div id="sub-menu" class="sub-menu sub-menu-open">
+            <a class="help-link" href="./help.html">
+                <div>Help</div>
+            </a>
+            <a href="./legalNotice.html">
+                <div>Legal Notice</div>
+            </a>
+            <a href="./privacy.html">
+                <div>Privacy Policy</div>
+            </a>
+            <a href="#"> 
+                <div>Log Out</div>
+            </a>
+        </div>
+    </dialog>
+    
     <aside class="sidebar desktop-sidebar">
         <div class="logo-sidebar">
             <a href="summary.html"><img class="logo-join-white" src="img/contacts/logo_join_white.png" alt="logo"></a>
@@ -59,8 +76,26 @@
     <!--Mobile Header-->
     <header class="mobile-header">
         <a href="summary.html"><img class="logo-join-mobile" src="img/contacts/logo_blue_mobile.png" alt="logo"></a>
-        <img src="img/contacts/icon_user.png" alt="icon user" width="56px" height="56px">
+        <button class="profile-icon openModalHeader">
+            <div id="header-profile-icon" class="profile-name guest-font-size">G</div>
+        </button>
     </header>
+    <dialog id="sub-menu-modal-mobile" class="sub-menu-bg">
+        <div id="sub-menu" class="sub-menu sub-menu-open">
+            <a class="help-link" href="./help.html">
+                <div>Help</div>
+            </a>
+            <a href="./legalNotice.html">
+                <div>Legal Notice</div>
+            </a>
+            <a href="./privacy.html">
+                <div>Privacy Policy</div>
+            </a>
+            <a href="#"> 
+                <div>Log Out</div>
+            </a>
+        </div>
+    </dialog>
 
     <!--Mobile Navbar-->
     <nav class="mobile-nav">
@@ -85,6 +120,6 @@
     </nav>
 
     <!-- End of Header und Sidebar-->
-    
+    <script src="./js/sidebarHeader.js"></script>
 </body>
 </html>
