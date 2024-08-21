@@ -37,12 +37,12 @@
                 </div>
 
                 <div id="email_wrapper" class="field_group field_group-margin32">
-                    <input id="userEmail" type="email" placeholder="Email" autocomplete="email" required onkeypress=""/>
+                    <input onkeydown="onPasswordKeyDown()" id="userEmail" type="email" placeholder="Email" autocomplete="email" required onkeypress=""/>
                     <img class="field_icon-email" src="./img/login/mail.svg" alt="mail" />
                 </div>
 
                 <div id="password_wrapper" class="field_group">
-                    <input id="userPassword" type="password" placeholder="Password" autocomplete="current-password" required onkeyup="" onkeypress="" />
+                    <input onkeydown="onPasswordKeyDown()" id="userPassword" type="password" placeholder="Password" autocomplete="current-password" required onkeyup="" onkeypress="" />
                     <img id="password_toggle" class="field_icon-password noPointer" src="./img/login/lock.svg" alt="lock" onclick="" />
                 </div>
 
@@ -51,12 +51,13 @@
                 </div>
 
                 <div class="checkbox_area">
-                    <img id="rememberCheckbox" onclick="" data-checked="false" class="" src="./img/login/Check button.svg" />
+                    <!-- <img id="rememberCheckbox" onclick="" data-checked="false" class="" src="./img/login/Check button.svg" /> -->
+                     <input id="rememberMeButton" type="checkbox">
                     <p>Remember me</p>
                 </div>
 
                 <div class="auth_buttons">
-                    <button type="submit" id="loginButton" class="btn_login" onclick="">Log in</button>
+                    <button disabled type="submit" id="loginButton" class="btn_login" onclick="">Log in</button>
                     <button id="guestButton" class="btn_guest" onclick="">Guest Log in</button>
                 </div>
             </form>

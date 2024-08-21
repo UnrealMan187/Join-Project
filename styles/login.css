@@ -12,6 +12,10 @@
     margin-right: auto;
 }
 
+a {
+    text-decoration: none;
+}
+
 .top_bar {
     height: 20%;
     width: 100%;
@@ -68,13 +72,14 @@
     border-radius: 8px;
     background-color: #2a3647;
     color: white;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .auth_signUp:hover {
     color: #ffffff;
     background-color: #29abe2;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    text-decoration: none !important;
 }
 
 /* Login-Container */
@@ -182,7 +187,16 @@
     color: #ffffff;
     background: #2a3647;
     cursor: pointer;
-    transition: color var(--transTime) ease-in-out, background-color var(--transTime) ease-in-out, box-shadow var(--transTime) ease-in-out;
+}
+
+button:disabled {
+    background-color: grey;
+}
+
+button:disabled:hover {
+    background-color: grey;
+    box-shadow: none;
+    cursor: default;
 }
 
 .btn_login:hover {

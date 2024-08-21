@@ -64,8 +64,8 @@ function validateEmail(email) {
  * @returns {boolean} - True, wenn das Passwort gültig ist, andernfalls false.
  */
 function validatePassword(password) {
-  // Beispielhafte Passwortvalidierung: mindestens 6 Zeichen
-  return password.length >= 6;
+  // Beispielhafte Passwortvalidierung: mindestens 8 Zeichen
+  return password.length >= 8;
 }
 
 // Event-Listener für das Absenden des Formulars
@@ -84,4 +84,17 @@ function init() {
 function showLoginContainer() {
   document.getElementById("main_wrapper").classList.remove("d-none");
   document.getElementById("login_section").classList.remove("d-none");
+}
+
+
+function onPasswordKeyDown() {
+  let inputField = document.getElementById("userPassword").value;
+  // alert(inputField.length);
+  if(inputField.length >= 0) {
+    if(inputField.length == 1 && document.getElementById("loginButton").disabled == false) {
+      document.getElementById("loginButton").disabled = true;
+    } else {
+      document.getElementById("loginButton").disabled = false;
+    }
+  }
 }
