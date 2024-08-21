@@ -31,8 +31,6 @@ async function createTask() {
     assignedTo = assignedTo.slice(0, -1);
   }
 
-  // alert(taskPrio);
-
   tasks.push({
     title: taskTitle,
     description: taskDescription,
