@@ -53,7 +53,6 @@ function popupValueImplementFromTask()
 
     let valueFromName = document.getElementById('popupContactNameID');
     valueFromName.innerHTML = '';   
-
      for(let i = 0; i < users.length; i++) {
          valueFromName.innerHTML += `
              <div>${users[i].name}</div>
