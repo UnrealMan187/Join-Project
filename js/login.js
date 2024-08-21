@@ -5,9 +5,9 @@
  */
 document.addEventListener("DOMContentLoaded", function () {
   const logo = document.getElementById("logo");
-  logo.style.transition = "transform 1s, opacity 1s";
-  logo.style.transform = "translateY(0)";
-  logo.style.opacity = "1";
+  //logo.style.transition = "transform 1s, opacity 1s";
+  //logo.style.transform = "translateY(0)";
+  //logo.style.opacity = "1";
 });
 
 /**
@@ -72,8 +72,7 @@ function validatePassword(password) {
 document.querySelector("form").addEventListener("submit", handleSubmit);
 
 // Event-Listener für den Demo-Login
-document.querySelector(".demo-login button").addEventListener("click", demoLogin);
-
+//document.querySelector(".demo-login button").addEventListener("click", demoLogin);
 
 function init() {
   document.getElementById("logo-container").classList.remove("start");
@@ -86,15 +85,70 @@ function showLoginContainer() {
   document.getElementById("login_section").classList.remove("d-none");
 }
 
-
 function onPasswordKeyDown() {
   let inputField = document.getElementById("userPassword").value;
-  // alert(inputField.length);
-  if(inputField.length >= 0) {
-    if(inputField.length == 1 && document.getElementById("loginButton").disabled == false) {
-      document.getElementById("loginButton").disabled = true;
-    } else {
+  let pressedKey = event.key;
+
+  if (inputField.length <= 1 && pressedKey == "Backspace") {
+    document.getElementById("loginButton").disabled = true;
+  } else if (pressedKey == "Enter") {
+    if (inputField.length > 0) {
+      document.getElementById("loginButton").disabled = false;
+    }
+  } else if (isMarkedCompletely(document.getElementById("userPassword")) && (pressedKey == "Backspace" || pressedKey == "Delete")) {
+    document.getElementById("loginButton").disabled = true;
+  } else {
+    if (checkInvalidKeys(pressedKey) == false) {
       document.getElementById("loginButton").disabled = false;
     }
   }
+}
+
+function checkInvalidKeys(key) {
+  switch (key) {
+    case "Backspace":
+    case "Escape":
+    case "Shift":
+    case "Alt":
+    case "AltGraph":
+    case "Space":
+    case "Control":
+    case "F1":
+    case "F2":
+    case "F3":
+    case "F4":
+    case "F5":
+    case "F6":
+    case "F7":
+    case "F8":
+    case "F9":
+    case "F10":
+    case "F11":
+    case "F12":
+    case "PageUp":
+    case "PageDown":
+    case "Home":
+    case "End":
+    case "Insert":
+    case "Meta":
+    case "ContextMenu":
+    case "ArrowLeft":
+    case "ArrowRight":
+    case "ArrowUp":
+    case "ArrowDown":
+    case "LaunchApplication2":
+    case "LaunchMail":
+    case "NumLock":
+    case "Pause":
+    case "ScrollLock":
+      return true;
+      break;
+    default:
+      return false;
+      break;
+  }
+}
+
+function isMarkedCompletely(inputField) {
+  return inputField.selectionStart == 0 && inputField.selectionEnd == inputField.value.length;
 }
