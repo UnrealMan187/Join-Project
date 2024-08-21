@@ -82,14 +82,14 @@
     </nav>
 
     <!-- End of Header und Sidebar-->
-    <!--<div class="main__container">-->
+    <div class="main__container">
         <!-- GREETING Mobile Version -->
-        <!--<div id="overlay" class="summary__overlay__container d-none">
+        <div id="overlay" class="summary__overlay__container d-none">
             <div class="summary__greeting__container-mobile">
                 <div id="greeting__text-mobile" class="summary__greeting__formula-mobile"></div>
                 <div id="user__name-mobile" class="summary__greeting__name-mobile"></div>
             </div>
-        </div>-->
+        </div>
 
         <!--  SUMMARY Container -->
         <div class="summary__container">
@@ -106,7 +106,9 @@
                     <div class="summary__first__section">
                         <a href="./board.html">
                             <div class="summary__two_tiles">
-                                <img class="summary__icons" id="summary__toDo" src="./img/editSummary.svg" alt="edit">
+                                <img class="summary__icons onloadImg" id="summary__toDo" src="./img/editSummary.svg" alt="edit">
+                                <img class="summary__icons hoverImg" id="summary__toDo" src="./img/editSummaryHover.svg" alt="edit">
+
                                 <div class="summary__tiles__text">
                                     <div id="summary__todo" class="summary__tiles__number">2</div>
                                     <div class="summary__text__top-and-bottom">To-do</div>
@@ -116,7 +118,8 @@
 
                         <a href="./board.html">
                             <div class="summary__two_tiles">
-                                <img class="summary__icons" id="summary__done" src="./img/checkSummary.svg" alt="check">
+                                <img class="summary__icons onloadImg" id="summary__done" src="./img/checkSummary.svg" alt="check">
+                                <img class="summary__icons hoverImg" id="summary__done" src="./img/checkSummaryHover.svg" alt="check">
                                 <div class="summary__tiles__text">
                                     <div id="summary__done" class="summary__tiles__number">0</div>
                                     <div class="summary__text__top-and-bottom">Done</div>
@@ -177,8 +180,8 @@
         </div>
 
         <div id="summary__greeting__desktop" class="summary__greeting__container">
-            <div id="greeting__text" class="summary__greeting__formula"></div>
-            <div id="user__name" class="summary__greeting__name"></div>
+            <div id="greeting__text" class="summary__greeting__formula">Good Morning,</div>
+            <div id="user__name" class="summary__greeting__name">Guest</div>
         </div>
     </div>
 </body>
