@@ -37,7 +37,7 @@ main {
 .seperator {
     width: 3px;
     height: 59px;
-    background-image: url(../assets/img/icons_summary/seperator_blue.png);
+    background-color:#29abe2;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
