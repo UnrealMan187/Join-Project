@@ -805,7 +805,7 @@ h2 {
 }
 
 /*Pop up Addtask*/
-dialog{
+#myModal{
     width: 70%;
     position: fixed;
     top: 50%;
@@ -814,6 +814,7 @@ dialog{
     border: 0;
     border-radius: 15px;
   }
+  
   .taskContainerPopup{
     display: flex;
     flex-direction: column;

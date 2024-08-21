@@ -171,13 +171,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
-
-/*openButton.addEventListener("click", () => {
-    modal.showModal()
-})
-
-closeButton.addEventListener("click", () => {
-    modal.close()
-})
-*/
