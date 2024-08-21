@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (modal.open) {
                     modal.close(); // Wenn das Modal bereits geöffnet ist, schließe es
                 } else {
-                    modal.showModal(); // Wenn das Modal geschlossen ist, öffne es
+                    modal.show(); // Wenn das Modal geschlossen ist, öffne es
                 }
             });
         });
