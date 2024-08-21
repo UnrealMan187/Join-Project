@@ -122,6 +122,7 @@ main {
 .summary__tiles__seperator {
     height: 102px;
     width: 2px;
+    border: 1px solid lightgrey;
 }
 
 .summary__third__section {
