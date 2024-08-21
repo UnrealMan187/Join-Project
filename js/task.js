@@ -31,11 +31,7 @@ async function createTask() {
     assignedTo = assignedTo.slice(0, -1);
   }
 
-
-
   // alert(taskPrio);
-
-
 
   tasks.push({
     title: taskTitle,
@@ -48,7 +44,6 @@ async function createTask() {
   });
 
   await saveTasks("/tasks", tasks[0]);
-
 }
 
 function getTaskPrio() {
@@ -65,52 +60,69 @@ function getTaskPrio() {
 }
 
 //reset all Class from Prio Buttons
-function clearPrioButtons()
-{
-  document.getElementById('urgent').className = "btn-prio btn-prio:hover";
-  document.getElementById('urgent-whiteID').className ="d-none";
-  document.getElementById('urgentID').className ="";
-  document.getElementById('urgent').style.boxShadow = "";
+function clearPrioButtons() {
+  document.getElementById("urgent").className = "btn-prio btn-prio:hover";
+  document.getElementById("urgent-whiteID").className = "d-none";
+  document.getElementById("urgentID").className = "";
+  document.getElementById("urgent").style.boxShadow = "";
 
-  document.getElementById('medium').className = "btn-prio";
-  document.getElementById('medium-whiteID').className ="d-none";
-  document.getElementById('mediumID').className ="";
-  document.getElementById('medium').style.boxShadow = "";
+  document.getElementById("medium").className = "btn-prio";
+  document.getElementById("medium-whiteID").className = "d-none";
+  document.getElementById("mediumID").className = "";
+  document.getElementById("medium").style.boxShadow = "";
 
-  document.getElementById('low').className = "btn-prio";
-  document.getElementById('low-whiteID').className ="d-none";
-  document.getElementById('lowID').className ="";
-  document.getElementById('low').style.boxShadow = "";
+  document.getElementById("low").className = "btn-prio";
+  document.getElementById("low-whiteID").className = "d-none";
+  document.getElementById("lowID").className = "";
+  document.getElementById("low").style.boxShadow = "";
 }
 //click on Urgent Prio Button
 function clickOnUrgent() {
+  let alreadyKlicked = false;
+  if (getTaskPrio() == "Urgent") {
+    alreadyKlicked = true;
+  }
   clearPrioButtons();
-  document.getElementById("urgent").classList.remove("btn-bg-change-back-onclick");
-  document.getElementById("urgent").classList.toggle("btn-bg-change-urgent-onclick");
-  document.getElementById("urgent").style.boxShadow = "none";
-  document.getElementById("urgentID").classList.toggle("d-none");
-  document.getElementById("urgent").classList.toggle("prio-txt-color-set-white");
-  document.getElementById("urgent-whiteID").classList.toggle("d-none");
+  if (alreadyKlicked == false) {
+    document.getElementById("urgent").classList.remove("btn-bg-change-back-onclick");
+    document.getElementById("urgent").classList.toggle("btn-bg-change-urgent-onclick");
+    document.getElementById("urgent").style.boxShadow = "none";
+    document.getElementById("urgentID").classList.toggle("d-none");
+    document.getElementById("urgent").classList.toggle("prio-txt-color-set-white");
+    document.getElementById("urgent-whiteID").classList.toggle("d-none");
+  }
 }
 //click on Medium Prio Button
 function clickOnMedium() {
+  let alreadyKlicked = false;
+  if (getTaskPrio() == "Medium") {
+    alreadyKlicked = true;
+  }
   clearPrioButtons();
-  document.getElementById("medium").classList.remove("btn-bg-change-back-onclick");
-  document.getElementById("medium").classList.toggle("btn-bg-change-medium-onclick");
-  document.getElementById("medium").style.boxShadow = "none";
-  document.getElementById("mediumID").classList.toggle("d-none");
-  document.getElementById("medium").classList.toggle("prio-txt-color-set-white");
-  document.getElementById("medium-whiteID").classList.toggle("d-none");
+  if (alreadyKlicked == false) {
+    document.getElementById("medium").classList.remove("btn-bg-change-back-onclick");
+    document.getElementById("medium").classList.toggle("btn-bg-change-medium-onclick");
+    document.getElementById("medium").style.boxShadow = "none";
+    document.getElementById("mediumID").classList.toggle("d-none");
+    document.getElementById("medium").classList.toggle("prio-txt-color-set-white");
+    document.getElementById("medium-whiteID").classList.toggle("d-none");
+  }
 }
 //click on Low Prio Button
 function clickOnLow() {
+  let alreadyKlicked = false;
+  if (getTaskPrio() == "Low") {
+    alreadyKlicked = true;
+  }
   clearPrioButtons();
-  document.getElementById("low").classList.remove("btn-bg-change-back-onclick");
-  document.getElementById("low").classList.toggle("btn-bg-change-low-onclick");
-  document.getElementById("low").style.boxShadow = "none";
-  document.getElementById("lowID").classList.toggle("d-none");
-  document.getElementById("low").classList.toggle("prio-txt-color-set-white");
-  document.getElementById("low-whiteID").classList.toggle("d-none");
+  if (alreadyKlicked == false) {
+    document.getElementById("low").classList.remove("btn-bg-change-back-onclick");
+    document.getElementById("low").classList.toggle("btn-bg-change-low-onclick");
+    document.getElementById("low").style.boxShadow = "none";
+    document.getElementById("lowID").classList.toggle("d-none");
+    document.getElementById("low").classList.toggle("prio-txt-color-set-white");
+    document.getElementById("low-whiteID").classList.toggle("d-none");
+  }
 }
 
 /*Begin dropdown assigned to and dropdown category*/
@@ -152,17 +164,17 @@ async function renderAssignedTo() {
 
   // Duplikate entfernen
   let uniqueUsers = [];
-  users.forEach(user => {
-      if (!uniqueUsers.some(uniqueUser => uniqueUser.email === user.email)) {
-          uniqueUsers.push(user);
-      }
+  users.forEach((user) => {
+    if (!uniqueUsers.some((uniqueUser) => uniqueUser.email === user.email)) {
+      uniqueUsers.push(user);
+    }
   });
 
   // Nutze eine temporäre Variable, um den gesamten HTML-Inhalt zu erstellen
   let htmlContent = "";
 
   for (let i = 0; i < uniqueUsers.length; i++) {
-      htmlContent += `
+    htmlContent += `
           <li class="list-item assigned-to">
               <div class="list-item-name">
                   <div class="circle initialsColor${j}">${getUserInitials(uniqueUsers[i].name)}</div>
@@ -172,16 +184,15 @@ async function renderAssignedTo() {
           </li>
       `;
 
-      j++;
-      if (j > 15) {
-          j = 1;
-      }
+    j++;
+    if (j > 15) {
+      j = 1;
+    }
   }
 
   // Weisen Sie den gesamten generierten HTML-Inhalt einmal zu
   assignedMenu.innerHTML = htmlContent;
 }
-
 
 function toggleBackground(checkbox) {
   const listItem = checkbox.closest(".list-item");
@@ -359,20 +370,18 @@ document.addEventListener("DOMContentLoaded", function () {
   dateInput.setAttribute("min", today);
 });
 
-function selectTechnicalStack()
-{
-  let categoryTechnicalStack = document.getElementById('categoryTechnicalStack').innerHTML;
+function selectTechnicalStack() {
+  let categoryTechnicalStack = document.getElementById("categoryTechnicalStack").innerHTML;
 
-  let selectCategory = document.getElementById('category-displayed');
-  selectCategory.innerHTML = '';
+  let selectCategory = document.getElementById("category-displayed");
+  selectCategory.innerHTML = "";
   selectCategory.innerHTML = categoryTechnicalStack;
-} 
+}
 
-function selectUserStory()
-{
-  let categoryselectUserStory = document.getElementById('categoryUserStory').innerHTML;
+function selectUserStory() {
+  let categoryselectUserStory = document.getElementById("categoryUserStory").innerHTML;
 
-  let selectCategory = document.getElementById('category-displayed');
-  selectCategory.innerHTML = '';
+  let selectCategory = document.getElementById("category-displayed");
+  selectCategory.innerHTML = "";
   selectCategory.innerHTML = categoryselectUserStory;
-} 
+}
