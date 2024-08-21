@@ -73,3 +73,15 @@ document.querySelector("form").addEventListener("submit", handleSubmit);
 
 // Event-Listener für den Demo-Login
 document.querySelector(".demo-login button").addEventListener("click", demoLogin);
+
+
+function init() {
+  document.getElementById("logo-container").classList.remove("start");
+  document.getElementById("myBody").style.background = "white";
+  setTimeout(showLoginContainer, 2000);
+}
+
+function showLoginContainer() {
+  document.getElementById("main_wrapper").classList.remove("d-none");
+  document.getElementById("login_section").classList.remove("d-none");
+}

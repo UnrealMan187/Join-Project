@@ -6,12 +6,16 @@
     <title>Login - Platform</title>
     <link rel="stylesheet" href="./styles/login.css">
 </head>
-<body>
-    <div class="main_wrapper">
+<body id="myBody" class=" transition2s" onload="init()">
+    <div id="logo-container" class="logo-container start transition2s">
+        <img src="./img//login/join-logo2.svg" style="width: 100px; height: 100px;" alt="Dein Logo" />
+      </div>
+
+    <div id="main_wrapper" class="main_wrapper d-none">
         <header class="top_bar">
             <div class="brand_area">
-                <img id="brand_logo-desktop" class="brand_logo-desktop" src="./img/login/logo_desktop.svg" alt="Logo" />
-                <img id="brand_logo-mobile" class="brand_logo-mobile hidden" src="./img/login/logo_mobile.svg" alt="Logo" />
+                <!-- <img id="brand_logo-desktop" class="brand_logo-desktop" src="./img/login/logo_desktop.svg" alt="Logo" />
+                <img id="brand_logo-mobile" class="brand_logo-mobile hidden" src="./img/login/logo_mobile.svg" alt="Logo" /> -->
             </div>
 
             <nav class="auth_options">
@@ -22,7 +26,7 @@
             </nav>
         </header>
 
-        <div class="login_section">
+        <div id="login_section" class="login_section d-none">
             <h1>Log in</h1>
             <img class="login_divider" src="./img/login/seperator.svg" alt="separator" />
 
@@ -72,9 +76,9 @@
             </div>
         </footer>
         <!-- Overlay for the first animation -->
-        <div id="" class="overlay_background">
+        <!-- <div id="" class="overlay_background">
             <div class="overlay_logo"></div>
-        </div>
+        </div> -->
     </div>
     <script src="./js/login.js"></script>
 </body>

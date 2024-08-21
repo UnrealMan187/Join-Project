@@ -352,6 +352,32 @@
     animation: animation_logo 1200ms ease-in-out 750ms forwards;
 }
 
+/* Animation start login */
+.logo-container {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+  }
+  
+  /* Beim Laden der Seite wird die Klasse 'start' entfernt */
+  .start {
+    top: 50%;
+    left: 50%;
+    transform: scale(3.0);
+  }
+  
+  .blueBG {
+    background-color: blue !important;
+  }
+  
+  .transition2s {
+    transition: all 2s ease-in-out;
+  }
+
+  .d-none {
+    display: none;
+  }
+
 /* Animationen */
 
 .auth_options-mobile {
@@ -427,6 +453,10 @@
     .brand_logo-desktop {
         opacity: 0;
         animation: fadeIn 200ms ease-in-out 1800ms forwards;
+    }
+
+    body {
+        background-color:#2a3647;
     }
 }
 
