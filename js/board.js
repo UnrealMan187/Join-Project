@@ -1,33 +1,34 @@
-const taskCard = document.getElementById('taskCard');
-const dropZones = document.querySelectorAll('#cardContainertoDo, #cardContainerinProgress, #cardContainerawaitingFeedback, #cardContainerdone');
-/*const openButton = document.querySelector("data-open-modal")
-const closeButton = document.querySelector("data-close-modal")
-const modal = document.querySelector("data-modal")*/
+// Funktion zum Hinzufügen der Drag-and-Drop-Events
+function addDragAndDropEvents() {
+  const draggedCards = document.querySelectorAll('.taskCard');
+  const dropZones = document.querySelectorAll('#cardContainertoDo, #cardContainerinProgress, #cardContainerawaitingFeedback, #cardContainerdone');
 
-// Event listener für den Start des Drag-Vorgangs
-taskCard.addEventListener("dragstart", function (event) {
-  // Die ID des zu ziehenden Elements wird in den Datenübertragungsobjekt gespeichert
-  event.dataTransfer.setData("text/plain", event.target.id);
-});
-
-// Event listener für jede Drop-Zone
-dropZones.forEach((dropZone) => {
-  dropZone.addEventListener("dragover", function (event) {
-    // Verhindert das Standardverhalten, damit das Drop-Ereignis ausgelöst wird
-    event.preventDefault();
+  draggedCards.forEach(card => {
+      card.ondragstart = (event) => {
+          // Die ID des zu ziehenden Elements wird in den Datenübertragungsobjekt gespeichert
+          event.dataTransfer.setData("text", event.target.id);
+      };
   });
 
-  dropZone.addEventListener("drop", function (event) {
-    // Verhindert das Standardverhalten beim Drop
-    event.preventDefault();
-    // Holt die ID des gezogenen Elements
-    const draggedElementId = event.dataTransfer.getData("text/plain");
-    // Holt das Element mit dieser ID
-    const draggedElement = document.getElementById(draggedElementId);
-    // Fügt das gezogene Element in die aktuelle Drop-Zone ein
-    dropZone.prepend(draggedElement);
+  dropZones.forEach(zone => {
+      zone.ondragover = (event) => {
+          event.preventDefault();
+          event.currentTarget.style.backgroundColor = "#1FD7C1";
+      };
+
+      zone.ondragleave = (event) => {
+          event.currentTarget.style.backgroundColor = ""; // Zurücksetzen des Hintergrunds
+      };
+
+      zone.ondrop = (event) => {
+          event.preventDefault();
+          event.currentTarget.style.backgroundColor = ""; // Zurücksetzen des Hintergrunds
+          const data = event.dataTransfer.getData("text");
+          const card = document.getElementById(data);
+          event.currentTarget.appendChild(card);
+      };
   });
-});
+}
 
 function openDialog() {
   document.getElementById("popupOnTaskSelectionID").style.visibility = "visible";
@@ -85,11 +86,13 @@ async function renderBadges() {
 async function renderTaskCards() {
     await loadTasks("/tasks");
   
-    document.getElementById("taskCard").innerHTML = "";
+    document.getElementById("cardContainertoDo").innerHTML = "";
+
   
     for (let i = 0; i < tasks.length; i++) {
+      const uniqueId = `taskCard-${i}`;
       document.getElementById("cardContainertoDo").innerHTML += `
-                <div draggable="true" id="taskCard" class="taskCard">
+                <div draggable="true" id="${uniqueId}" class="taskCard">
                 <div class="taskCardTop">
                   <label class="categoryGreen">TECHNICAL STACK</label>
                   <div class="dropdownCard">
@@ -131,7 +134,14 @@ async function renderTaskCards() {
               </div>  
                   `;
     }
-  }
+    // Drag-and-Drop-Events nach dem Rendern der Karten hinzufügen
+    addDragAndDropEvents();
+}
+
+// Initiale Aufrufe
+renderTaskCards();
+
+
 
 
 /*AddTask Pop up*/
