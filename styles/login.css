@@ -501,3 +501,24 @@ button:disabled:hover {
         opacity: 0;
     }
 }
+
+
+@media (max-width: 535px) {
+    .field_group {
+        width: 70%;
+    }
+
+    .login_section h1 {
+        font-size: 48px;
+    }
+
+    .auth_options {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 700px;
+        position: fixed;
+        margin-left: 110px;
+        
+    }
+}

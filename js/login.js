@@ -152,3 +152,44 @@ function checkInvalidKeys(key) {
 function isMarkedCompletely(inputField) {
   return inputField.selectionStart == 0 && inputField.selectionEnd == inputField.value.length;
 }
+
+// Login & Guest-Login Function
+
+document.getElementById('loginButton').addEventListener('click', function(event) {
+  event.preventDefault();
+  
+  // Get the email and password values
+  let email = document.getElementById('userEmail').value;
+  let password = document.getElementById('userPassword').value;
+
+  // Save the email and password to localStorage
+  localStorage.setItem('email', email);
+  localStorage.setItem('password', password);
+
+  // Redirect to board.html
+  window.location.href = 'board.html';
+});
+
+document.getElementById('guestButton').addEventListener('click', function(event) {
+  event.preventDefault();
+  
+  // Check if the email and password fields are filled
+  let email = document.getElementById('userEmail').value;
+  let password = document.getElementById('userPassword').value;
+
+  if (email && password) {
+      // Redirect to board.html
+      window.location.href = 'board.html';
+  } else {
+      alert('Please fill out both fields.');
+  }
+});
+
+
+// Show Username on the Page
+document.addEventListener('DOMContentLoaded', (event) => {
+  const username = localStorage.getItem('username');
+  if (username) {
+      document.getElementById('header-profile-icon').textContent = username.charAt(0).toUpperCase();
+  }
+});
