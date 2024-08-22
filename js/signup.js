@@ -36,8 +36,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
+// SignUp actually not possible
 document.getElementById('registerButton').addEventListener('click', function(event) {
     event.preventDefault();
+    alert('Registration is currently not possible. Please Login with the Guest Login')
     window.location.href = 'login.html';
   });
