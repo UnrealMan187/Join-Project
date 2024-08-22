@@ -118,6 +118,10 @@ body {
   justify-content: center;
 }
 
+.taskCardContainer {
+  margin-bottom: 16px;
+}
+
 .taskCard {
   min-width: 252px;
   max-width: 252px;

@@ -88,14 +88,17 @@ async function renderTaskCards() {
     document.getElementById("taskCard").innerHTML = "";
   
     for (let i = 0; i < tasks.length; i++) {
-      document.getElementById("taskCard").innerHTML += `
+      document.getElementById("cardContainertoDo").innerHTML += `
+                <div draggable="true" id="taskCard" class="taskCard">
                 <div class="taskCardTop">
-                    <label class="categoryGreen">TECHNICAL STACK</label>
+                  <label class="categoryGreen">TECHNICAL STACK</label>
                   <div class="dropdownCard">
                     <button onclick="toggleDropdown('dropdown-content')" class="dropdown-btn">
-                      <div class="dropdownBtnContainer"><img src="" alt="Dropdown Arrow"></div>
-                      </button>
-                   <div id="dropdown-content" class="dropdown-content">
+                      <div class="dropdownBtnContainer">
+                        <img src="" alt="Dropdown Arrow">
+                      </div>
+                    </button>
+                    <div id="dropdown-content" class="dropdown-content">
                       <p onclick="">In Progress</p>
                       <p onclick="">Done</p>
                       <p onclick="">Awaiting Feedback</p>
@@ -112,7 +115,7 @@ async function renderTaskCards() {
                       </div>
                       <p class="amountSubtasks">1/2</p>
                     </div>
-                    <div class="footerCard ">
+                    <div class="footerCard">
                       <div id="profileBadges" class="profileBadges">
                         <div class="badgeImg" style="background-color: #F8C4E4">BZ</div>
                         <div class="badgeImg" style="background-color: #47FDC3">SM</div>
@@ -125,8 +128,7 @@ async function renderTaskCards() {
                     </div>
                   </div>
                 </div>
-              </div> 
-            </div>   
+              </div>  
                   `;
     }
   }
