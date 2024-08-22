@@ -254,3 +254,7 @@ a {
     line-height: 15.6px;
     color: var(--orange);
 }
+
+.d-none {
+    display: none;
+  }

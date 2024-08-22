@@ -42,3 +42,78 @@ document.getElementById('registerButton').addEventListener('click', function(eve
     alert('Registration is currently not possible. Please Login with the Guest Login')
     window.location.href = 'login.html';
   });
+
+
+  function showLoginContainer() {
+    document.getElementById("main_wrapper").classList.remove("d-none");
+    document.getElementById("login_section").classList.remove("d-none");
+  }
+
+
+  function onPasswordKeyDown() {
+    let inputField = document.getElementById("userPassword").value;
+    let pressedKey = event.key;
+  
+    if (inputField.length <= 1 && pressedKey == "Backspace") {
+      document.getElementById("loginButton").disabled = true;
+    } else if (pressedKey == "Enter") {
+      if (inputField.length > 0) {
+        document.getElementById("loginButton").disabled = false;
+      }
+    } else if (isMarkedCompletely(document.getElementById("userPassword")) && (pressedKey == "Backspace" || pressedKey == "Delete")) {
+      document.getElementById("loginButton").disabled = true;
+    } else {
+      if (checkInvalidKeys(pressedKey) == false) {
+        document.getElementById("loginButton").disabled = false;
+      }
+    }
+  }
+  
+  function checkInvalidKeys(key) {
+    switch (key) {
+      case "Backspace":
+      case "Escape":
+      case "Shift":
+      case "Alt":
+      case "AltGraph":
+      case "Space":
+      case "Control":
+      case "F1":
+      case "F2":
+      case "F3":
+      case "F4":
+      case "F5":
+      case "F6":
+      case "F7":
+      case "F8":
+      case "F9":
+      case "F10":
+      case "F11":
+      case "F12":
+      case "PageUp":
+      case "PageDown":
+      case "Home":
+      case "End":
+      case "Insert":
+      case "Meta":
+      case "ContextMenu":
+      case "ArrowLeft":
+      case "ArrowRight":
+      case "ArrowUp":
+      case "ArrowDown":
+      case "LaunchApplication2":
+      case "LaunchMail":
+      case "NumLock":
+      case "Pause":
+      case "ScrollLock":
+        return true;
+        break;
+      default:
+        return false;
+        break;
+    }
+  }
+  
+  function isMarkedCompletely(inputField) {
+    return inputField.selectionStart == 0 && inputField.selectionEnd == inputField.value.length;
+  }

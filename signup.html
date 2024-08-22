@@ -45,7 +45,8 @@
                         required
                         onkeyup="togglePasswordIcon('userPassword')"
                         oninput="checkPassword()"
-                        onkeypress="clearPasswordMismatchMessage()" />
+                        onkeypress="clearPasswordMismatchMessage()" 
+                        onkeydown="onPasswordKeyDown()"/>
                     <img id="password__toggle" class="password__icon pointer--disabled" src="./img/lock.svg" alt="lock" onclick="togglePasswordVisibility('userPassword')" />
                 </div>
     
@@ -58,7 +59,8 @@
                         autocomplete="off"
                         required
                         onkeyup="togglePasswordIcon('confirmPassword')"
-                        onkeypress="clearPasswordMismatchMessage()" />
+                        onkeypress="clearPasswordMismatchMessage()" 
+                        />
                     <img
                         id="confirmPassword__toggle"
                         class="password__icon pointer--disabled"
