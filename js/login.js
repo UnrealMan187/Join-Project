@@ -172,17 +172,7 @@ document.getElementById('loginButton').addEventListener('click', function(event)
 
 document.getElementById('guestButton').addEventListener('click', function(event) {
   event.preventDefault();
-  
-  // Check if the email and password fields are filled
-  let email = document.getElementById('userEmail').value;
-  let password = document.getElementById('userPassword').value;
-
-  if (email && password) {
-      // Redirect to board.html
-      window.location.href = 'board.html';
-  } else {
-      alert('Please fill out both fields.');
-  }
+  window.location.href = 'board.html';
 });
 
 
