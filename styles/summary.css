@@ -272,7 +272,7 @@ svg.circle:hover {
   .summary__header {
     max-width: 625px;
     height: 20px;
-    margin-bottom: 35px;
+    margin-bottom: 32px;
   }
   .summary__tiles__container {
     padding-top: calc(300px - 206px - 73px);
