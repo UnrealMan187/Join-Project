@@ -293,6 +293,7 @@ a{
         justify-content: center;
         padding: 0;
         text-wrap: nowrap;
+        width: 90px;
     }
 
     .mobile-nav li{
@@ -302,7 +303,6 @@ a{
     .nav-links:hover{
         background-color: #091931;
         color: white;
-        width: 150px;
         border-radius: 10px;
         cursor: pointer;
         height: 96px;
