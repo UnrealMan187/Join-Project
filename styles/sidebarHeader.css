@@ -307,27 +307,6 @@ a{
         cursor: pointer;
         height: 96px;
     }
-    }
-
-    a:hover{
-        color: white;
-    }
-
-    .nav-icons:hover svg{
-        fill:red;
-    }
-
-    .text-content{
-        padding: 3em;
-        margin-left: 0;
-    }
-
-    .text-content h1 {
-        font-size: 2rem;
-    }
-
-    .back-arrow {
-        top: 150px;
-        right: 30px;
-    }
 }
+
+    
