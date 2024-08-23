@@ -37,11 +37,12 @@ async function createTask() {
     date: taskDate,
     category: taskCategory,
     priority: taskPrio,
+    level: "To do",
     subtasks: taskSubtasks,
     assigned: assignedTo,
   });
-
-  await saveTasks("/tasks", tasks[0]);
+  
+  await saveTasks("/tasks", tasks);
 }
 
 function deleteTask(position)

@@ -35,6 +35,7 @@ async function loadTasks(path = "/tasks") {
         date: responseToJson[key]["date"],
         category: responseToJson[key]["category"],
         priority: responseToJson[key]["priority"],
+        level: responseToJson[key]["level"],
         subtasks: responseToJson[key]["subtasks"],
         assigned: responseToJson[key]["assigned"],
       });
