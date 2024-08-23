@@ -36,19 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// SignUp actually not possible
-document.getElementById('registerButton').addEventListener('click', function(event) {
-    event.preventDefault();
-    alert('Registration is currently not possible. Please Login with the Guest Login')
-    window.location.href = 'login.html';
-  });
-
-
   function showLoginContainer() {
     document.getElementById("main_wrapper").classList.remove("d-none");
     document.getElementById("login_section").classList.remove("d-none");
   }
-
 
   function onPasswordKeyDown() {
     let inputField = document.getElementById("userPassword").value;
