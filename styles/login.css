@@ -12,6 +12,10 @@
     margin-right: auto;
 }
 
+body{
+    margin: 0;
+}
+
 a {
     text-decoration: none;
 }
@@ -370,7 +374,7 @@ button:disabled:hover {
 .logo-container {
     position: absolute;
     top: 50px;
-    left: 50px;
+    left: 250px;
   }
   
   /* Beim Laden der Seite wird die Klasse 'start' entfernt */

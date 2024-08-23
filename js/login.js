@@ -23,7 +23,7 @@ function demoLogin() {
   passwordInput.value = "demopassword";
 
   // Weiterleitung zur Dashboard-Seite
-  window.location.href = "dashboard.html";
+  window.location.href = "summary.html";
 }
 
 /**
@@ -39,7 +39,7 @@ function handleSubmit(event) {
   if (validateEmail(email) && validatePassword(password)) {
     // Fiktive Authentifizierung - hier würde normalerweise eine API-Anfrage gesendet
     if (email === "user@example.com" && password === "password") {
-      window.location.href = "dashboard.html"; // Weiterleitung nach erfolgreicher Anmeldung
+      window.location.href = "summary.html"; // Weiterleitung nach erfolgreicher Anmeldung
     } else {
       alert("Falsche Anmeldeinformationen");
     }
@@ -167,12 +167,12 @@ document.getElementById('loginButton').addEventListener('click', function(event)
   localStorage.setItem('password', password);
 
   // Redirect to board.html
-  window.location.href = 'board.html';
+  window.location.href = 'summary.html';
 });
 
 document.getElementById('guestButton').addEventListener('click', function(event) {
   event.preventDefault();
-  window.location.href = 'board.html';
+  window.location.href = 'summary.html';
 });
 
 
