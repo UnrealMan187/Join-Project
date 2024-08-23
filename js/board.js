@@ -88,6 +88,11 @@ async function renderTaskCards() {
   
     document.getElementById("cardContainertoDo").innerHTML = "";
 
+    // to do container = cardContainertoDo
+    // in progress container = cardContainerinProgress
+    // await Feedback conainer = cardContainerawaitingFeedback
+    // done container = cardContainerdone
+
   
     for (let i = 0; i < tasks.length; i++) {
       const uniqueId = `taskCard-${i}`;
