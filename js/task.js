@@ -4,7 +4,9 @@ async function createTask() {
   let taskTitle = document.getElementById("title").value;
   let taskDescription = document.getElementById("description").value;
   let taskDate = document.getElementById("due-date-input").value;
-  let taskCategory = document.getElementById("category-container").value;
+  let taskCategory = document.getElementById("category-displayed").textContent.trim();
+
+  alert(taskCategory);
 
   let taskPrio = getTaskPrio();
 
@@ -31,7 +33,7 @@ async function createTask() {
     assignedTo = assignedTo.slice(0, -1);
   }
 
-  tasks.push({
+  let newTask = {
     title: taskTitle,
     description: taskDescription,
     date: taskDate,
@@ -39,10 +41,8 @@ async function createTask() {
     priority: taskPrio,
     level: "To do",
     subtasks: taskSubtasks,
-    assigned: assignedTo,
-  });
-  
-  await saveTasks("/tasks", tasks);
+    assigned: assignedTo
+  };
 }
 
 function deleteTask(position)

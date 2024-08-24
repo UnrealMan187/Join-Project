@@ -93,13 +93,31 @@ async function renderTaskCards() {
     // await Feedback conainer = cardContainerawaitingFeedback
     // done container = cardContainerdone
 
-  
+      
     for (let i = 0; i < tasks.length; i++) {
       const uniqueId = `taskCard-${i}`;
+      let assignedUsers = tasks[i].assigned.split(",");
+      let assignedUsersHTML = "";
+      
+
+      for(j = 0; j < assignedUsers.length; j++) {
+
+        for(c = 0; c < users.length; c++) {
+          let cc = c + 1;
+
+          while(cc > 15) { cc = cc - 15; }
+
+          if(users[c].name == assignedUsers[j]) {
+            assignedUsersHTML += `
+            <div class="badgeImg initialsColor${cc}">${getUserInitials(assignedUsers[j])}</div>
+            `;
+          }
+        }
+      }
       document.getElementById("cardContainertoDo").innerHTML += `
                 <div draggable="true" id="${uniqueId}" class="taskCard">
                 <div class="taskCardTop">
-                  <label class="categoryGreen">TECHNICAL STACK</label>
+                  <label class="categoryGreen">${tasks[i].category}</label>
                   <div class="dropdownCard">
                     <button onclick="toggleDropdown('dropdown-content')" class="dropdown-btn">
                       <div class="dropdownBtnContainer">
@@ -114,8 +132,8 @@ async function renderTaskCards() {
                   </div>
                 </div>
                 <div class="cardBody" onclick="openDialog(); popupValueImplementFromTask()">
-                  <p id="titelCardID" class="titleCard">HTML Base Template Creation</p>
-                  <p id="descriptionCardID" class="descriptionCard">Create reusable HTML base templates</p>
+                  <p id="titelCardID" class="titleCard">${tasks[i].title}</p>
+                  <p id="descriptionCardID" class="descriptionCard">${tasks[i].description}</p>
                   <div>
                     <div class="progress">
                       <div class="progressBarContainer">
@@ -125,10 +143,7 @@ async function renderTaskCards() {
                     </div>
                     <div class="footerCard">
                       <div id="profileBadges" class="profileBadges">
-                        <div class="badgeImg" style="background-color: #F8C4E4">BZ</div>
-                        <div class="badgeImg" style="background-color: #47FDC3">SM</div>
-                        <div class="badgeImg" style="background-color: #1213AA">MB</div>
-                        <div class="badgeImg" style="background-color: #144C6B">TW</div>
+                        ${assignedUsersHTML}
                       </div>
                       <div class="prioImg">
                         <img src="./img/medium.svg" alt="">
