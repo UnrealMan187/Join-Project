@@ -95,6 +95,7 @@ async function renderTaskCards() {
     for (let i = 0; i < tasks.length; i++) {
       const uniqueId = `taskCard-${i}`;
       let assignedUsers = tasks[i].assigned.split(",");
+      let subTasksArray = tasks[i].subtasks.split("|");
       let assignedUsersHTML = "";
 
 
@@ -159,7 +160,7 @@ async function renderTaskCards() {
                       <div class="progressBarContainer">
                         <div id="" class="progressBar" style="width: 50%;"></div>
                       </div>
-                      <p class="amountSubtasks">1/2</p>
+                      <p class="amountSubtasks">${subTasksArray.length} subtask(s)</p>
                     </div>
                     <div class="footerCard">
                       <div id="profileBadges" class="profileBadges">
