@@ -17,10 +17,10 @@ async function loadSummaryInfos() {
     sumFeedback = tasks[i].level == "Awaiting Feedback" ? (sumFeedback + 1) : sumFeedback;
   }
 
-  document.getElementById("summary__todo").innerHTML = +sumTodo;
-  document.getElementById("summary__done").innerHTML = +sumDone;
-  document.getElementById("summary__urgent").innerHTML = +sumUrgent;
-  document.getElementById("summary__tasks").innerHTML = +sumTasks;
-  document.getElementById("summary__progress").innerHTML = +sumProgress;
-  document.getElementById("summary__feedback").innerHTML = +sumFeedback;
+  document.getElementById("summary__todo").innerHTML = sumTodo;
+  document.getElementById("summary__done").innerHTML = sumDone;
+  document.getElementById("summary__urgent").innerHTML = sumUrgent;
+  document.getElementById("summary__tasks").innerHTML = sumTasks;
+  document.getElementById("summary__progress").innerHTML = sumProgress;
+  document.getElementById("summary__feedback").innerHTML = sumFeedback;
 }
