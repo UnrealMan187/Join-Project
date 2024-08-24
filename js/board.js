@@ -87,17 +87,36 @@ async function renderTaskCards() {
     await loadTasks("/tasks");
   
     document.getElementById("cardContainertoDo").innerHTML = "";
+    document.getElementById("cardContainerinProgress").innerHTML = "";
+    document.getElementById("cardContainerawaitingFeedback").innerHTML = "";
+    document.getElementById("cardContainerdone").innerHTML = "";
 
-    // to do container = cardContainertoDo
-    // in progress container = cardContainerinProgress
-    // await Feedback conainer = cardContainerawaitingFeedback
-    // done container = cardContainerdone
-
-      
+  
     for (let i = 0; i < tasks.length; i++) {
       const uniqueId = `taskCard-${i}`;
       let assignedUsers = tasks[i].assigned.split(",");
       let assignedUsersHTML = "";
+
+
+      let cardContainerIdName = tasks[i].level;
+
+      switch(cardContainerIdName) {
+        case "To do":
+          cardContainerIdName = "cardContainertoDo";
+          break;
+        case "In Progress":
+          cardContainerIdName = "cardContainerinProgress";
+          break;
+        case "Awaiting Feedback":
+          cardContainerIdName = "cardContainerawaitingFeedback";
+          break;
+        case "Done":
+          cardContainerIdName = "cardContainerdone";
+          break;
+        default:
+          cardContainerIdName = "";
+          break;
+      }
       
 
       for(j = 0; j < assignedUsers.length; j++) {
@@ -111,10 +130,11 @@ async function renderTaskCards() {
             assignedUsersHTML += `
             <div class="badgeImg initialsColor${cc}">${getUserInitials(assignedUsers[j])}</div>
             `;
+            break;
           }
         }
       }
-      document.getElementById("cardContainertoDo").innerHTML += `
+      document.getElementById(cardContainerIdName).innerHTML += `
                 <div draggable="true" id="${uniqueId}" class="taskCard">
                 <div class="taskCardTop">
                   <label class="categoryGreen">${tasks[i].category}</label>

@@ -6,8 +6,6 @@ async function createTask() {
   let taskDate = document.getElementById("due-date-input").value;
   let taskCategory = document.getElementById("category-displayed").textContent.trim();
 
-  alert(taskCategory);
-
   let taskPrio = getTaskPrio();
 
   let taskSubtasks = "";
