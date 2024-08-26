@@ -25,6 +25,7 @@ async function loadSummaryInfos() {
   document.getElementById("summary__feedback").innerHTML = sumFeedback;
 
   document.getElementById("summary__date").innerHTML = getUpcomingDeadline();
+  greetUser();
 }
 
 function getUpcomingDeadline() {
@@ -76,3 +77,4 @@ function greetUser() {
 
   document.getElementById("greeting__text").innerText = greeting;
 }
+
