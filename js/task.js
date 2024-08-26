@@ -197,17 +197,6 @@ async function renderAssignedTo() {
   assignedMenu.innerHTML = htmlContent;
 }
 
-
-function toggleBackground(checkbox) {
-  const listItem = checkbox.closest(".list-item");
-
-  if (checkbox.checked) {
-    listItem.style.backgroundColor = "#2a3647";
-  } else {
-    listItem.style.backgroundColor = ""; // Setzt die Hintergrundfarbe zurück
-  }
-}
-
 function toggleBackground(checkbox) {
   const listItem = checkbox.closest(".list-item");
   const contactName = listItem.querySelector(".list-item-name label").textContent.trim();
@@ -217,11 +206,13 @@ function toggleBackground(checkbox) {
 
   if (checkbox.checked) {
     listItem.style.backgroundColor = "#2a3647";
+    listItem.style.color = "white";
 
     // Füge das Kreis-Element zum ausgewählten Kontaktcontainer hinzu
     selectedContactsContainer.appendChild(contactCircle);
   } else {
     listItem.style.backgroundColor = ""; // Setzt die Hintergrundfarbe zurück
+    listItem.style.color = "black";
 
     // Entferne das Kreis-Element aus dem ausgewählten Kontaktcontainer
     const circles = selectedContactsContainer.querySelectorAll(".circle");
