@@ -57,8 +57,6 @@ async function saveTasks(path = "", data = {}) {
 }
 
 async function editTask(id, data = {}) {
-  document.getElementById('popupOnTaskSelectionMainContainerID').classList.add('d-none');
-  document.getElementById('editPopUpID').classList.remove('d-none');
   await fetch(FIREBASE_URL + `/tasks/${id}` + ".json", {
     method: "PUT",
     headers: {

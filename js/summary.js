@@ -31,18 +31,19 @@ async function loadSummaryInfos() {
 function getUpcomingDeadline() {
   let upcomingDeadline = "0";
   let allDates = [];
+  let taskDate = "";
 
   for (let i = 0; i < tasks.length; i++) {
     
     if (tasks[i].priority == "Urgent") {
-      let taskDate = tasks[i].date.toString().replace("-", "");
+      taskDate = taskDate = tasks[i].date.toString().replace("-", "");
       taskDate = taskDate.replace("-", "");
 
       allDates.push(taskDate);
-
-        upcomingDeadline = taskDate;
     }
   }
+
+  console.log(...allDates);
 
   upcomingDeadline = Math.min(...allDates);
 
