@@ -1,5 +1,5 @@
 // Funktion zum Hinzufügen der Drag-and-Drop-Events
-async function addDragAndDropEvents() {
+function addDragAndDropEvents() {
   const draggedCards = document.querySelectorAll('.taskCard');
   const dropZones = document.querySelectorAll('#cardContainertoDo, #cardContainerinProgress, #cardContainerawaitingFeedback, #cardContainerdone');
 
