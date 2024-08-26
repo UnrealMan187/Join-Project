@@ -43,13 +43,11 @@ function getUpcomingDeadline() {
     }
   }
 
-  console.log(...allDates);
-
   upcomingDeadline = Math.min(...allDates);
 
   upcomingDeadline = numberToDate(upcomingDeadline.toString());
 
-  if(upcomingDeadline == 0) {
+  if(upcomingDeadline == 0 || allDates.length == 0) {
     return "";
   } else {
     return upcomingDeadline;
