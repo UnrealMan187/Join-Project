@@ -597,34 +597,44 @@ button {
 
 @media (max-width: 400px) {
     .closePopUp {
-        margin-top: -72%;
-        background-color: white;
+        margin-top: -150px;
+        background-color: rgb(255, 255, 255);
         height: 24px;
         width: 24px;
     }
 
     .contactImg {
-        margin-top: -12%;
+        margin-top: -6%;
         margin-left: 35%;
         /* z-index: 5; */
         /* display: flex; */
         /* align-items: center; */
         /* justify-content: center; */
         height: 90px;
-        width: 0;
+        width: 0px;
         position: unset;
     }
 
     .popUpBanner {
-        height: 180px;
+        height: 110px;
     }
 
     .form form {
         margin-left: 47.5%;
+        margin-top: -60px;
+        gap: 24px;
     }
 
     .createContactButton {
-        margin-left: 32.5%;
+        margin-left: 38.5%;
+        margin-top: -110px;
+        height: 20px;
+        width: 130px;
+    }
+
+    .popUpContent {
+        height: 360px;
+        margin-bottom: 110px;
     }
  }
 
@@ -643,5 +653,19 @@ button {
 
     .createContactButton {
         width: 45%;
+    }
+
+    .form form {
+        margin-top: 50px;
+        gap: 24px;
+    }
+
+    .createContactButton {
+        margin-top: -90px;
+    }
+
+    .popUpContent {
+        height: 390px;
+        margin-bottom: 110px;
     }
 }
