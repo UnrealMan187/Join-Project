@@ -157,6 +157,7 @@ function isMarkedCompletely(inputField) {
 
 document.getElementById('loginButton').addEventListener('click', function(event) {
   event.preventDefault();
+  alert('Leider kannst du dich noch nicht einloggen!')
   
   // Get the email and password values
   let email = document.getElementById('userEmail').value;
@@ -167,7 +168,7 @@ document.getElementById('loginButton').addEventListener('click', function(event)
   localStorage.setItem('password', password);
 
   // Redirect to board.html
-  window.location.href = 'summary.html';
+  window.location.href = 'signup.html';
 });
 
 document.getElementById('guestButton').addEventListener('click', function(event) {
