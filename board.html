@@ -391,7 +391,7 @@
 <!-- POP UP -->
     <section onclick="closeDialog()" id="popupOnTaskSelectionID" class="popupOnTaskSelection">
 
-      <div onclick="event.stopPropagation()" class="popupOnTaskSelectionMainContainer">
+      <div id="popupOnTaskSelectionMainContainerID" onclick="event.stopPropagation()" class="popupOnTaskSelectionMainContainer">
         <div class="popupKategorieOnTopMainContainer">
           <div>
               <h2>User Story</h2>
@@ -438,18 +438,82 @@
                   <img class="deleteImg" src="./img/delete.png">
                   <p class="deleteTxt">Delete</p>
                 </div>
-
+            </div>
                 <div class="vector"></div>
 
-                <div class="editContainer">
-                  <div onclick="editTask()" class="editImgContainer"> 
-                    <img class="editImg" src="./img/edit.png">
-                    <p class="editTxt">Edit</p>
-                  </div>
+            <div class="editContainer">
+                <div onclick="editTask()" class="editImgContainer"> 
+                  <img class="editImg" src="./img/edit.png">
+                  <p class="editTxt">Edit</p>
+                </div>
+            </div>
           </div>
       </div>
 
+
+        <div id="editPopUpID" onclick="event.stopPropagation()" class="popupOnTaskEdit d-none">
+          <div class="popupKategorieOnTopMainContainer">
+            <div class="closePopupMainContainer">
+                <img onclick="closeDialog()" id="closePopupID" src="./img/close.svg" alt="">
+            </div>
+          </div>
+          <div class="scrollbar">
+          <div class="editPopupTitelMainContainer">
+            <span class="editPopupTitelTxt">Title</span>
+            <input id="" class="editTitelInput" type="text">
+          </div>
+
+          <div class="editPopupDescriptionMainContainer">
+            <span class="editPopupDescriptionTxt">Description</span>
+            <input class="editDescriptionInput" type="text">
+          </div>
+            
+            <div class="editPopupDateMainContainer">
+              <p class="editPopupDateTxt">Due date</p>
+              <input class="editDateInput" type="date">
+            </div>
+
+            <div class="editPrio">
+              <label>Prio</label>
+              <div class="buttons-prio">
+                <button onclick="clickOnUrgent()" type="button" id="urgent" class="btn-prio btn-prio:hover">
+                  Urgent<img id="urgentID" src="./img/urgent.svg" class="">
+                        <img id="urgent-whiteID" class="d-none" src="./img/urgent-white.svg">
+                </button>
+                <div class="">
+                <button onclick="clickOnMedium()" type="button" id="medium" class="btn-prio btn-bg-change-medium-onclick prio-txt-color-set-white" style="box-shadow: none;">
+                  Medium<img id="mediumID" src="./img/medium.svg" class="d-none">
+                  <img id="medium-whiteID" class="" src="./img/medium-white.svg">
+                </button>
+              </div>
+                <button onclick="clickOnLow()" type="button" id="low" class="btn-prio">
+                  Low<img id="lowID" src="./img/low.svg" class="">
+                  <img id="low-whiteID" class="d-none" src="./img/low-white.svg">
+                </button>
+              </div>
+            </div>
+
+            <div class="editPopupAssignedToMainContainer">
+              <div class="editAssignedToContainer">
+                <p class="editAssignedToTxt">Assigned To</p>
+                <input class="editAssignedInput" type="text" placeholder="Select contacts to assign">
+              </div>
+              <div class="popupTest">
+                <div id="popupContactEllipseID" class="popupAssignedUserMainContainer"></div>
+                <div id="popupContactNameID" class="popupAssignedUsersNameContainer"></div>
+              </div>
+            </div>
+
+            <div class="editPopupSubtasksMainContainer">
+                <p class="editPopupSubtasksTxt">Subtasks</p>
+                 <div class="okButtonMainContainer" >
+                  <button class="okButtonOnEditPopUp">OK</button>
+                 </div>
+          </div>
+          </div>
     </section>
+
+
 
   <!-- Start AddTask PopUp Container -->
   <section class="boardSection">

@@ -1,7 +1,7 @@
 button {
   cursor: pointer;
   border: 0;
-  background-color: #F6F7F8;
+  background-color: #f6f7f8;
 }
 
 * {
@@ -9,8 +9,7 @@ button {
   padding: 0;
   box-sizing: border-box;
 }
-.d-none
-{
+.d-none {
   display: none;
 }
 
@@ -429,7 +428,6 @@ input[type="search"]::-webkit-search-cancel-button {
   cursor: pointer;
 }
 
-
 .addBtn:hover {
   transition: 225ms;
   background-color: #29abe2;
@@ -457,6 +455,20 @@ input[type="search"]::-webkit-search-cancel-button {
   visibility: hidden;
 }
 .popupOnTaskSelectionMainContainer {
+  background-color: #ffffff;
+  width: 525px;
+  padding: 48px 0;
+  box-shadow: 0px 0px 4px 0px #00000029;
+  border-radius: 30px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  height: 92%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 900px;
+}
+.popupOnTaskEdit {
   background-color: #ffffff;
   width: 525px;
   padding: 48px 0;
@@ -630,8 +642,7 @@ h2 {
   text-align: left;
   margin-bottom: 10px;
 }
-.popupAssignedUsersNameContainer
-{
+.popupAssignedUsersNameContainer {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -774,9 +785,9 @@ h2 {
   opacity: 0px;
   cursor: pointer;
 }
-.editImgContainer:hover,.deleteImgContainer:hover
-{
-  color: #29ABE2;
+.editImgContainer:hover,
+.deleteImgContainer:hover {
+  color: #29abe2;
 }
 .editImg {
   width: 18px;
@@ -808,65 +819,133 @@ h2 {
 }
 
 /*Pop up Addtask*/
-#myModal{
-    width: 70%;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    border: 0;
-    border-radius: 15px;
-  }
-  
-  .taskContainerPopup{
-    display: flex;
-    flex-direction: column;
-    background-color: #f6f7f8;
-  }
-  .addTaskPopupClose {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    top: 64px;
-    right: 40px;
-    border-radius: 30px;
-    cursor: pointer;
-    border: 0;
+#myModal {
+  width: 70%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  border: 0;
+  border-radius: 15px;
+}
+
+.taskContainerPopup {
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f7f8;
+}
+.addTaskPopupClose {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 64px;
+  right: 40px;
+  border-radius: 30px;
+  cursor: pointer;
+  border: 0;
 }
 
 .addTaskPopupClose img {
-    margin-top: 3px;
+  margin-top: 3px;
 }
 
 .addTaskPopupClose:hover {
-    background-color: rgba(238, 238, 238, 1);
+  background-color: rgba(238, 238, 238, 1);
 }
 .d-flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.descriptionPopup{
-width: min(440px, 100%);
+.descriptionPopup {
+  width: min(440px, 100%);
 }
 
-@media(max-width: 1690px)
-{
-  .popupOnTaskSelectionMainContainer
-  {
+/* EDITPOPUP CLASS */
+.scrollbar {
+  overflow-y: auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  height: 95%;
+  margin-bottom: 20px;
+}
+.editPopupTitelMainContainer,
+.editPopupDateMainContainer,
+.editPopupAssignedToMainContainer,
+.editPopupDescriptionMainContainer,
+.editPopupSubtasksMainContainer {
+  width: 90%;
+  margin-left: 20px;
+}
+.editPopupTitelTxt,
+.editPopupDescriptionTxt,
+.editPopupDateTxt,
+.editAssignedToTxt,
+.editPopupSubtasksTxt {
+  font-size: 20px;
+  color: #2a3647;
+}
+.editTitelInput,
+.editDescriptionInput,
+.editDateInput,
+.editAssignedInput,
+.editSubtaskInput {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  margin-top: 8px;
+  margin-bottom: 32px;
+  padding: 0 10px;
+}
+.editPrio {
+  width: 90%;
+  margin-bottom: 32px;
+  margin-left: 20px;
+}
+.okButtonMainContainer {
+  position: sticky;
+  bottom: 0%;
+  display: flex;
+  justify-content: end;
+  z-index: 99999;
+  
+}
+.okButtonOnEditPopUp {
+  transition: background-color 225ms ease, border 225ms ease;
+  background-color: #2a3647;
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 25.2px;
+  color: #ffffff;
+  border: 1px solid #2a3647;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1690px) {
+  .popupOnTaskSelectionMainContainer {
     width: 38%;
   }
-  .popupKategorieOnTopMainContainer,.popupHeader,.popupSpan,.popupDateMainContainer,.popupPrioMainContainer,.popupAssignedToMainContainer,.subtasksMainContainer
-  {
+  .popupKategorieOnTopMainContainer,
+  .popupHeader,
+  .popupSpan,
+  .popupDateMainContainer,
+  .popupPrioMainContainer,
+  .popupAssignedToMainContainer,
+  .subtasksMainContainer {
     width: 85%;
   }
-  .popupHeader
-  {
+  .popupHeader {
     line-height: 50px;
     height: 100px;
     margin-bottom: 24px;
   }
-  
 }
 
 @media screen and (max-width: 1440px) {
@@ -891,15 +970,12 @@ width: min(440px, 100%);
   }
 }
 
-@media(max-width: 1237px)
-{
-  .popupOnTaskSelectionMainContainer
-  {
+@media (max-width: 1237px) {
+  .popupOnTaskSelectionMainContainer {
     position: fixed;
     left: -100px;
     width: 520px;
   }
- 
 }
 
 @media (max-width: 1100px) {
@@ -917,8 +993,7 @@ width: min(440px, 100%);
     padding-left: 0;
   }
 
-  .popupOnTaskSelectionMainContainer
-  {
+  .popupOnTaskSelectionMainContainer {
     position: fixed;
     left: -240px;
     width: 500px;
@@ -926,8 +1001,7 @@ width: min(440px, 100%);
 }
 
 @media (max-width: 941px) {
-  .popupOnTaskSelectionMainContainer
-  {
+  .popupOnTaskSelectionMainContainer {
     position: fixed;
     left: -300px;
     width: 500px;
@@ -935,8 +1009,7 @@ width: min(440px, 100%);
 }
 
 @media (max-width: 830px) {
-  .popupOnTaskSelectionMainContainer
-  {
+  .popupOnTaskSelectionMainContainer {
     position: fixed;
     left: -350px;
     width: 500px;
@@ -958,8 +1031,7 @@ width: min(440px, 100%);
 }
 
 @media (max-width: 725px) {
-  .popupOnTaskSelectionMainContainer
-  {
+  .popupOnTaskSelectionMainContainer {
     position: fixed;
     left: -400px;
     width: 500px;
@@ -967,8 +1039,7 @@ width: min(440px, 100%);
 }
 
 @media (max-width: 650px) {
-  .popupOnTaskSelectionMainContainer
-  {
+  .popupOnTaskSelectionMainContainer {
     position: fixed;
     left: -440px;
     width: 500px;
@@ -976,8 +1047,7 @@ width: min(440px, 100%);
 }
 
 @media (max-width: 595px) {
-  .popupOnTaskSelectionMainContainer
-  {
+  .popupOnTaskSelectionMainContainer {
     position: fixed;
     left: -470px;
     width: 500px;
@@ -1063,35 +1133,39 @@ width: min(440px, 100%);
     margin-left: 24px;
   }
 
-  .popupOnTaskSelectionMainContainer
-  {
+  .popupOnTaskSelectionMainContainer {
     position: fixed;
     left: -250px;
     width: 350px;
     height: 80%;
   }
-  .popupHeader
-  {
+  .popupHeader {
     height: 190px;
     font-size: 28px;
     text-wrap: wrap;
     line-height: 35px;
     margin-bottom: 14px;
   }
-  .popupSpan,.popupDateMainContainer,.popupDateTxt,.popUpDate,.popupPrioMainContainer,.popupPrioTxt,.popupPrio,.assignedToTxt,.subtasksTxt,.checkboxTxt
-  {
+  .popupSpan,
+  .popupDateMainContainer,
+  .popupDateTxt,
+  .popUpDate,
+  .popupPrioMainContainer,
+  .popupPrioTxt,
+  .popupPrio,
+  .assignedToTxt,
+  .subtasksTxt,
+  .checkboxTxt {
     font-size: 16px;
     margin-bottom: 12px;
   }
-  .deleteAndEditMainContainer
-  {
+  .deleteAndEditMainContainer {
     width: 200px;
   }
 }
 
 @media (max-width: 500px) {
-  .popupOnTaskSelectionMainContainer
-  {
+  .popupOnTaskSelectionMainContainer {
     position: fixed;
     left: -300px;
     width: 350px;
@@ -1143,8 +1217,7 @@ width: min(440px, 100%);
 }
 
 @media (max-width: 426px) {
-  .popupOnTaskSelectionMainContainer
-  {
+  .popupOnTaskSelectionMainContainer {
     position: fixed;
     left: -320px;
     width: 350px;
@@ -1153,41 +1226,35 @@ width: min(440px, 100%);
 }
 
 @media (max-width: 410px) {
-  .popupOnTaskSelectionMainContainer
-  {
+  .popupOnTaskSelectionMainContainer {
     position: fixed;
     left: -250px;
     width: 300px;
     height: 80%;
   }
-  .popupSpan
-  {
+  .popupSpan {
     height: 50px;
   }
-  .checkboxTxt
-  {
+  .checkboxTxt {
     width: 200px;
     text-wrap: wrap;
     margin: 0;
   }
-  .subtasks,.popupCheckboxContainer
-  {
+  .subtasks,
+  .popupCheckboxContainer {
     margin-bottom: 14px;
     height: 40px;
   }
-  .subtasksTxt
-  {
+  .subtasksTxt {
     margin-bottom: 0;
   }
-  .deleteAndEditMainContainer
-  {
+  .deleteAndEditMainContainer {
     width: 150px;
   }
 }
 
 @media (max-width: 384px) {
-  .popupOnTaskSelectionMainContainer
-  {
+  .popupOnTaskSelectionMainContainer {
     position: fixed;
     left: -280px;
     width: 300px;
@@ -1196,8 +1263,7 @@ width: min(440px, 100%);
 }
 
 @media (max-width: 336px) {
-  .popupOnTaskSelectionMainContainer
-  {
+  .popupOnTaskSelectionMainContainer {
     position: fixed;
     left: -290px;
     width: 300px;
@@ -1207,52 +1273,46 @@ width: min(440px, 100%);
 
 /* max-height */
 
-@media(max-height: 911px)
-{
-  .popupOnTaskSelectionMainContainer
-  {
+@media (max-height: 911px) {
+  .popupOnTaskSelectionMainContainer {
     height: 90%;
     padding-top: 30px;
   }
-  .popupKategorieOnTopMainContainer,.popupDateMainContainer,.popupSpan,.popupPrioMainContainer
-  {
+  .popupKategorieOnTopMainContainer,
+  .popupDateMainContainer,
+  .popupSpan,
+  .popupPrioMainContainer {
     margin-bottom: 24px;
   }
- .popupHeader
- {
+  .popupHeader {
     font-size: 40px;
- }
- .deleteAndEditMainContainer
- {
-  margin-top: 20px;
- }
- .subtasksTxt
- {
-  margin-bottom: 24px;
- }
- .deleteAndEditMainContainer
- {
-  margin-top: 80px;
- }
+  }
+  .deleteAndEditMainContainer {
+    margin-top: 20px;
+  }
+  .subtasksTxt {
+    margin-bottom: 24px;
+  }
+  .deleteAndEditMainContainer {
+    margin-top: 80px;
+  }
 }
 
-@media(max-height: 824px)
-{
-  .popupOnTaskSelectionMainContainer
-  {
+@media (max-height: 824px) {
+  .popupOnTaskSelectionMainContainer {
     height: 90%;
     padding-top: 30px;
   }
-  .popupKategorieOnTopMainContainer,.popupDateMainContainer,.popupSpan,.popupPrioMainContainer
-  {
+  .popupKategorieOnTopMainContainer,
+  .popupDateMainContainer,
+  .popupSpan,
+  .popupPrioMainContainer {
     margin-bottom: 24px;
   }
- .popupHeader
- {
+  .popupHeader {
     font-size: 40px;
- }
- .deleteAndEditMainContainer
- {
-  margin-top: 20px;
- }
+  }
+  .deleteAndEditMainContainer {
+    margin-top: 20px;
+  }
 }
