@@ -866,7 +866,6 @@ h2 {
   overflow-y: auto;
   width: 90%;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   margin-right: 10px;
   height: 95%;
@@ -878,6 +877,7 @@ h2 {
 .editPopupDescriptionMainContainer,
 .editPopupSubtasksMainContainer {
   width: 90%;
+  margin-left: 20px;
 }
 .editPopupTitelTxt,
 .editPopupDescriptionTxt,
@@ -903,10 +903,15 @@ h2 {
 .editPrio {
   width: 90%;
   margin-bottom: 32px;
+  margin-left: 20px;
 }
 .okButtonMainContainer {
+  position: sticky;
+  bottom: 0%;
   display: flex;
   justify-content: end;
+  z-index: 99999;
+  
 }
 .okButtonOnEditPopUp {
   transition: background-color 225ms ease, border 225ms ease;
