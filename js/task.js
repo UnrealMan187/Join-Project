@@ -39,6 +39,8 @@ async function createTask() {
     subtasks: taskSubtasks,
     assigned: assignedTo
   };
+
+  saveTasks("/tasks", newTask);
 }
 
 function deleteTask(position)
