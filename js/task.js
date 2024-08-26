@@ -43,12 +43,6 @@ async function createTask() {
   saveTasks("/tasks", newTask);
 }
 
-function deleteTask(position)
-{
-  tasks.splice(position, 1);
-  closeDialog();
-}
-
 function getTaskPrio() {
   if (document.getElementById("urgent").className.includes("btn-bg-change-urgent-onclick")) {
     return "Urgent";

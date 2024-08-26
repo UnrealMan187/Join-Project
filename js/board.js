@@ -34,9 +34,13 @@ function addDragAndDropEvents() {
           if(newLevel.includes("cardContainerawaitingFeedback")) { newLevel = "Awaiting Feedback"; }
           if(newLevel.includes("cardContainerdone")) { newLevel = "Done"; }
 
-          tasks[data.split("-")[1]].level = newLevel;
+          let taskNr = data.split("-")[1];
 
-          saveTasks("/tasks");
+          tasks[taskNr].level = newLevel;
+
+          editTask(tasks[taskNr].id, tasks[taskNr]);
+          loadTasks("/tasks");
+          
       };
   });
 }
@@ -69,6 +73,8 @@ function popupValueImplementFromTask()
      for(let i = 0; i < tasks.length; i++) {
       if(tasks[i].title == titelCardInput) {
          let assignedNames = tasks[i].assigned.split(",");
+
+         currentId = tasks[i].id;
 
          document.getElementById("dateId").textContent = tasks[i].date;
          document.getElementById("prioId").textContent = tasks[i].priority;

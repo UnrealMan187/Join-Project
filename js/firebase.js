@@ -2,6 +2,7 @@ const FIREBASE_URL = "https://join-4d42f-default-rtdb.europe-west1.firebasedatab
 let users = [];
 let tasks = [];
 let currentUser = -1;
+let currentId = -1;
 
 async function loadUsers(path = "/users") {
   users = [];
@@ -31,6 +32,7 @@ async function loadTasks(path = "/tasks") {
   if (responseToJson) {
     Object.keys(responseToJson).forEach((key) => {
       tasks.push({
+        id: key,
         title: responseToJson[key]["title"],
         description: responseToJson[key]["description"],
         date: responseToJson[key]["date"],
@@ -52,6 +54,27 @@ async function saveTasks(path = "", data = {}) {
     },
     body: JSON.stringify(data),
   });
+}
+
+async function editTask(id, data = {}) {
+  await fetch(FIREBASE_URL + `/tasks/${id}` + ".json", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
+
+async function deleteTask(id) {
+  if(id == -1) { return; }
+  await fetch(FIREBASE_URL + `/tasks/${id}` + ".json", {
+    method: "DELETE",
+  });
+
+  closeDialog();
+  await loadTasks("/tasks");
+  await renderTaskCards();
 }
 
 async function addUser() {
