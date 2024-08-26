@@ -585,7 +585,6 @@ h2 {
   opacity: 0px;
 }
 .popupPrio {
-  width: 76px;
   height: 24px;
   gap: 0px;
   opacity: 0px;
@@ -595,8 +594,8 @@ h2 {
   text-align: left;
 }
 .popupCapaImg {
-  width: 17px;
-  height: 6.33px;
+  width: 24px;
+  height: 16px;
   gap: 0px;
   opacity: 0px;
 }

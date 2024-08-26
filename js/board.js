@@ -53,12 +53,24 @@ function popupValueImplementFromTask()
     valueFromEllipse.innerHTML += contactEllipse;
 
     let valueFromName = document.getElementById('popupContactNameID');
+    
     valueFromName.innerHTML = '';   
-     for(let i = 0; i < users.length; i++) {
+     for(let i = 0; i < tasks.length; i++) {
+      if(tasks[i].title == titelCardInput) {
+         let assignedNames = tasks[i].assigned.split(",");
+
+         document.getElementById("dateId").textContent = tasks[i].date;
+         document.getElementById("prioId").textContent = tasks[i].priority;
+         document.getElementById("prioIdImg").src = `./img/${tasks[i].priority.toLowerCase()}.svg`;
+
+         for(let j = 0; j < assignedNames.length; j++) {
          valueFromName.innerHTML += `
-             <div>${users[i].name}</div>
+             <div>${assignedNames[j]}</div>
              `;
-          }
+         }
+
+         }
+      }
 
 }
 
