@@ -1,5 +1,5 @@
 // Funktion zum Hinzufügen der Drag-and-Drop-Events
-function addDragAndDropEvents() {
+async function addDragAndDropEvents() {
   const draggedCards = document.querySelectorAll('.taskCard');
   const dropZones = document.querySelectorAll('#cardContainertoDo, #cardContainerinProgress, #cardContainerawaitingFeedback, #cardContainerdone');
 
@@ -26,6 +26,17 @@ function addDragAndDropEvents() {
           const data = event.dataTransfer.getData("text");
           const card = document.getElementById(data);
           event.currentTarget.appendChild(card);
+
+          let newLevel = event.currentTarget.id;
+
+          if(newLevel.includes("cardContainertoDo")) { newLevel = "To do"; }
+          if(newLevel.includes("cardContainerinProgress")) { newLevel = "In Progress"; }
+          if(newLevel.includes("cardContainerawaitingFeedback")) { newLevel = "Awaiting Feedback"; }
+          if(newLevel.includes("cardContainerdone")) { newLevel = "Done"; }
+
+          tasks[data.split("-")[1]].level = newLevel;
+
+          saveTasks("/tasks");
       };
   });
 }
