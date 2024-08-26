@@ -29,6 +29,7 @@ async function loadSummaryInfos() {
 
 function getUpcomingDeadline() {
   let upcomingDeadline = "0";
+  let allDates = [];
 
   for (let i = 0; i < tasks.length; i++) {
     
@@ -36,13 +37,15 @@ function getUpcomingDeadline() {
       let taskDate = tasks[i].date.toString().replace("-", "");
       taskDate = taskDate.replace("-", "");
 
-      //if (+taskDate < +upcomingDeadline) {
+      allDates.push(taskDate);
+
         upcomingDeadline = taskDate;
-      //}
     }
   }
 
-  upcomingDeadline = numberToDate(upcomingDeadline);
+  upcomingDeadline = Math.min(...allDates);
+
+  upcomingDeadline = numberToDate(upcomingDeadline.toString());
 
   if(upcomingDeadline == 0) {
     return "";
@@ -54,7 +57,7 @@ function getUpcomingDeadline() {
 function numberToDate(numberDate) {
   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-  let newDate = ` ${numberDate.slice(-2)}. ${months[numberDate.slice(-4, -2) - 1]} ${numberDate.slice(0, 4)}`;
+  let newDate = `${months[numberDate.slice(-4, -2) - 1]} ${numberDate.slice(-2)}, ${numberDate.slice(0, 4)}`;
 
   return newDate;
 }
