@@ -82,33 +82,52 @@ function clearPrioButtons()
 }
 //click on Urgent Prio Button
 function clickOnUrgent() {
+  let alreadyKlicked = false;
+  if (getTaskPrio() == "Urgent") {
+    alreadyKlicked = true;
+  }
   clearPrioButtons();
-  document.getElementById("urgent").classList.remove("btn-bg-change-back-onclick");
-  document.getElementById("urgent").classList.toggle("btn-bg-change-urgent-onclick");
-  document.getElementById("urgent").style.boxShadow = "none";
-  document.getElementById("urgentID").classList.toggle("d-none");
-  document.getElementById("urgent").classList.toggle("prio-txt-color-set-white");
-  document.getElementById("urgent-whiteID").classList.toggle("d-none");
+  if (alreadyKlicked == false) {
+    document.getElementById("urgent").classList.remove("btn-bg-change-back-onclick");
+    document.getElementById("urgent").classList.toggle("btn-bg-change-urgent-onclick");
+    document.getElementById("urgent").style.boxShadow = "none";
+    document.getElementById("urgentID").classList.toggle("d-none");
+    document.getElementById("urgent").classList.toggle("prio-txt-color-set-white");
+    document.getElementById("urgent-whiteID").classList.toggle("d-none");
+  }
 }
 //click on Medium Prio Button
 function clickOnMedium() {
+  let alreadyKlicked = false;
+  if (getTaskPrio() == "Medium") {
+    alreadyKlicked = true;
+  }
   clearPrioButtons();
-  document.getElementById("medium").classList.remove("btn-bg-change-back-onclick");
-  document.getElementById("medium").classList.toggle("btn-bg-change-medium-onclick");
-  document.getElementById("medium").style.boxShadow = "none";
-  document.getElementById("mediumID").classList.toggle("d-none");
-  document.getElementById("medium").classList.toggle("prio-txt-color-set-white");
-  document.getElementById("medium-whiteID").classList.toggle("d-none");
+  if (alreadyKlicked == false) {
+    document.getElementById("medium").classList.remove("btn-bg-change-back-onclick");
+    document.getElementById("medium").classList.toggle("btn-bg-change-medium-onclick");
+    document.getElementById("medium").style.boxShadow = "none";
+    document.getElementById("mediumID").classList.toggle("d-none");
+    document.getElementById("medium").classList.toggle("prio-txt-color-set-white");
+    document.getElementById("medium-whiteID").classList.toggle("d-none");
+  }
 }
 //click on Low Prio Button
-function clickOnLow() {
+function clickOnLow() 
+{
+  let alreadyKlicked = false;
+  if (getTaskPrio() == "Low") {
+    alreadyKlicked = true;
+  }
   clearPrioButtons();
-  document.getElementById("low").classList.remove("btn-bg-change-back-onclick");
-  document.getElementById("low").classList.toggle("btn-bg-change-low-onclick");
-  document.getElementById("low").style.boxShadow = "none";
-  document.getElementById("lowID").classList.toggle("d-none");
-  document.getElementById("low").classList.toggle("prio-txt-color-set-white");
-  document.getElementById("low-whiteID").classList.toggle("d-none");
+  if (alreadyKlicked == false) {
+    document.getElementById("low").classList.remove("btn-bg-change-back-onclick");
+    document.getElementById("low").classList.toggle("btn-bg-change-low-onclick");
+    document.getElementById("low").style.boxShadow = "none";
+    document.getElementById("lowID").classList.toggle("d-none");
+    document.getElementById("low").classList.toggle("prio-txt-color-set-white");
+    document.getElementById("low-whiteID").classList.toggle("d-none");
+  }
 }
 
 /*Begin dropdown assigned to and dropdown category*/
