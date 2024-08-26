@@ -59,3 +59,20 @@ function numberToDate(numberDate) {
 
   return `${months[numberDate.slice(-4, -2) - 1]} ${numberDate.slice(-2)}, ${numberDate.slice(0, 4)}`;
 }
+
+
+function greetUser() {
+  const now = new Date();
+  const hour = now.getHours();
+  let greeting;
+
+  if (hour < 12) {
+      greeting = "Good Morning,";
+  } else if (hour < 18) {
+      greeting = "Good Afternoon,";
+  } else {
+      greeting = "Good Evening,";
+  }
+
+  document.getElementById("greeting__text").innerText = greeting;
+}
