@@ -15,7 +15,7 @@ async function createTask() {
     for (let i = 0; i < subtaskItems.length; i++) {
       taskSubtasks += subtaskItems[i].textContent.trim() + "|";
     }
-    taskSubtask = taskSubtasks.slice(0, -1);
+    taskSubtasks = taskSubtasks.slice(0, -1);
   }
 
   if (users.length > 0) {
