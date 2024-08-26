@@ -1,5 +1,3 @@
-let tasks = [];
-
 async function createTask() {
   let taskTitle = document.getElementById("title").value;
   let taskDescription = document.getElementById("description").value;

@@ -1,5 +1,6 @@
 const FIREBASE_URL = "https://join-4d42f-default-rtdb.europe-west1.firebasedatabase.app/";
 let users = [];
+let tasks = [];
 let currentUser = -1;
 
 async function loadUsers(path = "/users") {
