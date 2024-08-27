@@ -174,9 +174,9 @@ async function renderAssignedTo() {
 
   for (let i = 0; i < uniqueUsers.length; i++) {
       htmlContent += `
-          <li class="list-item assigned-to">
-              <div class="list-item-name">
-                  <div class="circle initialsColor${j}">${getUserInitials(uniqueUsers[i].name)}</div>
+          <label><li class="list-item assigned-to"></label>
+              <div class="list-item-name" onclick="toggleCheckbox('AssignedContact${i}')">
+                  <label><div class="circle initialsColor${j}">${getUserInitials(uniqueUsers[i].name)}</div></label>
                   <label>${uniqueUsers[i].name}</label>
               </div>
               <input type="checkbox" onclick="toggleBackground(this)" id="AssignedContact${i}" name="AssignedContact">
@@ -192,6 +192,13 @@ async function renderAssignedTo() {
   // Weisen Sie den gesamten generierten HTML-Inhalt einmal zu
   assignedMenu.innerHTML = htmlContent;
 }
+
+function toggleCheckbox(checkboxId) {
+  const checkbox = document.getElementById(checkboxId);
+  checkbox.checked = !checkbox.checked;  // Umschalten des aktuellen Zustands der Checkbox
+  toggleBackground(checkbox);  // Optional: Deine Funktion aufrufen, um das Hintergrund-Design zu ändern
+}
+
 
 function toggleBackground(checkbox) {
   const listItem = checkbox.closest(".list-item");
