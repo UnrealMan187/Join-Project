@@ -507,6 +507,7 @@ label {
   .addTaskLeft,
   .col-right {
     width: 100%;
+    margin-bottom: 4rem;
   }
 
   .col-middle {
