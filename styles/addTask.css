@@ -216,7 +216,7 @@ h1 {
 .selected-contacts {
   display: flex;
   z-index: 1;
-  position: relative;
+  position: fixed;
   padding: 0.5em;  
 }
 
