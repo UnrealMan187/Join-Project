@@ -508,6 +508,7 @@ h2 {
   left: 4px;
   gap: 0px;
   opacity: 0px;
+  
 }
 .closeImg {
   width: 13.15px;
@@ -879,6 +880,10 @@ h2 {
   width: 90%;
   margin-left: 20px;
 }
+.editPopupAssignedToMainContainer
+{
+  margin-bottom: 32px;
+}
 .editPopupTitelTxt,
 .editPopupDescriptionTxt,
 .editPopupDateTxt,
@@ -887,6 +892,7 @@ h2 {
   font-size: 20px;
   color: #2a3647;
 }
+.editInputGroup,
 .editTitelInput,
 .editDescriptionInput,
 .editDateInput,
@@ -907,6 +913,7 @@ h2 {
 }
 .okButtonMainContainer {
   position: sticky;
+  width: 450px;
   bottom: 0%;
   display: flex;
   justify-content: end;
@@ -926,6 +933,14 @@ h2 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+.editClosePopupMainContainer
+{
+  position: sticky;
+  display: flex;
+  justify-content: flex-end;
+  height: 24px;
+  width: 450px;
 }
 
 @media (max-width: 1690px) {
