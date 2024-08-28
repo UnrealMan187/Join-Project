@@ -57,8 +57,6 @@ async function saveTasks(path = "", data = {}) {
 }
 
 async function editTask(id, data = {}) {
-  document.getElementById('popupOnTaskSelectionMainContainerID').classList.add('d-none');
-  document.getElementById('editPopUpID').classList.remove('d-none');
   await fetch(FIREBASE_URL + `/tasks/${id}` + ".json", {
     method: "PUT",
     headers: {
@@ -152,9 +150,7 @@ async function renderContacts() {
 
   for (let i = 0; i < users.length; i++) {
     if (users[i].name[0].toUpperCase() != firstLetter.toUpperCase()) {
-      html += `<div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter">${users[
-        i
-      ].name[0].toUpperCase()}</span></div>
+      html += `<div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter">${users[i].name[0].toUpperCase()}</span></div>
               <div class="border-container"> <div class="border"></div></div>`;
 
       firstLetter = users[i].name[0].toUpperCase();
