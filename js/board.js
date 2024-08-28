@@ -1,56 +1,64 @@
 // Funktion zum Hinzufügen der Drag-and-Drop-Events
 function addDragAndDropEvents() {
-  const draggedCards = document.querySelectorAll('.taskCard');
-  const dropZones = document.querySelectorAll('#cardContainertoDo, #cardContainerinProgress, #cardContainerawaitingFeedback, #cardContainerdone');
+  const draggedCards = document.querySelectorAll(".taskCard");
+  const dropZones = document.querySelectorAll(
+    "#cardContainertoDo, #cardContainerinProgress, #cardContainerawaitingFeedback, #cardContainerdone"
+  );
 
-  draggedCards.forEach(card => {
-      card.ondragstart = (event) => {
-          // Die ID des zu ziehenden Elements wird in den Datenübertragungsobjekt gespeichert
-          event.dataTransfer.setData("text", event.target.id);
-      };
+  draggedCards.forEach((card) => {
+    card.ondragstart = (event) => {
+      // Die ID des zu ziehenden Elements wird in den Datenübertragungsobjekt gespeichert
+      event.dataTransfer.setData("text", event.target.id);
+    };
   });
 
-  dropZones.forEach(zone => {
-      zone.ondragover = (event) => {
-          event.preventDefault();
-          event.currentTarget.style.backgroundColor = "#1FD7C1";
-      };
+  dropZones.forEach((zone) => {
+    zone.ondragover = (event) => {
+      event.preventDefault();
+      event.currentTarget.style.backgroundColor = "#1FD7C1";
+    };
 
-      zone.ondragleave = (event) => {
-          event.currentTarget.style.backgroundColor = ""; // Zurücksetzen des Hintergrunds
-      };
+    zone.ondragleave = (event) => {
+      event.currentTarget.style.backgroundColor = ""; // Zurücksetzen des Hintergrunds
+    };
 
-      zone.ondrop = (event) => {
-          event.preventDefault();
-          event.currentTarget.style.backgroundColor = ""; // Zurücksetzen des Hintergrunds
-          const data = event.dataTransfer.getData("text");
-          const card = document.getElementById(data);
-          event.currentTarget.appendChild(card);
+    zone.ondrop = (event) => {
+      event.preventDefault();
+      event.currentTarget.style.backgroundColor = ""; // Zurücksetzen des Hintergrunds
+      const data = event.dataTransfer.getData("text");
+      const card = document.getElementById(data);
+      event.currentTarget.appendChild(card);
 
-          let newLevel = event.currentTarget.id;
+      let newLevel = event.currentTarget.id;
 
-          if(newLevel.includes("cardContainertoDo")) { newLevel = "To do"; }
-          if(newLevel.includes("cardContainerinProgress")) { newLevel = "In Progress"; }
-          if(newLevel.includes("cardContainerawaitingFeedback")) { newLevel = "Awaiting Feedback"; }
-          if(newLevel.includes("cardContainerdone")) { newLevel = "Done"; }
+      if (newLevel.includes("cardContainertoDo")) {
+        newLevel = "To do";
+      }
+      if (newLevel.includes("cardContainerinProgress")) {
+        newLevel = "In Progress";
+      }
+      if (newLevel.includes("cardContainerawaitingFeedback")) {
+        newLevel = "Awaiting Feedback";
+      }
+      if (newLevel.includes("cardContainerdone")) {
+        newLevel = "Done";
+      }
 
-          let taskNr = data.split("-")[1];
+      let taskNr = data.split("-")[1];
 
-          tasks[taskNr].level = newLevel;
+      tasks[taskNr].level = newLevel;
 
-          editTask(tasks[taskNr].id, tasks[taskNr]);
-          loadTasks("/tasks");
-          
-      };
+      editTask(tasks[taskNr].id, tasks[taskNr]);
+      loadTasks("/tasks");
+    };
   });
 }
 
-function editPopupTask() 
-{
-  document.getElementById('popupOnTaskSelectionMainContainerID').classList.toggle('d-none');
-  document.getElementById('editPopUpID').classList.toggle('d-none');
+function editPopupTask() {
+  document.getElementById("popupOnTaskSelectionMainContainerID").classList.toggle("d-none");
+  document.getElementById("editPopUpID").classList.toggle("d-none");
 
-  document.getElementById('editPopUpID').innerHTML =`
+  document.getElementById("editPopUpID").innerHTML = `
          <div class="editClosePopupMainContainer">
             <img onclick="closeDialog()" id="closePopupID" src="./img/close.svg" style="cursor: pointer;" alt="">
         </div>
@@ -134,7 +142,7 @@ function editPopupTask()
       </div>
           <div onclick="editTask()" class="okButtonMainContainer" >
             <button class="okButtonOnEditPopUp">OK</button>
-          </div>`
+          </div>`;
 }
 
 function openDialog() {
@@ -142,125 +150,123 @@ function openDialog() {
 }
 function closeDialog() {
   document.getElementById("popupOnTaskSelectionID").style.visibility = "hidden";
-  setTimeout(20);
-  document.getElementById('editPopUpID').classList.toggle('d-none');
-  document.getElementById('popupOnTaskSelectionMainContainerID').classList.toggle('d-none');
-  
+  //document.getElementById('editPopUpID').classList.toggle('d-none');
+  //document.getElementById('popupOnTaskSelectionMainContainerID').classList.toggle('d-none');
 }
 
-function popupValueImplementFromTask()
-{   
-    let titelCardInput = document.getElementById('titelCardID').innerHTML;
-    let descriptionCard = document.getElementById('descriptionCardID').innerHTML;
-    let contactEllipse = document.getElementById('profileBadges').innerHTML;
-    
-    let valueFromTask = document.getElementById('popupHeaderID');
-    valueFromTask.innerHTML = titelCardInput;
-    let valueFromdescription = document.getElementById('popupSpanID');
-    valueFromdescription.innerHTML = descriptionCard;
-    
-    let valueFromEllipse = document.getElementById('popupContactEllipseID');
-    valueFromEllipse.innerHTML = '';     
-    valueFromEllipse.innerHTML += contactEllipse;
+function popupValueImplementFromTask(taskNr) {
+  let titelCardInput = document.getElementById("titelCardID").innerHTML;
+  let descriptionCard = document.getElementById("descriptionCardID").innerHTML;
+  let contactEllipse = document.getElementById(`profileBadges${taskNr}`).innerHTML;
 
-    let valueFromName = document.getElementById('popupContactNameID');
-    
-    valueFromName.innerHTML = '';   
-     for(let i = 0; i < tasks.length; i++) {
-      if(tasks[i].title == titelCardInput) {
-         let assignedNames = tasks[i].assigned.split(",");
+  let valueFromTask = document.getElementById("popupHeaderID");
+  valueFromTask.innerHTML = titelCardInput;
+  let valueFromdescription = document.getElementById("popupSpanID");
+  valueFromdescription.innerHTML = descriptionCard;
 
-         currentId = tasks[i].id;
+  let valueFromEllipse = document.getElementById("popupContactEllipseID");
+  valueFromEllipse.innerHTML = "";
+  valueFromEllipse.innerHTML += contactEllipse;
 
-         document.getElementById("dateId").textContent = tasks[i].date;
-         document.getElementById("prioId").textContent = tasks[i].priority;
-         document.getElementById("prioIdImg").src = `./img/${tasks[i].priority.toLowerCase()}.svg`;
+  let valueFromName = document.getElementById("popupContactNameID");
 
-         for(let j = 0; j < assignedNames.length; j++) {
-         valueFromName.innerHTML += `
+  valueFromName.innerHTML = "";
+  //for(let i = 0; i < tasks.length; i++) {
+  //if(tasks[i].title == titelCardInput) {
+  let assignedNames = tasks[taskNr].assigned.split(",");
+
+  currentId = tasks[taskNr].id;
+
+  document.getElementById("dateId").textContent = tasks[taskNr].date;
+  document.getElementById("prioId").textContent = tasks[taskNr].priority;
+  document.getElementById("prioIdImg").src = `./img/${tasks[taskNr].priority.toLowerCase()}.svg`;
+
+  for (let j = 0; j < assignedNames.length; j++) {
+    valueFromName.innerHTML += `
              <div>${assignedNames[j]}</div>
              `;
-         }
+  }
 
-         }
-      }
-
+  //}
+  //}
 }
 
 async function renderBadges() {
   await loadUsers("/users");
 
-  let myBadges = document.getElementById("profileBadges");
   let j = 1;
 
-  myBadges.innerHTML = "";
-
-  for (let i = 0; i < users.length; i++) {
-    myBadges.innerHTML += `
+  for (let i = 0; i < tasks.length; i++) {
+    let myBadge = document.getElementById(`profileBadges${i}`);
+    document.getElementById(`profileBadges${i}`).innerHTML = `
             <div class="badgeImg initialsColor${j}">${getUserInitials(users[i].name)}</div>
             `;
 
-    j++;
-    if (j > 15) {
-      j = 1;
+    for (let i = 0; i < users.length; i++) {
+      myBadge.innerHTML += `
+                      <div class="badgeImg initialsColor${j}">${getUserInitials(users[i].name)}</div>
+                      `;
+
+      j++;
+      if (j > 15) {
+        j = 1;
+      }
     }
   }
 
   renderTaskCards();
 }
 async function renderTaskCards() {
-    await loadTasks("/tasks");
-  
-    document.getElementById("cardContainertoDo").innerHTML = "";
-    document.getElementById("cardContainerinProgress").innerHTML = "";
-    document.getElementById("cardContainerawaitingFeedback").innerHTML = "";
-    document.getElementById("cardContainerdone").innerHTML = "";
+  await loadTasks("/tasks");
 
-  
-    for (let i = 0; i < tasks.length; i++) {
-      const uniqueId = `taskCard-${i}`;
-      let assignedUsers = tasks[i].assigned.split(",");
-      let subTasksArray = tasks[i].subtasks.split("|");
-      let assignedUsersHTML = "";
+  document.getElementById("cardContainertoDo").innerHTML = "";
+  document.getElementById("cardContainerinProgress").innerHTML = "";
+  document.getElementById("cardContainerawaitingFeedback").innerHTML = "";
+  document.getElementById("cardContainerdone").innerHTML = "";
 
+  for (let i = 0; i < tasks.length; i++) {
+    const uniqueId = `taskCard-${i}`;
+    let assignedUsers = tasks[i].assigned.split(",");
+    let subTasksArray = tasks[i].subtasks.split("|");
+    let assignedUsersHTML = "";
 
-      let cardContainerIdName = tasks[i].level;
+    let cardContainerIdName = tasks[i].level;
 
-      switch(cardContainerIdName) {
-        case "To do":
-          cardContainerIdName = "cardContainertoDo";
-          break;
-        case "In Progress":
-          cardContainerIdName = "cardContainerinProgress";
-          break;
-        case "Awaiting Feedback":
-          cardContainerIdName = "cardContainerawaitingFeedback";
-          break;
-        case "Done":
-          cardContainerIdName = "cardContainerdone";
-          break;
-        default:
-          cardContainerIdName = "";
-          break;
-      }
-      
+    switch (cardContainerIdName) {
+      case "To do":
+        cardContainerIdName = "cardContainertoDo";
+        break;
+      case "In Progress":
+        cardContainerIdName = "cardContainerinProgress";
+        break;
+      case "Awaiting Feedback":
+        cardContainerIdName = "cardContainerawaitingFeedback";
+        break;
+      case "Done":
+        cardContainerIdName = "cardContainerdone";
+        break;
+      default:
+        cardContainerIdName = "";
+        break;
+    }
 
-      for(j = 0; j < assignedUsers.length; j++) {
+    for (j = 0; j < assignedUsers.length; j++) {
+      for (c = 0; c < users.length; c++) {
+        let cc = c + 1;
 
-        for(c = 0; c < users.length; c++) {
-          let cc = c + 1;
+        while (cc > 15) {
+          cc = cc - 15;
+        }
 
-          while(cc > 15) { cc = cc - 15; }
-
-          if(users[c].name == assignedUsers[j]) {
-            assignedUsersHTML += `
+        if (users[c].name == assignedUsers[j]) {
+          assignedUsersHTML += `
             <div class="badgeImg initialsColor${cc}">${getUserInitials(assignedUsers[j])}</div>
             `;
-            break;
-          }
+          break;
         }
       }
-      document.getElementById(cardContainerIdName).innerHTML += `
+    }
+    document.getElementById(cardContainerIdName).innerHTML += `
                 <div draggable="true" id="${uniqueId}" class="taskCard">
                 <div class="taskCardTop">
                   <label class="categoryGreen">${tasks[i].category}</label>
@@ -277,7 +283,7 @@ async function renderTaskCards() {
                     </div>
                   </div>
                 </div>
-                <div class="cardBody" onclick="openDialog(); popupValueImplementFromTask()">
+                <div class="cardBody" onclick="openDialog(); popupValueImplementFromTask(${i})">
                   <p id="titelCardID" class="titleCard">${tasks[i].title}</p>
                   <p id="descriptionCardID" class="descriptionCard">${tasks[i].description}</p>
                   <div>
@@ -288,7 +294,7 @@ async function renderTaskCards() {
                       <p class="amountSubtasks">${subTasksArray.length} subtask(s)</p>
                     </div>
                     <div class="footerCard">
-                      <div id="profileBadges" class="profileBadges">
+                      <div id="profileBadges${i}" class="profileBadges">
                         ${assignedUsersHTML}
                       </div>
                       <div class="prioImg">
@@ -299,52 +305,46 @@ async function renderTaskCards() {
                 </div>
               </div>  
                   `;
-    }
-    // Drag-and-Drop-Events nach dem Rendern der Karten hinzufügen
-    addDragAndDropEvents();
+  }
+  // Drag-and-Drop-Events nach dem Rendern der Karten hinzufügen
+  addDragAndDropEvents();
 }
 
 // Initiale Aufrufe
 renderTaskCards();
 
-
-
-
 /*AddTask Pop up*/
 
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.querySelector('dialog[data-modal]');
-    const openModalButton = document.getElementById('openModal');
-    const closeModalButton = document.getElementById('closeModal');
-    const alsoOpenButtons = document.querySelectorAll('.alsoOpenModal'); // Alle Elemente mit der Klasse "alsobtn"
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.querySelector("dialog[data-modal]");
+  const openModalButton = document.getElementById("openModal");
+  const closeModalButton = document.getElementById("closeModal");
+  const alsoOpenButtons = document.querySelectorAll(".alsoOpenModal"); // Alle Elemente mit der Klasse "alsobtn"
 
+  if (modal && openModalButton && closeModalButton) {
+    // Modal öffnen
+    openModalButton.addEventListener("click", () => {
+      modal.showModal();
+    });
 
-    if (modal && openModalButton && closeModalButton) {
-        // Modal öffnen
-        openModalButton.addEventListener('click', () => {
-            modal.showModal();
-        });
+    alsoOpenButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        modal.showModal();
+      });
+    });
 
-        alsoOpenButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                modal.showModal();
-            });
-        });
+    // Modal schließen
+    closeModalButton.addEventListener("click", () => {
+      modal.close();
+    });
 
-
-        // Modal schließen
-        closeModalButton.addEventListener('click', () => {
-            modal.close();
-        });
-
-        // Optional: Modal schließen, wenn man außerhalb des Modals klickt
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.close();
-            }
-        });
-    } else {
-        console.error('Modal, Open Button, or Close Button not found in the DOM.');
-    }
+    // Optional: Modal schließen, wenn man außerhalb des Modals klickt
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        modal.close();
+      }
+    });
+  } else {
+    console.error("Modal, Open Button, or Close Button not found in the DOM.");
+  }
 });
-
