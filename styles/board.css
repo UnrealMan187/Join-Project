@@ -646,13 +646,13 @@ h2 {
 .popupAssignedUsersNameContainer {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   flex-direction: column;
-  width: 300px;
-  height: 176px;
-  opacity: 0px;
   text-align: left;
-  margin-left: 14px;
-  gap: 18px;
+  width: 200px;
+  height: 176px;
+  gap: 8px;
+  margin-left: 10px;
 }
 .popupAssignedUserMainContainer {
   display: flex;
