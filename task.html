@@ -154,7 +154,7 @@
 
   <!-- Start Task Container -->
     <div class="taskContainer" >
-      <form id="" action="">
+      <form name="taskForm" action="/action_page.php">
         <div class="containerForm">
           <div class="header">
             <h1>Add Task</h1>
@@ -213,8 +213,8 @@
                   >Due date<span class="required">*</span></label
                 >
                 <input class="input" type="date" id="due-date-input" />
-                <div id="date-required" class="required-msg">
-                  <!-- This field is required -->
+                <div id="date-required" class="requiredMessage">
+                 This field is required
                 </div>
               </div>
               <div class="inputGroup">
@@ -247,11 +247,8 @@
                       <img src="img/arrow_drop_downaa.svg" alt="">
                     </span>
                   </div>
-                  <div
-                    id="category-required"
-                    class="required-msg category-required"
-                  >
-                    <!-- This field is required -->
+                  <div id="category-required" class="requiredMessage">               
+                    This field is required
                   </div>
                   <ul class="category scroll-disabled dropdown-content" id="myDropdownCategory">
                     <li onclick="selectTechnicalStack()" id="categoryTechnicalStack" data-value="Technical stack" class="item category">
@@ -294,7 +291,7 @@
             </p>
             <div class="actions-form">
               <button
-                onclick="createTask()"
+                onclick="clearForm()"
                 type="button"
                 class="btn-clear"
                 id="clear-btn"

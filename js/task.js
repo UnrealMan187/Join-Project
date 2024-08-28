@@ -385,3 +385,84 @@ function selectUserStory()
   selectCategory.innerHTML = '';
   selectCategory.innerHTML = categoryselectUserStory;
 }
+
+/*Begin Form validation*/
+function createTask() {
+  let isValid = true;
+
+  // Title validation
+  const title = document.getElementById('title');
+  const titleRequired = document.getElementById('title-required');
+  if (title.value.trim() === '') {
+      titleRequired.style.display = 'block';
+      isValid = false;
+  } else {
+      titleRequired.style.display = 'none';
+  }
+
+  // Due date validation
+  const dueDate = document.getElementById('due-date-input');
+  const dateRequired = document.getElementById('date-required');
+  if (dueDate.value.trim() === '') {
+      dateRequired.style.display = 'block';
+      isValid = false;
+  } else {
+      dateRequired.style.display = 'none';
+  }
+
+  // Category validation
+  const categoryContainer = document.getElementById('category-container');
+  const categoryRequired = document.getElementById('category-required');
+  if (categoryContainer.textContent.trim() === 'Select task category') {
+      categoryRequired.style.display = 'block';
+      isValid = false;
+  } else {
+      categoryRequired.style.display = 'none';
+  }
+
+  // Prevent form submission if validation fails
+  if (!isValid) {
+      event.preventDefault(); // Prevent form submission if validation fails
+  }
+}
+
+function clearForm() {
+  // Leert alle Textfelder
+  document.getElementById('title').value = '';
+  document.getElementById('description').value = '';
+  document.getElementById('due-date-input').value = '';
+
+  // Setzt den ausgewählten Kategorie-Text zurück
+  document.getElementById('category-displayed').textContent = 'Select task category';
+
+  // Setzt das ausgewählte Prio-Design zurück
+  document.querySelectorAll('.btn-prio').forEach(btn => {
+      btn.classList.remove('selected');  // Entferne die "selected"-Klasse von allen Prio-Buttons
+      let imgElements = btn.getElementsByTagName('img');
+      imgElements[0].classList.remove('d-none');  // Zeige das farbige Icon an
+      imgElements[1].classList.add('d-none');  // Verstecke das weiße Icon
+  });
+
+  // Setzt die Subtask-Liste zurück
+  document.getElementById('subtaskList').innerHTML = '';
+
+  // Leert das Dropdown-Menü "Assigned to"
+  document.getElementById('selected-contacts-container').innerHTML = '';
+
+  // Alle Checkboxen im Dropdown "Assigned to" zurücksetzen
+  const checkboxes = document.querySelectorAll('#myDropdown input[type="checkbox"]');
+  checkboxes.forEach(checkbox => {
+      checkbox.checked = false;
+      const listItem = checkbox.closest(".list-item");
+      listItem.style.backgroundColor = '';  // Hintergrundfarbe zurücksetzen
+      listItem.style.color = 'black';  // Textfarbe zurücksetzen
+  });
+
+  // Schließe das Dropdown-Menü, falls es noch offen ist
+  closeDropdown("myDropdown");
+  closeDropdown("myDropdownCategory");
+}
+
+
+
+

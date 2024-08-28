@@ -464,6 +464,12 @@ label {
   font-size: 20px;
 }
 
+.requiredMessage {
+  color: red;
+  font-size: 0.9em;
+  display: none;
+}
+
 @media screen and (max-width: 1369px) {
   .due-date{
     margin-top: 2em;
