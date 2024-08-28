@@ -165,7 +165,7 @@ async function renderAssignedTo() {
   let uniqueUsers = [];
   users.forEach(user => {
       if (!uniqueUsers.some(uniqueUser => uniqueUser.email === user.email)) {
-          uniqueUsers.push(user);
+          uniqueUsers.push(user.name.trim());
       }
   });
 
@@ -176,8 +176,8 @@ async function renderAssignedTo() {
       htmlContent += `
           <label><li class="list-item assigned-to"></label>
               <div class="list-item-name" onclick="toggleCheckbox('AssignedContact${i}')">
-                  <label><div class="circle initialsColor${j}">${getUserInitials(uniqueUsers[i].name)}</div></label>
-                  <label>${uniqueUsers[i].name}</label>
+                  <label><div class="circle initialsColor${j}">${getUserInitials(uniqueUsers[i])}</div></label>
+                  <label>${uniqueUsers[i]}</label>
               </div>
               <input type="checkbox" onclick="toggleBackground(this)" id="AssignedContact${i}" name="AssignedContact">
           </li>

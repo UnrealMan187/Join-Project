@@ -159,63 +159,44 @@ function popupValueImplementFromTask(taskNr) {
   let descriptionCard = document.getElementById("descriptionCardID").innerHTML;
   let contactEllipse = document.getElementById(`profileBadges${taskNr}`).innerHTML;
 
-  let valueFromTask = document.getElementById("popupHeaderID");
-  valueFromTask.innerHTML = titelCardInput;
-  let valueFromdescription = document.getElementById("popupSpanID");
-  valueFromdescription.innerHTML = descriptionCard;
-
-  let valueFromEllipse = document.getElementById("popupContactEllipseID");
-  valueFromEllipse.innerHTML = "";
-  valueFromEllipse.innerHTML += contactEllipse;
-
-  let valueFromName = document.getElementById("popupContactNameID");
-
-  valueFromName.innerHTML = "";
-  //for(let i = 0; i < tasks.length; i++) {
-  //if(tasks[i].title == titelCardInput) {
-  let assignedNames = tasks[taskNr].assigned.split(",");
-
-  currentId = tasks[taskNr].id;
+  document.getElementById("popUpUserStory").innerHTML = tasks[taskNr].category;
+  document.getElementById("popupHeaderID").innerHTML = tasks[taskNr].title;
+  document.getElementById("popupSpanID").innerHTML = tasks[taskNr].description;
 
   document.getElementById("dateId").textContent = tasks[taskNr].date;
   document.getElementById("prioId").textContent = tasks[taskNr].priority;
   document.getElementById("prioIdImg").src = `./img/${tasks[taskNr].priority.toLowerCase()}.svg`;
+
+  document.getElementById("popupContactEllipseID").innerHTML = contactEllipse;
+
+  let valueFromName = document.getElementById("popupContactNameID");
+
+  valueFromName.innerHTML = "";
+
+  let assignedNames = tasks[taskNr].assigned.split(",");
+
+  currentId = tasks[taskNr].id;
+
+
 
   for (let j = 0; j < assignedNames.length; j++) {
     valueFromName.innerHTML += `
              <div>${assignedNames[j]}</div>
              `;
   }
-
-  //}
-  //}
 }
 
-async function renderBadges() {
-  await loadUsers("/users");
 
-  let j = 1;
-
-  for (let i = 0; i < tasks.length; i++) {
-    let myBadge = document.getElementById(`profileBadges${i}`);
-    document.getElementById(`profileBadges${i}`).innerHTML = `
-            <div class="badgeImg initialsColor${j}">${getUserInitials(users[i].name)}</div>
-            `;
-
-    for (let i = 0; i < users.length; i++) {
-      myBadge.innerHTML += `
-                      <div class="badgeImg initialsColor${j}">${getUserInitials(users[i].name)}</div>
-                      `;
-
-      j++;
-      if (j > 15) {
-        j = 1;
-      }
+function getUserColor(userName) {
+  for(let i = 0; i < users.length; i++) {
+    if(users[i].name == userName) {
+      return i+1;
     }
   }
-
-  renderTaskCards();
+  return 1;
 }
+
+
 async function renderTaskCards() {
   await loadTasks("/tasks");
 
@@ -250,22 +231,13 @@ async function renderTaskCards() {
         break;
     }
 
-    for (j = 0; j < assignedUsers.length; j++) {
-      for (c = 0; c < users.length; c++) {
-        let cc = c + 1;
-
-        while (cc > 15) {
-          cc = cc - 15;
-        }
-
-        if (users[c].name == assignedUsers[j]) {
-          assignedUsersHTML += `
-            <div class="badgeImg initialsColor${cc}">${getUserInitials(assignedUsers[j])}</div>
-            `;
-          break;
-        }
-      }
+    while (assignedUsers.length > 0) {
+      assignedUsersHTML += `
+      <div class="badgeImg initialsColor${getUserColor(assignedUsers[0])}">${getUserInitials(assignedUsers[0])}</div>
+      `;
+      assignedUsers.splice(0, 1);
     }
+
     document.getElementById(cardContainerIdName).innerHTML += `
                 <div draggable="true" id="${uniqueId}" class="taskCard">
                 <div class="taskCardTop">

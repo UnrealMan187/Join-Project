@@ -183,7 +183,7 @@ async function renderContacts() {
  * gets first Letter from first Name and first Letter from last Name
  */
 function getUserInitials(username) {
-  let result = username.split(" ").map((wort) => wort[0].toUpperCase());
+  let result = username.trim().split(" ").map((wort) => wort[0].toUpperCase());
   if (username.split(" ").length > 1) {
     result = result[0] + result[result.length - 1];
   } else {
