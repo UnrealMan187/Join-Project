@@ -384,4 +384,4 @@ function selectUserStory()
   let selectCategory = document.getElementById('category-displayed');
   selectCategory.innerHTML = '';
   selectCategory.innerHTML = categoryselectUserStory;
-} 
+}

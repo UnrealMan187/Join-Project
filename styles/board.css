@@ -943,6 +943,15 @@ h2 {
   width: 450px;
 }
 
+
+.visible-popup {
+  display: flex;
+}
+
+.hidden-popup {
+  display: none;
+}
+
 @media (max-width: 1690px) {
   .popupOnTaskSelectionMainContainer {
     width: 38%;

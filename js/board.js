@@ -45,11 +45,14 @@ function addDragAndDropEvents() {
   });
 }
 
-function editPopupTask()
+function editPopupTask() 
 {
+  document.getElementById('popupOnTaskSelectionMainContainerID').classList.toggle('d-none');
+  document.getElementById('editPopUpID').classList.toggle('d-none');
+
   document.getElementById('editPopUpID').innerHTML =`
          <div class="editClosePopupMainContainer">
-            <img onclick="closeDialog()" id="closePopupID" src="./img/close.svg" alt="">
+            <img onclick="closeDialog()" id="closePopupID" src="./img/close.svg" style="cursor: pointer;" alt="">
         </div>
       
       <div class="scrollbar">
@@ -129,7 +132,7 @@ function editPopupTask()
                 </div>
             </div>
       </div>
-          <div class="okButtonMainContainer" >
+          <div onclick="editTask()" class="okButtonMainContainer" >
             <button class="okButtonOnEditPopUp">OK</button>
           </div>`
 }
@@ -139,6 +142,10 @@ function openDialog() {
 }
 function closeDialog() {
   document.getElementById("popupOnTaskSelectionID").style.visibility = "hidden";
+  setTimeout(20);
+  document.getElementById('editPopUpID').classList.toggle('d-none');
+  document.getElementById('popupOnTaskSelectionMainContainerID').classList.toggle('d-none');
+  
 }
 
 function popupValueImplementFromTask()
