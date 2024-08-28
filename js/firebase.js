@@ -150,9 +150,7 @@ async function renderContacts() {
 
   for (let i = 0; i < users.length; i++) {
     if (users[i].name[0].toUpperCase() != firstLetter.toUpperCase()) {
-      html += `<div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter">${users[
-        i
-      ].name[0].toUpperCase()}</span></div>
+      html += `<div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter">${users[i].name[0].toUpperCase()}</span></div>
               <div class="border-container"> <div class="border"></div></div>`;
 
       firstLetter = users[i].name[0].toUpperCase();
