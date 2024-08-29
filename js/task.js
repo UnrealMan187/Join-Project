@@ -41,6 +41,12 @@ async function createTask() {
   };
 
   saveTasks("/tasks", newTask);
+
+  // Erfolgsmeldung anzeigen
+  showSuccessMessage();
+
+  // Formular zurücksetzen (falls gewünscht)
+  clearForm();
 }
 
 function getTaskPrio() {
@@ -141,27 +147,22 @@ function closeAssignedto() {
 });
 }
 
+function closeCategory() {
+  let dropdown = document.getElementById('myDropdownCategory');
+  let container = document.getElementById('category-container'); 
+
+  document.addEventListener('click', (event) => {
+  if (!container.contains(event.target) && dropdown.classList.contains('show')) {
+    dropdown.classList.remove('show');
+  }
+});
+}
+
 function toggleDropdownCategory() {
   document.getElementById("myDropdownCategory").classList.toggle("show");
 }
 
-window.onclick = function (event) {
-  // Überprüfen, ob außerhalb des Dropdowns "myDropdown" geklickt wurde
-  if (!event.target.closest(".select.assigned-to")) {
-    //closeDropdown("myDropdown");
-  }
-  // Überprüfen, ob außerhalb des Dropdowns "myDropdownCategory" geklickt wurde
-  if (!event.target.closest(".select.category")) {
-    closeDropdown("myDropdownCategory");
-  }
-};
 
-function closeDropdown(dropdownId) {
-  let dropdown = document.getElementById(dropdownId);
-  if (dropdown.classList.contains("show")) {
-    dropdown.classList.remove("show");
-  }
-}
 
 async function renderAssignedTo() {
   let assignedMenu = document.getElementById("myDropdown");
@@ -186,7 +187,7 @@ async function renderAssignedTo() {
 
   for (let i = 0; i < uniqueUsers.length; i++) {
       htmlContent += `
-          <label onclick="event.stopPropagation();"><li class="list-item assigned-to"></label>
+          <label onclick="event.stopPropagation()"><li class="list-item assigned-to"></label>
               <div class="list-item-name" onclick="toggleCheckbox('AssignedContact${i}')">
                   <label><div class="circle initialsColor${j}">${getUserInitials(uniqueUsers[i])}</div></label>
                   <label>${uniqueUsers[i]}</label>
@@ -399,7 +400,10 @@ function selectUserStory()
 }
 
 /*Begin Form validation*/
-function createTask() {
+/*Begin Form validation*/
+function validateAndCreateTask(event) {
+  event.preventDefault(); // Immer das Standardverhalten verhindern
+
   let isValid = true;
 
   // Title validation
@@ -432,11 +436,53 @@ function createTask() {
       categoryRequired.style.display = 'none';
   }
 
-  // Prevent form submission if validation fails
-  if (!isValid) {
-      event.preventDefault(); // Prevent form submission if validation fails
+  // Description validation
+  const description = document.getElementById("description").value.trim();
+  const descriptionError = document.getElementById("description-required");
+  if (description === "") {
+      descriptionError.style.display = "block";
+      isValid = false;
+  } else {
+      descriptionError.style.display = "none";
+  }
+
+  // "Assigned To"-Validierung
+  const assignedToError = document.getElementById("assigned-to-required");
+  const assignedCheckboxes = document.querySelectorAll('#myDropdown input[type="checkbox"]:checked');
+  if (assignedCheckboxes.length === 0) {
+      assignedToError.style.display = "block";
+      isValid = false;
+  } else {
+      assignedToError.style.display = "none";
+  }
+
+  // Prioritäts-Validierung
+const priority = getTaskPrio();
+const priorityError = document.getElementById("prio-required");
+if (priority === "None") { // Überprüfen, ob die Priorität auf "None" gesetzt ist
+    priorityError.style.display = "block";
+    isValid = false;
+} else {
+    priorityError.style.display = "none";
+}
+
+
+  // Subtasks-Validierung
+  const subtasks = document.getElementById('subtaskList').children;
+  const subtasksError = document.getElementById("subtasks-required");
+  if (subtasks.length === 0) {
+      subtasksError.style.display = "block";
+      isValid = false;
+  } else {
+      subtasksError.style.display = "none";
+  }
+
+  if (isValid) {
+      // Wenn die Validierung erfolgreich war, die Aufgabe erstellen
+      createTask();
   }
 }
+
 
 function clearForm() {
   // Leert alle Textfelder
@@ -470,11 +516,17 @@ function clearForm() {
       listItem.style.color = 'black';  // Textfarbe zurücksetzen
   });
 
-  // Schließe das Dropdown-Menü, falls es noch offen ist
-  closeDropdown("myDropdown");
-  closeDropdown("myDropdownCategory");
+  
 }
 
 
+function showSuccessMessage() {
+  const successMessage = document.querySelector('.msg-task-added');
+  successMessage.style.display = 'flex';
 
-
+  // Erfolgsmeldung nach einigen Sekunden ausblenden
+  setTimeout(() => {
+      successMessage.style.display = 'none';
+      window.location.href = "board.html";
+  }, 3000);
+}
