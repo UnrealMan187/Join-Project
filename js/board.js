@@ -155,8 +155,6 @@ function closeDialog() {
 }
 
 function popupValueImplementFromTask(taskNr) {
-  let titelCardInput = document.getElementById("titelCardID").innerHTML;
-  let descriptionCard = document.getElementById("descriptionCardID").innerHTML;
   let contactEllipse = document.getElementById(`profileBadges${taskNr}`).innerHTML;
 
   document.getElementById("popUpUserStory").innerHTML = tasks[taskNr].category;
