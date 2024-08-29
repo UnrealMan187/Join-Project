@@ -189,13 +189,16 @@ function popupValueImplementFromTask(taskNr) {
 
 async function getUserColor(userName) {
   await loadUsers("/users");
+  let returnColor = 1;
 
   for(let i = 0; i < users.length; i++) {
     if(users[i].name == userName) {
-      return i+1;
+      returnColor = i + 1;
+      while(returnColor > 15) { returnColor -= 15; }
+      return returnColor;
     }
   }
-  return 1;
+  return returnColor;
 }
 
 
