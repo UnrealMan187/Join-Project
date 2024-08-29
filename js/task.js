@@ -127,6 +127,18 @@ function clickOnLow()
 /*Begin dropdown assigned to and dropdown category*/
 function toggleDropdown() {
   document.getElementById("myDropdown").classList.toggle("show");
+ 
+}
+
+function closeAssignedto() {
+  let dropdown = document.getElementById('myDropdown');
+  let container = document.getElementById('contacts-list'); 
+
+  document.addEventListener('click', (event) => {
+  if (!container.contains(event.target) && dropdown.classList.contains('show')) {
+    dropdown.classList.remove('show');
+  }
+});
 }
 
 function toggleDropdownCategory() {
