@@ -67,7 +67,9 @@ async function editTask(id, data = {}) {
 }
 
 async function deleteTask(id) {
-  if(id == -1) { return; }
+  if (id == -1) {
+    return;
+  }
   await fetch(FIREBASE_URL + `/tasks/${id}` + ".json", {
     method: "DELETE",
   });
@@ -102,11 +104,28 @@ async function postData(path = "", data = {}) {
 // id = path in firebase
 
 async function deleteUser(id) {
-  await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
-    method: "DELETE",
-  });
-  await renderContacts();
-  loadUserInformation(-1);
+  await loadTasks("/tasks");
+  let stopDelete = false;
+
+  for(let i = 0; i < users.length; i++) {
+    if(users[i].id == id) {
+      for(let j = 0; j < tasks.length; j++) {
+        if(tasks[j].assigned.includes(users[i].name)) {
+          alert("Bitte entferne den User aus allen Tasks vor dem Löschen.");
+          stopDelete = true;
+          break;
+        }
+      }
+    }
+  }  
+
+  if (stopDelete == false) {
+    await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
+      method: "DELETE",
+    });
+    await renderContacts();
+    loadUserInformation(-1);
+  }
 }
 
 async function editUser(id, data = {}) {
@@ -150,7 +169,9 @@ async function renderContacts() {
 
   for (let i = 0; i < users.length; i++) {
     if (users[i].name[0].toUpperCase() != firstLetter.toUpperCase()) {
-      html += `<div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter">${users[i].name[0].toUpperCase()}</span></div>
+      html += `<div class="contacts-first-letter-container"><span id="firstLetterOfContactName" class="contacts-first-letter">${users[
+        i
+      ].name[0].toUpperCase()}</span></div>
               <div class="border-container"> <div class="border"></div></div>`;
 
       firstLetter = users[i].name[0].toUpperCase();
@@ -183,7 +204,10 @@ async function renderContacts() {
  * gets first Letter from first Name and first Letter from last Name
  */
 function getUserInitials(username) {
-  let result = username.trim().split(" ").map((wort) => wort[0].toUpperCase());
+  let result = username
+    .trim()
+    .split(" ")
+    .map((wort) => wort[0].toUpperCase());
   if (username.split(" ").length > 1) {
     result = result[0] + result[result.length - 1];
   } else {
