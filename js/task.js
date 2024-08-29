@@ -186,7 +186,7 @@ async function renderAssignedTo() {
 
   for (let i = 0; i < uniqueUsers.length; i++) {
       htmlContent += `
-          <label><li class="list-item assigned-to"></label>
+          <label onclick="event.stopPropagation();"><li class="list-item assigned-to"></label>
               <div class="list-item-name" onclick="toggleCheckbox('AssignedContact${i}')">
                   <label><div class="circle initialsColor${j}">${getUserInitials(uniqueUsers[i])}</div></label>
                   <label>${uniqueUsers[i]}</label>

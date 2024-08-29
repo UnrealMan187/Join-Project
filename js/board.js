@@ -46,10 +46,19 @@ function addDragAndDropEvents() {
 
       let taskNr = data.split("-")[1];
 
+      /*
+      oldLevel = tasks[taskNr].level;
+
+      if (oldLevel == "To do") {
+        if(document.getElementById("cardContainertoDo").value == "") {
+          document.getElementById("cardContainertoDo").classList.remove("d-none");
+        }
+      }*/
+
       tasks[taskNr].level = newLevel;
 
       editTask(tasks[taskNr].id, tasks[taskNr]);
-      loadTasks("/tasks");
+  
     };
   });
 }
@@ -219,15 +228,19 @@ async function renderTaskCards() {
     switch (cardContainerIdName) {
       case "To do":
         cardContainerIdName = "cardContainertoDo";
+        document.getElementById("emptyTaskTodo").classList.add("d-none");
         break;
       case "In Progress":
         cardContainerIdName = "cardContainerinProgress";
+        document.getElementById("emptyTaskInProgress").classList.add("d-none");
         break;
       case "Awaiting Feedback":
         cardContainerIdName = "cardContainerawaitingFeedback";
+        document.getElementById("emptyTaskAwait").classList.add("d-none");
         break;
       case "Done":
         cardContainerIdName = "cardContainerdone";
+        document.getElementById("emptyTaskDone").classList.add("d-none");
         break;
       default:
         cardContainerIdName = "";
