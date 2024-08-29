@@ -282,9 +282,6 @@ async function renderTaskCards() {
   addDragAndDropEvents();
 }
 
-// Initiale Aufrufe
-renderTaskCards();
-
 /*AddTask Pop up*/
 
 document.addEventListener("DOMContentLoaded", () => {
