@@ -187,7 +187,9 @@ function popupValueImplementFromTask(taskNr) {
 }
 
 
-function getUserColor(userName) {
+async function getUserColor(userName) {
+  await loadUsers("/users");
+
   for(let i = 0; i < users.length; i++) {
     if(users[i].name == userName) {
       return i+1;
@@ -233,7 +235,7 @@ async function renderTaskCards() {
 
     while (assignedUsers.length > 0) {
       assignedUsersHTML += `
-      <div class="badgeImg initialsColor${getUserColor(assignedUsers[0])}">${getUserInitials(assignedUsers[0])}</div>
+      <div class="badgeImg initialsColor${await getUserColor(assignedUsers[0])}">${getUserInitials(assignedUsers[0])}</div>
       `;
       assignedUsers.splice(0, 1);
     }
