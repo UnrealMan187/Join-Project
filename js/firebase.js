@@ -1,6 +1,8 @@
 const FIREBASE_URL = "https://join-4d42f-default-rtdb.europe-west1.firebasedatabase.app/";
 let users = [];
 let tasks = [];
+let accounts = [];
+let login = [];
 let currentUser = -1;
 let currentId = -1;
 
@@ -79,6 +81,61 @@ async function deleteTask(id) {
   await renderTaskCards();
 }
 
+async function signUpUser(data = {}) {
+  let stopSignUp = false;
+  await loadAccounts();
+
+  for (let i = 0; i < accounts.length; i++) {
+    if (accounts[i].email == data.email) {
+      alert("Zu dieser E-Mail-Adresse besteht bereits ein Account. Passwort vergessen? Selber schuld!");
+      stopSignUp = true;
+    }
+  }
+
+  if (stopSignUp == false) {
+    await fetch(FIREBASE_URL + "/login" + ".json", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  }
+}
+
+async function loadAccounts() {
+  accounts = [];
+  let userResponse = await fetch(FIREBASE_URL + "/login" + ".json");
+  let responseToJson = await userResponse.json();
+
+  if (responseToJson) {
+    Object.keys(responseToJson).forEach((key) => {
+      accounts.push({
+        id: key,
+        name : responseToJson[key]["name"],
+        email: responseToJson[key]["email"],
+        password: responseToJson[key]["password"],
+      });
+    });
+  }
+}
+
+async function registerUser() {
+  let signUpName = document.getElementById("fullName").value.trim();
+  let signUpEmail = document.getElementById("userEmail").value.trim();
+  let signUpPassword = document.getElementById("userPassword").value.trim();
+  let signUpPassword2 = document.getElementById("confirmPassword").value.trim();
+
+  let loginData = { name: signUpName, email: signUpEmail, password: signUpPassword };
+
+  if(signUpPassword == signUpPassword2) {
+    await signUpUser(loginData);
+    window.location.href = "login.html";
+  } else {
+    alert("PASSWORTEINGABEN UNGLEICH");
+  }
+}
+
 async function addUser() {
   let nameValue = document.getElementById("name").value;
   let phoneValue = document.getElementById("phone").value;
@@ -107,17 +164,17 @@ async function deleteUser(id) {
   await loadTasks("/tasks");
   let stopDelete = false;
 
-  for(let i = 0; i < users.length; i++) {
-    if(users[i].id == id) {
-      for(let j = 0; j < tasks.length; j++) {
-        if(tasks[j].assigned.includes(users[i].name)) {
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].id == id) {
+      for (let j = 0; j < tasks.length; j++) {
+        if (tasks[j].assigned.includes(users[i].name)) {
           alert("Bitte entferne den User aus allen Tasks vor dem Löschen.");
           stopDelete = true;
           break;
         }
       }
     }
-  }  
+  }
 
   if (stopDelete == false) {
     await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
