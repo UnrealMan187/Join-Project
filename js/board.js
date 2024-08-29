@@ -46,21 +46,39 @@ function addDragAndDropEvents() {
 
       let taskNr = data.split("-")[1];
 
-      /*
-      oldLevel = tasks[taskNr].level;
-
-      if (oldLevel == "To do") {
-        if(document.getElementById("cardContainertoDo").value == "") {
-          document.getElementById("cardContainertoDo").classList.remove("d-none");
-        }
-      }*/
-
       tasks[taskNr].level = newLevel;
 
       editTask(tasks[taskNr].id, tasks[taskNr]);
-  
+
+      checkTaskLevels();  
     };
   });
+}
+
+function checkTaskLevels() {
+  if(document.getElementById("cardContainertoDo").childNodes.length == 0) {
+    document.getElementById("emptyTaskTodo").style.visibility = "visible";
+  } else {
+    document.getElementById("emptyTaskTodo").style.visibility = "hidden";
+  }
+
+  if(document.getElementById("cardContainerinProgress").childNodes.length == 0) {
+    document.getElementById("emptyTaskInProgress").style.visibility = "visible";
+  } else {
+    document.getElementById("emptyTaskInProgress").style.visibility = "hidden";
+  }
+
+  if(document.getElementById("cardContainerawaitingFeedback").childNodes.length == 0) {
+    document.getElementById("emptyTaskAwait").style.visibility = "visible";
+  } else {
+    document.getElementById("emptyTaskAwait").style.visibility = "hidden";
+  }
+
+  if(document.getElementById("cardContainerdone").childNodes.length == 0) {
+    document.getElementById("emptyTaskDone").style.visibility = "visible";
+  } else {
+    document.getElementById("emptyTaskDone").style.visibility = "hidden";
+  }
 }
 
 function editPopupTask() {
@@ -228,19 +246,23 @@ async function renderTaskCards() {
     switch (cardContainerIdName) {
       case "To do":
         cardContainerIdName = "cardContainertoDo";
-        document.getElementById("emptyTaskTodo").classList.add("d-none");
+        //document.getElementById("emptyTaskTodo").classList.add("d-none");
+        document.getElementById("emptyTaskTodo").style.visibility = "hidden";
         break;
       case "In Progress":
         cardContainerIdName = "cardContainerinProgress";
-        document.getElementById("emptyTaskInProgress").classList.add("d-none");
+        //document.getElementById("emptyTaskInProgress").classList.add("d-none");
+        document.getElementById("emptyTaskInProgress").style.visibility = "hidden";
         break;
       case "Awaiting Feedback":
         cardContainerIdName = "cardContainerawaitingFeedback";
-        document.getElementById("emptyTaskAwait").classList.add("d-none");
+        //document.getElementById("emptyTaskAwait").classList.add("d-none");
+        document.getElementById("emptyTaskAwait").style.visibility = "hidden";
         break;
       case "Done":
         cardContainerIdName = "cardContainerdone";
-        document.getElementById("emptyTaskDone").classList.add("d-none");
+        //document.getElementById("emptyTaskDone").classList.add("d-none");
+        document.getElementById("emptyTaskDone").style.visibility = "hidden";
         break;
       default:
         cardContainerIdName = "";
