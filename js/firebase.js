@@ -81,6 +81,23 @@ async function deleteTask(id) {
   await renderTaskCards();
 }
 
+async function loginUser() {
+  let userEmail = document.getElementById("userEmail").value;
+  let userPassword = document.getElementById("userPassword").value;
+
+  await loadAccounts();
+
+  for(let i = 0; i < accounts.length; i++) {
+    if(accounts[i].email == userEmail) {
+      if(accounts[i].password == userPassword) {
+        alert("LOGIN ERFOLGREICH");
+        window.location.href = "board.html";
+        break;        
+      }
+    }
+  }
+}
+
 async function signUpUser(data = {}) {
   let stopSignUp = false;
   await loadAccounts();

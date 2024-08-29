@@ -29,7 +29,7 @@ function demoLogin() {
 /**
  * Funktion, die das Anmeldeformular validiert und abschickt.
  * @param {Event} event - Das Ereignis, das ausgelöst wird, wenn das Formular abgeschickt wird.
- */
+ *//*
 function handleSubmit(event) {
   event.preventDefault(); // Verhindert das Standard-Formularabsendeverhalten
 
@@ -46,7 +46,7 @@ function handleSubmit(event) {
   } else {
     alert("Bitte geben Sie eine gültige E-Mail-Adresse und ein Passwort ein");
   }
-}
+}*/
 
 /**
  * Funktion zur Validierung der E-Mail-Adresse.
@@ -69,7 +69,7 @@ function validatePassword(password) {
 }
 
 // Event-Listener für das Absenden des Formulars
-document.querySelector("form").addEventListener("submit", handleSubmit);
+//document.querySelector("form").addEventListener("submit", handleSubmit);
 
 // Event-Listener für den Demo-Login
 //document.querySelector(".demo-login button").addEventListener("click", demoLogin);
@@ -154,7 +154,7 @@ function isMarkedCompletely(inputField) {
 }
 
 // Login & Guest-Login Function
-
+/*
 document.getElementById('loginButton').addEventListener('click', function(event) {
   event.preventDefault();
   alert('Leider kannst du dich noch nicht einloggen!')
@@ -169,7 +169,7 @@ document.getElementById('loginButton').addEventListener('click', function(event)
 
   // Redirect to board.html
   window.location.href = 'signup.html';
-});
+});*/
 
 document.getElementById('guestButton').addEventListener('click', function(event) {
   event.preventDefault();

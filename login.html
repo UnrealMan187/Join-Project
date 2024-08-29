@@ -30,7 +30,7 @@
             <h1>Log in</h1>
             <img class="login_divider" src="./img/login/seperator.svg" alt="separator" />
 
-            <form id="authForm" class="login_form" onsubmit="" onkeyup="">
+            <form id="authForm" class="login_form" onsubmit="loginUser(); return false;" onkeyup="">
 
                 <div class="error_email_wrapper">
                     <div class="error_email_message" id="error_email_message"></div>
@@ -82,5 +82,6 @@
         </div> -->
     </div>
     <script src="./js/login.js"></script>
+    <script src="./js/firebase.js"></script>
 </body>
 </html>
