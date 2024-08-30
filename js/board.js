@@ -83,7 +83,7 @@ function checkTaskLevels() {
 
 function editPopupTask() {
   document.getElementById("popupOnTaskSelectionMainContainerID").classList.toggle("d-none");
-  document.getElementById("editPopUpID").classList.toggle("d-none");
+  document.getElementById("editPopUpID").classList.remove("d-none");
 
   document.getElementById("editPopUpID").innerHTML = `
          <div class="editClosePopupMainContainer">
