@@ -452,15 +452,18 @@
                 </div>
               </div>
               <div class="inputGroup">
-                <label>Description</label>
+                <label for="description">Description<span class="required">*</span></label>
                 <input
-                  class="descriptionPopup input" id="description"
+                  id="description" class="input"
                   placeholder="Enter a description"
                 ></input>
+                <div id="description-required" class="requiredMessage">
+                  This field is required
+                </div>
               </div>
               <div class="inputGroup">
-                <label class="margin"
-                  >Assigned to</label
+                <label class="margin" for="dropdown-container"
+                  >Assigned to<span class="required">*</span></label
                 >
                 <div class="dropdown">
                   <div id="contacts-list" class="select assigned-to" onclick="toggleDropdown()">
@@ -483,18 +486,20 @@
                   <div class="selected-contacts"></div>
                 </div>
               </div>
+              <div id="assigned-to-required" class="requiredMessage">
+                This field is required
+              </div>
             </div>
             <div class="col-middle"></div>
             <div class="col-right gap">
               <div class="inputGroup">
                 <div>
-                 <label class="due-date" for="due-date-input"
+                  <label class="due-date" for="due-date-input"
                   >Due date<span class="required">*</span></label
-                 >
-                </div>
+                >
                 <input class="input" type="date" id="due-date-input" />
-                <div id="date-required" class="required-msg">
-                  <!-- This field is required -->
+                <div id="date-required" class="requiredMessage">
+                 This field is required
                 </div>
               </div>
               <div class="inputGroup">
@@ -515,25 +520,25 @@
                     <img id="low-whiteID" class="d-none" src="./img/low-white.svg"/>
                   </button>
                 </div>
+                <div id="prio-required" class="requiredMessage">
+                  This field is required
+                </div>  
               </div>
               <div class="inputGroup">
-                <label>Category<span class="required">*</span></label>
-                <div class="dropdown">
-                  <div id="category-container" class="select category" onclick="toggleDropdownCategory()">
-                    <span id="category-displayed" class="btn-text"
-                      >Select task category</span
-                    >
+                <label for="category-selected"
+                  >Category<span class="required">*</span></label
+                >
+                <div class="dropdown" >
+                  <div id="category-container" class="select category" onclick="toggleDropdownCategory()" >
+                    <span id="category-displayed" class="btn-text">Select task category</span>
                     <span class="down-arrow" >
                       <img src="img/arrow_drop_downaa.svg" alt="">
                     </span>
                   </div>
-                  <div
-                    id="category-required"
-                    class="required-msg category-required"
-                  >
-                    <!-- This field is required -->
+                  <div id="category-required" class="requiredMessage">               
+                    This field is required
                   </div>
-                  <ul class="category scroll-disabled dropdown-content" id="myDropdownCategory">
+                  <ul class="category scroll-disabled dropdown-content" id="myDropdownCategory" >
                     <li onclick="selectTechnicalStack()" id="categoryTechnicalStack" data-value="Technical stack" class="item category">
                       <span>Technical stack</span>
                     </li>
@@ -545,7 +550,7 @@
               </div>
               <!--Begin subtask-->
               <div class="inputGroup">
-                <label>Subtasks</label>
+                <label for="subtasks">Subtasks<span class="required">*</span></label>
                 <div class="input-container-subtask">
                   <input class="input subtask" type="text" placeholder="Add new subtask" />
                   <div class="btn-subtask add">
@@ -565,17 +570,20 @@
                   <div class="container-subtasks-display">
                       <ul id="subtaskList" class="list-subtasks"></ul>
                   </div>
+                  <div id="subtasks-required" class="requiredMessage">
+                    This field is required
+                  </div>
               </div>
               <!--End subtask-->  
             </div>
           </div>
           <div class="bottom-form">
             <p class="required-note">
-              <span class="required">*This field is required</span> <!-- This Field is required -->
+              <span class="required">*This field is required</span> 
             </p>
             <div class="actions-form">
               <button
-                onclick="createTask()"
+                onclick="clearForm()"
                 type="button"
                 class="btn-clear"
                 id="clear-btn"
@@ -587,9 +595,9 @@
                   alt=""
                 >
               </button>
-              <button type="submit" class="btn-create" onclick="createTask()">
+              <button type="button" class="btn-create" onclick="validateAndCreateTask(event)">
                 Create Task
-                <img src="./img/check.svg" alt="" />
+                <img src="./img/check_white.svg" alt="" />
               </button>
             </div>
           </div>
