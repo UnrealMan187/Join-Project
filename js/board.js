@@ -54,31 +54,31 @@ function addDragAndDropEvents() {
 
       editTask(tasks[taskNr].id, tasks[taskNr]);
 
-      checkTaskLevels();  
+      checkTaskLevels();
     };
   });
 }
 
 function checkTaskLevels() {
-  if(document.getElementById("cardContainertoDo").childElementCount == 0) {
+  if (document.getElementById("cardContainertoDo").childElementCount == 0) {
     document.getElementById("emptyTaskTodo").classList.remove("d-none");
   } else {
     document.getElementById("emptyTaskTodo").classList.add("d-none");
   }
 
-  if(document.getElementById("cardContainerinProgress").childElementCount == 0) {
+  if (document.getElementById("cardContainerinProgress").childElementCount == 0) {
     document.getElementById("emptyTaskInProgress").classList.remove("d-none");
   } else {
     document.getElementById("emptyTaskInProgress").classList.add("d-none");
   }
 
-  if(document.getElementById("cardContainerawaitingFeedback").childElementCount == 0) {
+  if (document.getElementById("cardContainerawaitingFeedback").childElementCount == 0) {
     document.getElementById("emptyTaskAwait").classList.remove("d-none");
   } else {
     document.getElementById("emptyTaskAwait").classList.add("d-none");
   }
 
-  if(document.getElementById("cardContainerdone").childElementCount == 0) {
+  if (document.getElementById("cardContainerdone").childElementCount == 0) {
     document.getElementById("emptyTaskDone").classList.remove("d-none");
   } else {
     document.getElementById("emptyTaskDone").classList.add("d-none");
@@ -86,41 +86,101 @@ function checkTaskLevels() {
 }
 
 function editPopupTask() {
- for (let i = 0; i < tasks.length; i++) {
-  if (tasks[i].id == currentId) {
-    document.getElementById("inputEdit").value = tasks[i].title;
-    document.getElementById("inputDescription").value = tasks[i].description;
-    document.getElementById("inputDueDate").value = tasks[i].date;
-    let subtasksArray = tasks[i].subtasks.split("|");
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].id == currentId) {
+      document.getElementById("inputEdit").value = tasks[i].title;
+      document.getElementById("inputDescription").value = tasks[i].description;
+      document.getElementById("inputDueDate").value = tasks[i].date;
+      let subtasksArray = tasks[i].subtasks.split("|");
+      let assignedArray = tasks[i].assigned.split(",");
 
-    clearPrioButtons();
-    if (tasks[i].priority == "Urgent") {
-      clickOnUrgent();
-      
-    }
-    if (tasks[i].priority == "Medium") {
-      clickOnMedium();
-      
-    }
-    if (tasks[i].priority == "Low") {
-      clickOnLow();
-      
-    }
+      clearPrioButtons();
+      if (tasks[i].priority == "Urgent") {
+        clickOnUrgent();
+      }
+      if (tasks[i].priority == "Medium") {
+        clickOnMedium();
+      }
+      if (tasks[i].priority == "Low") {
+        clickOnLow();
+      }
 
-    for(let j = 0; j < subtasksArray.length; j++) {
-      let listEntry = document.createElement("li");
-      listEntry.textContent = subtasksArray[j];
-      document.getElementById("subtaskList").appendChild(listEntry);
+      for (let j = 0; j < subtasksArray.length; j++) {
+        let listEntry = document.createElement("li");
+        listEntry.textContent = subtasksArray[j];
+        document.getElementById("subtaskList").appendChild(listEntry);
+      }
+
+      for (let c = 0; c < users.length; c++) {
+        for (let a = 0; a < assignedArray.length; a++) {
+          if (users[c].name == assignedArray[a]) {
+            toggleCheckbox(`AssignedContact${c}`);
+          }
+        }
+      }
     }
   }
-     
- }
- 
- 
+
+  document.getElementById("popupOnTaskSelectionMainContainerID").classList.toggle("d-none");
+  document.getElementById("editPopUpID").classList.toggle("d-none");
+}
+
+async function editCurrentTask() {
+  let newTitle = document.getElementById("inputEdit").value.trim();
+  let newDescription = document.getElementById("inputDescription").value.trim();
+  let newDate = document.getElementById("inputDueDate").value;
+  let newPrio = getTaskPrio();
+  let newAssigned = "";
+  let newSubtasks = "";
+  let currentTask = -1;
+
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].id == currentId) {
+      currentTask = i;
+    }
+  }
+
+  let oldLevel = tasks[currentTask].level;
+  let oldCategory = tasks[currentTask].category;
+
+  let subtaskItems = document.getElementById("subtaskList").getElementsByTagName("li");
+
+  if (subtaskItems.length > 0) {
+    for (j = 0; j < subtaskItems.length; j++) {
+      newSubtasks += subtaskItems[j].innerText + "|";
+    }
+  }
+
+  newSubtasks = newSubtasks.slice(0, -1);
+
+  if (users.length > 0) {
+    for (let i = 0; i < users.length; i++) {
+      let checkbox = document.getElementById(`AssignedContact${i}`);
+
+      if (checkbox.checked == true) {
+        newAssigned += users[i].name + ",";
+      }
+    }
+    newAssigned = newAssigned.slice(0, -1);
+  }
+
+  let newTask = {
+    title: newTitle,
+    description: newDescription,
+    date: newDate,
+    category: oldCategory,
+    priority: newPrio,
+    level: oldLevel,
+    subtasks: newSubtasks,
+    assigned: newAssigned,
+  };
+
   document.getElementById("popupOnTaskSelectionMainContainerID").classList.toggle("d-none");
   document.getElementById("editPopUpID").classList.toggle("d-none");
 
- 
+  await editTask(currentId, newTask);
+  editPopupTask();
+  await renderTaskCards();
 }
 
 function openDialog() {
@@ -153,8 +213,6 @@ function popupValueImplementFromTask(taskNr) {
 
   currentId = tasks[taskNr].id;
 
-
-
   for (let j = 0; j < assignedNames.length; j++) {
     valueFromName.innerHTML += `
              <div>${assignedNames[j]}</div>
@@ -162,21 +220,21 @@ function popupValueImplementFromTask(taskNr) {
   }
 }
 
-
 async function getUserColor(userName) {
   await loadUsers("/users");
   let returnColor = 1;
 
-  for(let i = 0; i < users.length; i++) {
-    if(users[i].name == userName) {
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].name == userName) {
       returnColor = i + 1;
-      while(returnColor > 15) { returnColor -= 15; }
+      while (returnColor > 15) {
+        returnColor -= 15;
+      }
       return returnColor;
     }
   }
   return returnColor;
 }
-
 
 async function renderTaskCards() {
   await loadTasks("/tasks");
@@ -255,7 +313,7 @@ async function renderTaskCards() {
                         ${assignedUsersHTML}
                       </div>
                       <div class="prioImg">
-                        <img src="./img/medium.svg" alt="">
+                        <img src="./img/${tasks[i].priority.toLowerCase()}.svg" alt="">
                       </div>
                     </div>
                   </div>
