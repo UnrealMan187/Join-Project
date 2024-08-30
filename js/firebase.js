@@ -76,8 +76,7 @@ async function deleteTask(id) {
     method: "DELETE",
   });
 
-  await renderTaskCards();
-  closeDialog();
+  window.location.href = "board.html";
 }
 
 async function loginUser() {
