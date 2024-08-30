@@ -315,8 +315,8 @@ h1 {
 }
 
 .subtask-edit-icon-div {
-    display: none;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .subtask-list-item:hover .subtask-edit-icon-div {
