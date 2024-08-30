@@ -76,9 +76,8 @@ async function deleteTask(id) {
     method: "DELETE",
   });
 
-  closeDialog();
-  await loadTasks("/tasks");
   await renderTaskCards();
+  closeDialog();
 }
 
 async function loginUser() {
