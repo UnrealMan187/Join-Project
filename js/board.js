@@ -15,11 +15,13 @@ function addDragAndDropEvents() {
   dropZones.forEach((zone) => {
     zone.ondragover = (event) => {
       event.preventDefault();
-      event.currentTarget.style.backgroundColor = "#1FD7C1";
+      //event.currentTarget.style.backgroundColor = "#1FD7C1";
+      event.currentTarget.style.border = "dotted 2px grey";
     };
 
     zone.ondragleave = (event) => {
       event.currentTarget.style.backgroundColor = ""; // Zurücksetzen des Hintergrunds
+      event.currentTarget.style.border = "none";
     };
 
     zone.ondrop = (event) => {
@@ -28,6 +30,8 @@ function addDragAndDropEvents() {
       const data = event.dataTransfer.getData("text");
       const card = document.getElementById(data);
       event.currentTarget.appendChild(card);
+
+      event.currentTarget.style.border = "none";
 
       let newLevel = event.currentTarget.id;
 
