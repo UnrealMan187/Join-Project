@@ -56,25 +56,25 @@ function addDragAndDropEvents() {
 }
 
 function checkTaskLevels() {
-  if(document.getElementById("cardContainertoDo").childNodes.length == 0) {
+  if(document.getElementById("cardContainertoDo").childElementCount == 0) {
     document.getElementById("emptyTaskTodo").style.visibility = "visible";
   } else {
     document.getElementById("emptyTaskTodo").style.visibility = "hidden";
   }
 
-  if(document.getElementById("cardContainerinProgress").childNodes.length == 0) {
+  if(document.getElementById("cardContainerinProgress").childElementCount == 0) {
     document.getElementById("emptyTaskInProgress").style.visibility = "visible";
   } else {
     document.getElementById("emptyTaskInProgress").style.visibility = "hidden";
   }
 
-  if(document.getElementById("cardContainerawaitingFeedback").childNodes.length == 0) {
+  if(document.getElementById("cardContainerawaitingFeedback").childElementCount == 0) {
     document.getElementById("emptyTaskAwait").style.visibility = "visible";
   } else {
     document.getElementById("emptyTaskAwait").style.visibility = "hidden";
   }
 
-  if(document.getElementById("cardContainerdone").childNodes.length == 0) {
+  if(document.getElementById("cardContainerdone").childElementCount == 0) {
     document.getElementById("emptyTaskDone").style.visibility = "visible";
   } else {
     document.getElementById("emptyTaskDone").style.visibility = "hidden";
@@ -246,22 +246,18 @@ async function renderTaskCards() {
     switch (cardContainerIdName) {
       case "To do":
         cardContainerIdName = "cardContainertoDo";
-        //document.getElementById("emptyTaskTodo").classList.add("d-none");
         document.getElementById("emptyTaskTodo").style.visibility = "hidden";
         break;
       case "In Progress":
         cardContainerIdName = "cardContainerinProgress";
-        //document.getElementById("emptyTaskInProgress").classList.add("d-none");
         document.getElementById("emptyTaskInProgress").style.visibility = "hidden";
         break;
       case "Awaiting Feedback":
         cardContainerIdName = "cardContainerawaitingFeedback";
-        //document.getElementById("emptyTaskAwait").classList.add("d-none");
         document.getElementById("emptyTaskAwait").style.visibility = "hidden";
         break;
       case "Done":
         cardContainerIdName = "cardContainerdone";
-        //document.getElementById("emptyTaskDone").classList.add("d-none");
         document.getElementById("emptyTaskDone").style.visibility = "hidden";
         break;
       default:
