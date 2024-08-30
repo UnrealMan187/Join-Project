@@ -19,6 +19,8 @@ html {
 
 body {
   background-color: #f6f7f8;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 .overflowHidden {
@@ -124,6 +126,7 @@ body {
 .taskCard {
   min-width: 252px;
   max-width: 252px;
+  /* width: 98%; */
   background-color: #ffffff;
   border-radius: 24px;
   padding: 16px;
@@ -138,6 +141,7 @@ body {
   height: 100%;
   outline: 2px dashed transparent;
   border-radius: 30px;
+  width: 103%;
 }
 
 .flexEnd {
