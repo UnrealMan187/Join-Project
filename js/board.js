@@ -61,27 +61,27 @@ function addDragAndDropEvents() {
 
 function checkTaskLevels() {
   if(document.getElementById("cardContainertoDo").childElementCount == 0) {
-    document.getElementById("emptyTaskTodo").style.visibility = "visible";
+    document.getElementById("emptyTaskTodo").classList.remove("d-none");
   } else {
-    document.getElementById("emptyTaskTodo").style.visibility = "hidden";
+    document.getElementById("emptyTaskTodo").classList.add("d-none");
   }
 
   if(document.getElementById("cardContainerinProgress").childElementCount == 0) {
-    document.getElementById("emptyTaskInProgress").style.visibility = "visible";
+    document.getElementById("emptyTaskInProgress").classList.remove("d-none");
   } else {
-    document.getElementById("emptyTaskInProgress").style.visibility = "hidden";
+    document.getElementById("emptyTaskInProgress").classList.add("d-none");
   }
 
   if(document.getElementById("cardContainerawaitingFeedback").childElementCount == 0) {
-    document.getElementById("emptyTaskAwait").style.visibility = "visible";
+    document.getElementById("emptyTaskAwait").classList.remove("d-none");
   } else {
-    document.getElementById("emptyTaskAwait").style.visibility = "hidden";
+    document.getElementById("emptyTaskAwait").classList.add("d-none");
   }
 
   if(document.getElementById("cardContainerdone").childElementCount == 0) {
-    document.getElementById("emptyTaskDone").style.visibility = "visible";
+    document.getElementById("emptyTaskDone").classList.remove("d-none");
   } else {
-    document.getElementById("emptyTaskDone").style.visibility = "hidden";
+    document.getElementById("emptyTaskDone").classList.add("d-none");
   }
 }
 
@@ -120,91 +120,7 @@ function editPopupTask() {
   document.getElementById("popupOnTaskSelectionMainContainerID").classList.toggle("d-none");
   document.getElementById("editPopUpID").classList.remove("d-none");
 
-  // document.getElementById("editPopUpID").innerHTML = `
-  //        <div class="editClosePopupMainContainer">
-  //           <img onclick="closeDialog()" id="closePopupID" src="./img/close.svg" style="cursor: pointer;" alt="">
-  //       </div>
-      
-  //     <div class="scrollbar">
-  //         <div class="editPopupTitelMainContainer">
-  //           <span class="editPopupTitelTxt">Title</span>
-  //           <input id="" class="editTitelInput" type="text">
-  //         </div>
-
-  //         <div class="editPopupDescriptionMainContainer">
-  //           <span class="editPopupDescriptionTxt">Description</span>
-  //           <input class="editDescriptionInput" type="text">
-  //         </div>
-            
-  //           <div class="editPopupDateMainContainer">
-  //             <p class="editPopupDateTxt">Due date</p>
-  //             <input class="editDateInput" type="date">
-  //           </div>
-
-  //           <div class="editPrio">
-  //             <label>Prio</label>
-  //             <div class="buttons-prio">
-  //               <button onclick="clickOnUrgent()" type="button" id="urgent" class="btn-prio btn-prio:hover">
-  //                 Urgent<img id="urgentID" src="./img/urgent.svg" class="">
-  //                       <img id="urgent-whiteID" class="d-none" src="./img/urgent-white.svg">
-  //               </button>
-  //               <div class="">
-  //               <button onclick="clickOnMedium()" type="button" id="medium" class="btn-prio btn-bg-change-medium-onclick prio-txt-color-set-white" style="box-shadow: none;">
-  //                 Medium<img id="mediumID" src="./img/medium.svg" class="d-none">
-  //                 <img id="medium-whiteID" class="" src="./img/medium-white.svg">
-  //               </button>
-  //             </div>
-  //               <button onclick="clickOnLow()" type="button" id="low" class="btn-prio">
-  //                 Low<img id="lowID" src="./img/low.svg" class="">
-  //                 <img id="low-whiteID" class="d-none" src="./img/low-white.svg">
-  //               </button>
-  //             </div>
-  //           </div>
-  //           <!-- Begin Assigned to  -->
-  //           <div class="editPopupAssignedToMainContainer">
-  //             <p class="editAssignedToTxt">Assigned to</p>
-  //             <div class="editDropdown">
-  //               <div id="contacts-list" class="select assigned-to" onclick="toggleDropdown()">
-  //                 <input class="select-input placeholder" type="text" placeholder="Select contacts to assign" readonly/>
-  //                 <span class="down-arrow">
-  //                   <img src="img/arrow_drop_downaa.svg" alt="">
-  //                 </span>
-  //               </div>
-  //               <div id="selected-contacts-container" class="selected-contacts"></div>
-  //               <!-- Begin Contacts Assigned to-->
-  //               <ul id="myDropdown" class="dropdown-content "></ul>
-  //               <!-- End Contacts Assigned to-->
-  //               <div class="selected-contacts"></div>
-  //             </div>
-  //           </div>
-  //           <!-- End Assigned to -->
-
-  //           <!--Begin subtask-->
-  //           <div class="editPopupSubtasksMainContainer">
-  //             <p class="editPopupSubtasksTxt">Subtask</p>
-  //             <div class="input-container-subtask">
-  //               <input class="input subtask" type="text" placeholder="Add new subtask" />
-  //               <div class="btn-subtask add">
-  //                 <img src="./img/add.png" alt="Add" />
-  //               </div>
-  //               <div class="btn-subtask check-cancel">
-  //                 <div class="cancel-subtask">
-  //                   <img src="./img/close.png" alt="Cancel" />
-  //                 </div>
-  //                 <div class="divider-subtask"></div>
-  //                 <div class="check-subtask">
-  //                   <img src="./img/check.png" alt="Check" />
-  //                 </div>
-  //                 </div>
-  //             </div>
-  //               <div class="container-subtasks-display">
-  //                   <ul id="subtaskList" class="list-subtasks"></ul>
-  //               </div>
-  //           </div>
-  //     </div>
-  //         <div onclick="editTask()" class="okButtonMainContainer" >
-  //           <button class="okButtonOnEditPopUp">OK</button>
-  //         </div>`;
+ 
 }
 
 function openDialog() {
@@ -281,19 +197,19 @@ async function renderTaskCards() {
     switch (cardContainerIdName) {
       case "To do":
         cardContainerIdName = "cardContainertoDo";
-        document.getElementById("emptyTaskTodo").style.visibility = "hidden";
+        document.getElementById("emptyTaskTodo").classList.add("d-none");
         break;
       case "In Progress":
         cardContainerIdName = "cardContainerinProgress";
-        document.getElementById("emptyTaskInProgress").style.visibility = "hidden";
+        document.getElementById("emptyTaskInProgress").classList.add("d-none");
         break;
       case "Awaiting Feedback":
         cardContainerIdName = "cardContainerawaitingFeedback";
-        document.getElementById("emptyTaskAwait").style.visibility = "hidden";
+        document.getElementById("emptyTaskAwait").classList.add("d-none");
         break;
       case "Done":
         cardContainerIdName = "cardContainerdone";
-        document.getElementById("emptyTaskDone").style.visibility = "hidden";
+        document.getElementById("emptyTaskDone").classList.add("d-none");
         break;
       default:
         cardContainerIdName = "";
