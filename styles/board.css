@@ -983,7 +983,7 @@ h2 {
     flex-direction: row;
     gap: 16px;
     overflow-x: auto;
-    min-height: 340px;
+    height: 100% !important;
   }
 
   .statusItem {
