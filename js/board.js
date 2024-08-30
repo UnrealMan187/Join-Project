@@ -91,6 +91,8 @@ function editPopupTask() {
     document.getElementById("inputEdit").value = tasks[i].title;
     document.getElementById("inputDescription").value = tasks[i].description;
     document.getElementById("inputDueDate").value = tasks[i].date;
+    let subtasksArray = tasks[i].subtasks.split("|");
+
     clearPrioButtons();
     if (tasks[i].priority == "Urgent") {
       clickOnUrgent();
@@ -104,7 +106,12 @@ function editPopupTask() {
       clickOnLow();
       
     }
-    // document.getElementById("inputPrio").textContent = tasks[i].prio;
+
+    for(let j = 0; j < subtasksArray.length; j++) {
+      let listEntry = document.createElement("li");
+      listEntry.textContent = subtasksArray[j];
+      document.getElementById("subtaskList").appendChild(listEntry);
+    }
   }
      
  }
