@@ -364,3 +364,39 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Modal, Open Button, or Close Button not found in the DOM.");
   }
 });
+
+function searchTasks() {
+  let searchBar = document.getElementById("searchBar");
+
+  if(searchBar.value.length > 0) {
+    hideAllTaskCards();
+
+    for(let i = 0; i < tasks.length; i++) {
+      if(tasks[i].title.includes(searchBar.value) || tasks[i].description.includes(searchBar.value)) {
+        showTaskCard(i);
+      }
+    }
+  } else {
+    showAllTaskCards();
+  }
+}
+
+function hideTaskCard(i) {
+  document.getElementById(`taskCard-${i}`).classList.add("d-none");
+}
+
+function showTaskCard(i) {
+  document.getElementById(`taskCard-${i}`).classList.remove("d-none");
+}
+
+function hideAllTaskCards() {
+  for(let i = 0; i < tasks.length; i++) {
+    hideTaskCard(i);
+  }
+}
+
+function showAllTaskCards() {
+  for(let i = 0; i < tasks.length; i++) {
+    showTaskCard(i);
+  }
+}
