@@ -86,6 +86,8 @@ function checkTaskLevels() {
 }
 
 function editPopupTask() {
+  clearForm();
+  
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].id == currentId) {
       document.getElementById("inputEdit").value = tasks[i].title;
@@ -121,8 +123,8 @@ function editPopupTask() {
     }
   }
 
-  document.getElementById("popupOnTaskSelectionMainContainerID").classList.toggle("d-none");
-  document.getElementById("editPopUpID").classList.toggle("d-none");
+  document.getElementById("popupOnTaskSelectionMainContainerID").classList.add("d-none");
+  document.getElementById("editPopUpID").classList.remove("d-none");
 }
 
 async function editCurrentTask() {
@@ -175,12 +177,14 @@ async function editCurrentTask() {
     assigned: newAssigned,
   };
 
-  document.getElementById("popupOnTaskSelectionMainContainerID").classList.toggle("d-none");
-  document.getElementById("editPopUpID").classList.remove("d-none");
+  //document.getElementById("popupOnTaskSelectionMainContainerID").classList.toggle("d-none");
+  //document.getElementById("editPopUpID").classList.remove("d-none");
+  
 
   await editTask(currentId, newTask);
-  editPopupTask();
   await renderTaskCards();
+
+  closeDialog();
 }
 
 function openDialog() {
@@ -188,8 +192,8 @@ function openDialog() {
 }
 function closeDialog() {
   document.getElementById("popupOnTaskSelectionID").style.visibility = "hidden";
-  //document.getElementById('editPopUpID').classList.toggle('d-none');
-  //document.getElementById('popupOnTaskSelectionMainContainerID').classList.toggle('d-none');
+  document.getElementById('editPopUpID').classList.add('d-none');
+  document.getElementById('popupOnTaskSelectionMainContainerID').classList.remove('d-none');
 }
 
 function popupValueImplementFromTask(taskNr) {

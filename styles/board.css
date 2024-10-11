@@ -881,9 +881,8 @@ h2 {
   width: 90%;
   margin-left: 20px;
 }
-.editPopupAssignedToMainContainer
-{
-  margin-bottom: 32px;
+.editPopupSubtasksMainContainer {
+  margin-top: 64px;
 }
 .editPopupTitelTxt,
 .editPopupDescriptionTxt,
