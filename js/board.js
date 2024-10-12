@@ -196,8 +196,17 @@ function closeDialog() {
   document.getElementById('popupOnTaskSelectionMainContainerID').classList.remove('d-none');
 }
 
-function popupValueImplementFromTask(taskNr) {
-  let contactEllipse = document.getElementById(`profileBadges${taskNr}`).innerHTML;
+async function popupValueImplementFromTask(taskNr) {
+  let contactEllipse = "";
+  
+  let assignedUsers = tasks[taskNr].assigned.split(",");
+
+  while (assignedUsers.length > 0) {
+    contactEllipse += `
+    <div class="badgeImg initialsColor${await getUserColor(assignedUsers[0])}">${getUserInitials(assignedUsers[0])}</div>
+    `;
+    assignedUsers.splice(0, 1);
+  }
 
   document.getElementById("popUpUserStory").innerHTML = tasks[taskNr].category;
   document.getElementById("popupHeaderID").innerHTML = tasks[taskNr].title;
@@ -278,11 +287,22 @@ async function renderTaskCards() {
         break;
     }
 
+    let counter = 0;
+    let taskUsers = assignedUsers.length;
+
     while (assignedUsers.length > 0) {
       assignedUsersHTML += `
       <div class="badgeImg initialsColor${await getUserColor(assignedUsers[0])}">${getUserInitials(assignedUsers[0])}</div>
       `;
       assignedUsers.splice(0, 1);
+      counter++;
+
+      if(counter == 4 && taskUsers > 4) {
+        assignedUsersHTML += `
+        <div class="badgeImg initialsColor0">+${taskUsers - counter}</div>
+        `;
+        break;
+      }
     }
 
     document.getElementById(cardContainerIdName).innerHTML += `

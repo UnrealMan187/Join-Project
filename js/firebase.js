@@ -6,6 +6,11 @@ let login = [];
 let currentUser = -1;
 let currentId = -1;
 
+function indexHtmlInit() {
+  // Hier noch eine if Abfrage einbauen: wenn User bereits eingeloggt ist, verlinke direkt zu summary.html, ansonsten zu login.html
+  window.location.href = "login.html"
+}
+
 async function loadUsers(path = "/users") {
   users = [];
   let userResponse = await fetch(FIREBASE_URL + path + ".json");
@@ -276,10 +281,8 @@ async function renderContacts() {
  * gets first Letter from first Name and first Letter from last Name
  */
 function getUserInitials(username) {
-  let result = username
-    .trim()
-    .split(" ")
-    .map((wort) => wort[0].toUpperCase());
+  let result = username.trim().split(" ").map((wort) => wort[0].toUpperCase());
+
   if (username.split(" ").length > 1) {
     result = result[0] + result[result.length - 1];
   } else {

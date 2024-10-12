@@ -355,6 +355,12 @@
   border-radius: 16px;
 }
 
+.initialsColor0 {
+  background-color: #ffffff; /* Weiß */
+  color: black !important;
+  border: solid 1px rgb(126, 126, 126);
+}
+
 .initialsColor1 {
   background-color: #f58b8b; /* Rot */
 }
