@@ -1,4 +1,6 @@
-// signup.js
+/*
+** sign up form validation
+*/
 
 document.addEventListener('DOMContentLoaded', function () {
     const signupForm = document.getElementById('signupForm');
@@ -12,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const password = passwordInput.value.trim();
         const confirmPassword = confirmPasswordInput.value.trim();
 
-        if (password.length < 6) {
+        if (password.length < 6) { 
             alert('Password must be at least 6 characters long.');
             return;
         }
@@ -36,10 +38,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+/*
+** show login container
+*/
+
   function showLoginContainer() {
     document.getElementById("main_wrapper").classList.remove("d-none");
     document.getElementById("login_section").classList.remove("d-none");
   }
+
+/*
+** on keydown reaction function of password field
+*/
 
   function onPasswordKeyDown() {
     let inputField = document.getElementById("userPassword").value;
@@ -59,6 +69,10 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   }
+
+  /*
+  ** function to check invalid keys
+  */
   
   function checkInvalidKeys(key) {
     switch (key) {
@@ -104,6 +118,10 @@ document.addEventListener('DOMContentLoaded', function () {
         break;
     }
   }
+
+  /*
+  ** checks if the input of an input field is marked completely
+  */
   
   function isMarkedCompletely(inputField) {
     return inputField.selectionStart == 0 && inputField.selectionEnd == inputField.value.length;

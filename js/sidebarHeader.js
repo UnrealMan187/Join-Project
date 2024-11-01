@@ -1,3 +1,7 @@
+/*
+** sidebar header implementation
+*/
+
 document.addEventListener('DOMContentLoaded', () => {
     const desktopModal = document.querySelector('#sub-menu-modal-desktop');
     const mobileModal = document.querySelector('#sub-menu-modal-mobile');

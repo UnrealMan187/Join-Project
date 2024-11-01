@@ -1,4 +1,7 @@
-// Funktion zum Hinzufügen der Drag-and-Drop-Events
+/*
+** Funktion zum Hinzufügen der Drag-and-Drop-Events
+*/
+
 function addDragAndDropEvents() {
   const draggedCards = document.querySelectorAll(".taskCard");
   const dropZones = document.querySelectorAll(
@@ -35,18 +38,10 @@ function addDragAndDropEvents() {
 
       let newLevel = event.currentTarget.id;
 
-      if (newLevel.includes("cardContainertoDo")) {
-        newLevel = "To do";
-      }
-      if (newLevel.includes("cardContainerinProgress")) {
-        newLevel = "In Progress";
-      }
-      if (newLevel.includes("cardContainerawaitingFeedback")) {
-        newLevel = "Awaiting Feedback";
-      }
-      if (newLevel.includes("cardContainerdone")) {
-        newLevel = "Done";
-      }
+      if (newLevel.includes("cardContainertoDo")) { newLevel = "To do"; }
+      if (newLevel.includes("cardContainerinProgress")) { newLevel = "In Progress"; }
+      if (newLevel.includes("cardContainerawaitingFeedback")) { newLevel = "Awaiting Feedback"; }
+      if (newLevel.includes("cardContainerdone")) { newLevel = "Done"; }
 
       let taskNr = data.split("-")[1];
 
@@ -58,6 +53,10 @@ function addDragAndDropEvents() {
     };
   });
 }
+
+/*
+** checks if a task card is in the container or not, if not, show "no tasks" information into container
+*/
 
 function checkTaskLevels() {
   if (document.getElementById("cardContainertoDo").childElementCount == 0) {
@@ -85,6 +84,10 @@ function checkTaskLevels() {
   }
 }
 
+/*
+** load task information into the edit task form
+*/
+
 function editPopupTask() {
   clearForm();
   
@@ -97,15 +100,9 @@ function editPopupTask() {
       let assignedArray = tasks[i].assigned.split(",");
 
       clearPrioButtons();
-      if (tasks[i].priority == "Urgent") {
-        clickOnUrgent();
-      }
-      if (tasks[i].priority == "Medium") {
-        clickOnMedium();
-      }
-      if (tasks[i].priority == "Low") {
-        clickOnLow();
-      }
+      if (tasks[i].priority == "Urgent") { clickOnUrgent(); }
+      if (tasks[i].priority == "Medium") { clickOnMedium(); }
+      if (tasks[i].priority == "Low") { clickOnLow(); }
 
       for (let j = 0; j < subtasksArray.length; j++) {
         let listEntry = document.createElement("li");
@@ -122,7 +119,7 @@ function editPopupTask() {
       }
     }
   }
-
+  
   document.getElementById("popupOnTaskSelectionMainContainerID").classList.add("d-none");
   document.getElementById("editPopUpID").classList.remove("d-none");
 }
@@ -178,8 +175,7 @@ async function editCurrentTask() {
   };
 
   //document.getElementById("popupOnTaskSelectionMainContainerID").classList.toggle("d-none");
-  //document.getElementById("editPopUpID").classList.remove("d-none");
-  
+  //document.getElementById("editPopUpID").classList.remove("d-none");  
 
   await editTask(currentId, newTask);
   await renderTaskCards();
@@ -187,14 +183,43 @@ async function editCurrentTask() {
   closeDialog();
 }
 
+/*
+** make edit task popup visible
+*/
+
 function openDialog() {
   document.getElementById("popupOnTaskSelectionID").style.visibility = "visible";
 }
+
+/*
+** make edit task popup invisible
+*/
+
 function closeDialog() {
   document.getElementById("popupOnTaskSelectionID").style.visibility = "hidden";
   document.getElementById('editPopUpID').classList.add('d-none');
   document.getElementById('popupOnTaskSelectionMainContainerID').classList.remove('d-none');
 }
+
+/*
+** shows data in card container popup
+*/
+
+function loadPopupValueData(taskNr, contactEllipse) {
+  document.getElementById("popUpUserStory").innerHTML = tasks[taskNr].category;
+  document.getElementById("popupHeaderID").innerHTML = tasks[taskNr].title;
+  document.getElementById("popupSpanID").innerHTML = tasks[taskNr].description;
+
+  document.getElementById("dateId").textContent = tasks[taskNr].date;
+  document.getElementById("prioId").textContent = tasks[taskNr].priority;
+  document.getElementById("prioIdImg").src = `./img/${tasks[taskNr].priority.toLowerCase()}.svg`;
+
+  document.getElementById("popupContactEllipseID").innerHTML = contactEllipse;
+}
+
+/*
+** load task values into the task popup
+*/
 
 async function popupValueImplementFromTask(taskNr) {
   let contactEllipse = "";
@@ -208,15 +233,7 @@ async function popupValueImplementFromTask(taskNr) {
     assignedUsers.splice(0, 1);
   }
 
-  document.getElementById("popUpUserStory").innerHTML = tasks[taskNr].category;
-  document.getElementById("popupHeaderID").innerHTML = tasks[taskNr].title;
-  document.getElementById("popupSpanID").innerHTML = tasks[taskNr].description;
-
-  document.getElementById("dateId").textContent = tasks[taskNr].date;
-  document.getElementById("prioId").textContent = tasks[taskNr].priority;
-  document.getElementById("prioIdImg").src = `./img/${tasks[taskNr].priority.toLowerCase()}.svg`;
-
-  document.getElementById("popupContactEllipseID").innerHTML = contactEllipse;
+  loadPopupValueData(taskNr, contactEllipse);
 
   let valueFromName = document.getElementById("popupContactNameID");
 
@@ -232,6 +249,10 @@ async function popupValueImplementFromTask(taskNr) {
              `;
   }
 }
+
+/*
+** get user color rotating from 1-15
+*/
 
 async function getUserColor(userName) {
   await loadUsers("/users");
@@ -249,63 +270,13 @@ async function getUserColor(userName) {
   return returnColor;
 }
 
-async function renderTaskCards() {
-  await loadTasks("/tasks");
 
-  document.getElementById("cardContainertoDo").innerHTML = "";
-  document.getElementById("cardContainerinProgress").innerHTML = "";
-  document.getElementById("cardContainerawaitingFeedback").innerHTML = "";
-  document.getElementById("cardContainerdone").innerHTML = "";
+/*
+** task card template for render task cards function
+*/
 
-  for (let i = 0; i < tasks.length; i++) {
-    const uniqueId = `taskCard-${i}`;
-    let assignedUsers = tasks[i].assigned.split(",");
-    let subTasksArray = tasks[i].subtasks.split("|");
-    let assignedUsersHTML = "";
-
-    let cardContainerIdName = tasks[i].level;
-
-    switch (cardContainerIdName) {
-      case "To do":
-        cardContainerIdName = "cardContainertoDo";
-        document.getElementById("emptyTaskTodo").classList.add("d-none");
-        break;
-      case "In Progress":
-        cardContainerIdName = "cardContainerinProgress";
-        document.getElementById("emptyTaskInProgress").classList.add("d-none");
-        break;
-      case "Awaiting Feedback":
-        cardContainerIdName = "cardContainerawaitingFeedback";
-        document.getElementById("emptyTaskAwait").classList.add("d-none");
-        break;
-      case "Done":
-        cardContainerIdName = "cardContainerdone";
-        document.getElementById("emptyTaskDone").classList.add("d-none");
-        break;
-      default:
-        cardContainerIdName = "";
-        break;
-    }
-
-    let counter = 0;
-    let taskUsers = assignedUsers.length;
-
-    while (assignedUsers.length > 0) {
-      assignedUsersHTML += `
-      <div class="badgeImg initialsColor${await getUserColor(assignedUsers[0])}">${getUserInitials(assignedUsers[0])}</div>
-      `;
-      assignedUsers.splice(0, 1);
-      counter++;
-
-      if(counter == 4 && taskUsers > 4) {
-        assignedUsersHTML += `
-        <div class="badgeImg initialsColor0">+${taskUsers - counter}</div>
-        `;
-        break;
-      }
-    }
-
-    document.getElementById(cardContainerIdName).innerHTML += `
+function taskCardTemplate(uniqueId, i, subTasksArray, assignedUsersHTML) {
+  return `
                 <div draggable="true" id="${uniqueId}" class="taskCard">
                 <div class="taskCardTop">
                   <label class="categoryGreen">${tasks[i].category}</label>
@@ -344,12 +315,88 @@ async function renderTaskCards() {
                 </div>
               </div>  
                   `;
+}
+
+/*
+** function returns id name of card containers from task level
+** also if a card container gets its first card the "no task ..." gets hidden
+*/
+
+function getCardContainerId(cardContainerIdName) {
+  let result;
+
+  switch (cardContainerIdName) {
+    case "To do":
+      result = "cardContainertoDo";
+      document.getElementById("emptyTaskTodo").classList.add("d-none");
+      break;
+    case "In Progress":
+      result = "cardContainerinProgress";
+      document.getElementById("emptyTaskInProgress").classList.add("d-none");
+      break;
+    case "Awaiting Feedback":
+      result = "cardContainerawaitingFeedback";
+      document.getElementById("emptyTaskAwait").classList.add("d-none");
+      break;
+    case "Done":
+      result = "cardContainerdone";
+      document.getElementById("emptyTaskDone").classList.add("d-none");
+      break;
+    default:
+      result = "";
+      break;
+  }
+
+  return result;
+}
+
+/*
+** render task cards into board
+*/
+
+async function renderTaskCards() {
+  await loadTasks("/tasks");
+
+  document.getElementById("cardContainertoDo").innerHTML = "";
+  document.getElementById("cardContainerinProgress").innerHTML = "";
+  document.getElementById("cardContainerawaitingFeedback").innerHTML = "";
+  document.getElementById("cardContainerdone").innerHTML = "";
+
+  for (let i = 0; i < tasks.length; i++) {
+    const uniqueId = `taskCard-${i}`;
+    let assignedUsers = tasks[i].assigned.split(",");
+    let subTasksArray = tasks[i].subtasks.split("|");
+    let assignedUsersHTML = "";
+
+    let cardContainerIdName = getCardContainerId(tasks[i].level);
+
+    let counter = 0;
+    let taskUsers = assignedUsers.length;
+
+    while (assignedUsers.length > 0) {
+      assignedUsersHTML += `
+      <div class="badgeImg initialsColor${await getUserColor(assignedUsers[0])}">${getUserInitials(assignedUsers[0])}</div>
+      `;
+      assignedUsers.splice(0, 1);
+      counter++;
+
+      if(counter == 4 && taskUsers > 4) {
+        assignedUsersHTML += `
+        <div class="badgeImg initialsColor0">+${taskUsers - counter}</div>
+        `;
+        break;
+      }
+    }
+
+    document.getElementById(cardContainerIdName).innerHTML += taskCardTemplate(uniqueId, i, subTasksArray, assignedUsersHTML);
   }
   // Drag-and-Drop-Events nach dem Rendern der Karten hinzufügen
   addDragAndDropEvents();
 }
 
-/*AddTask Pop up*/
+/*
+** AddTask Pop up
+*/
 
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.querySelector("dialog[data-modal]");
@@ -385,6 +432,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+/*
+** search tasks function, only matches are visible, rest hidden
+*/
+
 function searchTasks() {
   let searchBar = document.getElementById("searchBar");
 
@@ -401,19 +452,35 @@ function searchTasks() {
   }
 }
 
+/*
+** hide single task card
+*/
+
 function hideTaskCard(i) {
   document.getElementById(`taskCard-${i}`).classList.add("d-none");
 }
 
+/*
+** show single task card
+*/
+
 function showTaskCard(i) {
   document.getElementById(`taskCard-${i}`).classList.remove("d-none");
 }
+
+/*
+** hide all task cards
+*/
 
 function hideAllTaskCards() {
   for(let i = 0; i < tasks.length; i++) {
     hideTaskCard(i);
   }
 }
+
+/*
+** show all task cards
+*/
 
 function showAllTaskCards() {
   for(let i = 0; i < tasks.length; i++) {

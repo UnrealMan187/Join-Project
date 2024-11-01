@@ -82,6 +82,10 @@ function onPasswordKeyDown() {
   }
 }
 
+ /*
+  ** function to check invalid keys
+  */
+
 function checkInvalidKeys(key) {
   switch (key) {
     case "Backspace":
@@ -127,9 +131,17 @@ function checkInvalidKeys(key) {
   }
 }
 
+ /*
+  ** checks if the input of an input field is marked completely
+  */
+
 function isMarkedCompletely(inputField) {
   return inputField.selectionStart == 0 && inputField.selectionEnd == inputField.value.length;
 }
+
+/*
+** routes guest to summary page
+*/
 
 document.getElementById('guestButton').addEventListener('click', function(event) {
   event.preventDefault();

@@ -1,3 +1,7 @@
+/*
+** load and show summary information on summary page
+*/
+
 async function loadSummaryInfos() {
   await loadTasks();
 
@@ -28,6 +32,10 @@ async function loadSummaryInfos() {
   greetUser();
 }
 
+/*
+** check which task deadline is the nearest and show it on summary page
+*/
+
 function getUpcomingDeadline() {
   let upcomingDeadline = "0";
   let allDates = [];
@@ -54,12 +62,19 @@ function getUpcomingDeadline() {
   }
 }
 
+/*
+** return a YYYY-DD-MM date as day month-as-name year
+*/
+
 function numberToDate(numberDate) {
   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   return `${months[numberDate.slice(-4, -2) - 1]} ${numberDate.slice(-2)}, ${numberDate.slice(0, 4)}`;
 }
 
+/*
+** user greeting message depending on daytime
+*/
 
 function greetUser() {
   const now = new Date();

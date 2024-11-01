@@ -6,10 +6,18 @@ let login = [];
 let currentUser = -1;
 let currentId = -1;
 
+ /*
+ ** routes user to login html (or to summary if user already logged in)
+ */
+
 function indexHtmlInit() {
   // Hier noch eine if Abfrage einbauen: wenn User bereits eingeloggt ist, verlinke direkt zu summary.html, ansonsten zu login.html
   window.location.href = "login.html"
 }
+
+ /*
+ ** load users from firebase
+ */
 
 async function loadUsers(path = "/users") {
   users = [];
@@ -30,6 +38,10 @@ async function loadUsers(path = "/users") {
     });
   }
 }
+
+ /*
+ ** load tasks from firebase
+ */
 
 async function loadTasks(path = "/tasks") {
   tasks = [];
@@ -53,6 +65,10 @@ async function loadTasks(path = "/tasks") {
   }
 }
 
+ /*
+ ** save task function
+ */
+
 async function saveTasks(path = "", data = {}) {
   await fetch(FIREBASE_URL + path + ".json", {
     method: "POST",
@@ -62,6 +78,10 @@ async function saveTasks(path = "", data = {}) {
     body: JSON.stringify(data),
   });
 }
+
+ /*
+ ** edit task function
+ */
 
 async function editTask(id, data = {}) {
   await fetch(FIREBASE_URL + `/tasks/${id}` + ".json", {
@@ -73,6 +93,10 @@ async function editTask(id, data = {}) {
   });
 }
 
+ /*
+ ** delete task function
+ */
+
 async function deleteTask(id) {
   if (id == -1) {
     return;
@@ -83,6 +107,10 @@ async function deleteTask(id) {
 
   window.location.href = "board.html";
 }
+
+ /*
+ ** login user (check password also)
+ */
 
 async function loginUser() {
   let userEmail = document.getElementById("userEmail").value;
@@ -100,6 +128,10 @@ async function loginUser() {
     }
   }
 }
+
+ /*
+ ** sign up user (also check if user/email already exists)
+ */
 
 async function signUpUser(data = {}) {
   let stopSignUp = false;
@@ -123,6 +155,10 @@ async function signUpUser(data = {}) {
   }
 }
 
+ /*
+ ** load accounts from firebase
+ */
+
 async function loadAccounts() {
   accounts = [];
   let userResponse = await fetch(FIREBASE_URL + "/login" + ".json");
@@ -140,6 +176,10 @@ async function loadAccounts() {
   }
 }
 
+ /*
+ ** register user function (also check if passwords are both same while creating)
+ */
+
 async function registerUser() {
   let signUpName = document.getElementById("fullName").value.trim();
   let signUpEmail = document.getElementById("userEmail").value.trim();
@@ -156,6 +196,10 @@ async function registerUser() {
   }
 }
 
+ /*
+ ** add user function & save on firebase & load users new into array (sorted)
+ */
+
 async function addUser() {
   let nameValue = document.getElementById("name").value;
   let phoneValue = document.getElementById("phone").value;
@@ -168,6 +212,10 @@ async function addUser() {
   await renderContacts();
 }
 
+ /*
+ ** save data into firebase
+ */
+
 async function postData(path = "", data = {}) {
   await fetch(FIREBASE_URL + path + ".json", {
     method: "POST",
@@ -178,7 +226,11 @@ async function postData(path = "", data = {}) {
   });
 }
 
-// id = path in firebase
+
+/*
+** id = path in firebase. delete user function. also checks if user is integrated into tasks, which has to be removed before deleting
+** save in firebase, load users new (sorted)
+*/
 
 async function deleteUser(id) {
   await loadTasks("/tasks");
@@ -205,6 +257,10 @@ async function deleteUser(id) {
   }
 }
 
+ /*
+ ** edit user function, save in firebase and load users new into array (sorted)
+ */
+
 async function editUser(id, data = {}) {
   data.name = document.getElementById("name").value;
   data.email = document.getElementById("email").value;
@@ -223,7 +279,10 @@ async function editUser(id, data = {}) {
   closePopup();
 }
 
-// We use the email to identify an User because there may be 2 Users with the same Name but not same email.
+ /*
+ ** get user id, compare users via mail, because there might be 2 persons with the same name
+ */
+
 function getUserId(email) {
   if (users.length > 0) {
     for (let i = 0; i < users.length; i++) {
@@ -236,7 +295,29 @@ function getUserId(email) {
   }
 }
 
-// renders via templates the Contacts into the contact-list incl. the sorter-div/seperator
+/*
+** template for creating contact into contact list
+*/
+
+function contactTemplate(i, j) {
+  return `<div id="user-container${i}">
+            <div id="contact-containerID" class="contact-container" onclick="loadUserInformation(${i}); hideContactsListInResponsiveMode()">
+            <div class="contact-list-ellipse">
+               <div id="userColor${i}" class="ellipse-list initialsColor${j}">${getUserInitials(users[i].name)}</div>
+            </div>
+            <div class="contact">
+                <div class="contact-list-name" id="contactName">${users[i].name}</div>
+                <div class="contact-list-email" id="contactEmail">${users[i].email}</div>
+            </div>
+            </div>
+            </div>
+            `;
+}
+
+/*
+** renders via templates the Contacts into the contact-list incl. the sorter-div/seperator
+*/
+  
 async function renderContacts() {
   let html = "";
   let firstLetter = "0";
@@ -254,18 +335,7 @@ async function renderContacts() {
       firstLetter = users[i].name[0].toUpperCase();
     }
 
-    html += `<div id="user-container${i}">
-            <div id="contact-containerID" class="contact-container" onclick="loadUserInformation(${i}); hideContactsListInResponsiveMode()">
-            <div class="contact-list-ellipse">
-               <div id="userColor${i}" class="ellipse-list initialsColor${j}">${getUserInitials(users[i].name)}</div>
-            </div>
-            <div class="contact">
-                <div class="contact-list-name" id="contactName">${users[i].name}</div>
-                <div class="contact-list-email" id="contactEmail">${users[i].email}</div>
-            </div>
-            </div>
-            </div>
-            `;
+    html += contactTemplate(i, j);
 
     j++;
     if (j > 15) {
@@ -291,6 +361,10 @@ function getUserInitials(username) {
   return result;
 }
 
+ /*
+ ** load user information into user container
+ */
+
 async function loadUserInformation(id) {
   document.getElementById("contact-name").innerHTML = id == -1 ? "" : users[id].name;
   document.getElementById("contact-email").innerHTML = id == -1 ? "" : users[id].email;
@@ -311,6 +385,10 @@ async function loadUserInformation(id) {
   currentUser = id;
 }
 
+ /*
+ ** hide contacts list in responsive mode
+ */
+
 function hideContactsListInResponsiveMode() {
   if (window.innerWidth <= 768) {
     document.getElementById("contact-list").classList.add("d-none");
@@ -320,10 +398,18 @@ function hideContactsListInResponsiveMode() {
   }
 }
 
+ /*
+ ** show contacts in detail in responsive mode
+ */
+
 function showContactsInDetailInResponsiveMode() {
   document.getElementById("display-contact-headerID").style.display = "flex";
   document.getElementById("display-contactID").style.display = "flex";
 }
+
+ /*
+ ** show contact list back again in responsive mode
+ */
 
 function showContactListAgainInResponsiveMode() {
   if (window.innerWidth <= 768) {
@@ -335,14 +421,26 @@ function showContactListAgainInResponsiveMode() {
   }
 }
 
+ /*
+ ** change background on selected user
+ */
+
 function changeBgOnSelectedUser(id) {
   document.getElementById("contact-containerID").classList.add("selected-user-color");
 }
+
+ /*
+ ** initialize contacts
+ */
 
 async function initContacts() {
   await renderContacts();
   loadUserInformation(-1);
 }
+
+ /*
+ ** highlight user
+ */
 
 function highlightUser(userIndex) {
   for (let i = 0; i < users.length; i++) {

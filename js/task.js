@@ -62,7 +62,10 @@ function getTaskPrio() {
   return "None";
 }
 
-//reset all Class from Prio Buttons
+/*
+**reset all Class from Prio Buttons
+*/
+
 function clearPrioButtons()
 {
   document.getElementById('urgent').className = "btn-prio btn-prio:hover";
@@ -80,7 +83,11 @@ function clearPrioButtons()
   document.getElementById('lowID').className ="";
   document.getElementById('low').style.boxShadow = "";
 }
-//click on Urgent Prio Button
+
+/*
+** click on Urgent Prio Button
+*/
+
 function clickOnUrgent() {
   let alreadyKlicked = false;
   if (getTaskPrio() == "Urgent") {
@@ -96,7 +103,11 @@ function clickOnUrgent() {
     document.getElementById("urgent-whiteID").classList.toggle("d-none");
   }
 }
-//click on Medium Prio Button
+
+/*
+** click on Medium Prio Button
+*/
+
 function clickOnMedium() {
   let alreadyKlicked = false;
   if (getTaskPrio() == "Medium") {
@@ -112,7 +123,11 @@ function clickOnMedium() {
     document.getElementById("medium-whiteID").classList.toggle("d-none");
   }
 }
-//click on Low Prio Button
+
+/*
+** click on Low Prio Button
+*/
+
 function clickOnLow() 
 {
   let alreadyKlicked = false;
@@ -130,11 +145,18 @@ function clickOnLow()
   }
 }
 
-/*Begin dropdown assigned to and dropdown category*/
+/*
+** open dropdown assigned to and dropdown category
+*/
+
 function toggleDropdown() {
   document.getElementById("myDropdown").classList.toggle("show");
  
 }
+
+/*
+** close dropdown assigned to and dropdown category
+*/
 
 function closeAssignedto() {
   let dropdown = document.getElementById('myDropdown');
@@ -147,6 +169,10 @@ function closeAssignedto() {
 });
 }
 
+/*
+** close dropdown category
+*/
+
 function closeCategory() {
   let dropdown = document.getElementById('myDropdownCategory');
   let container = document.getElementById('category-container'); 
@@ -158,11 +184,17 @@ function closeCategory() {
 });
 }
 
+/*
+** toggle dropdown category
+*/
+
 function toggleDropdownCategory() {
   document.getElementById("myDropdownCategory").classList.toggle("show");
 }
 
-
+/*
+** render assigned to menu with users, initials, etc.
+*/
 
 async function renderAssignedTo() {
   let assignedMenu = document.getElementById("myDropdown");
@@ -206,11 +238,19 @@ async function renderAssignedTo() {
   assignedMenu.innerHTML = htmlContent;
 }
 
+/*
+** toggle checkbox from assigned users
+*/
+
 function toggleCheckbox(checkboxId) {
   const checkbox = document.getElementById(checkboxId);
   checkbox.checked = !checkbox.checked;  // Umschalten des aktuellen Zustands der Checkbox
   toggleBackground(checkbox);  // Optional: Deine Funktion aufrufen, um das Hintergrund-Design zu ändern
 }
+
+/*
+** toggles the background of the menu
+*/
 
 
 function toggleBackground(checkbox) {
@@ -239,7 +279,7 @@ function toggleBackground(checkbox) {
     });
   }
 }
-/*End dropdown assigned to*/
+
 
 /*Begin Subtask input*/
 document.addEventListener("DOMContentLoaded", () => {
@@ -290,6 +330,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  /*
+  ** renders the subtasks
+  */
+
   function renderSubtasks() {
     const subtasksList = document.querySelector(".list-subtasks");
     subtasksList.innerHTML = "";
@@ -308,6 +352,10 @@ document.addEventListener("DOMContentLoaded", () => {
     editSubTask();
     deleteSubtask();
   }
+
+  /*
+  ** edit subtask from a task
+  */
 
   function editSubTask() {
     const subtaskListItems = document.querySelectorAll(".subtask-list-item");
@@ -338,6 +386,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /*
+  ** delete subtask from a task
+  */
+
   function deleteSubtask() {
     const subtaskListItems = document.querySelectorAll(".subtask-list-item");
 
@@ -349,6 +401,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  /*
+  ** confrim editing of a subtask
+  */
 
   function confirmSubtaskEdit() {
     const subtaskListItemsEdit = document.querySelectorAll(".subtask-list-item-edit");
@@ -399,8 +455,10 @@ function selectUserStory()
   selectCategory.innerHTML = categoryselectUserStory;
 }
 
-/*Begin Form validation*/
-/*Begin Form validation*/
+/*
+** Begin Form validation
+*/
+
 function validateAndCreateTask(event) {
   event.preventDefault(); // Immer das Standardverhalten verhindern
 
@@ -483,6 +541,9 @@ if (priority === "None") { // Überprüfen, ob die Priorität auf "None" gesetzt
   }
 }
 
+/*
+** setting back the create task form
+*/
 
 function clearForm() {
   // Leert alle Textfelder
@@ -514,11 +575,12 @@ function clearForm() {
       const listItem = checkbox.closest(".list-item");
       listItem.style.backgroundColor = '';  // Hintergrundfarbe zurücksetzen
       listItem.style.color = 'black';  // Textfarbe zurücksetzen
-  });
-
-  
+  });  
 }
 
+/*
+** show message that the task has been added
+*/
 
 function showSuccessMessage() {
   const successMessage = document.querySelector('.msg-task-added');
