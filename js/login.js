@@ -27,6 +27,28 @@ function demoLogin() {
 }
 
 /**
+ * Funktion, die das Anmeldeformular validiert und abschickt.
+ * @param {Event} event - Das Ereignis, das ausgelöst wird, wenn das Formular abgeschickt wird.
+ */
+function handleSubmit(event) {
+  event.preventDefault(); // Verhindert das Standard-Formularabsendeverhalten
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (validateEmail(email) && validatePassword(password)) {
+    // Fiktive Authentifizierung - hier würde normalerweise eine API-Anfrage gesendet
+    if (email === "user@example.com" && password === "password") {
+      window.location.href = "summary.html"; // Weiterleitung nach erfolgreicher Anmeldung
+    } else {
+      alert("Falsche Anmeldeinformationen");
+    }
+  } else {
+    alert("Bitte geben Sie eine gültige E-Mail-Adresse und ein Passwort ein");
+  }
+}
+
+/**
  * Funktion zur Validierung der E-Mail-Adresse.
  * @param {string} email - Die zu validierende E-Mail-Adresse.
  * @returns {boolean} - True, wenn die E-Mail-Adresse gültig ist, andernfalls false.
@@ -47,7 +69,7 @@ function validatePassword(password) {
 }
 
 // Event-Listener für das Absenden des Formulars
-//document.querySelector("form").addEventListener("submit", handleSubmit);
+document.querySelector("form").addEventListener("submit", handleSubmit);
 
 // Event-Listener für den Demo-Login
 //document.querySelector(".demo-login button").addEventListener("click", demoLogin);
@@ -81,10 +103,6 @@ function onPasswordKeyDown() {
     }
   }
 }
-
- /*
-  ** function to check invalid keys
-  */
 
 function checkInvalidKeys(key) {
   switch (key) {
@@ -131,17 +149,27 @@ function checkInvalidKeys(key) {
   }
 }
 
- /*
-  ** checks if the input of an input field is marked completely
-  */
-
 function isMarkedCompletely(inputField) {
   return inputField.selectionStart == 0 && inputField.selectionEnd == inputField.value.length;
 }
 
-/*
-** routes guest to summary page
-*/
+// Login & Guest-Login Function
+
+document.getElementById('loginButton').addEventListener('click', function(event) {
+  event.preventDefault();
+  alert('Leider kannst du dich noch nicht einloggen!')
+  
+  // Get the email and password values
+  let email = document.getElementById('userEmail').value;
+  let password = document.getElementById('userPassword').value;
+
+  // Save the email and password to localStorage
+  localStorage.setItem('email', email);
+  localStorage.setItem('password', password);
+
+  // Redirect to board.html
+  window.location.href = 'signup.html';
+});
 
 document.getElementById('guestButton').addEventListener('click', function(event) {
   event.preventDefault();

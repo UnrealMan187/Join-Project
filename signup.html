@@ -24,7 +24,7 @@
                 <img class="divider__img" src="./img/seperator.svg" alt="separator" />
             </div>
     
-            <form id="register" class="registration__form" onsubmit="registerUser(); return false;" onkeyup="toggleSignUpButton()">
+            <form id="register" class="registration__form" onsubmit="handleSignUp(event)" onkeyup="toggleSignUpButton()">
                 <div class="input__box input__box--spaced">
                     <input id="fullName" type="text" placeholder="Name" autocomplete="name" required />
                     <img class="input__icon" src="./img/person.svg" alt="person" />
@@ -91,12 +91,11 @@
         </div>
     
         <footer class="site__footer footer__links">
-            <a href="./privacy.html">Privacy Policy</a>
+            <a href="./privacyPolicy.html">Privacy Policy</a>
             <a href="./legalNotice.html">Legal Notice</a>
         </footer>
     </div>
     
     <script src="./js/signup.js"></script>
-    <script src="./js/firebase.js"></script>
 </body>
 </html>

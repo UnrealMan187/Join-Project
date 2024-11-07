@@ -15,7 +15,7 @@
     
 
 </head>
-<body onload="renderTaskCards(); renderAssignedTo();">
+<body onload="renderBadges(); renderAssignedTo();">
     <!-- Header and Sidebar-->
     <header class="desktop-header">
       <h1>Kanban Project Management Tool</h1>
@@ -184,7 +184,7 @@
                 </div>
                 <div class="inputTaskBtn">
                     <div class="searchContainer">
-                      <input id="searchBar" onkeyup="searchTasks()" class="searchBar" type="search" placeholder="Find Task">
+                      <input id="searchBar" class="searchBar" type="search" placeholder="Find Task">
                       <div class="seperator"></div>
                       <button class="searchIcon">
                       <img src="img/board/plus button.png" alt="">
@@ -227,7 +227,46 @@
             </div>
             <div id="cardContainerinProgress" class="cardContainer">
               <!-- Card Layout Start -->
-           
+              <div draggable="true" id="taskCard" class="taskCard">
+                <div class="taskCardTop">
+                  <label class="categoryGreen">Technical stack</label>
+                  <div class="dropdownCard">
+                    <button onclick="toggleDropdown('dropdown-content')" class="dropdown-btn">
+                      <div class="dropdownBtnContainer">
+                        <img src="" alt="Dropdown Arrow">
+                      </div>
+                    </button>
+                    <div id="dropdown-content" class="dropdown-content">
+                      <p onclick="">In Progress</p>
+                      <p onclick="">Done</p>
+                      <p onclick="">Awaiting Feedback</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cardBody" onclick="openDialog(); popupValueImplementFromTask()">
+                  <p id="titelCardID" class="titleCard">HTML Base Template Creation</p>
+                  <p id="descriptionCardID" class="descriptionCard">Create reusable HTML base templates</p>
+                  <div>
+                    <div class="progress">
+                      <div class="progressBarContainer">
+                        <div id="" class="progressBar" style="width: 50%;"></div>
+                      </div>
+                      <p class="amountSubtasks">1/2</p>
+                    </div>
+                    <div class="footerCard">
+                      <div id="profileBadges" class="profileBadges">
+                        <div class="badgeImg" style="background-color: #F8C4E4">BZ</div>
+                        <div class="badgeImg" style="background-color: #47FDC3">SM</div>
+                        <div class="badgeImg" style="background-color: #1213AA">MB</div>
+                        <div class="badgeImg" style="background-color: #144C6B">TW</div>
+                      </div>
+                      <div class="prioImg">
+                        <img src="./img/medium.svg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>              
               <!-- Card Layout End -->
             </div>
           </div>
@@ -240,12 +279,51 @@
                 <img src="img/board/plus button.png" alt="">
               </button>
             </div>
-            <div id="emptyTaskAwait" class="taskBoard">
-              <div class="emptyTask">No tasks await feedback</div>
+            <div class="taskBoard">
+              <div id="emptyTaskAwait" class="emptyTask">No tasks await feedback</div>
             </div>
             <div id="cardContainerawaitingFeedback" class="cardContainer">
               <!-- Card Layout Start -->
-              
+              <div draggable="true" id="taskCard" class="taskCard">
+                <div class="taskCardTop">
+                  <label class="categoryGreen">Technical stack</label>
+                  <div class="dropdownCard">
+                    <button onclick="toggleDropdown('dropdown-content')" class="dropdown-btn">
+                      <div class="dropdownBtnContainer">
+                        <img src="" alt="Dropdown Arrow">
+                      </div>
+                    </button>
+                    <div id="dropdown-content" class="dropdown-content">
+                      <p onclick="">In Progress</p>
+                      <p onclick="">Done</p>
+                      <p onclick="">Awaiting Feedback</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cardBody" onclick="openDialog(); popupValueImplementFromTask()">
+                  <p id="titelCardID" class="titleCard">HTML Base Template Creation</p>
+                  <p id="descriptionCardID" class="descriptionCard">Create reusable HTML base templates</p>
+                  <div>
+                    <div class="progress">
+                      <div class="progressBarContainer">
+                        <div id="" class="progressBar" style="width: 50%;"></div>
+                      </div>
+                      <p class="amountSubtasks">1/2</p>
+                    </div>
+                    <div class="footerCard">
+                      <div id="profileBadges" class="profileBadges">
+                        <div class="badgeImg" style="background-color: #F8C4E4">BZ</div>
+                        <div class="badgeImg" style="background-color: #47FDC3">SM</div>
+                        <div class="badgeImg" style="background-color: #1213AA">MB</div>
+                        <div class="badgeImg" style="background-color: #144C6B">TW</div>
+                      </div>
+                      <div class="prioImg">
+                        <img src="./img/medium.svg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>              
               <!-- Card Layout End -->
             </div>
           </div>
@@ -258,12 +336,51 @@
                 <img src="img/board/plus button.png" alt="">
               </button>
             </div>
-            <div id="emptyTaskDone" class="taskBoard">
-              <div class="emptyTask">No tasks done</div>
+            <div class="taskBoard">
+              <div id="emptyTaskDone" class="emptyTask">No tasks done</div>
             </div>
             <div id="cardContainerdone" class="cardContainer">
               <!-- Card Layout Start -->
-          
+              <div draggable="true" id="taskCard" class="taskCard">
+                <div class="taskCardTop">
+                  <label class="categoryGreen">Technical stack</label>
+                  <div class="dropdownCard">
+                    <button onclick="toggleDropdown('dropdown-content')" class="dropdown-btn">
+                      <div class="dropdownBtnContainer">
+                        <img src="" alt="Dropdown Arrow">
+                      </div>
+                    </button>
+                    <div id="dropdown-content" class="dropdown-content">
+                      <p onclick="">In Progress</p>
+                      <p onclick="">Done</p>
+                      <p onclick="">Awaiting Feedback</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cardBody" onclick="openDialog(); popupValueImplementFromTask()">
+                  <p id="titelCardID" class="titleCard">HTML Base Template Creation</p>
+                  <p id="descriptionCardID" class="descriptionCard">Create reusable HTML base templates</p>
+                  <div>
+                    <div class="progress">
+                      <div class="progressBarContainer">
+                        <div id="" class="progressBar" style="width: 50%;"></div>
+                      </div>
+                      <p class="amountSubtasks">1/2</p>
+                    </div>
+                    <div class="footerCard">
+                      <div id="profileBadges" class="profileBadges">
+                        <div class="badgeImg" style="background-color: #F8C4E4">BZ</div>
+                        <div class="badgeImg" style="background-color: #47FDC3">SM</div>
+                        <div class="badgeImg" style="background-color: #1213AA">MB</div>
+                        <div class="badgeImg" style="background-color: #144C6B">TW</div>
+                      </div>
+                      <div class="prioImg">
+                        <img src="./img/medium.svg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>              
               <!-- Card Layout End -->
             </div>
           </div>
@@ -277,11 +394,11 @@
       <div id="popupOnTaskSelectionMainContainerID" onclick="event.stopPropagation()" class="popupOnTaskSelectionMainContainer">
         <div class="popupKategorieOnTopMainContainer">
           <div>
-               <h2 id="popUpUserStory">User Story</h2>
+              <h2>User Story</h2>
           </div>
           
           <div class="closePopupMainContainer">
-              <img onclick="closeDialog()" id="closePopupID" src="./img/close.svg" style="cursor: pointer;" alt="">
+              <img onclick="closeDialog()" id="closePopupID" src="./img/close.svg" alt="">
           </div>
         </div>
           <h1 id="popupHeaderID" class="popupHeader"></h1>
@@ -325,7 +442,7 @@
                 <div class="vector"></div>
 
             <div class="editContainer">
-                <div onclick="editPopupTask()" class="editImgContainer"> 
+                <div onclick="editTask(); editPopupTask()" class="editImgContainer"> 
                   <img class="editImg" src="./img/edit.png">
                   <p class="editTxt">Edit</p>
                 </div>
@@ -333,94 +450,7 @@
           </div>
       </div>
     <!--  EDIT POPUP  -->
-    <div id="editPopUpID" onclick="event.stopPropagation()" class="popupOnTaskEdit d-none">
-      <div class="editClosePopupMainContainer">
-        <img onclick="closeDialog()" id="closePopupID" src="./img/close.svg" style="cursor: pointer;" alt="">
-    </div>
-  
-  <div class="scrollbar">
-      <div class="editPopupTitelMainContainer">
-        <span class="editPopupTitelTxt">Title</span>
-        <input id="inputEdit" class="editTitelInput" type="text">
-      </div>
-
-      <div class="editPopupDescriptionMainContainer">
-        <span class="editPopupDescriptionTxt">Description</span>
-        <input id="inputDescription" class="editDescriptionInput" type="text">
-      </div>
-        
-        <div class="editPopupDateMainContainer">
-          <p class="editPopupDateTxt">Due date</p>
-          <input id="inputDueDate" class="editDateInput" type="date">
-        </div>
-
-        <div class="editPrio">
-          <label id="inputPrio"></label>
-          <div class="buttons-prio">
-            <button onclick="clickOnUrgent()" type="button" id="urgent" class="btn-prio btn-prio:hover">
-              Urgent<img id="urgentID" src="./img/urgent.svg" class="">
-                    <img id="urgent-whiteID" class="d-none" src="./img/urgent-white.svg">
-            </button>
-            <div class="">
-            <button onclick="clickOnMedium()" type="button" id="medium" class="btn-prio btn-bg-change-medium-onclick prio-txt-color-set-white" style="box-shadow: none;">
-              Medium<img id="mediumID" src="./img/medium.svg" class="d-none">
-              <img id="medium-whiteID" class="" src="./img/medium-white.svg">
-            </button>
-          </div>
-            <button onclick="clickOnLow()" type="button" id="low" class="btn-prio">
-              Low<img id="lowID" src="./img/low.svg" class="">
-              <img id="low-whiteID" class="d-none" src="./img/low-white.svg">
-            </button>
-          </div>
-        </div>
-
-
-        <!-- Begin Assigned to  -->
-        <div class="editPopupAssignedToMainContainer">
-          <p class="editAssignedToTxt">Assigned to</p>
-          <div class="editDropdown">
-            <div id="contacts-list" class="select assigned-to" onclick="toggleDropdown()">
-              <input class="select-input placeholder" type="text" placeholder="Select contacts to assign" readonly/>
-              <span class="down-arrow">
-                <img src="img/arrow_drop_downaa.svg" alt="">
-              </span>
-            </div>
-            <div id="selected-contacts-container" class="selected-contacts"></div>
-            <!-- Begin Contacts Assigned to-->
-            <ul id="myDropdown" class="dropdown-content "></ul>
-            <!-- End Contacts Assigned to-->
-            <div class="selected-contacts"></div>
-          </div>
-        </div>
-        <!-- End Assigned to -->
-
-        <!--Begin subtask-->
-        <div class="editPopupSubtasksMainContainer">
-          <p class="editPopupSubtasksTxt">Subtask</p>
-          <div class="input-container-subtask">
-            <input class="input subtask" type="text" placeholder="Add new subtask" />
-            <div class="btn-subtask add">
-              <img src="./img/add.png" alt="Add" />
-            </div>
-            <div class="btn-subtask check-cancel">
-              <div class="cancel-subtask">
-                <img src="./img/close.png" alt="Cancel" />
-              </div>
-              <div class="divider-subtask"></div>
-              <div class="check-subtask">
-                <img src="./img/check.png" alt="Check" />
-              </div>
-              </div>
-          </div>
-            <div class="container-subtasks-display">
-                <ul id="subtaskList" class="list-subtasks"></ul>
-            </div>
-        </div>
-  </div>
-      <div class="okButtonMainContainer" >
-        <button onclick="editCurrentTask()" class="okButtonOnEditPopUp">OK</button>
-      </div>
-    </div>
+    <div id="editPopUpID" onclick="event.stopPropagation()" class="popupOnTaskEdit d-none"></div>
     <!-- END Edit Popup -->
     </section>
 
@@ -452,18 +482,15 @@
                 </div>
               </div>
               <div class="inputGroup">
-                <label for="description">Description<span class="required">*</span></label>
+                <label>Description</label>
                 <input
-                  id="description" class="input"
+                  class="descriptionPopup input" id="description"
                   placeholder="Enter a description"
                 ></input>
-                <div id="description-required" class="requiredMessage">
-                  This field is required
-                </div>
               </div>
               <div class="inputGroup">
-                <label class="margin" for="dropdown-container"
-                  >Assigned to<span class="required">*</span></label
+                <label class="margin"
+                  >Assigned to</label
                 >
                 <div class="dropdown">
                   <div id="contacts-list" class="select assigned-to" onclick="toggleDropdown()">
@@ -486,20 +513,18 @@
                   <div class="selected-contacts"></div>
                 </div>
               </div>
-              <div id="assigned-to-required" class="requiredMessage">
-                This field is required
-              </div>
             </div>
             <div class="col-middle"></div>
             <div class="col-right gap">
               <div class="inputGroup">
                 <div>
-                  <label class="due-date" for="due-date-input"
+                 <label class="due-date" for="due-date-input"
                   >Due date<span class="required">*</span></label
-                >
+                 >
+                </div>
                 <input class="input" type="date" id="due-date-input" />
-                <div id="date-required" class="requiredMessage">
-                 This field is required
+                <div id="date-required" class="required-msg">
+                  <!-- This field is required -->
                 </div>
               </div>
               <div class="inputGroup">
@@ -520,25 +545,25 @@
                     <img id="low-whiteID" class="d-none" src="./img/low-white.svg"/>
                   </button>
                 </div>
-                <div id="prio-required" class="requiredMessage">
-                  This field is required
-                </div>  
               </div>
               <div class="inputGroup">
-                <label for="category-selected"
-                  >Category<span class="required">*</span></label
-                >
-                <div class="dropdown" >
-                  <div id="category-container" class="select category" onclick="toggleDropdownCategory()" >
-                    <span id="category-displayed" class="btn-text">Select task category</span>
+                <label>Category<span class="required">*</span></label>
+                <div class="dropdown">
+                  <div id="category-container" class="select category" onclick="toggleDropdownCategory()">
+                    <span id="category-displayed" class="btn-text"
+                      >Select task category</span
+                    >
                     <span class="down-arrow" >
                       <img src="img/arrow_drop_downaa.svg" alt="">
                     </span>
                   </div>
-                  <div id="category-required" class="requiredMessage">               
-                    This field is required
+                  <div
+                    id="category-required"
+                    class="required-msg category-required"
+                  >
+                    <!-- This field is required -->
                   </div>
-                  <ul class="category scroll-disabled dropdown-content" id="myDropdownCategory" >
+                  <ul class="category scroll-disabled dropdown-content" id="myDropdownCategory">
                     <li onclick="selectTechnicalStack()" id="categoryTechnicalStack" data-value="Technical stack" class="item category">
                       <span>Technical stack</span>
                     </li>
@@ -550,7 +575,7 @@
               </div>
               <!--Begin subtask-->
               <div class="inputGroup">
-                <label for="subtasks">Subtasks<span class="required">*</span></label>
+                <label>Subtasks</label>
                 <div class="input-container-subtask">
                   <input class="input subtask" type="text" placeholder="Add new subtask" />
                   <div class="btn-subtask add">
@@ -570,20 +595,17 @@
                   <div class="container-subtasks-display">
                       <ul id="subtaskList" class="list-subtasks"></ul>
                   </div>
-                  <div id="subtasks-required" class="requiredMessage">
-                    This field is required
-                  </div>
               </div>
               <!--End subtask-->  
             </div>
           </div>
           <div class="bottom-form">
             <p class="required-note">
-              <span class="required">*This field is required</span> 
+              <span class="required">*This field is required</span> <!-- This Field is required -->
             </p>
             <div class="actions-form">
               <button
-                onclick="clearForm()"
+                onclick="createTask()"
                 type="button"
                 class="btn-clear"
                 id="clear-btn"
@@ -595,9 +617,9 @@
                   alt=""
                 >
               </button>
-              <button type="button" class="btn-create" onclick="validateAndCreateTask(event)">
+              <button type="submit" class="btn-create" onclick="createTask()">
                 Create Task
-                <img src="./img/check_white.svg" alt="" />
+                <img src="./img/check.svg" alt="" />
               </button>
             </div>
           </div>

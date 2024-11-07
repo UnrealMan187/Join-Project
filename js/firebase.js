@@ -1,23 +1,8 @@
 const FIREBASE_URL = "https://join-4d42f-default-rtdb.europe-west1.firebasedatabase.app/";
 let users = [];
 let tasks = [];
-let accounts = [];
-let login = [];
 let currentUser = -1;
 let currentId = -1;
-
- /*
- ** routes user to login html (or to summary if user already logged in)
- */
-
-function indexHtmlInit() {
-  // Hier noch eine if Abfrage einbauen: wenn User bereits eingeloggt ist, verlinke direkt zu summary.html, ansonsten zu login.html
-  window.location.href = "login.html"
-}
-
- /*
- ** load users from firebase
- */
 
 async function loadUsers(path = "/users") {
   users = [];
@@ -38,10 +23,6 @@ async function loadUsers(path = "/users") {
     });
   }
 }
-
- /*
- ** load tasks from firebase
- */
 
 async function loadTasks(path = "/tasks") {
   tasks = [];
@@ -65,10 +46,6 @@ async function loadTasks(path = "/tasks") {
   }
 }
 
- /*
- ** save task function
- */
-
 async function saveTasks(path = "", data = {}) {
   await fetch(FIREBASE_URL + path + ".json", {
     method: "POST",
@@ -79,11 +56,9 @@ async function saveTasks(path = "", data = {}) {
   });
 }
 
- /*
- ** edit task function
- */
-
 async function editTask(id, data = {}) {
+  document.getElementById('popupOnTaskSelectionMainContainerID').classList.add('d-none');
+  document.getElementById('editPopUpID').classList.remove('d-none');
   await fetch(FIREBASE_URL + `/tasks/${id}` + ".json", {
     method: "PUT",
     headers: {
@@ -93,112 +68,16 @@ async function editTask(id, data = {}) {
   });
 }
 
- /*
- ** delete task function
- */
-
 async function deleteTask(id) {
-  if (id == -1) {
-    return;
-  }
+  if(id == -1) { return; }
   await fetch(FIREBASE_URL + `/tasks/${id}` + ".json", {
     method: "DELETE",
   });
 
-  window.location.href = "board.html";
+  closeDialog();
+  await loadTasks("/tasks");
+  await renderTaskCards();
 }
-
- /*
- ** login user (check password also)
- */
-
-async function loginUser() {
-  let userEmail = document.getElementById("userEmail").value;
-  let userPassword = document.getElementById("userPassword").value;
-
-  await loadAccounts();
-
-  for(let i = 0; i < accounts.length; i++) {
-    if(accounts[i].email == userEmail) {
-      if(accounts[i].password == userPassword) {
-        alert("LOGIN ERFOLGREICH");
-        window.location.href = "board.html";
-        break;        
-      }
-    }
-  }
-}
-
- /*
- ** sign up user (also check if user/email already exists)
- */
-
-async function signUpUser(data = {}) {
-  let stopSignUp = false;
-  await loadAccounts();
-
-  for (let i = 0; i < accounts.length; i++) {
-    if (accounts[i].email == data.email) {
-      alert("Zu dieser E-Mail-Adresse besteht bereits ein Account. Passwort vergessen? Selber schuld!");
-      stopSignUp = true;
-    }
-  }
-
-  if (stopSignUp == false) {
-    await fetch(FIREBASE_URL + "/login" + ".json", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-  }
-}
-
- /*
- ** load accounts from firebase
- */
-
-async function loadAccounts() {
-  accounts = [];
-  let userResponse = await fetch(FIREBASE_URL + "/login" + ".json");
-  let responseToJson = await userResponse.json();
-
-  if (responseToJson) {
-    Object.keys(responseToJson).forEach((key) => {
-      accounts.push({
-        id: key,
-        name : responseToJson[key]["name"],
-        email: responseToJson[key]["email"],
-        password: responseToJson[key]["password"],
-      });
-    });
-  }
-}
-
- /*
- ** register user function (also check if passwords are both same while creating)
- */
-
-async function registerUser() {
-  let signUpName = document.getElementById("fullName").value.trim();
-  let signUpEmail = document.getElementById("userEmail").value.trim();
-  let signUpPassword = document.getElementById("userPassword").value.trim();
-  let signUpPassword2 = document.getElementById("confirmPassword").value.trim();
-
-  let loginData = { name: signUpName, email: signUpEmail, password: signUpPassword };
-
-  if(signUpPassword == signUpPassword2) {
-    await signUpUser(loginData);
-    window.location.href = "login.html";
-  } else {
-    alert("PASSWORTEINGABEN UNGLEICH");
-  }
-}
-
- /*
- ** add user function & save on firebase & load users new into array (sorted)
- */
 
 async function addUser() {
   let nameValue = document.getElementById("name").value;
@@ -212,10 +91,6 @@ async function addUser() {
   await renderContacts();
 }
 
- /*
- ** save data into firebase
- */
-
 async function postData(path = "", data = {}) {
   await fetch(FIREBASE_URL + path + ".json", {
     method: "POST",
@@ -226,40 +101,15 @@ async function postData(path = "", data = {}) {
   });
 }
 
-
-/*
-** id = path in firebase. delete user function. also checks if user is integrated into tasks, which has to be removed before deleting
-** save in firebase, load users new (sorted)
-*/
+// id = path in firebase
 
 async function deleteUser(id) {
-  await loadTasks("/tasks");
-  let stopDelete = false;
-
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].id == id) {
-      for (let j = 0; j < tasks.length; j++) {
-        if (tasks[j].assigned.includes(users[i].name)) {
-          alert("Bitte entferne den User aus allen Tasks vor dem Löschen.");
-          stopDelete = true;
-          break;
-        }
-      }
-    }
-  }
-
-  if (stopDelete == false) {
-    await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
-      method: "DELETE",
-    });
-    await renderContacts();
-    loadUserInformation(-1);
-  }
+  await fetch(FIREBASE_URL + `/users/${id}` + ".json", {
+    method: "DELETE",
+  });
+  await renderContacts();
+  loadUserInformation(-1);
 }
-
- /*
- ** edit user function, save in firebase and load users new into array (sorted)
- */
 
 async function editUser(id, data = {}) {
   data.name = document.getElementById("name").value;
@@ -279,10 +129,7 @@ async function editUser(id, data = {}) {
   closePopup();
 }
 
- /*
- ** get user id, compare users via mail, because there might be 2 persons with the same name
- */
-
+// We use the email to identify an User because there may be 2 Users with the same Name but not same email.
 function getUserId(email) {
   if (users.length > 0) {
     for (let i = 0; i < users.length; i++) {
@@ -295,29 +142,7 @@ function getUserId(email) {
   }
 }
 
-/*
-** template for creating contact into contact list
-*/
-
-function contactTemplate(i, j) {
-  return `<div id="user-container${i}">
-            <div id="contact-containerID" class="contact-container" onclick="loadUserInformation(${i}); hideContactsListInResponsiveMode()">
-            <div class="contact-list-ellipse">
-               <div id="userColor${i}" class="ellipse-list initialsColor${j}">${getUserInitials(users[i].name)}</div>
-            </div>
-            <div class="contact">
-                <div class="contact-list-name" id="contactName">${users[i].name}</div>
-                <div class="contact-list-email" id="contactEmail">${users[i].email}</div>
-            </div>
-            </div>
-            </div>
-            `;
-}
-
-/*
-** renders via templates the Contacts into the contact-list incl. the sorter-div/seperator
-*/
-  
+// renders via templates the Contacts into the contact-list incl. the sorter-div/seperator
 async function renderContacts() {
   let html = "";
   let firstLetter = "0";
@@ -335,7 +160,18 @@ async function renderContacts() {
       firstLetter = users[i].name[0].toUpperCase();
     }
 
-    html += contactTemplate(i, j);
+    html += `<div id="user-container${i}">
+            <div id="contact-containerID" class="contact-container" onclick="loadUserInformation(${i}); hideContactsListInResponsiveMode()">
+            <div class="contact-list-ellipse">
+               <div id="userColor${i}" class="ellipse-list initialsColor${j}">${getUserInitials(users[i].name)}</div>
+            </div>
+            <div class="contact">
+                <div class="contact-list-name" id="contactName">${users[i].name}</div>
+                <div class="contact-list-email" id="contactEmail">${users[i].email}</div>
+            </div>
+            </div>
+            </div>
+            `;
 
     j++;
     if (j > 15) {
@@ -351,8 +187,7 @@ async function renderContacts() {
  * gets first Letter from first Name and first Letter from last Name
  */
 function getUserInitials(username) {
-  let result = username.trim().split(" ").map((wort) => wort[0].toUpperCase());
-
+  let result = username.split(" ").map((wort) => wort[0].toUpperCase());
   if (username.split(" ").length > 1) {
     result = result[0] + result[result.length - 1];
   } else {
@@ -360,10 +195,6 @@ function getUserInitials(username) {
   }
   return result;
 }
-
- /*
- ** load user information into user container
- */
 
 async function loadUserInformation(id) {
   document.getElementById("contact-name").innerHTML = id == -1 ? "" : users[id].name;
@@ -385,10 +216,6 @@ async function loadUserInformation(id) {
   currentUser = id;
 }
 
- /*
- ** hide contacts list in responsive mode
- */
-
 function hideContactsListInResponsiveMode() {
   if (window.innerWidth <= 768) {
     document.getElementById("contact-list").classList.add("d-none");
@@ -398,18 +225,10 @@ function hideContactsListInResponsiveMode() {
   }
 }
 
- /*
- ** show contacts in detail in responsive mode
- */
-
 function showContactsInDetailInResponsiveMode() {
   document.getElementById("display-contact-headerID").style.display = "flex";
   document.getElementById("display-contactID").style.display = "flex";
 }
-
- /*
- ** show contact list back again in responsive mode
- */
 
 function showContactListAgainInResponsiveMode() {
   if (window.innerWidth <= 768) {
@@ -421,26 +240,14 @@ function showContactListAgainInResponsiveMode() {
   }
 }
 
- /*
- ** change background on selected user
- */
-
 function changeBgOnSelectedUser(id) {
   document.getElementById("contact-containerID").classList.add("selected-user-color");
 }
-
- /*
- ** initialize contacts
- */
 
 async function initContacts() {
   await renderContacts();
   loadUserInformation(-1);
 }
-
- /*
- ** highlight user
- */
 
 function highlightUser(userIndex) {
   for (let i = 0; i < users.length; i++) {
