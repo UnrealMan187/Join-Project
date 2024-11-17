@@ -1,3 +1,15 @@
+function createNewTaskArray(taskTitle, taskDescription, taskDate, taskCategory, taskPrio, taskSubtasks, assignedTo) {
+  return { title: taskTitle,
+           description: taskDescription,
+           date: taskDate,
+           category: taskCategory,
+           priority: taskPrio,
+           level: "To do",
+           subtasks: taskSubtasks,
+           assigned: assignedTo
+  };
+}
+
 async function createTask() {
   let taskTitle = document.getElementById("title").value;
   let taskDescription = document.getElementById("description").value;
@@ -29,18 +41,13 @@ async function createTask() {
     assignedTo = assignedTo.slice(0, -1);
   }
 
-  let newTask = {
-    title: taskTitle,
-    description: taskDescription,
-    date: taskDate,
-    category: taskCategory,
-    priority: taskPrio,
-    level: "To do",
-    subtasks: taskSubtasks,
-    assigned: assignedTo
-  };
+  let newTask = createNewTaskArray(taskTitle, taskDescription, taskDate, taskCategory, taskPrio, taskSubtasks, assignedTo);
 
   saveTasks("/tasks", newTask);
+}
+
+function clearTask() {
+  window.location = "./task.html";
 }
 
 function getTaskPrio() {
