@@ -41,12 +41,6 @@ async function createTask() {
   };
 
   saveTasks("/tasks", newTask);
-
-  // Erfolgsmeldung anzeigen
-  showSuccessMessage();
-
-  // Formular zurücksetzen (falls gewünscht)
-  clearForm();
 }
 
 function getTaskPrio() {
@@ -62,10 +56,7 @@ function getTaskPrio() {
   return "None";
 }
 
-/*
-**reset all Class from Prio Buttons
-*/
-
+//reset all Class from Prio Buttons
 function clearPrioButtons()
 {
   document.getElementById('urgent').className = "btn-prio btn-prio:hover";
@@ -83,11 +74,7 @@ function clearPrioButtons()
   document.getElementById('lowID').className ="";
   document.getElementById('low').style.boxShadow = "";
 }
-
-/*
-** click on Urgent Prio Button
-*/
-
+//click on Urgent Prio Button
 function clickOnUrgent() {
   let alreadyKlicked = false;
   if (getTaskPrio() == "Urgent") {
@@ -103,11 +90,7 @@ function clickOnUrgent() {
     document.getElementById("urgent-whiteID").classList.toggle("d-none");
   }
 }
-
-/*
-** click on Medium Prio Button
-*/
-
+//click on Medium Prio Button
 function clickOnMedium() {
   let alreadyKlicked = false;
   if (getTaskPrio() == "Medium") {
@@ -123,11 +106,7 @@ function clickOnMedium() {
     document.getElementById("medium-whiteID").classList.toggle("d-none");
   }
 }
-
-/*
-** click on Low Prio Button
-*/
-
+//click on Low Prio Button
 function clickOnLow() 
 {
   let alreadyKlicked = false;
@@ -145,56 +124,32 @@ function clickOnLow()
   }
 }
 
-/*
-** open dropdown assigned to and dropdown category
-*/
-
+/*Begin dropdown assigned to and dropdown category*/
 function toggleDropdown() {
   document.getElementById("myDropdown").classList.toggle("show");
- 
 }
-
-/*
-** close dropdown assigned to and dropdown category
-*/
-
-function closeAssignedto() {
-  let dropdown = document.getElementById('myDropdown');
-  let container = document.getElementById('contacts-list'); 
-
-  document.addEventListener('click', (event) => {
-  if (!container.contains(event.target) && dropdown.classList.contains('show')) {
-    dropdown.classList.remove('show');
-  }
-});
-}
-
-/*
-** close dropdown category
-*/
-
-function closeCategory() {
-  let dropdown = document.getElementById('myDropdownCategory');
-  let container = document.getElementById('category-container'); 
-
-  document.addEventListener('click', (event) => {
-  if (!container.contains(event.target) && dropdown.classList.contains('show')) {
-    dropdown.classList.remove('show');
-  }
-});
-}
-
-/*
-** toggle dropdown category
-*/
 
 function toggleDropdownCategory() {
   document.getElementById("myDropdownCategory").classList.toggle("show");
 }
 
-/*
-** render assigned to menu with users, initials, etc.
-*/
+window.onclick = function (event) {
+  // Überprüfen, ob außerhalb des Dropdowns "myDropdown" geklickt wurde
+  if (!event.target.closest(".select.assigned-to")) {
+    //closeDropdown("myDropdown");
+  }
+  // Überprüfen, ob außerhalb des Dropdowns "myDropdownCategory" geklickt wurde
+  if (!event.target.closest(".select.category")) {
+    closeDropdown("myDropdownCategory");
+  }
+};
+
+function closeDropdown(dropdownId) {
+  let dropdown = document.getElementById(dropdownId);
+  if (dropdown.classList.contains("show")) {
+    dropdown.classList.remove("show");
+  }
+}
 
 async function renderAssignedTo() {
   let assignedMenu = document.getElementById("myDropdown");
@@ -210,7 +165,7 @@ async function renderAssignedTo() {
   let uniqueUsers = [];
   users.forEach(user => {
       if (!uniqueUsers.some(uniqueUser => uniqueUser.email === user.email)) {
-          uniqueUsers.push(user.name.trim());
+          uniqueUsers.push(user);
       }
   });
 
@@ -219,10 +174,10 @@ async function renderAssignedTo() {
 
   for (let i = 0; i < uniqueUsers.length; i++) {
       htmlContent += `
-          <label onclick="event.stopPropagation()"><li class="list-item assigned-to"></label>
+          <label><li class="list-item assigned-to"></label>
               <div class="list-item-name" onclick="toggleCheckbox('AssignedContact${i}')">
-                  <label><div class="circle initialsColor${j}">${getUserInitials(uniqueUsers[i])}</div></label>
-                  <label>${uniqueUsers[i]}</label>
+                  <label><div class="circle initialsColor${j}">${getUserInitials(uniqueUsers[i].name)}</div></label>
+                  <label>${uniqueUsers[i].name}</label>
               </div>
               <input type="checkbox" onclick="toggleBackground(this)" id="AssignedContact${i}" name="AssignedContact">
           </li>
@@ -238,19 +193,11 @@ async function renderAssignedTo() {
   assignedMenu.innerHTML = htmlContent;
 }
 
-/*
-** toggle checkbox from assigned users
-*/
-
 function toggleCheckbox(checkboxId) {
   const checkbox = document.getElementById(checkboxId);
   checkbox.checked = !checkbox.checked;  // Umschalten des aktuellen Zustands der Checkbox
   toggleBackground(checkbox);  // Optional: Deine Funktion aufrufen, um das Hintergrund-Design zu ändern
 }
-
-/*
-** toggles the background of the menu
-*/
 
 
 function toggleBackground(checkbox) {
@@ -279,7 +226,7 @@ function toggleBackground(checkbox) {
     });
   }
 }
-
+/*End dropdown assigned to*/
 
 /*Begin Subtask input*/
 document.addEventListener("DOMContentLoaded", () => {
@@ -330,10 +277,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /*
-  ** renders the subtasks
-  */
-
   function renderSubtasks() {
     const subtasksList = document.querySelector(".list-subtasks");
     subtasksList.innerHTML = "";
@@ -352,10 +295,6 @@ document.addEventListener("DOMContentLoaded", () => {
     editSubTask();
     deleteSubtask();
   }
-
-  /*
-  ** edit subtask from a task
-  */
 
   function editSubTask() {
     const subtaskListItems = document.querySelectorAll(".subtask-list-item");
@@ -386,10 +325,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /*
-  ** delete subtask from a task
-  */
-
   function deleteSubtask() {
     const subtaskListItems = document.querySelectorAll(".subtask-list-item");
 
@@ -401,10 +336,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-
-  /*
-  ** confrim editing of a subtask
-  */
 
   function confirmSubtaskEdit() {
     const subtaskListItemsEdit = document.querySelectorAll(".subtask-list-item-edit");
@@ -453,142 +384,4 @@ function selectUserStory()
   let selectCategory = document.getElementById('category-displayed');
   selectCategory.innerHTML = '';
   selectCategory.innerHTML = categoryselectUserStory;
-}
-
-/*
-** Begin Form validation
-*/
-
-function validateAndCreateTask(event) {
-  event.preventDefault(); // Immer das Standardverhalten verhindern
-
-  let isValid = true;
-
-  // Title validation
-  const title = document.getElementById('title');
-  const titleRequired = document.getElementById('title-required');
-  if (title.value.trim() === '') {
-      titleRequired.style.display = 'block';
-      isValid = false;
-  } else {
-      titleRequired.style.display = 'none';
-  }
-
-  // Due date validation
-  const dueDate = document.getElementById('due-date-input');
-  const dateRequired = document.getElementById('date-required');
-  if (dueDate.value.trim() === '') {
-      dateRequired.style.display = 'block';
-      isValid = false;
-  } else {
-      dateRequired.style.display = 'none';
-  }
-
-  // Category validation
-  const categoryContainer = document.getElementById('category-container');
-  const categoryRequired = document.getElementById('category-required');
-  if (categoryContainer.textContent.trim() === 'Select task category') {
-      categoryRequired.style.display = 'block';
-      isValid = false;
-  } else {
-      categoryRequired.style.display = 'none';
-  }
-
-  // Description validation
-  const description = document.getElementById("description").value.trim();
-  const descriptionError = document.getElementById("description-required");
-  if (description === "") {
-      descriptionError.style.display = "block";
-      isValid = false;
-  } else {
-      descriptionError.style.display = "none";
-  }
-
-  // "Assigned To"-Validierung
-  const assignedToError = document.getElementById("assigned-to-required");
-  const assignedCheckboxes = document.querySelectorAll('#myDropdown input[type="checkbox"]:checked');
-  if (assignedCheckboxes.length === 0) {
-      assignedToError.style.display = "block";
-      isValid = false;
-  } else {
-      assignedToError.style.display = "none";
-  }
-
-  // Prioritäts-Validierung
-const priority = getTaskPrio();
-const priorityError = document.getElementById("prio-required");
-if (priority === "None") { // Überprüfen, ob die Priorität auf "None" gesetzt ist
-    priorityError.style.display = "block";
-    isValid = false;
-} else {
-    priorityError.style.display = "none";
-}
-
-
-  // Subtasks-Validierung
-  const subtasks = document.getElementById('subtaskList').children;
-  const subtasksError = document.getElementById("subtasks-required");
-  if (subtasks.length === 0) {
-      subtasksError.style.display = "block";
-      isValid = false;
-  } else {
-      subtasksError.style.display = "none";
-  }
-
-  if (isValid) {
-      // Wenn die Validierung erfolgreich war, die Aufgabe erstellen
-      createTask();
-  }
-}
-
-/*
-** setting back the create task form
-*/
-
-function clearForm() {
-  // Leert alle Textfelder
-  document.getElementById('title').value = '';
-  document.getElementById('description').value = '';
-  document.getElementById('due-date-input').value = '';
-
-  // Setzt den ausgewählten Kategorie-Text zurück
-  document.getElementById('category-displayed').textContent = 'Select task category';
-
-  // Setzt das ausgewählte Prio-Design zurück
-  document.querySelectorAll('.btn-prio').forEach(btn => {
-      btn.classList.remove('selected');  // Entferne die "selected"-Klasse von allen Prio-Buttons
-      let imgElements = btn.getElementsByTagName('img');
-      imgElements[0].classList.remove('d-none');  // Zeige das farbige Icon an
-      imgElements[1].classList.add('d-none');  // Verstecke das weiße Icon
-  });
-
-  // Setzt die Subtask-Liste zurück
-  document.getElementById('subtaskList').innerHTML = '';
-
-  // Leert das Dropdown-Menü "Assigned to"
-  document.getElementById('selected-contacts-container').innerHTML = '';
-
-  // Alle Checkboxen im Dropdown "Assigned to" zurücksetzen
-  const checkboxes = document.querySelectorAll('#myDropdown input[type="checkbox"]');
-  checkboxes.forEach(checkbox => {
-      checkbox.checked = false;
-      const listItem = checkbox.closest(".list-item");
-      listItem.style.backgroundColor = '';  // Hintergrundfarbe zurücksetzen
-      listItem.style.color = 'black';  // Textfarbe zurücksetzen
-  });  
-}
-
-/*
-** show message that the task has been added
-*/
-
-function showSuccessMessage() {
-  const successMessage = document.querySelector('.msg-task-added');
-  successMessage.style.display = 'flex';
-
-  // Erfolgsmeldung nach einigen Sekunden ausblenden
-  setTimeout(() => {
-      successMessage.style.display = 'none';
-      window.location.href = "board.html";
-  }, 3000);
-}
+} 

@@ -434,6 +434,30 @@ button:disabled:hover {
 }
 
 
+@keyframes animation_logo {
+    from {
+        inset: 50% 0 0 50%;
+        transform: translate(-50%, -50%);
+        height: 334px;
+        width: 274px;
+    }
+
+    to {
+        height: 122px;
+        width: 100px;
+        top: 80px;
+        left: 77px;
+        transform: none;
+    }
+}
+
+@keyframes animation_overlay {
+    to {
+        background-color: transparent;
+    }
+}
+
+
 @media (max-width: 800px) and (min-height: 600px) {
     .overlay_background {
         background-color: #2a3647;
@@ -451,21 +475,6 @@ button:disabled:hover {
 
     body {
         background-color:#2a3647;
-    }
-
-    .auth_options {
-        margin-right: -90px;
-    }
-
-    .imgLogo {
-        position: fixed;
-    }
-}
-
-
-@media (max-width: 635px) {
-    img {
-        left: 50px;
     }
 }
 
@@ -513,36 +522,7 @@ button:disabled:hover {
         align-items: center;
         margin-top: 700px;
         position: fixed;
-        margin-left: 40px;
+        margin-left: 110px;
         
-    }
-
-    .btn_guest {
-        width: auto;
-        gap: 20px;
-    }
-
-    .auth_buttons {
-        gap: 10px;
-    }
-
-    .logo-container {
-        left: 50px;
-    }
-
-    .main_wrapper {
-        overflow: hidden;
-    }
-}
-
-
-@media (max-width: 320px) {
-    .btn_guest {
-        width: 90px;
-        gap: 10px;
-    }
-
-    .auth_buttons {
-        gap: 10px;
     }
 }
