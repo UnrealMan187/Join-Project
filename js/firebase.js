@@ -4,6 +4,10 @@ let tasks = [];
 let currentUser = -1;
 let currentId = -1;
 
+function indexHtmlInit() {
+  window.location = "./login.html";
+}
+
 async function loadUsers(path = "/users") {
   users = [];
   let userResponse = await fetch(FIREBASE_URL + path + ".json");
